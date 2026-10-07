@@ -25,6 +25,10 @@ One Supabase project powers both the live AI coach and account sign in. Plan on 
 2. Name it exactly `coach`.
 3. Replace the sample code with everything from `supabase/functions/coach/index.ts`, then click **Deploy**.
 4. Leave **Enforce JWT verification** turned on. The app sends the right credentials automatically.
+5. If the deploy fails, copy the red error message. Common causes:
+   * Only part of the file was pasted. Select all of `index.ts` (it starts with `// Supabase Edge Function` and ends with `});`).
+   * The function name isn't exactly `coach` in lowercase.
+6. After deploying, open the function's **Logs** tab. Any problem talking to Claude shows up there as `coach error`, and a missing key returns "The ANTHROPIC_API_KEY secret is not set for this function." 
 
 ## Step 5: Set up sign in
 1. Open **Authentication > Sign In / Providers** and make sure **Email** is enabled.

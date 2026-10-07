@@ -1,13 +1,20 @@
 // Supabase Edge Function: the AI coach behind Rapport.
-// Deploy:  supabase functions deploy coach
-// Secret:  supabase secrets set ANTHROPIC_API_KEY=sk-ant-...
-// The app calls it via EXPO_PUBLIC_COACH_URL=https://<project>.supabase.co/functions/v1/coach
-import Anthropic from 'npm:@anthropic-ai/sdk';
-import { z } from 'npm:zod';
-import { zodOutputFormat } from 'npm:@anthropic-ai/sdk/helpers/zod';
+// Deploy from the dashboard (Edge Functions > Deploy a new function > Via Editor, name it "coach")
+// or with the CLI:  supabase functions deploy coach
+// Secret:  ANTHROPIC_API_KEY (Edge Functions > Secrets)
+import Anthropic from 'npm:@anthropic-ai/sdk@0.131.0';
 
-const client = new Anthropic(); // reads ANTHROPIC_API_KEY
 const MODEL = 'claude-opus-5-5';
+
+let client: Anthropic | null = null;
+/** Created on first use, so a missing secret produces a clear error instead of a failed boot. */
+function anthropic(): Anthropic {
+  const apiKey = Deno.env.get('ANTHROPIC_API_KEY');
+  if (!apiKey) throw new MissingKeyError();
+  client ??= new Anthropic({ apiKey });
+  return client;
+}
+class MissingKeyError extends Error {}
 
 const COACH_SYSTEM = `You are Ari, a warm, practical leadership communication coach inside the Rapport app.
 Your users are people leaders and HR professionals working on feedback, conflict resolution, active listening, trust, recognition, and leading change.
@@ -23,12 +30,19 @@ Boundaries:
 - You are not a lawyer and do not give legal advice. For harassment, discrimination, safety, medical, or legal matters, give supportive first steps and direct them to HR, legal counsel, or an employee assistance program.
 - If someone describes risk of harm to themselves or others, encourage them to contact emergency services or a crisis line right away.`;
 
-const FeedbackSchema = z.object({
-  score: z.number().int().min(0).max(100),
-  strengths: z.array(z.string()).max(4),
-  improve: z.array(z.string()).max(4),
-  tryThis: z.string(),
-});
+type Feedback = { score: number; strengths: string[]; improve: string[]; tryThis: string };
+
+const FEEDBACK_SCHEMA = {
+  type: 'object',
+  properties: {
+    score: { type: 'integer', description: '0 to 100' },
+    strengths: { type: 'array', items: { type: 'string' } },
+    improve: { type: 'array', items: { type: 'string' } },
+    tryThis: { type: 'string' },
+  },
+  required: ['score', 'strengths', 'improve', 'tryThis'],
+  additionalProperties: false,
+};
 
 type Msg = { role: 'user' | 'assistant'; content: string };
 type Leader = { name?: string; role?: string; teamSize?: string | null; focusAreas?: string[] } | null;
@@ -47,7 +61,7 @@ function aboutLeader(leader: Leader) {
 
 const cors = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, content-type',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
 };
 
@@ -60,7 +74,7 @@ const fromUser = (messages: Msg[]) => {
 };
 
 async function chat(system: string, messages: Msg[]) {
-  const response = await client.beta.messages.create({
+  const response = await anthropic().beta.messages.create({
     model: MODEL,
     max_tokens: 2048,
     system,
@@ -98,10 +112,10 @@ The conversation opened with you saying: "${messages[0]?.content ?? ''}"`;
 
     if (body.mode === 'feedback') {
       const transcript = messages.map((m) => `${m.role === 'user' ? 'Manager' : 'Employee'}: ${m.content}`).join('\n');
-      const response = await client.messages.parse({
+      const response = await anthropic().messages.create({
         model: MODEL,
         max_tokens: 4096,
-        output_config: { effort: 'medium', format: zodOutputFormat(FeedbackSchema) },
+        output_config: { effort: 'medium', format: { type: 'json_schema', schema: FEEDBACK_SCHEMA } },
         system: 'You are an expert leadership coach scoring a practice conversation. Be encouraging, specific, and honest. Quote or reference what the manager actually said. Do not use em dashes.',
         messages: [
           {
@@ -110,12 +124,21 @@ The conversation opened with you saying: "${messages[0]?.content ?? ''}"`;
           },
         ],
       });
-      if (!response.parsed_output) return json({ error: 'Could not score this conversation' }, 502);
-      return json(response.parsed_output);
+      const text = response.content.flatMap((b) => (b.type === 'text' ? [b.text] : [])).join('');
+      if (response.stop_reason !== 'end_turn' || !text) return json({ error: 'Could not score this conversation' }, 502);
+      const fb = JSON.parse(text) as Feedback;
+      return json({
+        score: Math.max(0, Math.min(100, Math.round(fb.score))),
+        strengths: fb.strengths.slice(0, 3),
+        improve: fb.improve.slice(0, 3),
+        tryThis: fb.tryThis,
+      });
     }
 
     return json({ error: 'Unknown mode' }, 400);
   } catch (err) {
+    console.error('coach error', err);
+    if (err instanceof MissingKeyError) return json({ error: 'The ANTHROPIC_API_KEY secret is not set for this function' }, 500);
     if (err instanceof Anthropic.RateLimitError) return json({ error: 'Coach is busy, try again shortly' }, 429);
     if (err instanceof Anthropic.APIError) return json({ error: 'Coach is unavailable' }, 502);
     return json({ error: 'Bad request' }, 400);
