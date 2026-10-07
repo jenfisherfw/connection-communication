@@ -110,7 +110,7 @@ const s = StyleSheet.create({
   theirText: { fontFamily: fonts.body, fontSize: 15, lineHeight: 22, color: colors.ink },
   mineText: { fontFamily: fonts.body, fontSize: 15, lineHeight: 22, color: '#fff' },
   typingDot: { width: 7, height: 7, borderRadius: 4, backgroundColor: colors.muted },
-  sug: { backgroundColor: '#fff', borderWidth: 1, borderColor: '#D9D6FA', borderRadius: radius.pill, paddingHorizontal: 14, paddingVertical: 9 },
+  sug: { backgroundColor: '#fff', borderWidth: 1, borderColor: '#C9D6EA', borderRadius: radius.pill, paddingHorizontal: 14, paddingVertical: 9 },
   sugText: { fontFamily: fonts.medium, fontSize: 13, color: colors.primary },
   inputBar: { flexDirection: 'row', alignItems: 'flex-end', gap: 10, paddingHorizontal: 16, paddingTop: 10, paddingBottom: 28, backgroundColor: colors.bg, borderTopWidth: 1, borderTopColor: colors.line },
   input: { flex: 1, minHeight: 46, maxHeight: 120, backgroundColor: '#fff', borderRadius: 23, paddingHorizontal: 18, paddingTop: 13, paddingBottom: 12, fontFamily: fonts.body, fontSize: 15, color: colors.ink, borderWidth: 1, borderColor: colors.line, outlineStyle: 'none' } as never,

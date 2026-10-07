@@ -9,7 +9,7 @@ import { AREAS, AreaId } from '../data/content';
 import { formatTime, requestReminderPermission } from '../services/reminders';
 import { useAccount } from '../state/Account';
 import { TeamSize, useAppState } from '../state/AppState';
-import { colors, fonts, radius } from '../theme';
+import { colors, gradients, fonts, radius } from '../theme';
 
 const ROLES = [
   { label: 'People Manager', icon: 'users' },
@@ -79,7 +79,7 @@ export default function Onboarding() {
 
   if (step === 'welcome') {
     return (
-      <LinearGradient colors={['#2E2799', '#4338CA', '#7C6CF7']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ flex: 1 }}>
+      <LinearGradient colors={gradients.welcome} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ flex: 1 }}>
         <SafeAreaView style={s.welcome}>
           <View style={{ flex: 1, justifyContent: 'center' }}>
             <View style={s.logo}>
@@ -281,7 +281,7 @@ function AccountStep({ onDone }: { onDone: () => void }) {
 const s = StyleSheet.create({
   welcome: { flex: 1, paddingHorizontal: 28 },
   logo: { width: 68, height: 68, borderRadius: 22, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' },
-  brand: { fontFamily: fonts.bold, fontSize: 14, letterSpacing: 3, color: '#C9C3FF', marginTop: 26, textTransform: 'uppercase' },
+  brand: { fontFamily: fonts.bold, fontSize: 14, letterSpacing: 3, color: '#8FE3E8', marginTop: 26, textTransform: 'uppercase' },
   welcomeTitle: { fontFamily: fonts.display, fontSize: 40, lineHeight: 46, color: '#fff', marginTop: 8 },
   welcomeBody: { fontFamily: fonts.body, fontSize: 17, lineHeight: 25, color: 'rgba(255,255,255,0.85)', marginTop: 14 },
   perk: { flexDirection: 'row', alignItems: 'center', gap: 14 },

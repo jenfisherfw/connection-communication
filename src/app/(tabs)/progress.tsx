@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Card, ProgressBar, Screen, SectionHeader, Title } from '../../components/ui';
 import { AREAS, BADGES, LEADERBOARD } from '../../data/content';
 import { levelFor, todayKey, useAppState } from '../../state/AppState';
-import { colors, fonts, radius } from '../../theme';
+import { colors, gradients, fonts, radius } from '../../theme';
 
 const DAYS = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
@@ -33,7 +33,7 @@ export default function ProgressScreen() {
     <Screen>
       <Title style={{ marginTop: 12 }}>Progress</Title>
 
-      <LinearGradient colors={['#3B30B8', '#6D5DF6']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.level}>
+      <LinearGradient colors={gradients.brand} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.level}>
         <View style={s.levelRow}>
           <View style={s.levelBadge}>
             <Text style={s.levelNum}>{level.level}</Text>
@@ -45,7 +45,7 @@ export default function ProgressScreen() {
           <Text style={s.xpTotal}>{progress.xp.toLocaleString()} XP</Text>
         </View>
         <View style={{ marginTop: 18 }}>
-          <ProgressBar pct={level.pct} color="#FFD27A" track="rgba(255,255,255,0.22)" height={10} />
+          <ProgressBar pct={level.pct} color={colors.cyan} track="rgba(255,255,255,0.22)" height={10} />
           <Text style={s.toNext}>{level.next ? `${level.toNext} XP to ${level.next.title}` : 'Max level reached. Legendary.'}</Text>
         </View>
       </LinearGradient>
@@ -145,9 +145,9 @@ const s = StyleSheet.create({
   levelRow: { flexDirection: 'row', alignItems: 'center', gap: 14 },
   levelBadge: { width: 56, height: 56, borderRadius: 18, backgroundColor: 'rgba(255,255,255,0.18)', alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: 'rgba(255,255,255,0.35)' },
   levelNum: { fontFamily: fonts.displayBold, fontSize: 26, color: '#fff' },
-  levelEyebrow: { fontFamily: fonts.bold, fontSize: 11, letterSpacing: 1.5, color: '#C9C3FF' },
+  levelEyebrow: { fontFamily: fonts.bold, fontSize: 11, letterSpacing: 1.5, color: '#8FE3E8' },
   levelTitle: { fontFamily: fonts.display, fontSize: 22, color: '#fff', marginTop: 2 },
-  xpTotal: { fontFamily: fonts.bold, fontSize: 15, color: '#FFD27A' },
+  xpTotal: { fontFamily: fonts.bold, fontSize: 15, color: '#fff' },
   toNext: { fontFamily: fonts.medium, fontSize: 13, color: 'rgba(255,255,255,0.85)', marginTop: 8 },
   stats: { flexDirection: 'row', gap: 10, marginTop: 14 },
   stat: { flex: 1, alignItems: 'center', paddingVertical: 16, paddingHorizontal: 8 },

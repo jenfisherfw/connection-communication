@@ -1,20 +1,22 @@
 export const colors = {
-  bg: '#F4F4F7',
+  bg: '#F3F5F8',
   card: '#FFFFFF',
-  ink: '#17153B',
-  body: '#3B3A55',
-  muted: '#6E6D85',
-  faint: '#A3A2B8',
-  line: '#ECEBF2',
-  primary: '#4338CA',
-  primarySoft: '#EEEDFC',
-  primaryDeep: '#2E2799',
+  ink: '#0B1B36',
+  body: '#3A4252',
+  muted: '#5D5D5D',
+  faint: '#9AA1AD',
+  line: '#E6E9EF',
+  primary: '#052864',
+  primarySoft: '#E6EDF6',
+  primaryDeep: '#031B45',
   coral: '#F2685A',
   coralSoft: '#FDEDEB',
   amber: '#F5A524',
   amberSoft: '#FEF5E3',
-  teal: '#119C8B',
-  tealSoft: '#E4F6F3',
+  teal: '#058F9D',
+  tealSoft: '#E0F3F4',
+  cyan: '#00C2CB',
+  cyanSoft: '#E0F8F9',
   violet: '#8B5CF6',
   violetSoft: '#F1ECFE',
   blue: '#2F7DEB',
@@ -23,6 +25,14 @@ export const colors = {
   roseSoft: '#FCE9F0',
   success: '#16A34A',
   successSoft: '#E5F6EB',
+};
+
+/** Brand gradients (Evolution to Revolution palette). */
+export const gradients = {
+  hero: ['#052864', '#064A7A', '#058F9D'] as const,
+  brand: ['#052864', '#058F9D'] as const,
+  deep: ['#031B45', '#052864'] as const,
+  welcome: ['#031B45', '#052864', '#058F9D'] as const,
 };
 
 export const fonts = {
@@ -37,7 +47,7 @@ export const fonts = {
 export const radius = { sm: 10, md: 16, lg: 22, xl: 28, pill: 999 };
 
 export const shadow = {
-  shadowColor: '#17153B',
+  shadowColor: '#0B1B36',
   shadowOpacity: 0.06,
   shadowRadius: 14,
   shadowOffset: { width: 0, height: 4 },

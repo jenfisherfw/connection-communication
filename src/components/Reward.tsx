@@ -4,14 +4,14 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { BADGES, LEVELS } from '../data/content';
 import { AwardResult } from '../state/AppState';
-import { colors, fonts, radius } from '../theme';
+import { colors, gradients, fonts, radius } from '../theme';
 
 export function Reward({ result, headline }: { result: AwardResult; headline: string }) {
   const badges = BADGES.filter((b) => result.newBadges.includes(b.id));
   const level = result.levelUp ? LEVELS.find((l) => l.level === result.levelUp) : null;
   return (
     <View style={{ gap: 12 }}>
-      <LinearGradient colors={[colors.primary, '#6D5DF6']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.hero}>
+      <LinearGradient colors={gradients.brand} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.hero}>
         <View style={s.burst}>
           <Feather name="zap" size={30} color={colors.amber} />
         </View>

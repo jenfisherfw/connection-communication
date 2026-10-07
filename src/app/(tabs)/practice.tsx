@@ -6,7 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Card, Chip, Screen, SectionHeader, Title } from '../../components/ui';
 import { ROLEPLAYS, SCENARIOS, areaById } from '../../data/content';
 import { useAppState } from '../../state/AppState';
-import { colors, fonts, radius } from '../../theme';
+import { colors, gradients, fonts, radius } from '../../theme';
 
 const DIFF = {
   'Warm up': { color: colors.success, soft: colors.successSoft },
@@ -23,7 +23,7 @@ export default function Practice() {
       <Title style={{ marginTop: 12 }}>Practice</Title>
       <Text style={s.sub}>Rehearse the conversations that matter, before they happen</Text>
 
-      <LinearGradient colors={['#1F1A5C', '#3B30B8']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.hero}>
+      <LinearGradient colors={gradients.deep} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.hero}>
         <View style={{ flex: 1 }}>
           <Text style={s.heroEyebrow}>PRACTICE ARENA</Text>
           <Text style={s.heroTitle}>Talk it through with an AI partner who reacts like a real person.</Text>
@@ -95,7 +95,7 @@ export default function Practice() {
 const s = StyleSheet.create({
   sub: { fontFamily: fonts.body, fontSize: 16, color: colors.muted, marginTop: 4 },
   hero: { borderRadius: radius.xl, padding: 22, marginTop: 20, flexDirection: 'row' },
-  heroEyebrow: { fontFamily: fonts.bold, fontSize: 11, letterSpacing: 1.6, color: '#B9B2FF' },
+  heroEyebrow: { fontFamily: fonts.bold, fontSize: 11, letterSpacing: 1.6, color: '#8FE3E8' },
   heroTitle: { fontFamily: fonts.display, fontSize: 21, lineHeight: 28, color: '#fff', marginTop: 10 },
   heroStats: { flexDirection: 'row', gap: 16, marginTop: 16 },
   heroStat: { fontFamily: fonts.medium, fontSize: 13, color: 'rgba(255,255,255,0.85)' },
@@ -106,7 +106,7 @@ const s = StyleSheet.create({
   rpSub: { fontFamily: fonts.body, fontSize: 13, color: colors.muted, marginTop: 2, lineHeight: 18 },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 8 },
   xp: { fontFamily: fonts.bold, fontSize: 12, color: colors.primary },
-  custom: { flexDirection: 'row', alignItems: 'center', gap: 14, borderWidth: 1.5, borderColor: '#D9D6FA', borderStyle: 'dashed', backgroundColor: '#FAFAFF' },
+  custom: { flexDirection: 'row', alignItems: 'center', gap: 14, borderWidth: 1.5, borderColor: '#C9D6EA', borderStyle: 'dashed', backgroundColor: '#F5F8FC' },
   sc: { flexDirection: 'row', alignItems: 'center', gap: 14, marginBottom: 12 },
   scBar: { width: 4, alignSelf: 'stretch', borderRadius: 2 },
 });

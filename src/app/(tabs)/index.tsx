@@ -6,7 +6,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Card, Chip, Eyebrow, IconBubble, ProgressBar, Screen, Title } from '../../components/ui';
 import { PULSE, areaById, dailyPicks } from '../../data/content';
 import { ActivityKind, levelFor, useAppState } from '../../state/AppState';
-import { colors, fonts, radius } from '../../theme';
+import { colors, fonts, gradients, radius } from '../../theme';
 
 function greeting() {
   const h = new Date().getHours();
@@ -52,12 +52,12 @@ export default function Home() {
             <Text style={[s.statusText, { color: colors.primary }]} numberOfLines={1}>
               Lv {level.level} · {level.title}
             </Text>
-            <ProgressBar pct={level.pct} height={4} track="#D9D6FA" />
+            <ProgressBar pct={level.pct} height={4} track="#C9D6EA" />
           </View>
         </Pressable>
       </View>
 
-      <LinearGradient colors={['#3B30B8', '#6D5DF6', '#9D7BF5']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.hero}>
+      <LinearGradient colors={gradients.hero} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.hero}>
         <View style={s.heroTag}>
           <Text style={s.heroTagText}>SCENARIO OF THE DAY · {areaById(scenario.area).title.toUpperCase()}</Text>
         </View>
@@ -110,7 +110,7 @@ export default function Home() {
       </Card>
 
       <Card style={[s.coach, { marginTop: 18 }]} onPress={() => router.push('/coach')}>
-        <LinearGradient colors={[colors.primary, '#7C6CF7']} style={s.coachIcon}>
+        <LinearGradient colors={gradients.brand} style={s.coachIcon}>
           <Feather name="message-circle" size={22} color="#fff" />
         </LinearGradient>
         <View style={{ flex: 1 }}>
