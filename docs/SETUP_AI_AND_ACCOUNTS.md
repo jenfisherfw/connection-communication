@@ -12,7 +12,9 @@ One Supabase project powers both the live AI coach and account sign in. Plan on 
 
 ## Step 2: Create the progress table
 1. In the left menu open **SQL Editor**, then **New query**.
-2. Copy everything from `supabase/migrations/20261007000000_user_progress.sql` in this repo, paste it in, and click **Run**. You should see "Success."
+2. Copy everything from `supabase/migrations/20261007000000_user_progress.sql` in this repo, paste it in, and click **Run**. You should see "Success." Notes like "policy does not exist, skipping" are normal on the first run.
+3. The script is safe to run again if anything goes wrong partway. Paste the whole file each time, not just part of it.
+4. Check it worked: open **Table Editor** and you should see a `user_progress` table with a shield icon showing row level security is on.
 
 ## Step 3: Add your Anthropic key as a secret
 1. Open **Edge Functions**, then **Secrets** (or **Project Settings > Edge Functions**).
