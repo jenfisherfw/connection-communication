@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "Rapport",
+    "slug": "rapport",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.evolutiontorevolution.rapport"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#EEEDFC",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.evolutiontorevolution.rapport"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "output": "single"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ],
+    "scheme": "rapport",
+    "experiments": {
+      "typedRoutes": false
+    }
+  }
+}
