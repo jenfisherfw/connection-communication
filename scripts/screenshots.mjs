@@ -27,8 +27,12 @@ const server = createServer(async (req, res) => {
 const today = new Date().toISOString().slice(0, 10);
 const daysAgo = (n) => new Date(Date.now() - n * 86400000).toISOString();
 const seed = {
+  onboarded: true,
   name: 'Jen',
-  role: 'People & Culture Lead',
+  role: 'HR or People Ops',
+  teamSize: '6-15',
+  focusAreas: ['feedback', 'conflict'],
+  reminder: { enabled: true, hour: 8, minute: 0 },
   xp: 620,
   streak: 4,
   bestStreak: 6,
@@ -106,6 +110,31 @@ await go('/reflect');
 await page.getByPlaceholder('Write freely').fill('Last week Marcus pushed back on the new review process in our team meeting. I thanked him, but I could feel myself getting defensive. I want to follow up 1:1 and ask what he would change.');
 await shot('18-reflect');
 await go('/area/feedback');        await shot('19-skill-area');
+
+// Onboarding, as a brand new user sees it
+const fresh = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true });
+const p2 = await fresh.newPage();
+const snap = async (name) => { await p2.waitForTimeout(900); await p2.screenshot({ path: join(out, `${name}.png`) }); console.log('saved', name); };
+await p2.goto(base + '/', { waitUntil: 'networkidle' });
+await p2.waitForTimeout(1500);                                   await snap('20-onboarding-welcome');
+await p2.getByText('Get started').click();
+await p2.getByPlaceholder('First name').fill('Jen');
+await p2.getByText('Continue').click();
+await p2.getByText('HR or People Ops').click();                  await snap('21-onboarding-role');
+await p2.getByText('Continue').click();
+await p2.getByText('6 to 15 people').click();
+await p2.getByText('Continue').click();
+await p2.getByText('Feedback', { exact: true }).click();
+await p2.getByText('Conflict & Repair').click();                 await snap('22-onboarding-focus');
+await p2.getByText('Continue').click();
+await p2.getByText('8:00 AM').first().click();                   await snap('23-onboarding-reminder');
+await p2.getByText('Remind me at').click();
+await p2.waitForTimeout(800);
+if (await p2.getByPlaceholder('Work email').count()) {
+  await snap('24-onboarding-account');
+  await p2.getByText('Continue as guest').click();
+}
+await p2.waitForTimeout(1200);                                   await snap('25-home-after-onboarding');
 
 await browser.close();
 server.close();

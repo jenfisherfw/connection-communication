@@ -1,6 +1,8 @@
 import { Feather } from '@expo/vector-icons';
+import { Redirect } from 'expo-router';
 import { Tabs } from 'expo-router/js-tabs';
 import { ColorValue, View } from 'react-native';
+import { useAppState } from '../../state/AppState';
 import { colors, fonts } from '../../theme';
 
 type IconName = React.ComponentProps<typeof Feather>['name'];
@@ -16,6 +18,8 @@ const tab = (title: string, icon: IconName) => ({
 });
 
 export default function TabsLayout() {
+  const { progress } = useAppState();
+  if (!progress.onboarded) return <Redirect href="/onboarding" />;
   return (
     <Tabs
       screenOptions={{

@@ -71,7 +71,7 @@ export default function Home() {
 
       <Card style={{ marginTop: 18 }}>
         <View style={s.planHead}>
-          <Eyebrow>Today's plan</Eyebrow>
+          <Eyebrow>Today’s plan</Eyebrow>
           <Chip label={`${doneCount} of ${plan.length} done`} color={doneCount === plan.length ? colors.success : colors.primary} soft={doneCount === plan.length ? colors.successSoft : colors.primarySoft} />
         </View>
         {plan.map((p, i) => {

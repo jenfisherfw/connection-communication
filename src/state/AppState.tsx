@@ -4,9 +4,21 @@ import { AREAS, AreaId, BADGES, LEVELS } from '../data/content';
 
 export type ActivityKind = 'quiz' | 'scenario' | 'roleplay' | 'reflection' | 'pulse' | 'coach';
 
+export type TeamSize = 'none' | '1-5' | '6-15' | '16-50' | '50+';
+
+export interface ReminderPref {
+  enabled: boolean;
+  hour: number;
+  minute: number;
+}
+
 export interface Progress {
+  onboarded: boolean;
   name: string;
   role: string;
+  teamSize: TeamSize | null;
+  focusAreas: AreaId[];
+  reminder: ReminderPref;
   xp: number;
   streak: number;
   bestStreak: number;
@@ -34,8 +46,12 @@ const weekStartKey = (d = new Date()) => {
 const emptyAreas = () => Object.fromEntries(AREAS.map((a) => [a.id, 0])) as Record<AreaId, number>;
 
 export const freshProgress = (): Progress => ({
-  name: 'Jen',
-  role: 'People & Culture Lead',
+  onboarded: false,
+  name: '',
+  role: '',
+  teamSize: null,
+  focusAreas: [],
+  reminder: { enabled: true, hour: 8, minute: 0 },
   xp: 0,
   streak: 0,
   bestStreak: 0,
@@ -93,6 +109,8 @@ interface Ctx {
   award: (input: AwardInput) => AwardResult;
   addReflection: (prompt: string, text: string, area: AreaId) => AwardResult;
   logPulse: (value: number) => AwardResult;
+  updateProfile: (patch: Partial<Pick<Progress, 'onboarded' | 'name' | 'role' | 'teamSize' | 'focusAreas' | 'reminder'>>) => void;
+  replaceProgress: (next: Progress) => void;
   reset: () => void;
 }
 
@@ -187,9 +205,19 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     [progress],
   );
 
-  const reset = useCallback(() => setProgress(freshProgress()), []);
+  const updateProfile = useCallback<Ctx['updateProfile']>((patch) => setProgress((p) => ({ ...p, ...patch })), []);
+  const replaceProgress = useCallback((next: Progress) => setProgress(rollDay({ ...freshProgress(), ...next })), []);
 
-  const value = useMemo(() => ({ progress, ready, award, addReflection, logPulse, reset }), [progress, ready, award, addReflection, logPulse, reset]);
+  // Keep everything except the person's profile, so they are not sent back through onboarding.
+  const reset = useCallback(
+    () => setProgress((p) => ({ ...freshProgress(), onboarded: p.onboarded, name: p.name, role: p.role, teamSize: p.teamSize, focusAreas: p.focusAreas, reminder: p.reminder })),
+    [],
+  );
+
+  const value = useMemo(
+    () => ({ progress, ready, award, addReflection, logPulse, updateProfile, replaceProgress, reset }),
+    [progress, ready, award, addReflection, logPulse, updateProfile, replaceProgress, reset],
+  );
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;
 }
 

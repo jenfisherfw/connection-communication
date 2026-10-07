@@ -78,7 +78,7 @@ export default function ScenarioScreen() {
               <Feather name="mic" size={22} color={colors.primary} />
               <View style={{ flex: 1 }}>
                 <Text style={s.nextTitle}>Say it out loud</Text>
-                <Text style={s.nextSub}>Try the "{followUp.title}" role play</Text>
+                <Text style={s.nextSub}>Try the “{followUp.title}” role play</Text>
               </View>
               <Feather name="chevron-right" size={20} color={colors.faint} />
             </Card>

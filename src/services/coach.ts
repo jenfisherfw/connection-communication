@@ -1,4 +1,6 @@
 import { Roleplay } from '../data/content';
+import { currentAccessToken } from '../state/Account';
+import { supabaseAnonKey, supabaseUrl } from './supabase';
 
 export interface ChatMessage {
   role: 'user' | 'assistant';
@@ -12,20 +14,39 @@ export interface RoleplayFeedback {
   tryThis: string;
 }
 
+/** What the coach knows about the leader, so advice fits their situation. */
+export interface LeaderContext {
+  name: string;
+  role: string;
+  teamSize: string | null;
+  focusAreas: string[];
+}
+
 /**
  * The AI coach runs behind a server endpoint (see supabase/functions/coach) so the
- * Anthropic API key never ships inside the app. Set EXPO_PUBLIC_COACH_URL to enable it.
- * Without it, the app runs in demo mode with scripted responses so the UX is testable.
+ * Anthropic API key never ships inside the app. It is enabled automatically when the
+ * Supabase project is configured, or by pointing EXPO_PUBLIC_COACH_URL at any host.
+ * Without either, the app runs in demo mode with scripted responses so the UX is testable.
  */
-const COACH_URL = process.env.EXPO_PUBLIC_COACH_URL;
+const COACH_URL = process.env.EXPO_PUBLIC_COACH_URL || (supabaseUrl ? `${supabaseUrl}/functions/v1/coach` : undefined);
 
 export const coachIsLive = !!COACH_URL;
 
-async function post<T>(body: unknown): Promise<T> {
+let leader: LeaderContext | null = null;
+export const setLeaderContext = (ctx: LeaderContext) => {
+  leader = ctx;
+};
+
+async function post<T>(body: object): Promise<T> {
+  const token = (await currentAccessToken()) ?? supabaseAnonKey;
   const res = await fetch(COACH_URL!, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(supabaseAnonKey ? { apikey: supabaseAnonKey } : {}),
+    },
+    body: JSON.stringify({ ...body, leader }),
   });
   if (!res.ok) throw new Error(`Coach request failed (${res.status})`);
   return res.json() as Promise<T>;

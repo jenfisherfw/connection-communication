@@ -1,5 +1,5 @@
 // Supabase Edge Function: the AI coach behind Rapport.
-// Deploy:  supabase functions deploy coach --no-verify-jwt   (add auth before launch)
+// Deploy:  supabase functions deploy coach
 // Secret:  supabase secrets set ANTHROPIC_API_KEY=sk-ant-...
 // The app calls it via EXPO_PUBLIC_COACH_URL=https://<project>.supabase.co/functions/v1/coach
 import Anthropic from 'npm:@anthropic-ai/sdk';
@@ -31,6 +31,19 @@ const FeedbackSchema = z.object({
 });
 
 type Msg = { role: 'user' | 'assistant'; content: string };
+type Leader = { name?: string; role?: string; teamSize?: string | null; focusAreas?: string[] } | null;
+
+/** A short note about who Ari is coaching, appended to the system prompt. */
+function aboutLeader(leader: Leader) {
+  if (!leader) return '';
+  const parts = [
+    leader.name && `Name: ${leader.name}`,
+    leader.role && `Role: ${leader.role}`,
+    leader.teamSize && `Team size: ${leader.teamSize === 'none' ? 'no direct reports yet' : leader.teamSize}`,
+    leader.focusAreas?.length && `Wants to grow in: ${leader.focusAreas.join(', ')}`,
+  ].filter(Boolean);
+  return parts.length ? `\n\nAbout the leader you are coaching (tailor examples to this):\n${parts.join('\n')}` : '';
+}
 
 const cors = {
   'Access-Control-Allow-Origin': '*',
@@ -72,7 +85,7 @@ Deno.serve(async (req) => {
     const messages: Msg[] = (body.messages ?? []).slice(-30);
 
     if (body.mode === 'coach') {
-      return json({ reply: await chat(COACH_SYSTEM, fromUser(messages)) });
+      return json({ reply: await chat(COACH_SYSTEM + aboutLeader(body.leader), fromUser(messages)) });
     }
 
     if (body.mode === 'roleplay') {

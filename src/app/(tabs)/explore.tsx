@@ -72,10 +72,10 @@ export default function Explore() {
             <Feather name="git-merge" size={44} color={fArea.color} />
           </View>
           <View style={[s.floatChip, { top: 22, left: 26 }]}>
-            <Text style={s.floatText}>"Let's pause here."</Text>
+            <Text style={s.floatText}>“Let’s pause here.”</Text>
           </View>
           <View style={[s.floatChip, { bottom: 22, right: 22 }]}>
-            <Text style={s.floatText}>"What do you need?"</Text>
+            <Text style={s.floatText}>“What do you need?”</Text>
           </View>
         </View>
         <View style={{ padding: 20 }}>

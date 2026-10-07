@@ -1,17 +1,49 @@
 import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, Switch, Text, View } from 'react-native';
+import { Alert, Platform, Pressable, StyleSheet, Switch, Text, View } from 'react-native';
 import { Card, Eyebrow, Row, Screen, Title } from '../../components/ui';
+import { AREAS } from '../../data/content';
 import { coachIsLive } from '../../services/coach';
+import { formatTime, requestReminderPermission } from '../../services/reminders';
+import { useAccount } from '../../state/Account';
 import { levelFor, useAppState } from '../../state/AppState';
 import { colors, fonts, radius } from '../../theme';
 
 export default function Profile() {
-  const { progress, reset } = useAppState();
+  const { progress, reset, updateProfile } = useAppState();
+  const account = useAccount();
   const level = levelFor(progress.xp);
-  const [reminders, setReminders] = useState(true);
   const [leaderboard, setLeaderboard] = useState(true);
+  const { reminder } = progress;
+  const focus = progress.focusAreas.map((id) => AREAS.find((a) => a.id === id)?.title).filter(Boolean).join(', ');
+
+  const toggleReminder = async (on: boolean) => {
+    if (on && Platform.OS !== 'web' && !(await requestReminderPermission())) {
+      Alert.alert('Notifications are off', 'Turn on notifications for Rapport in your phone settings to get daily reminders.');
+      return;
+    }
+    updateProfile({ reminder: { ...reminder, enabled: on } });
+  };
+
+  const TIMES = [7.5, 8, 9, 12, 17];
+  const cycleTime = () => {
+    const cur = reminder.hour + reminder.minute / 60;
+    const next = TIMES[(TIMES.indexOf(cur) + 1) % TIMES.length] ?? 8;
+    updateProfile({ reminder: { ...reminder, hour: Math.floor(next), minute: (next % 1) * 60 } });
+  };
+
+  const confirmReset = () => {
+    const go = () => {
+      reset();
+      router.replace('/');
+    };
+    if (Platform.OS === 'web') return go();
+    Alert.alert('Reset progress?', 'This clears your XP, streak, and badges. Your profile stays.', [
+      { text: 'Cancel', style: 'cancel' },
+      { text: 'Reset', style: 'destructive', onPress: go },
+    ]);
+  };
 
   return (
     <Screen>
@@ -58,10 +90,24 @@ export default function Profile() {
 
       <Eyebrow style={s.section}>Preferences</Eyebrow>
       <Card style={s.group}>
-        <Row icon="bell" title="Daily reminder" subtitle="8:00 AM, weekdays" right={<Switch value={reminders} onValueChange={setReminders} trackColor={{ true: colors.primary, false: colors.line }} />} />
+        <Row icon="bell" title="Daily reminder" subtitle={reminder.enabled ? 'Weekdays' : 'Off'} right={<Switch value={reminder.enabled} onValueChange={toggleReminder} trackColor={{ true: colors.primary, false: colors.line }} />} />
+        {reminder.enabled ? <Row icon="clock" title="Reminder time" subtitle="Tap to change" onPress={cycleTime} right={<Text style={s.value}>{formatTime(reminder.hour, reminder.minute)}</Text>} /> : null}
         <Row icon="bar-chart-2" title="Show me on leaderboards" right={<Switch value={leaderboard} onValueChange={setLeaderboard} trackColor={{ true: colors.primary, false: colors.line }} />} />
-        <Row icon="target" title="Focus areas" subtitle="Feedback, Conflict" />
-        <Row icon="briefcase" title="My role and team size" subtitle="Helps Coach Ari tailor advice" last />
+        <Row icon="target" title="Focus areas and role" subtitle={focus || 'Not set'} onPress={() => router.push({ pathname: '/onboarding', params: { edit: '1' } })} last />
+      </Card>
+
+      <Eyebrow style={s.section}>Account</Eyebrow>
+      <Card style={s.group}>
+        {!account.enabled ? (
+          <Row icon="cloud-off" title="Saved on this device" subtitle="Cloud backup turns on when accounts are set up" right={<View />} last />
+        ) : account.session ? (
+          <>
+            <Row icon="cloud" iconColor={colors.success} iconSoft={colors.successSoft} title="Backed up" subtitle={account.email ?? ''} right={<View />} />
+            <Row icon="log-out" title="Sign out" onPress={() => account.signOut()} last />
+          </>
+        ) : (
+          <Row icon="log-in" iconColor={colors.primary} iconSoft={colors.primarySoft} title="Sign in or create account" subtitle="Back up your streak and XP" onPress={() => router.push('/sign-in')} last />
+        )}
       </Card>
 
       <Eyebrow style={s.section}>Coach</Eyebrow>
@@ -84,7 +130,7 @@ export default function Profile() {
         <Row icon="message-square" title="Send Feedback" last />
       </Card>
 
-      <Pressable onPress={() => { reset(); router.replace('/'); }} style={s.reset}>
+      <Pressable onPress={confirmReset} style={s.reset}>
         <Feather name="rotate-ccw" size={16} color={colors.muted} />
         <Text style={s.resetText}>Reset progress</Text>
       </Pressable>
@@ -113,6 +159,7 @@ const s = StyleSheet.create({
   section: { marginTop: 28, marginBottom: 10, marginLeft: 4 },
   group: { padding: 0, overflow: 'hidden' },
   status: { width: 10, height: 10, borderRadius: 5 },
+  value: { fontFamily: fonts.semibold, fontSize: 15, color: colors.primary },
   reset: { flexDirection: 'row', gap: 8, alignItems: 'center', justifyContent: 'center', marginTop: 28 },
   resetText: { fontFamily: fonts.medium, fontSize: 15, color: colors.muted },
   version: { fontFamily: fonts.body, fontSize: 12, color: colors.faint, textAlign: 'center', marginTop: 10 },

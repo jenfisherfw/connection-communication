@@ -23,10 +23,10 @@ No code alternatives (FlutterFlow, Bubble, Adalo) are faster for a static protot
 
 ### Phase 2: Private beta (2 to 4 weeks)
 1. Create Apple Developer ($99/yr) and Google Play ($25 one time) accounts.
-2. Deploy the coach function and connect it (see README).
-3. Add Supabase Auth and move progress from on device storage to Postgres.
-4. Onboarding: role, team size, top two focus areas, reminder time.
-5. Push notifications for streak reminders (expo-notifications).
+2. Connect Supabase to turn on the live coach and accounts (see docs/SETUP_AI_AND_ACCOUNTS.md).
+3. ~~Supabase Auth with progress backed up to Postgres~~ (built)
+4. ~~Onboarding: role, team size, top two focus areas, reminder time~~ (built)
+5. ~~Weekday reminder notifications~~ (built)
 6. Ship to 20 to 50 leaders through TestFlight and Google Play internal testing.
 7. Interview users weekly; watch Day 1, Day 7, Day 30 retention.
 
