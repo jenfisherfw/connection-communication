@@ -34,6 +34,7 @@ No code alternatives (FlutterFlow, Bubble, Adalo) are faster for a static protot
 - ~~In app account deletion (App Store requirement)~~ (built)
 - ~~Branded app icon, Android adaptive icon, and launch screen~~ (built)
 - ~~Server enforced daily limit on AI requests~~ (built)
+- ~~English, Spanish, and French: every screen, the full content library, reminders, Tone Check, and Coach Ari~~ (built). Have a native speaker review the Spanish and French before launch.
 
 ### Phase 3: Public launch
 - 40+ quizzes, 30+ scenarios, 15+ role plays across all six skill areas

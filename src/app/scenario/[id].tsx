@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Reward } from '../../components/Reward';
 import { BackHeader, Button, Card, Chip, Eyebrow, Screen } from '../../components/ui';
-import { ROLEPLAYS, SCENARIOS, areaById } from '../../data/content';
+import { useContent } from '../../data/localized';
+import { useT } from '../../i18n';
 import { AwardResult, useAppState } from '../../state/AppState';
 import { colors, fonts, radius } from '../../theme';
 
@@ -12,6 +13,8 @@ const STARS = ['', 'Risky', 'Solid', 'Strong'];
 
 export default function ScenarioScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { t } = useT();
+  const { ROLEPLAYS, SCENARIOS, areaById } = useContent();
   const sc = SCENARIOS.find((x) => x.id === id) ?? SCENARIOS[0];
   const area = areaById(sc.area);
   const { award } = useAppState();
@@ -29,7 +32,7 @@ export default function ScenarioScreen() {
 
   return (
     <Screen>
-      <BackHeader title="Scenario" onBack={() => router.back()} />
+      <BackHeader title={t('Scenario')} onBack={() => router.back()} />
       <Chip label={area.title} color={area.color} soft={area.soft} />
       <Text style={s.title}>{sc.title}</Text>
       <Text style={s.setup}>{sc.setup}</Text>
@@ -46,7 +49,7 @@ export default function ScenarioScreen() {
         </View>
       </View>
 
-      <Eyebrow style={{ marginTop: 26, marginBottom: 12 }}>What do you say?</Eyebrow>
+      <Eyebrow style={{ marginTop: 26, marginBottom: 12 }}>{t('What do you say?')}</Eyebrow>
       <View style={{ gap: 10 }}>
         {sc.choices.map((c, idx) => {
           const reveal = picked !== null;
@@ -60,7 +63,7 @@ export default function ScenarioScreen() {
                 <View style={s.verdict}>
                   <Text style={[s.verdictLabel, { color: tone }]}>
                     {'★'.repeat(c.score)}
-                    {'☆'.repeat(3 - c.score)} {STARS[c.score]}
+                    {'☆'.repeat(3 - c.score)} {t(STARS[c.score])}
                   </Text>
                   {isPicked || c.score === 3 ? <Text style={s.verdictBody}>{c.feedback}</Text> : null}
                 </View>
@@ -72,18 +75,18 @@ export default function ScenarioScreen() {
 
       {result ? (
         <View style={{ marginTop: 22, gap: 12 }}>
-          <Reward result={result} headline={sc.choices[picked!].score === 3 ? 'Great call!' : 'Good learning rep'} />
+          <Reward result={result} headline={sc.choices[picked!].score === 3 ? t('Great call!') : t('Good learning rep')} />
           {followUp ? (
             <Card style={s.next} onPress={() => router.replace(`/roleplay/${followUp.id}`)}>
               <Feather name="mic" size={22} color={colors.primary} />
               <View style={{ flex: 1 }}>
-                <Text style={s.nextTitle}>Say it out loud</Text>
-                <Text style={s.nextSub}>Try the “{followUp.title}” role play</Text>
+                <Text style={s.nextTitle}>{t('Say it out loud')}</Text>
+                <Text style={s.nextSub}>{t('Try the “{title}” role play', { title: followUp.title })}</Text>
               </View>
               <Feather name="chevron-right" size={20} color={colors.faint} />
             </Card>
           ) : null}
-          <Button label="Done" variant="ghost" onPress={() => router.back()} />
+          <Button label={t('Done')} variant="ghost" onPress={() => router.back()} />
         </View>
       ) : null}
     </Screen>

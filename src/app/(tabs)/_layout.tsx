@@ -2,6 +2,7 @@ import { Feather } from '@expo/vector-icons';
 import { Redirect } from 'expo-router';
 import { Tabs } from 'expo-router/js-tabs';
 import { ColorValue, View } from 'react-native';
+import { useT } from '../../i18n';
 import { useAppState } from '../../state/AppState';
 import { colors, fonts } from '../../theme';
 
@@ -19,6 +20,7 @@ const tab = (title: string, icon: IconName) => ({
 
 export default function TabsLayout() {
   const { progress } = useAppState();
+  const { t } = useT();
   if (!progress.onboarded) return <Redirect href="/onboarding" />;
   return (
     <Tabs
@@ -31,11 +33,11 @@ export default function TabsLayout() {
         sceneStyle: { backgroundColor: colors.bg },
       }}
     >
-      <Tabs.Screen name="index" options={tab('Home', 'home')} />
-      <Tabs.Screen name="explore" options={tab('Explore', 'compass')} />
-      <Tabs.Screen name="practice" options={tab('Practice', 'mic')} />
-      <Tabs.Screen name="progress" options={tab('Progress', 'bar-chart-2')} />
-      <Tabs.Screen name="profile" options={tab('Profile', 'user')} />
+      <Tabs.Screen name="index" options={tab(t('Home'), 'home')} />
+      <Tabs.Screen name="explore" options={tab(t('Explore'), 'compass')} />
+      <Tabs.Screen name="practice" options={tab(t('Practice'), 'mic')} />
+      <Tabs.Screen name="progress" options={tab(t('Progress'), 'bar-chart-2')} />
+      <Tabs.Screen name="profile" options={tab(t('Profile'), 'user')} />
     </Tabs>
   );
 }

@@ -2,8 +2,10 @@ import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { Alert, Platform, Pressable, StyleSheet, Switch, Text, View } from 'react-native';
+import { LanguagePicker } from '../../components/LanguagePicker';
 import { Card, Eyebrow, Row, Screen, Title } from '../../components/ui';
-import { AREAS } from '../../data/content';
+import { useContent } from '../../data/localized';
+import { useT } from '../../i18n';
 import { coachIsLive } from '../../services/coach';
 import { formatTime, requestReminderPermission } from '../../services/reminders';
 import { useAccount } from '../../state/Account';
@@ -13,6 +15,8 @@ import { colors, fonts, radius } from '../../theme';
 export default function Profile() {
   const { progress, reset, updateProfile } = useAppState();
   const account = useAccount();
+  const { t, lang } = useT();
+  const { AREAS, levelTitle } = useContent();
   const level = levelFor(progress.xp);
   const [leaderboard, setLeaderboard] = useState(true);
   const { reminder } = progress;
@@ -20,7 +24,7 @@ export default function Profile() {
 
   const toggleReminder = async (on: boolean) => {
     if (on && Platform.OS !== 'web' && !(await requestReminderPermission())) {
-      Alert.alert('Notifications are off', 'Turn on notifications for Rapport in your phone settings to get daily reminders.');
+      Alert.alert(t('Notifications are off'), t('Turn on notifications for Rapport in your phone settings to get daily reminders.'));
       return;
     }
     updateProfile({ reminder: { ...reminder, enabled: on } });
@@ -34,15 +38,16 @@ export default function Profile() {
   };
 
   const confirmDelete = () => {
-    const title = account.signedIn ? 'Delete your account?' : 'Erase your data?';
+    const title = account.signedIn ? t('Delete your account?') : t('Erase your data?');
     const body = account.signedIn
-      ? 'This permanently deletes your account, progress, reflections, and badges from this device and our servers. This cannot be undone.'
-      : 'This permanently erases your progress, reflections, and badges from this device and our servers. This cannot be undone.';
+      ? t('This permanently deletes your account, progress, reflections, and badges from this device and our servers. This cannot be undone.')
+      : t('This permanently erases your progress, reflections, and badges from this device and our servers. This cannot be undone.');
     const go = async () => {
-      const error = await account.deleteAccount();
+      const failed = await account.deleteAccount();
+      const error = failed ? t(failed) : null;
       if (error) {
         if (Platform.OS === 'web') window.alert(error);
-        else Alert.alert('Something went wrong', error);
+        else Alert.alert(t('Something went wrong'), error);
         return;
       }
       router.replace('/onboarding');
@@ -52,8 +57,8 @@ export default function Profile() {
       return;
     }
     Alert.alert(title, body, [
-      { text: 'Cancel', style: 'cancel' },
-      { text: account.signedIn ? 'Delete account' : 'Erase', style: 'destructive', onPress: go },
+      { text: t('Cancel'), style: 'cancel' },
+      { text: account.signedIn ? t('Delete account') : t('Erase'), style: 'destructive', onPress: go },
     ]);
   };
 
@@ -63,15 +68,15 @@ export default function Profile() {
       router.replace('/');
     };
     if (Platform.OS === 'web') return go();
-    Alert.alert('Reset progress?', 'This clears your XP, streak, and badges. Your profile stays.', [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Reset', style: 'destructive', onPress: go },
+    Alert.alert(t('Reset progress?'), t('This clears your XP, streak, and badges. Your profile stays.'), [
+      { text: t('Cancel'), style: 'cancel' },
+      { text: t('Reset'), style: 'destructive', onPress: go },
     ]);
   };
 
   return (
     <Screen>
-      <Title style={{ marginTop: 12 }}>Profile</Title>
+      <Title style={{ marginTop: 12 }}>{t('Profile')}</Title>
 
       <Card style={{ marginTop: 18, padding: 0 }}>
         <View style={s.me}>
@@ -80,23 +85,23 @@ export default function Profile() {
           </View>
           <View style={{ flex: 1 }}>
             <Text style={s.name}>{progress.name}</Text>
-            <Text style={s.role}>{progress.role}</Text>
+            <Text style={s.role}>{t(progress.role)}</Text>
             <Text style={s.level}>
-              Level {level.level} · {level.title}
+              {t('Level {n}', { n: level.level })} · {levelTitle(level.level)}
             </Text>
           </View>
           <Pressable style={s.edit}>
-            <Text style={s.editText}>Edit</Text>
+            <Text style={s.editText}>{t('Edit')}</Text>
           </Pressable>
         </View>
         <View style={s.plan}>
           <Feather name="briefcase" size={20} color={colors.primary} />
           <View style={{ flex: 1 }}>
-            <Text style={s.planTitle}>Free Plan</Text>
-            <Text style={s.planSub}>Unlock unlimited AI practice and team insights</Text>
+            <Text style={s.planTitle}>{t('Free Plan')}</Text>
+            <Text style={s.planSub}>{t('Unlock unlimited AI practice and team insights')}</Text>
           </View>
           <Pressable style={s.upgrade}>
-            <Text style={s.upgradeText}>Upgrade</Text>
+            <Text style={s.upgradeText}>{t('Upgrade')}</Text>
           </Pressable>
         </View>
       </Card>
@@ -106,73 +111,79 @@ export default function Profile() {
           <Feather name="users" size={24} color={colors.teal} />
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={s.teamTitle}>Invite your team</Text>
-          <Text style={s.planSub}>Shared challenges, team pulse, and leaderboards</Text>
+          <Text style={s.teamTitle}>{t('Invite your team')}</Text>
+          <Text style={s.planSub}>{t('Shared challenges, team pulse, and leaderboards')}</Text>
         </View>
         <Feather name="chevron-right" size={20} color={colors.faint} />
       </Card>
 
-      <Eyebrow style={s.section}>Preferences</Eyebrow>
-      <Card style={s.group}>
-        <Row icon="bell" title="Daily reminder" subtitle={reminder.enabled ? 'Weekdays' : 'Off'} right={<Switch value={reminder.enabled} onValueChange={toggleReminder} trackColor={{ true: colors.primary, false: colors.line }} />} />
-        {reminder.enabled ? <Row icon="clock" title="Reminder time" subtitle="Tap to change" onPress={cycleTime} right={<Text style={s.value}>{formatTime(reminder.hour, reminder.minute)}</Text>} /> : null}
-        <Row icon="bar-chart-2" title="Show me on leaderboards" right={<Switch value={leaderboard} onValueChange={setLeaderboard} trackColor={{ true: colors.primary, false: colors.line }} />} />
-        <Row icon="target" title="Focus areas and role" subtitle={focus || 'Not set'} onPress={() => router.push({ pathname: '/onboarding', params: { edit: '1' } })} last />
+      <Eyebrow style={s.section}>{t('Language')}</Eyebrow>
+      <Card style={[s.group, { padding: 16 }]}>
+        <LanguagePicker />
+        <Text style={s.langNote}>{t('Changes the app, the content library, and Coach Ari’s replies.')}</Text>
       </Card>
 
-      <Eyebrow style={s.section}>Account</Eyebrow>
+      <Eyebrow style={s.section}>{t('Preferences')}</Eyebrow>
+      <Card style={s.group}>
+        <Row icon="bell" title={t('Daily reminder')} subtitle={reminder.enabled ? t('Weekdays') : t('Off')} right={<Switch value={reminder.enabled} onValueChange={toggleReminder} trackColor={{ true: colors.primary, false: colors.line }} />} />
+        {reminder.enabled ? <Row icon="clock" title={t('Reminder time')} subtitle={t('Tap to change')} onPress={cycleTime} right={<Text style={s.value}>{formatTime(reminder.hour, reminder.minute, lang)}</Text>} /> : null}
+        <Row icon="bar-chart-2" title={t('Show me on leaderboards')} right={<Switch value={leaderboard} onValueChange={setLeaderboard} trackColor={{ true: colors.primary, false: colors.line }} />} />
+        <Row icon="target" title={t('Focus areas and role')} subtitle={focus || t('Not set')} onPress={() => router.push({ pathname: '/onboarding', params: { edit: '1' } })} last />
+      </Card>
+
+      <Eyebrow style={s.section}>{t('Account')}</Eyebrow>
       <Card style={s.group}>
         {!account.enabled ? (
-          <Row icon="cloud-off" title="Saved on this device" subtitle="Cloud backup turns on when accounts are set up" right={<View />} last />
+          <Row icon="cloud-off" title={t('Saved on this device')} subtitle={t('Cloud backup turns on when accounts are set up')} right={<View />} last />
         ) : account.signedIn ? (
           <>
-            <Row icon="cloud" iconColor={colors.success} iconSoft={colors.successSoft} title="Backed up" subtitle={account.email ?? ''} right={<View />} />
-            <Row icon="log-out" title="Sign out" onPress={() => account.signOut()} last />
+            <Row icon="cloud" iconColor={colors.success} iconSoft={colors.successSoft} title={t('Backed up')} subtitle={account.email ?? ''} right={<View />} />
+            <Row icon="log-out" title={t('Sign out')} onPress={() => account.signOut()} last />
           </>
         ) : (
-          <Row icon="log-in" iconColor={colors.primary} iconSoft={colors.primarySoft} title="Sign in or create account" subtitle="Back up your streak and XP" onPress={() => router.push('/sign-in')} last />
+          <Row icon="log-in" iconColor={colors.primary} iconSoft={colors.primarySoft} title={t('Sign in or create account')} subtitle={t('Back up your streak and XP')} onPress={() => router.push('/sign-in')} last />
         )}
       </Card>
 
-      <Eyebrow style={s.section}>Coach</Eyebrow>
+      <Eyebrow style={s.section}>{t('Coach')}</Eyebrow>
       <Card style={s.group}>
         <Row
           icon="cpu"
           iconColor={colors.primary}
           iconSoft={colors.primarySoft}
-          title="AI coach status"
-          subtitle={coachIsLive && account.session ? 'Connected' : coachIsLive ? 'Connecting...' : 'Demo mode (scripted replies)'}
+          title={t('AI coach status')}
+          subtitle={coachIsLive && account.session ? t('Connected') : coachIsLive ? t('Connecting...') : t('Demo mode (scripted replies)')}
           right={<View style={[s.status, { backgroundColor: coachIsLive && account.session ? colors.success : colors.amber }]} />}
         />
-        <Row icon="shield" title="Privacy & Data" subtitle="Your reflections are private to you" last />
+        <Row icon="shield" title={t('Privacy & Data')} subtitle={t('Your reflections are private to you')} last />
       </Card>
 
-      <Eyebrow style={s.section}>Help and support</Eyebrow>
+      <Eyebrow style={s.section}>{t('Help and support')}</Eyebrow>
       <Card style={s.group}>
         <Row
           icon="life-buoy"
           iconColor={colors.coral}
           iconSoft={colors.coralSoft}
-          title="Safety & Support Resources"
-          subtitle="When a conversation needs more than a manager"
+          title={t('Safety & Support Resources')}
+          subtitle={t('When a conversation needs more than a manager')}
           onPress={() =>
             Alert.alert(
-              'Safety & Support Resources',
-              'If anyone is in immediate danger, call 911 or your local emergency number.\n\nFor someone in crisis, call or text 988 (Suicide & Crisis Lifeline, US).\n\nFor harassment, discrimination, safety, or policy concerns, contact your HR team and follow your company policy. Your Employee Assistance Program (EAP) can also help.',
+              t('Safety & Support Resources'),
+              t('If anyone is in immediate danger, call 911 or your local emergency number.\n\nFor someone in crisis, call or text 988 (Suicide & Crisis Lifeline, US).\n\nFor harassment, discrimination, safety, or policy concerns, contact your HR team and follow your company policy. Your Employee Assistance Program (EAP) can also help.'),
             )
           }
         />
-        <Row icon="book-open" title="Recommended Reading" subtitle="Radical Candor, Crucial Conversations, and more" />
-        <Row icon="message-square" title="Send Feedback" last />
+        <Row icon="book-open" title={t('Recommended Reading')} subtitle={t('Radical Candor, Crucial Conversations, and more')} />
+        <Row icon="message-square" title={t('Send Feedback')} last />
       </Card>
 
       <Pressable onPress={confirmDelete} style={s.reset}>
         <Feather name="trash-2" size={16} color={colors.coral} />
-        <Text style={[s.resetText, { color: colors.coral }]}>{account.signedIn ? 'Delete account' : 'Erase my data'}</Text>
+        <Text style={[s.resetText, { color: colors.coral }]}>{account.signedIn ? t('Delete account') : t('Erase my data')}</Text>
       </Pressable>
       <Pressable onPress={confirmReset} style={[s.reset, { marginTop: 14 }]}>
         <Feather name="rotate-ccw" size={16} color={colors.muted} />
-        <Text style={s.resetText}>Reset progress</Text>
+        <Text style={s.resetText}>{t('Reset progress')}</Text>
       </Pressable>
       <Text style={s.version}>Rapport v0.1.0 (MVP)</Text>
     </Screen>
@@ -202,5 +213,6 @@ const s = StyleSheet.create({
   value: { fontFamily: fonts.semibold, fontSize: 15, color: colors.primary },
   reset: { flexDirection: 'row', gap: 8, alignItems: 'center', justifyContent: 'center', marginTop: 28 },
   resetText: { fontFamily: fonts.medium, fontSize: 15, color: colors.muted },
+  langNote: { fontFamily: fonts.body, fontSize: 13, color: colors.muted, marginTop: 12, lineHeight: 18 },
   version: { fontFamily: fonts.body, fontSize: 12, color: colors.faint, textAlign: 'center', marginTop: 10 },
 });

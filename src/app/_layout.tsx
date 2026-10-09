@@ -6,7 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { AREAS } from '../data/content';
+import { contentFor } from '../data/localized';
 import { setLeaderContext } from '../services/coach';
 import { applyReminders } from '../services/reminders';
 import { AccountProvider } from '../state/Account';
@@ -33,20 +33,22 @@ function Loading() {
 /** Keeps device reminders and the coach's view of the leader in step with their profile. */
 function ProfileEffects() {
   const { progress, ready } = useAppState();
+  const lang = progress.language;
   const { enabled, hour, minute } = progress.reminder;
 
   useEffect(() => {
-    if (ready && progress.onboarded) applyReminders({ enabled, hour, minute }).catch(() => {});
-  }, [ready, progress.onboarded, enabled, hour, minute]);
+    if (ready && progress.onboarded) applyReminders({ enabled, hour, minute }, lang).catch(() => {});
+  }, [ready, progress.onboarded, enabled, hour, minute, lang]);
 
   useEffect(() => {
     setLeaderContext({
       name: progress.name,
       role: progress.role,
       teamSize: progress.teamSize,
-      focusAreas: progress.focusAreas.map((id) => AREAS.find((a) => a.id === id)?.title ?? id),
+      focusAreas: progress.focusAreas.map((id) => contentFor(lang).AREAS.find((a) => a.id === id)?.title ?? id),
+      language: lang,
     });
-  }, [progress.name, progress.role, progress.teamSize, progress.focusAreas]);
+  }, [progress.name, progress.role, progress.teamSize, progress.focusAreas, lang]);
 
   return null;
 }

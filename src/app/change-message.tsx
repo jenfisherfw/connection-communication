@@ -4,6 +4,7 @@ import React, { useMemo, useState } from 'react';
 import { Share, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Reward } from '../components/Reward';
 import { BackHeader, Button, Card, Chip, Eyebrow, Screen } from '../components/ui';
+import { useT } from '../i18n';
 import { AwardResult, todayKey, useAppState } from '../state/AppState';
 import { colors, fonts, radius } from '../theme';
 
@@ -21,6 +22,7 @@ type Key = (typeof PARTS)[number]['key'];
 
 export default function ChangeMessage() {
   const { award } = useAppState();
+  const { t } = useT();
   const [v, setV] = useState<Record<Key, string>>({ what: '', why: '', same: '', impact: '', unknown: '', next: '' });
   const [result, setResult] = useState<AwardResult | null>(null);
   const filled = PARTS.filter((p) => v[p.key].trim().length > 0).length;
@@ -30,15 +32,15 @@ export default function ChangeMessage() {
   const draft = useMemo(() => {
     const lines = [
       v.why.trim() && v.why.trim(),
-      v.what.trim() && `Here is what is changing: ${v.what.trim()}`,
-      v.same.trim() && `What is not changing: ${v.same.trim()}`,
-      v.impact.trim() && `What this means for us: ${v.impact.trim()}`,
-      v.unknown.trim() && `What we do not know yet: ${v.unknown.trim()}`,
+      v.what.trim() && t('Here is what is changing: {text}', { text: v.what.trim() }),
+      v.same.trim() && t('What is not changing: {text}', { text: v.same.trim() }),
+      v.impact.trim() && t('What this means for us: {text}', { text: v.impact.trim() }),
+      v.unknown.trim() && t('What we do not know yet: {text}', { text: v.unknown.trim() }),
       v.next.trim() && v.next.trim(),
-      'I know change takes energy. My door is open, and I want to hear how this lands for you.',
+      t('I know change takes energy. My door is open, and I want to hear how this lands for you.'),
     ].filter(Boolean);
     return lines.join('\n\n');
-  }, [v]);
+  }, [v, t]);
 
   const finish = () => {
     if (!result) setResult(award({ key: `builder:change-message:${todayKey()}`, kind: 'builder', xp: 35, area: 'change' }));
@@ -48,7 +50,7 @@ export default function ChangeMessage() {
     finish();
     router.push({
       pathname: '/coach',
-      params: { seed: `Please help me polish this change announcement for my team. Keep it warm, clear, and honest, and tell me what questions people will likely still have:\n\n${draft}` },
+      params: { seed: `${t('Please help me polish this change announcement for my team. Keep it warm, clear, and honest, and tell me what questions people will likely still have:')}\n\n${draft}` },
     });
   };
 
@@ -59,17 +61,17 @@ export default function ChangeMessage() {
 
   return (
     <Screen>
-      <BackHeader title="Change Message Builder" onBack={() => router.back()} />
-      <Chip label="Leading Change" icon="trending-up" color={colors.blue} soft={colors.blueSoft} />
-      <Text style={s.title}>Announce a change people can get behind</Text>
-      <Text style={s.sub}>Answer the six questions every change message needs. Your draft builds as you go.</Text>
+      <BackHeader title={t('Change Message Builder')} onBack={() => router.back()} />
+      <Chip label={t('Leading Change')} icon="trending-up" color={colors.blue} soft={colors.blueSoft} />
+      <Text style={s.title}>{t('Announce a change people can get behind')}</Text>
+      <Text style={s.sub}>{t('Answer the six questions every change message needs. Your draft builds as you go.')}</Text>
 
       <View style={s.meter}>
         {PARTS.map((p) => (
           <View key={p.key} style={[s.meterSeg, v[p.key].trim() && { backgroundColor: colors.blue }]} />
         ))}
       </View>
-      <Text style={s.meterText}>{filled} of {PARTS.length} answered</Text>
+      <Text style={s.meterText}>{t('{n} of {total} answered', { n: filled, total: PARTS.length })}</Text>
 
       {PARTS.map((p, i) => (
         <View key={p.key} style={{ marginTop: 18 }}>
@@ -77,13 +79,13 @@ export default function ChangeMessage() {
             <View style={[s.num, v[p.key].trim() && { backgroundColor: colors.blue }]}>
               {v[p.key].trim() ? <Feather name="check" size={12} color="#fff" /> : <Text style={s.numText}>{i + 1}</Text>}
             </View>
-            <Text style={s.label}>{p.label}</Text>
+            <Text style={s.label}>{t(p.label)}</Text>
           </View>
-          <Text style={s.hint}>{p.hint}</Text>
+          <Text style={s.hint}>{t(p.hint)}</Text>
           <TextInput
             value={v[p.key]}
-            onChangeText={(t) => setV((cur) => ({ ...cur, [p.key]: t }))}
-            placeholder={p.placeholder}
+            onChangeText={(x) => setV((cur) => ({ ...cur, [p.key]: x }))}
+            placeholder={t(p.placeholder)}
             placeholderTextColor={colors.faint}
             multiline
             style={s.input}
@@ -94,20 +96,20 @@ export default function ChangeMessage() {
 
       {ready ? (
         <Card style={{ marginTop: 24 }}>
-          <Eyebrow color={colors.blue}>Your draft</Eyebrow>
+          <Eyebrow color={colors.blue}>{t('Your draft')}</Eyebrow>
           <Text style={s.draft}>{draft}</Text>
-          <Text style={s.note}>Leading with why is deliberate: people engage with what is changing once they understand the reason.</Text>
+          <Text style={s.note}>{t('Leading with why is deliberate: people engage with what is changing once they understand the reason.')}</Text>
         </Card>
       ) : (
-        <Text style={s.waiting}>Answer the first two questions to see your draft.</Text>
+        <Text style={s.waiting}>{t('Answer the first two questions to see your draft.')}</Text>
       )}
 
-      <Button label="Polish with Ari" icon="message-circle" disabled={!ready} onPress={polish} style={{ marginTop: 18 }} />
-      <Button label="Share or copy" icon="share" variant="ghost" disabled={!ready} onPress={share} style={{ marginTop: 10 }} />
+      <Button label={t('Polish with Ari')} icon="message-circle" disabled={!ready} onPress={polish} style={{ marginTop: 18 }} />
+      <Button label={t('Share or copy')} icon="share" variant="ghost" disabled={!ready} onPress={share} style={{ marginTop: 10 }} />
 
       {result ? (
         <View style={{ marginTop: 20 }}>
-          <Reward result={result} headline="Change message drafted" />
+          <Reward result={result} headline={t('Change message drafted')} />
         </View>
       ) : null}
     </Screen>

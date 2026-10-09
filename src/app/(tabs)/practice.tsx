@@ -4,7 +4,8 @@ import { router } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Card, Chip, Screen, SectionHeader, Title } from '../../components/ui';
-import { ROLEPLAYS, SCENARIOS, areaById } from '../../data/content';
+import { useContent } from '../../data/localized';
+import { useT } from '../../i18n';
 import { useAppState } from '../../state/AppState';
 import { colors, gradients, fonts, radius } from '../../theme';
 
@@ -16,25 +17,27 @@ const DIFF = {
 
 export default function Practice() {
   const { progress } = useAppState();
+  const { t } = useT();
+  const { ROLEPLAYS, SCENARIOS, areaById } = useContent();
   const reps = Object.keys(progress.completed).filter((k) => k.startsWith('roleplay:')).length;
 
   return (
     <Screen>
-      <Title style={{ marginTop: 12 }}>Practice</Title>
-      <Text style={s.sub}>Rehearse the conversations that matter, before they happen</Text>
+      <Title style={{ marginTop: 12 }}>{t('Practice')}</Title>
+      <Text style={s.sub}>{t('Rehearse the conversations that matter, before they happen')}</Text>
 
       <LinearGradient colors={gradients.deep} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.hero}>
         <View style={{ flex: 1 }}>
-          <Text style={s.heroEyebrow}>PRACTICE ARENA</Text>
-          <Text style={s.heroTitle}>Talk it through with an AI partner who reacts like a real person.</Text>
+          <Text style={s.heroEyebrow}>{t('Practice arena').toUpperCase()}</Text>
+          <Text style={s.heroTitle}>{t('Talk it through with an AI partner who reacts like a real person.')}</Text>
           <View style={s.heroStats}>
-            <Text style={s.heroStat}>🎙️ {reps} {reps === 1 ? 'rep' : 'reps'} completed</Text>
-            <Text style={s.heroStat}>⭐ Scored feedback</Text>
+            <Text style={s.heroStat}>🎙️ {reps === 1 ? t('1 rep completed') : t('{n} reps completed', { n: reps })}</Text>
+            <Text style={s.heroStat}>⭐ {t('Scored feedback')}</Text>
           </View>
         </View>
       </LinearGradient>
 
-      <SectionHeader title="Role plays" />
+      <SectionHeader title={t('Role plays')} />
       {ROLEPLAYS.map((rp) => {
         const a = areaById(rp.area);
         const d = DIFF[rp.difficulty];
@@ -50,9 +53,9 @@ export default function Practice() {
                 {rp.person}, {rp.role}
               </Text>
               <View style={s.chips}>
-                <Chip label={rp.difficulty} color={d.color} soft={d.soft} />
+                <Chip label={t(rp.difficulty)} color={d.color} soft={d.soft} />
                 <Chip label={a.title} color={a.color} soft={a.soft} />
-                {best !== undefined ? <Chip icon="award" label={`Best ${Math.round(best * 100)}`} color={colors.primary} soft={colors.primarySoft} /> : null}
+                {best !== undefined ? <Chip icon="award" label={t('Best {n}', { n: Math.round(best * 100) })} color={colors.primary} soft={colors.primarySoft} /> : null}
               </View>
             </View>
             <View style={{ alignItems: 'flex-end', gap: 6 }}>
@@ -68,8 +71,8 @@ export default function Practice() {
           <Feather name="trending-up" size={22} color={colors.blue} />
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={s.rpTitle}>Change Message Builder</Text>
-          <Text style={s.rpSub}>Draft a change announcement people can get behind, then polish it with Ari</Text>
+          <Text style={s.rpTitle}>{t('Change Message Builder')}</Text>
+          <Text style={s.rpSub}>{t('Draft a change announcement people can get behind, then polish it with Ari')}</Text>
         </View>
         <Feather name="chevron-right" size={20} color={colors.faint} />
       </Card>
@@ -79,21 +82,21 @@ export default function Practice() {
           <Feather name="send" size={22} color={colors.sky} />
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={s.rpTitle}>Tone Check</Text>
-          <Text style={s.rpSub}>Paste an email or chat message and see how it will land before you send it</Text>
+          <Text style={s.rpTitle}>{t('Tone Check')}</Text>
+          <Text style={s.rpSub}>{t('Paste an email or chat message and see how it will land before you send it')}</Text>
         </View>
         <Feather name="chevron-right" size={20} color={colors.faint} />
       </Card>
 
-      <Card style={s.custom} onPress={() => router.push({ pathname: '/coach', params: { seed: 'I want to rehearse a conversation. Here is the situation: ' } })}>
+      <Card style={s.custom} onPress={() => router.push({ pathname: '/coach', params: { seed: t('I want to rehearse a conversation. Here is the situation: ') } })}>
         <Feather name="plus-circle" size={24} color={colors.primary} />
         <View style={{ flex: 1 }}>
-          <Text style={s.rpTitle}>Rehearse your own situation</Text>
-          <Text style={s.rpSub}>Describe it and Coach Ari will play the other person</Text>
+          <Text style={s.rpTitle}>{t('Rehearse your own situation')}</Text>
+          <Text style={s.rpSub}>{t('Describe it and Coach Ari will play the other person')}</Text>
         </View>
       </Card>
 
-      <SectionHeader title="Quick scenarios" />
+      <SectionHeader title={t('Quick scenarios')} />
       {SCENARIOS.map((sc) => {
         const a = areaById(sc.area);
         const done = !!progress.completed[`scenario:${sc.id}`];

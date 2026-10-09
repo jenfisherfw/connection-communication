@@ -4,7 +4,8 @@ import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Card, Chip, Eyebrow, IconBubble, ProgressBar, Screen, Title } from '../../components/ui';
-import { PULSE, areaById, dailyPicks } from '../../data/content';
+import { useContent } from '../../data/localized';
+import { useT } from '../../i18n';
 import { ActivityKind, levelFor, useAppState } from '../../state/AppState';
 import { colors, fonts, gradients, radius } from '../../theme';
 
@@ -13,8 +14,11 @@ function greeting() {
   return h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
 }
 
+
 export default function Home() {
   const { progress, logPulse } = useAppState();
+  const { t, locale } = useT();
+  const { PULSE, areaById, dailyPicks, levelTitle } = useContent();
   const [tipHidden, setTipHidden] = useState(false);
   const { scenario, tip } = dailyPicks();
   const level = levelFor(progress.xp);
@@ -22,10 +26,10 @@ export default function Home() {
   const todayPulse = progress.pulse.find((p) => p.date === progress.today.date)?.value;
 
   const plan: { kind: ActivityKind; title: string; sub: string; xp: number; go: () => void }[] = [
-    { kind: 'scenario', title: 'Scenario of the Day', sub: 'Choose how you would respond', xp: 30, go: () => router.push(`/scenario/${scenario.id}`) },
-    { kind: 'pulse', title: 'Energy Check In', sub: 'How are you showing up today?', xp: 10, go: () => {} },
-    { kind: 'reflection', title: 'Leader Reflection', sub: 'Two minutes of honest thinking', xp: 25, go: () => router.push('/reflect') },
-    { kind: 'roleplay', title: 'Practice Rep', sub: 'Rehearse a real conversation with AI', xp: 60, go: () => router.push('/practice') },
+    { kind: 'scenario', title: t('Scenario of the Day'), sub: t('Choose how you would respond'), xp: 30, go: () => router.push(`/scenario/${scenario.id}`) },
+    { kind: 'pulse', title: t('Energy Check In'), sub: t('How are you showing up today?'), xp: 10, go: () => {} },
+    { kind: 'reflection', title: t('Leader Reflection'), sub: t('Two minutes of honest thinking'), xp: 25, go: () => router.push('/reflect') },
+    { kind: 'roleplay', title: t('Practice Rep'), sub: t('Rehearse a real conversation with AI'), xp: 60, go: () => router.push('/practice') },
   ];
   const doneCount = plan.filter((p) => done.includes(p.kind)).length;
   const nextIdx = plan.findIndex((p) => !done.includes(p.kind));
@@ -34,9 +38,9 @@ export default function Home() {
     <Screen>
       <View style={s.header}>
         <View style={{ flex: 1 }}>
-          <Eyebrow>{new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</Eyebrow>
+          <Eyebrow>{new Date().toLocaleDateString(locale, { weekday: 'short', month: 'short', day: 'numeric' })}</Eyebrow>
           <Title style={{ marginTop: 6 }}>
-            {greeting()}, {progress.name}
+            {t(greeting())}, {progress.name}
           </Title>
         </View>
       </View>
@@ -44,13 +48,13 @@ export default function Home() {
       <View style={s.statusRow}>
         <View style={[s.statusPill, { backgroundColor: colors.amberSoft }]}>
           <Text style={s.statusEmoji}>🔥</Text>
-          <Text style={[s.statusText, { color: '#B26B00' }]}>{progress.streak} days</Text>
+          <Text style={[s.statusText, { color: '#B26B00' }]}>{t('{n} days', { n: progress.streak })}</Text>
         </View>
         <Pressable onPress={() => router.push('/progress')} style={[s.statusPill, { backgroundColor: colors.primarySoft, flex: 1 }]}>
           <Feather name="award" size={15} color={colors.primary} />
           <View style={{ flex: 1, gap: 4 }}>
             <Text style={[s.statusText, { color: colors.primary }]} numberOfLines={1}>
-              Lv {level.level} · {level.title}
+              {t('Lv {n}', { n: level.level })} · {levelTitle(level.level)}
             </Text>
             <ProgressBar pct={level.pct} height={4} track="#C9D6EA" />
           </View>
@@ -59,20 +63,20 @@ export default function Home() {
 
       <LinearGradient colors={gradients.hero} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.hero}>
         <View style={s.heroTag}>
-          <Text style={s.heroTagText}>SCENARIO OF THE DAY · {areaById(scenario.area).title.toUpperCase()}</Text>
+          <Text style={s.heroTagText}>{t('Scenario of the Day').toUpperCase()} · {areaById(scenario.area).title.toUpperCase()}</Text>
         </View>
         <Text style={s.heroQuote}>{scenario.quote}</Text>
         <Text style={s.heroPerson}>{scenario.person}</Text>
         <Pressable style={s.heroBtn} onPress={() => router.push(`/scenario/${scenario.id}`)}>
-          <Text style={s.heroBtnText}>How do you respond?</Text>
+          <Text style={s.heroBtnText}>{t('How do you respond?')}</Text>
           <Feather name="chevron-right" size={20} color={colors.primary} />
         </Pressable>
       </LinearGradient>
 
       <Card style={{ marginTop: 18 }}>
         <View style={s.planHead}>
-          <Eyebrow>Today’s plan</Eyebrow>
-          <Chip label={`${doneCount} of ${plan.length} done`} color={doneCount === plan.length ? colors.success : colors.primary} soft={doneCount === plan.length ? colors.successSoft : colors.primarySoft} />
+          <Eyebrow>{t('Today’s plan')}</Eyebrow>
+          <Chip label={t('{done} of {total} done', { done: doneCount, total: plan.length })} color={doneCount === plan.length ? colors.success : colors.primary} soft={doneCount === plan.length ? colors.successSoft : colors.primarySoft} />
         </View>
         {plan.map((p, i) => {
           const isDone = done.includes(p.kind);
@@ -96,9 +100,9 @@ export default function Home() {
       <Card style={{ marginTop: 18 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
           <IconBubble icon="battery-charging" color={colors.teal} soft={colors.tealSoft} size={36} />
-          <Text style={s.cardTitle}>How is your energy today?</Text>
+          <Text style={s.cardTitle}>{t('How is your energy today?')}</Text>
         </View>
-        <Text style={s.helper}>Leaders who name their state lead more intentionally. Only you see this.</Text>
+        <Text style={s.helper}>{t('Leaders who name their state lead more intentionally. Only you see this.')}</Text>
         <View style={s.pulseRow}>
           {PULSE.map((p, i) => (
             <Pressable key={p.label} onPress={() => logPulse(i)} style={[s.pulseBtn, todayPulse === i && s.pulseOn]}>
@@ -114,8 +118,8 @@ export default function Home() {
           <Feather name="message-circle" size={22} color="#fff" />
         </LinearGradient>
         <View style={{ flex: 1 }}>
-          <Text style={s.cardTitle}>Ask Coach Ari</Text>
-          <Text style={s.helperTight}>Plan a hard conversation in 2 minutes</Text>
+          <Text style={s.cardTitle}>{t('Ask Coach Ari')}</Text>
+          <Text style={s.helperTight}>{t('Plan a hard conversation in 2 minutes')}</Text>
         </View>
         <Feather name="chevron-right" size={20} color={colors.faint} />
       </Card>
@@ -126,7 +130,7 @@ export default function Home() {
             <Feather name="zap" size={18} color={colors.coral} />
           </View>
           <View style={{ flex: 1 }}>
-            <Eyebrow color={colors.coral}>Leader tip</Eyebrow>
+            <Eyebrow color={colors.coral}>{t('Leader tip')}</Eyebrow>
             <Text style={s.tipText}>{tip}</Text>
           </View>
           <Pressable onPress={() => setTipHidden(true)} hitSlop={10}>
@@ -137,10 +141,10 @@ export default function Home() {
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginTop: 18, marginHorizontal: -20 }} contentContainerStyle={{ paddingHorizontal: 20, gap: 12 }}>
         {[
-          { icon: 'check-square', t: 'Quizzes', s: 'Test your instincts', c: colors.teal, soft: colors.tealSoft, go: '/explore' },
-          { icon: 'git-branch', t: 'Scenarios', s: 'Pick the best move', c: colors.coral, soft: colors.coralSoft, go: `/scenario/${scenario.id}` },
-          { icon: 'mic', t: 'Role Play', s: 'Rehearse with AI', c: colors.violet, soft: colors.violetSoft, go: '/practice' },
-          { icon: 'feather', t: 'Reflect', s: 'Write today', c: colors.blue, soft: colors.blueSoft, go: '/reflect' },
+          { icon: 'check-square', t: t('Quizzes'), s: t('Test your instincts'), c: colors.teal, soft: colors.tealSoft, go: '/explore' },
+          { icon: 'git-branch', t: t('Scenarios'), s: t('Pick the best move'), c: colors.coral, soft: colors.coralSoft, go: `/scenario/${scenario.id}` },
+          { icon: 'mic', t: t('Role Play'), s: t('Rehearse with AI'), c: colors.violet, soft: colors.violetSoft, go: '/practice' },
+          { icon: 'feather', t: t('Reflect'), s: t('Write today'), c: colors.blue, soft: colors.blueSoft, go: '/reflect' },
         ].map((x) => (
           <Card key={x.t} style={s.tile} onPress={() => router.push(x.go as never)}>
             <IconBubble icon={x.icon as never} color={x.c} soft={x.soft} size={42} />

@@ -2,11 +2,14 @@ import { Feather } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { BADGES, LEVELS } from '../data/content';
+import { useContent } from '../data/localized';
+import { useT } from '../i18n';
 import { AwardResult } from '../state/AppState';
 import { colors, gradients, fonts, radius } from '../theme';
 
 export function Reward({ result, headline }: { result: AwardResult; headline: string }) {
+  const { t } = useT();
+  const { BADGES, LEVELS } = useContent();
   const badges = BADGES.filter((b) => result.newBadges.includes(b.id));
   const level = result.levelUp ? LEVELS.find((l) => l.level === result.levelUp) : null;
   return (
@@ -19,12 +22,12 @@ export function Reward({ result, headline }: { result: AwardResult; headline: st
         <View style={s.statsRow}>
           <View style={s.stat}>
             <Text style={s.statNum}>+{result.xp}</Text>
-            <Text style={s.statLabel}>XP earned</Text>
+            <Text style={s.statLabel}>{t('XP earned')}</Text>
           </View>
           <View style={s.divider} />
           <View style={s.stat}>
             <Text style={s.statNum}>🔥 {result.streak}</Text>
-            <Text style={s.statLabel}>Day streak</Text>
+            <Text style={s.statLabel}>{t('Day streak')}</Text>
           </View>
         </View>
       </LinearGradient>
@@ -32,7 +35,7 @@ export function Reward({ result, headline }: { result: AwardResult; headline: st
         <View style={[s.pill, { backgroundColor: colors.amberSoft }]}>
           <Feather name="trending-up" size={18} color={colors.amber} />
           <Text style={s.pillText}>
-            Level up! You are now a <Text style={{ fontFamily: fonts.bold }}>{level.title}</Text>
+            {t('Level up! You are now:')} <Text style={{ fontFamily: fonts.bold }}>{level.title}</Text>
           </Text>
         </View>
       ) : null}
@@ -42,7 +45,7 @@ export function Reward({ result, headline }: { result: AwardResult; headline: st
             <Feather name={b.icon as never} size={16} color="#fff" />
           </View>
           <Text style={s.pillText}>
-            Badge unlocked: <Text style={{ fontFamily: fonts.bold }}>{b.title}</Text>
+            {t('Badge unlocked:')} <Text style={{ fontFamily: fonts.bold }}>{b.title}</Text>
           </Text>
         </View>
       ))}

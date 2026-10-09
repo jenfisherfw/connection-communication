@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Chat } from '../components/Chat';
 import { BackHeader } from '../components/ui';
 import { ChatMessage, askCoach, coachErrorMessage, coachIsLive } from '../services/coach';
+import { useT } from '../i18n';
 import { useAccount } from '../state/Account';
 import { todayKey, useAppState } from '../state/AppState';
 import { colors, fonts } from '../theme';
@@ -29,6 +30,8 @@ export default function Coach() {
   const { seed } = useLocalSearchParams<{ seed?: string }>();
   const { award } = useAppState();
   const account = useAccount();
+  const { t } = useT();
+  // The greeting is shown in the leader's language but never sent to the coach.
   const [messages, setMessages] = useState<ChatMessage[]>([INTRO]);
   const [typing, setTyping] = useState(false);
 
@@ -49,18 +52,18 @@ export default function Coach() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.bg }} edges={['top']}>
-      <BackHeader title="Coach Ari" onBack={() => (router.canGoBack() ? router.back() : router.replace('/'))} right={<View style={[s.live, { backgroundColor: coachIsLive && account.session ? colors.success : colors.amber }]} />} />
+      <BackHeader title={t('Coach Ari')} onBack={() => (router.canGoBack() ? router.back() : router.replace('/'))} right={<View style={[s.live, { backgroundColor: coachIsLive && account.session ? colors.success : colors.amber }]} />} />
       <Chat
-        messages={messages}
+        messages={messages.map((m) => (m === INTRO ? { ...m, content: t(m.content) } : m))}
         typing={typing}
         onSend={send}
-        placeholder="Ask about a situation..."
+        placeholder={t('Ask about a situation...')}
         partnerInitial="A"
         partnerColor="#fff"
         partnerSoft={colors.primary}
-        suggestions={SUGGESTIONS}
+        suggestions={SUGGESTIONS.map((x) => t(x))}
         initialText={seed ?? ''}
-        footer={<Text style={s.note}>Ari coaches the conversation, not the decision. It won’t advise on firing, discipline, or legal matters, and follows your company’s policies. For safety, harassment, or policy concerns, contact HR. In an emergency, call 911 or 988.</Text>}
+        footer={<Text style={s.note}>{t('Ari coaches the conversation, not the decision. It won’t advise on firing, discipline, or legal matters, and follows your company’s policies. For safety, harassment, or policy concerns, contact HR. In an emergency, call 911 or 988.')}</Text>}
       />
     </SafeAreaView>
   );

@@ -3,7 +3,9 @@ import { router } from 'expo-router';
 import React, { useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Card, Chip, Eyebrow, IconBubble, ProgressBar, Screen, SectionHeader, Title } from '../../components/ui';
-import { AREAS, CONVERSATION_STARTERS, QUIZZES, ROLEPLAYS, SCENARIOS, areaById } from '../../data/content';
+import { QUIZZES, SCENARIOS } from '../../data/content';
+import { useContent } from '../../data/localized';
+import { useT } from '../../i18n';
 import { useAppState } from '../../state/AppState';
 import { colors, fonts, radius } from '../../theme';
 
@@ -18,29 +20,31 @@ const CATEGORIES = [
 
 export default function Explore() {
   const { progress } = useAppState();
+  const { t } = useT();
+  const { AREAS, CONVERSATION_STARTERS, QUIZZES: quizzes, SCENARIOS: scenarios, ROLEPLAYS: roleplays, areaById } = useContent();
   const [q, setQ] = useState('');
 
   const results = useMemo(() => {
     const term = q.trim().toLowerCase();
     if (!term) return [];
     return [
-      ...QUIZZES.map((x) => ({ key: `q${x.id}`, kind: 'Quiz', title: x.title, area: x.area, go: `/quiz/${x.id}` })),
-      ...SCENARIOS.map((x) => ({ key: `s${x.id}`, kind: 'Scenario', title: x.title, area: x.area, go: `/scenario/${x.id}` })),
-      ...ROLEPLAYS.map((x) => ({ key: `r${x.id}`, kind: 'Role play', title: x.title, area: x.area, go: `/roleplay/${x.id}` })),
+      ...quizzes.map((x) => ({ key: `q${x.id}`, kind: t('Quiz'), title: x.title, area: x.area, go: `/quiz/${x.id}` })),
+      ...scenarios.map((x) => ({ key: `s${x.id}`, kind: t('Scenario'), title: x.title, area: x.area, go: `/scenario/${x.id}` })),
+      ...roleplays.map((x) => ({ key: `r${x.id}`, kind: t('Role play'), title: x.title, area: x.area, go: `/roleplay/${x.id}` })),
     ].filter((r) => r.title.toLowerCase().includes(term) || areaById(r.area).title.toLowerCase().includes(term));
-  }, [q]);
+  }, [q, quizzes, scenarios, roleplays, areaById, t]);
 
-  const featured = QUIZZES[1];
+  const featured = quizzes[1];
   const fArea = areaById(featured.area);
 
   return (
     <Screen>
-      <Title style={{ marginTop: 12 }}>Explore</Title>
-      <Text style={s.sub}>Learn, practice, and level up how you lead</Text>
+      <Title style={{ marginTop: 12 }}>{t('Explore')}</Title>
+      <Text style={s.sub}>{t('Learn, practice, and level up how you lead')}</Text>
 
       <View style={s.search}>
         <Feather name="search" size={18} color={colors.muted} />
-        <TextInput value={q} onChangeText={setQ} placeholder="Search feedback, conflict, 1:1s..." placeholderTextColor={colors.faint} style={s.searchInput} />
+        <TextInput value={q} onChangeText={setQ} placeholder={t('Search feedback, conflict, 1:1s...')} placeholderTextColor={colors.faint} style={s.searchInput} />
       </View>
 
       {results.length ? (
@@ -61,42 +65,42 @@ export default function Explore() {
             <View style={[s.catIcon, { backgroundColor: c.soft }]}>
               <Feather name={c.icon as never} size={26} color={c.color} />
             </View>
-            <Text style={s.catLabel}>{c.label}</Text>
+            <Text style={s.catLabel}>{t(c.label)}</Text>
           </Pressable>
         ))}
       </ScrollView>
 
-      <SectionHeader title="Featured for you" />
+      <SectionHeader title={t('Featured for you')} />
       <Card style={{ padding: 0, overflow: 'hidden' }} onPress={() => router.push(`/quiz/${featured.id}`)}>
         <View style={[s.featureArt, { backgroundColor: fArea.soft }]}>
           <View style={[s.featureCircle, { backgroundColor: '#fff' }]}>
             <Feather name="git-merge" size={44} color={fArea.color} />
           </View>
           <View style={[s.floatChip, { top: 22, left: 26 }]}>
-            <Text style={s.floatText}>“Let’s pause here.”</Text>
+            <Text style={s.floatText}>{t('“Let’s pause here.”')}</Text>
           </View>
           <View style={[s.floatChip, { bottom: 22, right: 22 }]}>
-            <Text style={s.floatText}>“What do you need?”</Text>
+            <Text style={s.floatText}>{t('“What do you need?”')}</Text>
           </View>
         </View>
         <View style={{ padding: 20 }}>
-          <Chip label="Quiz" color={fArea.color} soft={fArea.soft} />
+          <Chip label={t('Quiz')} color={fArea.color} soft={fArea.soft} />
           <Text style={s.featureTitle}>{featured.title}</Text>
           <Text style={s.featureSub}>{featured.subtitle}</Text>
           <View style={s.featureMeta}>
             <View style={s.startBtn}>
-              <Text style={s.startText}>Start</Text>
+              <Text style={s.startText}>{t('Start')}</Text>
               <Feather name="arrow-right" size={16} color="#fff" />
             </View>
             <Feather name="clock" size={14} color={colors.muted} />
-            <Text style={s.metaText}>{featured.minutes} min</Text>
+            <Text style={s.metaText}>{t('{n} min', { n: featured.minutes })}</Text>
             <Feather name="zap" size={14} color={colors.amber} />
             <Text style={s.metaText}>+{featured.xp} XP</Text>
           </View>
         </View>
       </Card>
 
-      <SectionHeader title="Explore by skill" />
+      <SectionHeader title={t('Explore by skill')} />
       {AREAS.map((a) => {
         const pts = progress.areaXp[a.id] ?? 0;
         return (
@@ -112,7 +116,7 @@ export default function Explore() {
         );
       })}
 
-      <SectionHeader title="1:1 conversation starters" />
+      <SectionHeader title={t('1:1 conversation starters')} />
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginHorizontal: -20 }} contentContainerStyle={{ paddingHorizontal: 20, gap: 12 }}>
         {CONVERSATION_STARTERS.map((c) => (
           <View key={c.text} style={s.starter}>

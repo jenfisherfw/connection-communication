@@ -3,11 +3,14 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { Reward } from '../components/Reward';
 import { BackHeader, Button, Card, Chip, Eyebrow, Screen } from '../components/ui';
-import { areaById, dailyPicks } from '../data/content';
+import { useContent } from '../data/localized';
+import { useT } from '../i18n';
 import { AwardResult, useAppState } from '../state/AppState';
 import { colors, fonts, radius } from '../theme';
 
 export default function Reflect() {
+  const { t, locale } = useT();
+  const { areaById, dailyPicks } = useContent();
   const { reflection } = dailyPicks();
   const area = areaById(reflection.area);
   const { progress, addReflection } = useAppState();
@@ -18,18 +21,18 @@ export default function Reflect() {
 
   return (
     <Screen>
-      <BackHeader title="Leader Reflection" onBack={() => router.back()} />
+      <BackHeader title={t('Leader Reflection')} onBack={() => router.back()} />
       <Chip label={area.title} color={area.color} soft={area.soft} />
       <Text style={s.prompt}>{reflection.prompt}</Text>
 
       {result ? (
         <View style={{ marginTop: 20, gap: 12 }}>
-          <Reward result={result} headline="Reflection saved" />
+          <Reward result={result} headline={t('Reflection saved')} />
           <Card>
-            <Eyebrow>Your note</Eyebrow>
+            <Eyebrow>{t('Your note')}</Eyebrow>
             <Text style={s.saved}>{text}</Text>
           </Card>
-          <Button label="Done" variant="ghost" onPress={() => router.back()} />
+          <Button label={t('Done')} variant="ghost" onPress={() => router.back()} />
         </View>
       ) : (
         <>
@@ -37,22 +40,22 @@ export default function Reflect() {
             value={text}
             onChangeText={setText}
             multiline
-            placeholder="Write freely. This stays private to you."
+            placeholder={t('Write freely. This stays private to you.')}
             placeholderTextColor={colors.faint}
             style={s.input}
             textAlignVertical="top"
           />
-          <Text style={s.count}>{text.trim().split(/\s+/).filter(Boolean).length} words · aim for 40+</Text>
-          <Button label="Save reflection" icon="check" disabled={text.trim().length < 10} onPress={save} style={{ marginTop: 16 }} />
+          <Text style={s.count}>{t('{n} words · aim for 40+', { n: text.trim().split(/\s+/).filter(Boolean).length })}</Text>
+          <Button label={t('Save reflection')} icon="check" disabled={text.trim().length < 10} onPress={save} style={{ marginTop: 16 }} />
         </>
       )}
 
       {progress.reflections.length && !result ? (
         <>
-          <Eyebrow style={{ marginTop: 32, marginBottom: 12 }}>Past reflections</Eyebrow>
+          <Eyebrow style={{ marginTop: 32, marginBottom: 12 }}>{t('Past reflections')}</Eyebrow>
           {progress.reflections.slice(0, 3).map((r) => (
             <Card key={r.at} style={{ marginBottom: 10 }}>
-              <Text style={s.pastDate}>{new Date(r.at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</Text>
+              <Text style={s.pastDate}>{new Date(r.at).toLocaleDateString(locale, { month: 'short', day: 'numeric' })}</Text>
               <Text style={s.pastPrompt}>{r.prompt}</Text>
               <Text style={s.pastText} numberOfLines={3}>
                 {r.text}

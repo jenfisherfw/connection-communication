@@ -3,11 +3,26 @@ import { router } from 'expo-router';
 import React, { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { BackHeader, Button, Card, Chip, Eyebrow, Screen } from '../components/ui';
+import { useT } from '../i18n';
 import { todayKey, useAppState } from '../state/AppState';
 import { colors, fonts, radius } from '../theme';
 
 const CHANNELS = ['Email', 'Chat', 'Text'] as const;
 const AUDIENCES = ['Direct report', 'Whole team', 'Peer', 'My boss'] as const;
+const AUDIENCE_PHRASE: Record<(typeof AUDIENCES)[number], string> = {
+  'Direct report': 'a direct report',
+  'Whole team': 'my whole team',
+  Peer: 'a peer',
+  'My boss': 'my boss',
+};
+
+/** Matches whole words or phrases in any language, including accented letters. */
+const words = (list: string) => new RegExp(`(^|[^\\p{L}])(${list})(?![\\p{L}])`, 'iu');
+// English, Spanish, and French, so the checks work whichever language the leader writes in.
+const PRESSURE = words('asap|immediately|urgent|urgente|inmediatamente|cuanto antes|ya mismo|imm[ée]diatement|au plus vite|tout de suite');
+const ABSOLUTES = words('always|never|everyone knows|obviously|siempre|nunca|todo el mundo sabe|obviamente|toujours|jamais|tout le monde sait|[ée]videmment');
+const TALK = words('talk|chat|call|hablar|hablamos|charlar|llamada|parler|discuter|appel');
+const CAN_WE_TALK = /^(hey|hi|hola|salut|bonjour)?[\s,¿]*((can|could) (we|you) (talk|chat|connect)|podemos hablar|podr[ií]amos hablar|on peut (parler|discuter)|pouvons-nous (parler|discuter))\s*\??$/i;
 
 interface Check {
   ok: boolean;
@@ -16,30 +31,30 @@ interface Check {
 }
 
 /** Quick, local checks for the tone traps that most often make leaders' messages land badly. */
-function runChecks(text: string, channel: string): Check[] {
+function runChecks(text: string, channel: string, tr: (s: string) => string): Check[] {
   const t = text.trim();
-  const words = t.split(/\s+/).filter(Boolean);
-  const lower = t.toLowerCase();
+  const count = t.split(/\s+/).filter(Boolean);
   // Short acronyms (CEO, FYI, Q3) are fine; four or more capital letters reads as shouting.
-  const capsWords = words.filter((w) => /^[A-Z!?.,]+$/.test(w) && w.replace(/[^A-Z]/g, '').length >= 4);
-  const vague = /^(hey|hi)?[\s,]*(can|could) (we|you) (talk|chat|connect)\??$/i.test(t) || (words.length <= 6 && /\b(talk|chat|call)\b/i.test(t));
+  const capsWords = count.filter((w) => /^[\p{Lu}!?.,¡¿]+$/u.test(w) && w.replace(/[^\p{Lu}]/gu, '').length >= 4);
+  const vague = CAN_WE_TALK.test(t) || (count.length <= 6 && TALK.test(t));
   const longLimit = channel === 'Chat' || channel === 'Text' ? 80 : 250;
   return [
     { ok: capsWords.length === 0, label: 'No ALL CAPS', tip: 'Capital letters read as shouting. Use bold or plain words for emphasis.' },
     { ok: !/!{2,}|\?{2,}/.test(t), label: 'Calm punctuation', tip: 'Multiple !!! or ??? can feel urgent or frustrated.' },
-    { ok: !/\b(asap|immediately|urgent)\b/i.test(t), label: 'No pressure words', tip: 'Instead of ASAP, give a real deadline and why it matters.' },
-    { ok: !/\b(always|never|everyone knows|obviously)\b/i.test(lower), label: 'No absolutes', tip: '"Always" and "never" sound like character judgments. Describe the specific moment.' },
+    { ok: !PRESSURE.test(t), label: 'No pressure words', tip: 'Instead of ASAP, give a real deadline and why it matters.' },
+    { ok: !ABSOLUTES.test(t), label: 'No absolutes', tip: '"Always" and "never" sound like character judgments. Describe the specific moment.' },
     { ok: !vague, label: 'Context included', tip: 'A bare "can we talk?" from a leader creates anxiety. Add the topic and whether it is urgent.' },
-    { ok: words.length <= longLimit, label: channel === 'Email' ? 'Readable length' : 'Short enough for chat', tip: channel === 'Email' ? 'Long emails get skimmed. Lead with the ask, then the detail.' : 'Long chat messages are hard to read. Consider a call or a short doc.' },
-  ];
+    { ok: count.length <= longLimit, label: channel === 'Email' ? 'Readable length' : 'Short enough for chat', tip: channel === 'Email' ? 'Long emails get skimmed. Lead with the ask, then the detail.' : 'Long chat messages are hard to read. Consider a call or a short doc.' },
+  ].map((c) => ({ ...c, label: tr(c.label), tip: tr(c.tip) }));
 }
 
 export default function ToneCheck() {
   const { award } = useAppState();
+  const { t } = useT();
   const [text, setText] = useState('');
   const [channel, setChannel] = useState<(typeof CHANNELS)[number]>('Chat');
   const [audience, setAudience] = useState<(typeof AUDIENCES)[number]>('Direct report');
-  const checks = useMemo(() => (text.trim() ? runChecks(text, channel) : []), [text, channel]);
+  const checks = useMemo(() => (text.trim() ? runChecks(text, channel, t) : []), [text, channel, t]);
   const passed = checks.filter((c) => c.ok).length;
 
   const review = () => {
@@ -47,31 +62,31 @@ export default function ToneCheck() {
     router.push({
       pathname: '/coach',
       params: {
-        seed: `Before I send this ${channel.toLowerCase()} message to ${audience.toLowerCase() === 'my boss' ? 'my boss' : `a ${audience.toLowerCase()}`}, how might it land? Point out anything that could be misread, then suggest a better version that keeps my intent:\n\n${text.trim()}`,
+        seed: `${t('Before I send this {channel} message to {audience}, how might it land? Point out anything that could be misread, then suggest a better version that keeps my intent:', { channel: t(channel).toLowerCase(), audience: t(AUDIENCE_PHRASE[audience]) })}\n\n${text.trim()}`,
       },
     });
   };
 
   return (
     <Screen>
-      <BackHeader title="Tone Check" onBack={() => router.back()} />
-      <Chip label="Digital Communication" icon="send" color={colors.sky} soft={colors.skySoft} />
-      <Text style={s.title}>How will this message land?</Text>
-      <Text style={s.sub}>Text has no tone of voice, so it often reads harsher than you mean. Check it before you hit send.</Text>
+      <BackHeader title={t('Tone Check')} onBack={() => router.back()} />
+      <Chip label={t('Digital Communication')} icon="send" color={colors.sky} soft={colors.skySoft} />
+      <Text style={s.title}>{t('How will this message land?')}</Text>
+      <Text style={s.sub}>{t('Text has no tone of voice, so it often reads harsher than you mean. Check it before you hit send.')}</Text>
 
-      <Eyebrow style={s.label}>Sending by</Eyebrow>
+      <Eyebrow style={s.label}>{t('Sending by')}</Eyebrow>
       <View style={s.pills}>
         {CHANNELS.map((c) => (
           <Pressable key={c} onPress={() => setChannel(c)} style={[s.pill, channel === c && s.pillOn]}>
-            <Text style={[s.pillText, channel === c && s.pillTextOn]}>{c}</Text>
+            <Text style={[s.pillText, channel === c && s.pillTextOn]}>{t(c)}</Text>
           </Pressable>
         ))}
       </View>
-      <Eyebrow style={s.label}>Sending to</Eyebrow>
+      <Eyebrow style={s.label}>{t('Sending to')}</Eyebrow>
       <View style={s.pills}>
         {AUDIENCES.map((a) => (
           <Pressable key={a} onPress={() => setAudience(a)} style={[s.pill, audience === a && s.pillOn]}>
-            <Text style={[s.pillText, audience === a && s.pillTextOn]}>{a}</Text>
+            <Text style={[s.pillText, audience === a && s.pillTextOn]}>{t(a)}</Text>
           </Pressable>
         ))}
       </View>
@@ -80,7 +95,7 @@ export default function ToneCheck() {
         value={text}
         onChangeText={setText}
         multiline
-        placeholder="Paste or type the message you're about to send..."
+        placeholder={t('Paste or type the message you’re about to send...')}
         placeholderTextColor={colors.faint}
         style={s.input}
         textAlignVertical="top"
@@ -89,7 +104,7 @@ export default function ToneCheck() {
       {checks.length ? (
         <Card style={{ marginTop: 16 }}>
           <View style={s.checkHead}>
-            <Eyebrow color={colors.sky}>Quick checks</Eyebrow>
+            <Eyebrow color={colors.sky}>{t('Quick checks')}</Eyebrow>
             <Text style={s.score}>
               {passed}/{checks.length}
             </Text>
@@ -106,8 +121,8 @@ export default function ToneCheck() {
         </Card>
       ) : null}
 
-      <Button label="Ask Ari how it will land" icon="message-circle" disabled={text.trim().length < 5} onPress={review} style={{ marginTop: 18 }} />
-      <Text style={s.privacy}>Your message is only sent to Ari when you tap the button.</Text>
+      <Button label={t('Ask Ari how it will land')} icon="message-circle" disabled={text.trim().length < 5} onPress={review} style={{ marginTop: 18 }} />
+      <Text style={s.privacy}>{t('Your message is only sent to Ari when you tap the button.')}</Text>
     </Screen>
   );
 }

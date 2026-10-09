@@ -6,7 +6,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Chat } from '../../components/Chat';
 import { Reward } from '../../components/Reward';
 import { BackHeader, Button, Card, Chip, Eyebrow } from '../../components/ui';
-import { ROLEPLAYS, areaById } from '../../data/content';
+import { useContent } from '../../data/localized';
+import { useT } from '../../i18n';
 import { ChatMessage, RoleplayFeedback, coachErrorMessage, roleplayFeedback, roleplayReply } from '../../services/coach';
 import { AwardResult, useAppState } from '../../state/AppState';
 import { colors, fonts, radius } from '../../theme';
@@ -15,6 +16,8 @@ const MIN_TURNS = 3;
 
 export default function RoleplayScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { t } = useT();
+  const { ROLEPLAYS, areaById } = useContent();
   const rp = ROLEPLAYS.find((r) => r.id === id) ?? ROLEPLAYS[0];
   const area = areaById(rp.area);
   const { award } = useAppState();
@@ -58,7 +61,7 @@ export default function RoleplayScreen() {
   const brief = (
     <Card style={s.brief}>
       <View style={{ flexDirection: 'row', gap: 6, flexWrap: 'wrap' }}>
-        <Chip label={rp.difficulty} color={colors.primary} soft={colors.primarySoft} />
+        <Chip label={t(rp.difficulty)} color={colors.primary} soft={colors.primarySoft} />
         <Chip label={area.title} color={area.color} soft={area.soft} />
       </View>
       <Text style={s.briefTitle}>
@@ -78,18 +81,18 @@ export default function RoleplayScreen() {
             <Text style={s.scoreNum}>{feedback.score}</Text>
           </View>
           <View style={{ flex: 1 }}>
-            <Eyebrow>Conversation score</Eyebrow>
-            <Text style={s.scoreLabel}>{feedback.score >= 80 ? 'Strong and human' : feedback.score >= 65 ? 'Good foundation' : 'Keep practicing'}</Text>
+            <Eyebrow>{t('Conversation score')}</Eyebrow>
+            <Text style={s.scoreLabel}>{feedback.score >= 80 ? t('Strong and human') : feedback.score >= 65 ? t('Good foundation') : t('Keep practicing')}</Text>
           </View>
         </View>
-        <Text style={s.fbHead}>What worked</Text>
+        <Text style={s.fbHead}>{t('What worked')}</Text>
         {feedback.strengths.map((x) => (
           <View key={x} style={s.fbRow}>
             <Feather name="check-circle" size={16} color={colors.success} />
             <Text style={s.fbText}>{x}</Text>
           </View>
         ))}
-        <Text style={s.fbHead}>Level up</Text>
+        <Text style={s.fbHead}>{t('Level up')}</Text>
         {feedback.improve.map((x) => (
           <View key={x} style={s.fbRow}>
             <Feather name="arrow-up-circle" size={16} color={colors.amber} />
@@ -97,17 +100,17 @@ export default function RoleplayScreen() {
           </View>
         ))}
         <View style={s.tryThis}>
-          <Eyebrow color={colors.primary}>Try this line</Eyebrow>
+          <Eyebrow color={colors.primary}>{t('Try this line')}</Eyebrow>
           <Text style={s.tryText}>{feedback.tryThis}</Text>
         </View>
       </Card>
-      <Reward result={result} headline="Rep complete!" />
-      <Button label="Done" variant="ghost" onPress={() => router.back()} />
+      <Reward result={result} headline={t('Rep complete!')} />
+      <Button label={t('Done')} variant="ghost" onPress={() => router.back()} />
     </View>
   ) : turns >= MIN_TURNS && !typing ? (
-    <Button label="End and get feedback" icon="award" onPress={finish} style={{ marginTop: 8 }} />
+    <Button label={t('End and get feedback')} icon="award" onPress={finish} style={{ marginTop: 8 }} />
   ) : (
-    <Text style={s.hint}>{MIN_TURNS - turns > 0 ? `${MIN_TURNS - turns} more ${MIN_TURNS - turns === 1 ? 'reply' : 'replies'} to unlock your feedback score` : ''}</Text>
+    <Text style={s.hint}>{MIN_TURNS - turns > 0 ? (MIN_TURNS - turns === 1 ? t('1 more reply to unlock your feedback score') : t('{n} more replies to unlock your feedback score', { n: MIN_TURNS - turns })) : ''}</Text>
   );
 
   return (
@@ -117,7 +120,7 @@ export default function RoleplayScreen() {
         messages={messages}
         typing={typing}
         onSend={send}
-        placeholder={`Respond to ${rp.person}...`}
+        placeholder={t('Respond to {name}...', { name: rp.person })}
         partnerInitial={rp.person[0]}
         partnerColor={area.color}
         partnerSoft={area.soft}

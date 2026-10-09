@@ -3,14 +3,22 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Card, ProgressBar, Screen, SectionHeader, Title } from '../../components/ui';
-import { AREAS, BADGES, LEADERBOARD } from '../../data/content';
+import { useContent } from '../../data/localized';
+import { useT } from '../../i18n';
 import { levelFor, todayKey, useAppState } from '../../state/AppState';
 import { colors, gradients, fonts, radius } from '../../theme';
 
-const DAYS = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+/** Monday first, one letter each, in the leader's language. */
+const DAYS: Record<string, string[]> = {
+  en: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+  es: ['L', 'M', 'X', 'J', 'V', 'S', 'D'],
+  fr: ['L', 'M', 'M', 'J', 'V', 'S', 'D'],
+};
 
 export default function ProgressScreen() {
   const { progress } = useAppState();
+  const { t, lang, locale } = useT();
+  const { AREAS, BADGES, LEADERBOARD, levelTitle } = useContent();
   const level = levelFor(progress.xp);
   const maxArea = Math.max(100, ...AREAS.map((a) => progress.areaXp[a.id] ?? 0));
 
@@ -31,7 +39,7 @@ export default function ProgressScreen() {
 
   return (
     <Screen>
-      <Title style={{ marginTop: 12 }}>Progress</Title>
+      <Title style={{ marginTop: 12 }}>{t('Progress')}</Title>
 
       <LinearGradient colors={gradients.brand} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.level}>
         <View style={s.levelRow}>
@@ -39,22 +47,22 @@ export default function ProgressScreen() {
             <Text style={s.levelNum}>{level.level}</Text>
           </View>
           <View style={{ flex: 1 }}>
-            <Text style={s.levelEyebrow}>LEVEL {level.level}</Text>
-            <Text style={s.levelTitle}>{level.title}</Text>
+            <Text style={s.levelEyebrow}>{t('Level {n}', { n: level.level }).toUpperCase()}</Text>
+            <Text style={s.levelTitle}>{levelTitle(level.level)}</Text>
           </View>
-          <Text style={s.xpTotal}>{progress.xp.toLocaleString()} XP</Text>
+          <Text style={s.xpTotal}>{progress.xp.toLocaleString(locale)} XP</Text>
         </View>
         <View style={{ marginTop: 18 }}>
           <ProgressBar pct={level.pct} color={colors.cyan} track="rgba(255,255,255,0.22)" height={10} />
-          <Text style={s.toNext}>{level.next ? `${level.toNext} XP to ${level.next.title}` : 'Max level reached. Legendary.'}</Text>
+          <Text style={s.toNext}>{level.next ? t('{n} XP to {title}', { n: level.toNext, title: levelTitle(level.next.level) }) : t('Max level reached. Legendary.')}</Text>
         </View>
       </LinearGradient>
 
       <View style={s.stats}>
         {[
-          { n: `${progress.streak}`, l: 'Day streak', e: '🔥' },
-          { n: `${progress.bestStreak}`, l: 'Best streak', e: '🏆' },
-          { n: `${Object.keys(progress.completed).length}`, l: 'Activities', e: '✅' },
+          { n: `${progress.streak}`, l: t('Day streak'), e: '🔥' },
+          { n: `${progress.bestStreak}`, l: t('Best streak'), e: '🏆' },
+          { n: `${Object.keys(progress.completed).length}`, l: t('Activities'), e: '✅' },
         ].map((x) => (
           <Card key={x.l} style={s.stat}>
             <Text style={{ fontSize: 20 }}>{x.e}</Text>
@@ -66,13 +74,13 @@ export default function ProgressScreen() {
 
       <Card style={{ marginTop: 14 }}>
         <View style={s.weekHead}>
-          <Text style={s.cardTitle}>Weekly goal</Text>
+          <Text style={s.cardTitle}>{t('Weekly goal')}</Text>
           <Text style={s.weekCount}>
-            {Math.min(progress.weekly.count, progress.weekly.goal)}/{progress.weekly.goal} activities
+            {t('{done}/{goal} activities', { done: Math.min(progress.weekly.count, progress.weekly.goal), goal: progress.weekly.goal })}
           </Text>
         </View>
         <View style={s.days}>
-          {DAYS.map((d, i) => {
+          {(DAYS[lang] ?? DAYS.en).map((d, i) => {
             const on = activeDays.has(i);
             const isToday = i === todayIdx;
             return (
@@ -85,7 +93,7 @@ export default function ProgressScreen() {
         </View>
       </Card>
 
-      <SectionHeader title="Skill mastery" />
+      <SectionHeader title={t('Skill mastery')} />
       <Card>
         {AREAS.map((a, i) => {
           const pts = progress.areaXp[a.id] ?? 0;
@@ -102,7 +110,7 @@ export default function ProgressScreen() {
         })}
       </Card>
 
-      <SectionHeader title={`Badges · ${progress.badges.length} of ${BADGES.length}`} />
+      <SectionHeader title={t('Badges · {n} of {total}', { n: progress.badges.length, total: BADGES.length })} />
       <View style={s.badges}>
         {BADGES.map((b) => {
           const got = progress.badges.includes(b.id);
@@ -119,7 +127,7 @@ export default function ProgressScreen() {
         })}
       </View>
 
-      <SectionHeader title="Team leaderboard · this month" />
+      <SectionHeader title={t('Team leaderboard · this month')} />
       <Card style={{ paddingVertical: 6 }}>
         {board.map((r, i) => (
           <View key={r.name} style={[s.lb, r.me && s.lbMe, i < board.length - 1 && !r.me && s.lbLine]}>
@@ -128,14 +136,14 @@ export default function ProgressScreen() {
               <Text style={[s.lbInitial, { color: r.me ? '#fff' : colors.primary }]}>{r.me ? progress.name[0] : r.name[0]}</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={s.lbName}>{r.me ? `${progress.name} (you)` : r.name}</Text>
+              <Text style={s.lbName}>{r.me ? t('{name} (you)', { name: progress.name }) : r.name}</Text>
               <Text style={s.lbTeam}>{r.team}</Text>
             </View>
-            <Text style={s.lbXp}>{r.xp.toLocaleString()} XP</Text>
+            <Text style={s.lbXp}>{r.xp.toLocaleString(locale)} XP</Text>
           </View>
         ))}
       </Card>
-      <Text style={s.footnote}>Leaderboards are opt in and only show XP, never what you wrote or practiced.</Text>
+      <Text style={s.footnote}>{t('Leaderboards are opt in and only show XP, never what you wrote or practiced.')}</Text>
     </Screen>
   );
 }

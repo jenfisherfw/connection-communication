@@ -23,8 +23,11 @@
 | Tone Check: see how an email or chat message will land before sending it | `src/app/tone-check.tsx` |
 | Skill areas with mastery bars | Explore and `src/app/area/[id].tsx` |
 | Levels, badges, weekly goal, team leaderboard | Progress |
+| English, Spanish, and French (picker on the welcome screen and in Profile). Coach Ari replies in the chosen language | `src/i18n/`, `src/data/i18n/` |
 
 Gamification lives in `src/state/AppState.tsx` (XP, levels, streaks, badges, weekly goal). Content lives in `src/data/content.ts` so new quizzes, scenarios, and role plays can be added without touching screens.
+
+Translations: interface text is written in English in the code and wrapped in `t()`; `src/i18n/es.ts` and `src/i18n/fr.ts` map it to Spanish and French. The content library's translations live in `src/data/i18n/`, keyed by the same ids as `content.ts`, so answers and scores always come from the English source. Anything missing falls back to English.
 
 ## Run it
 

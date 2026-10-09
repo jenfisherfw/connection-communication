@@ -4,12 +4,15 @@ import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Reward } from '../../components/Reward';
 import { BackHeader, Button, Card, Chip, Screen } from '../../components/ui';
-import { QUIZZES, areaById } from '../../data/content';
+import { useContent } from '../../data/localized';
+import { useT } from '../../i18n';
 import { AwardResult, useAppState } from '../../state/AppState';
 import { colors, fonts, radius } from '../../theme';
 
 export default function QuizScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { t } = useT();
+  const { QUIZZES, areaById } = useContent();
   const quiz = QUIZZES.find((q) => q.id === id) ?? QUIZZES[0];
   const area = areaById(quiz.area);
   const { award } = useAppState();
@@ -43,14 +46,14 @@ export default function QuizScreen() {
       <Screen>
         <BackHeader title={quiz.title} onBack={() => router.back()} />
         <View style={{ marginTop: 12 }}>
-          <Reward result={result} headline={perfect ? 'Perfect score!' : `${correct} of ${quiz.questions.length} correct`} />
+          <Reward result={result} headline={perfect ? t('Perfect score!') : t('{n} of {total} correct', { n: correct, total: quiz.questions.length })} />
         </View>
         <Card style={{ marginTop: 14 }}>
-          <Text style={s.recapTitle}>Keep building {area.title.toLowerCase()}</Text>
-          <Text style={s.recapBody}>Turn what you learned into muscle memory with a quick AI role play.</Text>
-          <Button label="Practice now" icon="mic" style={{ marginTop: 14 }} onPress={() => router.replace('/practice')} />
+          <Text style={s.recapTitle}>{t('Keep building {topic}', { topic: area.title.toLowerCase() })}</Text>
+          <Text style={s.recapBody}>{t('Turn what you learned into muscle memory with a quick AI role play.')}</Text>
+          <Button label={t('Practice now')} icon="mic" style={{ marginTop: 14 }} onPress={() => router.replace('/practice')} />
         </Card>
-        <Button label="Back to Explore" variant="ghost" style={{ marginTop: 12 }} onPress={() => router.back()} />
+        <Button label={t('Back to Explore')} variant="ghost" style={{ marginTop: 12 }} onPress={() => router.back()} />
       </Screen>
     );
   }
@@ -88,11 +91,11 @@ export default function QuizScreen() {
       </View>
       {picked !== null ? (
         <View style={[s.why, { backgroundColor: picked === q.answer ? colors.successSoft : colors.amberSoft }]}>
-          <Text style={s.whyTitle}>{picked === q.answer ? 'Nice. Here is why it works' : 'Not quite. Here is the thinking'}</Text>
+          <Text style={s.whyTitle}>{picked === q.answer ? t('Nice. Here is why it works') : t('Not quite. Here is the thinking')}</Text>
           <Text style={s.whyBody}>{q.why}</Text>
         </View>
       ) : null}
-      <Button label={last ? 'See results' : 'Continue'} icon="arrow-right" disabled={picked === null} style={{ marginTop: 20 }} onPress={next} />
+      <Button label={last ? t('See results') : t('Continue')} icon="arrow-right" disabled={picked === null} style={{ marginTop: 20 }} onPress={next} />
     </Screen>
   );
 }

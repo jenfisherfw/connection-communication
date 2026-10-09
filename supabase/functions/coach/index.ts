@@ -98,16 +98,69 @@ ${GUARDRAILS}`;
 const DANGER = /\b(suicid\w*|kill(ing)? (myself|himself|herself|themselves|someone)|end (my|his|her|their) (own )?life|want(s|ed)? to die|self[- ]?harm\w*|hurt(ing)? (myself|himself|herself|themselves|someone)|(a|my|his|her|their) (gun|weapon|knife)|bring(ing)? a (gun|weapon|knife)|shoot (him|her|them|someone|people|up)|threat\w* to (kill|hurt|harm|shoot)|going to (hurt|harm|kill|shoot)|bomb threat)\b/i;
 const MISCONDUCT = /\b(harass\w*|assault\w*|discriminat\w*|stalk\w*|abus(e|ed|ive)|retaliat\w*|hostile work environment)\b/i;
 
-const DANGER_NOTE =
-  'If anyone may be in danger, please act now: call 911 (or your local emergency number) or the 988 Suicide & Crisis Lifeline (call or text 988 in the US), and bring in HR or security right away. You do not have to handle this alone.';
-const MISCONDUCT_NOTE =
-  'Because this may involve harassment, discrimination, or misconduct, please report it to HR and follow your company policy. HR can protect everyone involved in ways a coaching conversation cannot.';
+// Spanish and French equivalents. \b only understands unaccented letters, so these use Unicode letter boundaries.
+const word = (body: string) => new RegExp(`(?<!\\p{L})(${body})(?!\\p{L})`, 'iu');
+const DANGER_ES = word(
+  'suicid\\p{L}*|quiero morir(me)?|quiere morir(se)?|quitarme la vida|quitarse la vida|matarme|matarlo|matarla|matarlos|matarlas|matar a (alguien|todos|mi|su)|hacerme daño|hacerle daño|hacerles daño|autolesi\\p{L}*|(una|un|mi|su) (pistola|arma|cuchillo)|traer (una|un) (pistola|arma|cuchillo)|amenaz\\p{L}* (de|con) (matar|herir|disparar)|voy a (matar|herir|disparar)|amenaza de bomba',
+);
+const DANGER_FR = word(
+  'suicid\\p{L}*|me suicider|veux mourir|veut mourir|mettre fin à (mes|ses|leurs) jours|me tuer|le tuer|la tuer|les tuer|tuer quelqu.un|me faire du mal|lui faire du mal|leur faire du mal|automutil\\p{L}*|(une|un|mon|son|sa) (arme|pistolet|couteau)|menac\\p{L}* de (tuer|blesser|tirer)|vais (le |la |les )?(tuer|blesser)|alerte à la bombe',
+);
+const MISCONDUCT_ES = word('acos\\p{L}*|agresi[oó]n sexual|discrimin\\p{L}*|abus\\p{L}*|represalia\\p{L}*|ambiente (de trabajo|laboral) hostil');
+const MISCONDUCT_FR = word('harc[eè]l\\p{L}*|agression\\p{L}*|discrimin\\p{L}*|abus\\p{L}*|représailles|environnement de travail hostile');
+
+type Lang = 'en' | 'es' | 'fr';
+const langOf = (body: { leader?: { language?: string } | null }): Lang => {
+  const l = body?.leader?.language;
+  return l === 'es' || l === 'fr' ? l : 'en';
+};
+
+/** Every language's patterns are always checked, since people often mix languages. */
+const isDanger = (text: string) => DANGER.test(text) || DANGER_ES.test(text) || DANGER_FR.test(text);
+const isMisconduct = (text: string) => MISCONDUCT.test(text) || MISCONDUCT_ES.test(text) || MISCONDUCT_FR.test(text);
+
+const TEXT: Record<Lang, { danger: string; misconduct: string; stepOut: string; refusal: string; limit: string; language: string }> = {
+  en: {
+    danger:
+      'If anyone may be in danger, please act now: call 911 (or your local emergency number) or the 988 Suicide & Crisis Lifeline (call or text 988 in the US), and bring in HR or security right away. You do not have to handle this alone.',
+    misconduct:
+      'Because this may involve harassment, discrimination, or misconduct, please report it to HR and follow your company policy. HR can protect everyone involved in ways a coaching conversation cannot.',
+    stepOut: 'Stepping out of the role play for a moment.',
+    refusal: "I can't help with that one, but I'm happy to help you plan a different conversation. If this involves safety, harassment, or legal risk, please loop in HR.",
+    limit: "You've reached today's limit of {n} coaching requests. It resets tomorrow.",
+    language: '',
+  },
+  es: {
+    danger:
+      'Si alguien puede estar en peligro, actúa ahora: llama al 911 (o a tu número de emergencias local) o a la línea 988 de prevención del suicidio y crisis (llama o envía un mensaje al 988 en EE. UU.), y avisa de inmediato a RR. HH. o a seguridad. No tienes que manejar esto solo.',
+    misconduct:
+      'Como esto podría implicar acoso, discriminación o una conducta indebida, infórmalo a RR. HH. y sigue la política de tu empresa. RR. HH. puede proteger a todas las personas involucradas de formas que una conversación de coaching no puede.',
+    stepOut: 'Salgo del juego de rol por un momento.',
+    refusal: 'No puedo ayudarte con eso, pero con gusto te ayudo a planear otra conversación. Si hay temas de seguridad, acoso o riesgo legal, involucra a RR. HH.',
+    limit: 'Llegaste al límite de hoy de {n} solicitudes de coaching. Se reinicia mañana.',
+    language: 'Write every reply in Spanish (español neutro, addressing the leader as "tú"), even if earlier messages or the scenario are in English. Do not use em dashes.',
+  },
+  fr: {
+    danger:
+      'Si quelqu’un est peut-être en danger, agissez maintenant : appelez le 911 (ou votre numéro d’urgence local) ou la ligne 988 de prévention du suicide et de crise (appel ou SMS au 988 aux États-Unis), et prévenez immédiatement les RH ou la sécurité. Vous n’avez pas à gérer cela seul.',
+    misconduct:
+      'Comme cela peut impliquer du harcèlement, de la discrimination ou un comportement inapproprié, signalez-le aux RH et suivez la politique de votre entreprise. Les RH peuvent protéger toutes les personnes concernées mieux qu’une conversation de coaching.',
+    stepOut: 'Je sors du jeu de rôle un instant.',
+    refusal: 'Je ne peux pas vous aider sur ce point, mais je peux vous aider à préparer une autre conversation. S’il s’agit de sécurité, de harcèlement ou d’un risque juridique, impliquez les RH.',
+    limit: 'Vous avez atteint la limite quotidienne de {n} demandes de coaching. Elle sera réinitialisée demain.',
+    language: 'Write every reply in French (addressing the leader as "vous"), even if earlier messages or the scenario are in English. Do not use em dashes.',
+  },
+};
+
+/** Puts the language instruction just before the guardrails, which always stay last. */
+const inLanguage = (system: string, lang: Lang) =>
+  TEXT[lang].language ? system.replace(GUARDRAILS, () => `Language: ${TEXT[lang].language}\n\n${GUARDRAILS}`) : system;
 
 /** Deterministic safety notes, appended no matter what the model says. */
-function safetyNotes(text: string): string[] {
+function safetyNotes(text: string, lang: Lang): string[] {
   const notes: string[] = [];
-  if (DANGER.test(text)) notes.push(DANGER_NOTE);
-  if (MISCONDUCT.test(text)) notes.push(MISCONDUCT_NOTE);
+  if (isDanger(text)) notes.push(TEXT[lang].danger);
+  if (isMisconduct(text)) notes.push(TEXT[lang].misconduct);
   return notes;
 }
 
@@ -126,7 +179,7 @@ const FEEDBACK_SCHEMA = {
 };
 
 type Msg = { role: 'user' | 'assistant'; content: string };
-type Leader = { name?: string; role?: string; teamSize?: string | null; focusAreas?: string[] } | null;
+type Leader = { name?: string; role?: string; teamSize?: string | null; focusAreas?: string[]; language?: string } | null;
 
 /** A short note about who Ari is coaching, appended to the system prompt. */
 function aboutLeader(leader: Leader) {
@@ -154,7 +207,7 @@ const fromUser = (messages: Msg[]) => {
   return i === -1 ? [] : messages.slice(i);
 };
 
-async function chat(system: string, messages: Msg[]) {
+async function chat(system: string, messages: Msg[], lang: Lang) {
   const response = await anthropic().beta.messages.create({
     model: MODEL,
     max_tokens: 2048,
@@ -166,7 +219,7 @@ async function chat(system: string, messages: Msg[]) {
     ...({ fallbacks: 'default' } as Record<string, unknown>),
   });
   if (response.stop_reason === 'refusal') {
-    return "I can't help with that one, but I'm happy to help you plan a different conversation. If this involves safety, harassment, or legal risk, please loop in HR.";
+    return TEXT[lang].refusal;
   }
   return response.content.flatMap((b) => (b.type === 'text' ? [b.text] : [])).join('\n').trim();
 }
@@ -178,6 +231,7 @@ Deno.serve(async (req) => {
   try {
     const body = await req.json();
     const userId = userIdFrom(req);
+    const lang = langOf(body);
 
     // Permanently deletes the signed in person's account. Their progress and usage rows are
     // removed with it by the database (on delete cascade).
@@ -193,22 +247,22 @@ Deno.serve(async (req) => {
     }
 
     if (['coach', 'roleplay', 'feedback'].includes(body.mode) && !(await withinDailyLimit(userId))) {
-      return json({ error: `You've reached today's limit of ${DAILY_LIMIT} coaching requests. It resets tomorrow.`, limit: true }, 429);
+      return json({ error: TEXT[lang].limit.replace('{n}', String(DAILY_LIMIT)), limit: true }, 429);
     }
     const messages: Msg[] = (body.messages ?? []).slice(-30);
 
     if (body.mode === 'coach') {
       const latest = messages.filter((m) => m.role === 'user').pop()?.content ?? '';
-      const reply = await chat(COACH_SYSTEM + aboutLeader(body.leader), fromUser(messages));
-      const notes = safetyNotes(latest);
+      const reply = await chat(inLanguage(COACH_SYSTEM, lang) + aboutLeader(body.leader), fromUser(messages), lang);
+      const notes = safetyNotes(latest, lang);
       return json({ reply: notes.length ? `${reply}\n\n${notes.join('\n\n')}` : reply });
     }
 
     if (body.mode === 'roleplay') {
       // A real crisis outranks the exercise: step out of the role play and give resources.
       const latest = messages.filter((m) => m.role === 'user').pop()?.content ?? '';
-      if (DANGER.test(latest)) {
-        return json({ reply: `Stepping out of the role play for a moment. ${DANGER_NOTE}` });
+      if (isDanger(latest)) {
+        return json({ reply: `${TEXT[lang].stepOut} ${TEXT[lang].danger}` });
       }
       const system = `You are role playing a workplace conversation so a manager can practice. Stay in character, except that the safety rules below always come first.
 ${body.persona}
@@ -216,7 +270,7 @@ Scenario the manager was given: ${body.brief}
 The conversation opened with you saying: "${messages[0]?.content ?? ''}"
 
 ${GUARDRAILS}`;
-      return json({ reply: await chat(system, fromUser(messages)) });
+      return json({ reply: await chat(inLanguage(system, lang), fromUser(messages), lang) });
     }
 
     if (body.mode === 'feedback') {
@@ -225,10 +279,10 @@ ${GUARDRAILS}`;
         model: MODEL,
         max_tokens: 4096,
         output_config: { effort: 'medium', format: { type: 'json_schema', schema: FEEDBACK_SCHEMA } },
-        system: `You are an expert leadership coach scoring a practice conversation. Be encouraging, specific, and honest. Quote or reference what the manager actually said. Do not use em dashes.
+        system: inLanguage(`You are an expert leadership coach scoring a practice conversation. Be encouraging, specific, and honest. Quote or reference what the manager actually said. Do not use em dashes.
 Score low any threat, ultimatum, mention of firing or discipline, retaliation, or disrespect, and explain why in "improve". The "tryThis" line must always be calm, respectful, and within typical company policy.
 
-${GUARDRAILS}`,
+${GUARDRAILS}`, lang),
         messages: [
           {
             role: 'user',

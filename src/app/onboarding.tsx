@@ -4,8 +4,11 @@ import { router, useLocalSearchParams } from 'expo-router';
 import React, { useState } from 'react';
 import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { LanguagePicker } from '../components/LanguagePicker';
 import { Button, Eyebrow, IconBubble } from '../components/ui';
-import { AREAS, AreaId } from '../data/content';
+import { AreaId } from '../data/content';
+import { useContent } from '../data/localized';
+import { useT } from '../i18n';
 import { formatTime, requestReminderPermission } from '../services/reminders';
 import { useAccount } from '../state/Account';
 import { TeamSize, useAppState } from '../state/AppState';
@@ -39,6 +42,8 @@ const STEPS = ['welcome', 'name', 'role', 'team', 'focus', 'reminder', 'account'
 
 export default function Onboarding() {
   const { progress, updateProfile } = useAppState();
+  const { t, lang } = useT();
+  const { AREAS } = useContent();
   const account = useAccount();
   // From Profile, people edit their answers without the welcome screen or sign up step.
   const editing = useLocalSearchParams<{ edit?: string }>().edit === '1';
@@ -81,13 +86,16 @@ export default function Onboarding() {
     return (
       <LinearGradient colors={gradients.welcome} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ flex: 1 }}>
         <SafeAreaView style={s.welcome}>
+          <View style={{ paddingTop: 12 }}>
+            <LanguagePicker dark />
+          </View>
           <View style={{ flex: 1, justifyContent: 'center' }}>
             <View style={s.logo}>
               <Feather name="message-circle" size={34} color={colors.primary} />
             </View>
             <Text style={s.brand}>Rapport</Text>
-            <Text style={s.welcomeTitle}>Lead with connection.</Text>
-            <Text style={s.welcomeBody}>Build the conversations that build great teams. A few minutes a day of real scenarios, AI practice, and coaching.</Text>
+            <Text style={s.welcomeTitle}>{t('Lead with connection.')}</Text>
+            <Text style={s.welcomeBody}>{t('Build the conversations that build great teams. A few minutes a day of real scenarios, AI practice, and coaching.')}</Text>
             <View style={{ gap: 14, marginTop: 34 }}>
               {[
                 ['git-branch', 'Daily scenarios from real workplace moments'],
@@ -98,15 +106,15 @@ export default function Onboarding() {
                   <View style={s.perkIcon}>
                     <Feather name={icon as never} size={18} color="#fff" />
                   </View>
-                  <Text style={s.perkText}>{text}</Text>
+                  <Text style={s.perkText}>{t(text)}</Text>
                 </View>
               ))}
             </View>
           </View>
-          <Button label="Get started" icon="arrow-right" variant="light" onPress={next} />
+          <Button label={t('Get started')} icon="arrow-right" variant="light" onPress={next} />
           {account.enabled ? (
             <Pressable onPress={() => router.push('/sign-in')} style={{ paddingVertical: 18 }}>
-              <Text style={s.haveAccount}>I already have an account</Text>
+              <Text style={s.haveAccount}>{t('I already have an account')}</Text>
             </Pressable>
           ) : (
             <View style={{ height: 30 }} />
@@ -134,21 +142,21 @@ export default function Onboarding() {
         <ScrollView contentContainerStyle={s.body} keyboardShouldPersistTaps="handled">
           {step === 'name' ? (
             <>
-              <Eyebrow color={colors.primary}>Let’s get acquainted</Eyebrow>
-              <Text style={s.q}>What should we call you?</Text>
-              <TextInput value={name} onChangeText={setName} placeholder="First name" placeholderTextColor={colors.faint} style={s.input} autoFocus autoCapitalize="words" returnKeyType="next" onSubmitEditing={() => canContinue && next()} />
+              <Eyebrow color={colors.primary}>{t('Let’s get acquainted')}</Eyebrow>
+              <Text style={s.q}>{t('What should we call you?')}</Text>
+              <TextInput value={name} onChangeText={setName} placeholder={t('First name')} placeholderTextColor={colors.faint} style={s.input} autoFocus autoCapitalize="words" returnKeyType="next" onSubmitEditing={() => canContinue && next()} />
             </>
           ) : null}
 
           {step === 'role' ? (
             <>
-              <Eyebrow color={colors.primary}>Your role</Eyebrow>
-              <Text style={s.q}>Which best describes you, {name.trim()}?</Text>
+              <Eyebrow color={colors.primary}>{t('Your role')}</Eyebrow>
+              <Text style={s.q}>{t('Which best describes you, {name}?', { name: name.trim() })}</Text>
               <View style={{ gap: 10, marginTop: 22 }}>
                 {ROLES.map((r) => (
                   <Option key={r.label} selected={role === r.label} onPress={() => setRole(r.label)}>
                     <IconBubble icon={r.icon as never} color={colors.primary} soft={colors.primarySoft} size={38} />
-                    <Text style={s.optText}>{r.label}</Text>
+                    <Text style={s.optText}>{t(r.label)}</Text>
                   </Option>
                 ))}
               </View>
@@ -157,13 +165,13 @@ export default function Onboarding() {
 
           {step === 'team' ? (
             <>
-              <Eyebrow color={colors.primary}>Your team</Eyebrow>
-              <Text style={s.q}>How many people do you lead?</Text>
-              <Text style={s.hint}>This helps Coach Ari tailor scenarios and advice.</Text>
+              <Eyebrow color={colors.primary}>{t('Your team')}</Eyebrow>
+              <Text style={s.q}>{t('How many people do you lead?')}</Text>
+              <Text style={s.hint}>{t('This helps Coach Ari tailor scenarios and advice.')}</Text>
               <View style={{ gap: 10, marginTop: 22 }}>
-                {TEAM_SIZES.map((t) => (
-                  <Option key={t.value} selected={team === t.value} onPress={() => setTeam(t.value)}>
-                    <Text style={s.optText}>{t.label}</Text>
+                {TEAM_SIZES.map((x) => (
+                  <Option key={x.value} selected={team === x.value} onPress={() => setTeam(x.value)}>
+                    <Text style={s.optText}>{t(x.label)}</Text>
                   </Option>
                 ))}
               </View>
@@ -172,9 +180,9 @@ export default function Onboarding() {
 
           {step === 'focus' ? (
             <>
-              <Eyebrow color={colors.primary}>Your goals</Eyebrow>
-              <Text style={s.q}>Where do you want to grow most?</Text>
-              <Text style={s.hint}>Pick up to two. You’ll see more of these first.</Text>
+              <Eyebrow color={colors.primary}>{t('Your goals')}</Eyebrow>
+              <Text style={s.q}>{t('Where do you want to grow most?')}</Text>
+              <Text style={s.hint}>{t('Pick up to two. You’ll see more of these first.')}</Text>
               <View style={s.grid}>
                 {AREAS.map((a) => {
                   const on = focus.includes(a.id);
@@ -200,15 +208,15 @@ export default function Onboarding() {
               <View style={s.bell}>
                 <Feather name="bell" size={30} color={colors.amber} />
               </View>
-              <Eyebrow color={colors.primary}>Build the habit</Eyebrow>
-              <Text style={s.q}>When should we nudge you?</Text>
-              <Text style={s.hint}>A few minutes a day builds skills that stick far better than an occasional workshop. We’ll remind you on weekdays.</Text>
+              <Eyebrow color={colors.primary}>{t('Build the habit')}</Eyebrow>
+              <Text style={s.q}>{t('When should we nudge you?')}</Text>
+              <Text style={s.hint}>{t('A few minutes a day builds skills that stick far better than an occasional workshop. We’ll remind you on weekdays.')}</Text>
               <View style={s.times}>
-                {TIMES.map((t) => {
-                  const on = t.hour === time.hour && t.minute === time.minute;
+                {TIMES.map((x) => {
+                  const on = x.hour === time.hour && x.minute === time.minute;
                   return (
-                    <Pressable key={`${t.hour}:${t.minute}`} onPress={() => setTime(t)} style={[s.time, on && s.timeOn]}>
-                      <Text style={[s.timeText, on && { color: '#fff' }]}>{formatTime(t.hour, t.minute)}</Text>
+                    <Pressable key={`${x.hour}:${x.minute}`} onPress={() => setTime(x)} style={[s.time, on && s.timeOn]}>
+                      <Text style={[s.timeText, on && { color: '#fff' }]}>{formatTime(x.hour, x.minute, lang)}</Text>
                     </Pressable>
                   );
                 })}
@@ -221,14 +229,14 @@ export default function Onboarding() {
 
         {step === 'reminder' ? (
           <View style={s.footer}>
-            <Button label={`Remind me at ${formatTime(time.hour, time.minute)}`} icon="bell" onPress={() => chooseReminder(true)} />
+            <Button label={t('Remind me at {time}', { time: formatTime(time.hour, time.minute, lang) })} icon="bell" onPress={() => chooseReminder(true)} />
             <Pressable onPress={() => chooseReminder(false)} style={{ paddingVertical: 14 }}>
-              <Text style={s.skip}>Not now</Text>
+              <Text style={s.skip}>{t('Not now')}</Text>
             </Pressable>
           </View>
         ) : step !== 'account' ? (
           <View style={s.footer}>
-            <Button label="Continue" icon="arrow-right" disabled={!canContinue} onPress={next} />
+            <Button label={t('Continue')} icon="arrow-right" disabled={!canContinue} onPress={next} />
           </View>
         ) : null}
       </KeyboardAvoidingView>
@@ -247,6 +255,8 @@ function Option({ selected, onPress, children }: { selected: boolean; onPress: (
 
 function AccountStep({ onDone }: { onDone: () => void }) {
   const { signUp } = useAccount();
+  const { t } = useT();
+  const [confirm, setConfirm] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
@@ -257,22 +267,25 @@ function AccountStep({ onDone }: { onDone: () => void }) {
     setMsg(null);
     const { error, needsConfirmation } = await signUp(email, password);
     setBusy(false);
-    if (error) return setMsg(error);
-    if (needsConfirmation) return setMsg('Check your email to confirm your account, then sign in from Profile. Your progress is saved on this device in the meantime.');
+    if (error) return setMsg(t(error));
+    if (needsConfirmation) {
+      setConfirm(true);
+      return setMsg(t('Check your email to confirm your account, then sign in from Profile. Your progress is saved on this device in the meantime.'));
+    }
     onDone();
   };
 
   return (
     <>
-      <Eyebrow color={colors.primary}>Last step</Eyebrow>
-      <Text style={s.q}>Save your progress</Text>
-      <Text style={s.hint}>Create a free account to back up your streak and XP and pick up on any device.</Text>
-      <TextInput value={email} onChangeText={setEmail} placeholder="Work email" placeholderTextColor={colors.faint} style={s.input} autoCapitalize="none" keyboardType="email-address" autoComplete="email" />
-      <TextInput value={password} onChangeText={setPassword} placeholder="Password (8+ characters)" placeholderTextColor={colors.faint} style={[s.input, { marginTop: 12 }]} secureTextEntry autoComplete="new-password" />
+      <Eyebrow color={colors.primary}>{t('Last step')}</Eyebrow>
+      <Text style={s.q}>{t('Save your progress')}</Text>
+      <Text style={s.hint}>{t('Create a free account to back up your streak and XP and pick up on any device.')}</Text>
+      <TextInput value={email} onChangeText={setEmail} placeholder={t('Work email')} placeholderTextColor={colors.faint} style={s.input} autoCapitalize="none" keyboardType="email-address" autoComplete="email" />
+      <TextInput value={password} onChangeText={setPassword} placeholder={t('Password (8+ characters)')} placeholderTextColor={colors.faint} style={[s.input, { marginTop: 12 }]} secureTextEntry autoComplete="new-password" />
       {msg ? <Text style={s.error}>{msg}</Text> : null}
-      <Button label={busy ? 'Creating account...' : 'Create account'} icon="check" disabled={busy || !email.includes('@') || password.length < 8} onPress={create} style={{ marginTop: 20 }} />
+      <Button label={busy ? t('Creating account...') : t('Create account')} icon="check" disabled={busy || !email.includes('@') || password.length < 8} onPress={create} style={{ marginTop: 20 }} />
       <Pressable onPress={onDone} style={{ paddingVertical: 16 }}>
-        <Text style={s.skip}>{msg?.startsWith('Check your email') ? 'Continue' : 'Continue as guest'}</Text>
+        <Text style={s.skip}>{confirm ? t('Continue') : t('Continue as guest')}</Text>
       </Pressable>
     </>
   );

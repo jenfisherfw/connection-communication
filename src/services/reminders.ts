@@ -1,5 +1,6 @@
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
+import { Lang, translate } from '../i18n';
 
 export interface ReminderSettings {
   enabled: boolean;
@@ -23,7 +24,8 @@ const MESSAGES = [
   'Who on your team deserves recognition today?',
 ];
 
-export const formatTime = (hour: number, minute: number) => {
+export const formatTime = (hour: number, minute: number, lang: Lang = 'en') => {
+  if (lang !== 'en') return `${hour}:${String(minute).padStart(2, '0')}`;
   const h = hour % 12 || 12;
   return `${h}:${String(minute).padStart(2, '0')} ${hour < 12 ? 'AM' : 'PM'}`;
 };
@@ -38,19 +40,19 @@ export async function requestReminderPermission(): Promise<boolean> {
 }
 
 /** Replaces any scheduled reminders with weekday reminders at the chosen time. */
-export async function applyReminders(settings: ReminderSettings): Promise<void> {
+export async function applyReminders(settings: ReminderSettings, lang: Lang = 'en'): Promise<void> {
   if (!supported) return;
   await Notifications.cancelAllScheduledNotificationsAsync();
   if (!settings.enabled) return;
   if (!(await Notifications.getPermissionsAsync()).granted) return;
 
   if (Platform.OS === 'android') {
-    await Notifications.setNotificationChannelAsync('reminders', { name: 'Daily reminders', importance: Notifications.AndroidImportance.DEFAULT });
+    await Notifications.setNotificationChannelAsync('reminders', { name: translate(lang, 'Daily reminders'), importance: Notifications.AndroidImportance.DEFAULT });
   }
   // Weekdays: Monday (2) through Friday (6)
   for (let weekday = 2; weekday <= 6; weekday++) {
     await Notifications.scheduleNotificationAsync({
-      content: { title: 'Rapport', body: MESSAGES[weekday % MESSAGES.length] },
+      content: { title: 'Rapport', body: translate(lang, MESSAGES[weekday % MESSAGES.length]) },
       trigger: { type: Notifications.SchedulableTriggerInputTypes.WEEKLY, channelId: 'reminders', weekday, hour: settings.hour, minute: settings.minute },
     });
   }

@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { AREAS, AreaId, BADGES, LEVELS } from '../data/content';
+import { Lang, deviceLang } from '../i18n/lang';
 
 export type ActivityKind = 'quiz' | 'scenario' | 'roleplay' | 'reflection' | 'pulse' | 'coach' | 'builder';
 
@@ -14,6 +15,7 @@ export interface ReminderPref {
 
 export interface Progress {
   onboarded: boolean;
+  language: Lang;
   name: string;
   role: string;
   teamSize: TeamSize | null;
@@ -47,6 +49,7 @@ const emptyAreas = () => Object.fromEntries(AREAS.map((a) => [a.id, 0])) as Reco
 
 export const freshProgress = (): Progress => ({
   onboarded: false,
+  language: deviceLang(),
   name: '',
   role: '',
   teamSize: null,
@@ -113,7 +116,7 @@ interface Ctx {
   award: (input: AwardInput) => AwardResult;
   addReflection: (prompt: string, text: string, area: AreaId) => AwardResult;
   logPulse: (value: number) => AwardResult;
-  updateProfile: (patch: Partial<Pick<Progress, 'onboarded' | 'name' | 'role' | 'teamSize' | 'focusAreas' | 'reminder'>>) => void;
+  updateProfile: (patch: Partial<Pick<Progress, 'onboarded' | 'language' | 'name' | 'role' | 'teamSize' | 'focusAreas' | 'reminder'>>) => void;
   replaceProgress: (next: Progress) => void;
   reset: () => void;
 }
@@ -214,7 +217,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
 
   // Keep everything except the person's profile, so they are not sent back through onboarding.
   const reset = useCallback(
-    () => setProgress((p) => ({ ...freshProgress(), onboarded: p.onboarded, name: p.name, role: p.role, teamSize: p.teamSize, focusAreas: p.focusAreas, reminder: p.reminder })),
+    () => setProgress((p) => ({ ...freshProgress(), onboarded: p.onboarded, language: p.language, name: p.name, role: p.role, teamSize: p.teamSize, focusAreas: p.focusAreas, reminder: p.reminder })),
     [],
   );
 
