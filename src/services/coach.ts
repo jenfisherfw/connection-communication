@@ -76,6 +76,9 @@ function demoCoachReply(text: string): string {
   if (t.includes('conflict') || t.includes('argu') || t.includes('tension')) {
     return "Start by separating the people from the problem. Meet each person one on one first, reflect back what you hear, and look for the shared goal underneath their positions. Then bring them together around that goal, not around who was right.\n\nWhat's the situation you're facing?";
   }
+  if (t.includes('culture') || t.includes('morale') || t.includes('toxic') || t.includes('blame')) {
+    return "Culture shifts in small, repeated moments, not announcements. Three moves that work:\n\n1. **Model it first.** Ask for feedback on yourself and visibly act on it.\n2. **Reward what you want more of.** Call out the behavior, not just the result.\n3. **Address what you tolerate.** The behavior you let slide becomes the standard.\n\nWhat is one behavior you most want to see more of on your team?";
+  }
   if (t.includes('layoff') || t.includes('change') || t.includes('reorg')) {
     return "In times of change, people need three things from you: clarity on what you know, honesty about what you don't, and a date for when you'll share more. Overcommunicate the why, and make space for people to react before you ask them to act.";
   }

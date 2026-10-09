@@ -61,6 +61,14 @@ export default function AreaScreen() {
         </>
       ) : null}
       {empty ? <Text style={s.empty}>New content for this skill is on the way. Ask Coach Ari anything in the meantime.</Text> : null}
+      {area.id === 'change' ? (
+        <>
+          <SectionHeader title="Tools" />
+          <Card style={{ padding: 0, overflow: 'hidden' }}>
+            <Row icon="edit-3" iconColor={area.color} iconSoft={area.soft} title="Change Message Builder" subtitle="Draft an announcement, then polish it with Ari" onPress={() => router.push('/change-message')} last />
+          </Card>
+        </>
+      ) : null}
       <SectionHeader title="Need help now?" />
       <Card style={{ padding: 0, overflow: 'hidden' }}>
         <Row icon="message-circle" iconColor={colors.primary} iconSoft={colors.primarySoft} title={`Ask Ari about ${area.title.toLowerCase()}`} onPress={() => router.push('/coach')} last />

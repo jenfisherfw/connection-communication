@@ -12,7 +12,8 @@ const CATEGORIES = [
   { icon: 'check-square', label: 'Quizzes', color: colors.teal, soft: colors.tealSoft, go: `/quiz/${QUIZZES[0].id}` },
   { icon: 'git-branch', label: 'Scenarios', color: colors.coral, soft: colors.coralSoft, go: `/scenario/${SCENARIOS[0].id}` },
   { icon: 'mic', label: 'Role\nPlay', color: colors.violet, soft: colors.violetSoft, go: '/practice' },
-  { icon: 'feather', label: 'Reflect', color: colors.blue, soft: colors.blueSoft, go: '/reflect' },
+  { icon: 'trending-up', label: 'Change\nBuilder', color: colors.blue, soft: colors.blueSoft, go: '/change-message' },
+  { icon: 'feather', label: 'Reflect', color: colors.violet, soft: colors.violetSoft, go: '/reflect' },
 ];
 
 export default function Explore() {

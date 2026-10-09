@@ -44,7 +44,7 @@ const seed = {
     'roleplay:new-hire-checkin': { at: daysAgo(1), score: 0.84 },
     'reflection:x': { at: daysAgo(0) },
   },
-  areaXp: { feedback: 180, conflict: 95, listening: 140, trust: 60, recognition: 25, change: 0 },
+  areaXp: { feedback: 180, conflict: 95, listening: 140, trust: 60, recognition: 25, change: 70, culture: 45 },
   badges: ['first-step', 'streak-3', 'quiz-ace', 'roleplay-1'],
   reflections: [
     { prompt: 'Who did quiet, excellent work this week that nobody noticed?', text: 'Dana rebuilt our onboarding checklist without being asked. I want to call it out in Friday standup and ask her to walk the team through it.', at: daysAgo(1) },
@@ -110,6 +110,28 @@ await go('/reflect');
 await page.getByPlaceholder('Write freely').fill('Last week Marcus pushed back on the new review process in our team meeting. I thanked him, but I could feel myself getting defensive. I want to follow up 1:1 and ask what he would change.');
 await shot('18-reflect');
 await go('/area/feedback');        await shot('19-skill-area');
+
+// Change management and culture
+await go('/area/change');          await shot('26-area-change');
+await scrollBy(560);               await shot('27-area-change-tools');
+await go('/area/culture');         await shot('28-area-culture');
+await go('/scenario/reorg-announcement');
+await tap('There are no layoffs planned'); await settle(); await shot('29-scenario-reorg');
+await go('/change-message');
+const fills = [
+  ['Starting March 1', 'Starting March 1, our two support teams will merge into one team under Dana.'],
+  ['Customers are getting', 'Customers are getting passed between teams and waiting too long for answers.'],
+  ['Your roles, pay', 'Your roles, pay, schedules, and customer accounts are not changing.'],
+  ['You will have one shared', 'You will have one shared queue and a new weekly huddle on Mondays.'],
+  ['We are still deciding', 'We are still deciding which tools we will keep.'],
+  ['I will share the tools', 'I will share the tools decision by Feb 15. Bring questions to our 1:1s or the Q&A on Thursday.'],
+];
+for (const [ph, text] of fills) await page.getByPlaceholder(ph, { exact: false }).fill(text);
+await shot('30-change-builder');
+await page.getByText('Your draft').first().scrollIntoViewIfNeeded(); await shot('31-change-builder-draft');
+await go('/roleplay/resistant-veteran');
+await type('Respond to Pat', 'Fair question, Pat. You have seen more rollouts than anyone here. What went wrong with the last two?');
+await settle(1400);                await shot('32-roleplay-change-skeptic');
 
 // Onboarding, as a brand new user sees it
 const fresh = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true });

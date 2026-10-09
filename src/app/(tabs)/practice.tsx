@@ -63,6 +63,17 @@ export default function Practice() {
         );
       })}
 
+      <Card style={s.tool} onPress={() => router.push('/change-message')}>
+        <View style={s.toolIcon}>
+          <Feather name="trending-up" size={22} color={colors.blue} />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Text style={s.rpTitle}>Change Message Builder</Text>
+          <Text style={s.rpSub}>Draft a change announcement people can get behind, then polish it with Ari</Text>
+        </View>
+        <Feather name="chevron-right" size={20} color={colors.faint} />
+      </Card>
+
       <Card style={s.custom} onPress={() => router.push({ pathname: '/coach', params: { seed: 'I want to rehearse a conversation. Here is the situation: ' } })}>
         <Feather name="plus-circle" size={24} color={colors.primary} />
         <View style={{ flex: 1 }}>
@@ -106,6 +117,8 @@ const s = StyleSheet.create({
   rpSub: { fontFamily: fonts.body, fontSize: 13, color: colors.muted, marginTop: 2, lineHeight: 18 },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 8 },
   xp: { fontFamily: fonts.bold, fontSize: 12, color: colors.primary },
+  tool: { flexDirection: 'row', alignItems: 'center', gap: 14, marginBottom: 12 },
+  toolIcon: { width: 48, height: 48, borderRadius: 15, backgroundColor: colors.blueSoft, alignItems: 'center', justifyContent: 'center' },
   custom: { flexDirection: 'row', alignItems: 'center', gap: 14, borderWidth: 1.5, borderColor: '#C9D6EA', borderStyle: 'dashed', backgroundColor: '#F5F8FC' },
   sc: { flexDirection: 'row', alignItems: 'center', gap: 14, marginBottom: 12 },
   scBar: { width: 4, alignSelf: 'stretch', borderRadius: 2 },

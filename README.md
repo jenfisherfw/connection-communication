@@ -17,6 +17,8 @@
 | Onboarding: name, role, team size, focus areas, reminder time | `src/app/onboarding.tsx` |
 | Accounts with cloud backup of progress (Supabase) | `src/app/sign-in.tsx`, `src/state/Account.tsx` |
 | Weekday reminder notifications | `src/services/reminders.ts` |
+| Change management and culture: quizzes, scenarios, and AI role plays in Leading Change and Culture Shifts | `src/data/content.ts` |
+| Change Message Builder: draft a change announcement, then polish it with Ari | `src/app/change-message.tsx` |
 | Skill areas with mastery bars | Explore and `src/app/area/[id].tsx` |
 | Levels, badges, weekly goal, team leaderboard | Progress |
 

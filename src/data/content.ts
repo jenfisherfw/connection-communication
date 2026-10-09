@@ -1,6 +1,6 @@
 import { colors } from '../theme';
 
-export type AreaId = 'feedback' | 'conflict' | 'listening' | 'trust' | 'recognition' | 'change';
+export type AreaId = 'feedback' | 'conflict' | 'listening' | 'trust' | 'recognition' | 'change' | 'culture';
 
 export interface SkillArea {
   id: AreaId;
@@ -18,6 +18,7 @@ export const AREAS: SkillArea[] = [
   { id: 'trust', title: 'Trust & Connection', tagline: 'Build safety on your team', icon: 'heart', color: colors.violet, soft: colors.violetSoft },
   { id: 'recognition', title: 'Recognition', tagline: 'Make good work visible', icon: 'award', color: colors.amber, soft: colors.amberSoft },
   { id: 'change', title: 'Leading Change', tagline: 'Bring people with you', icon: 'trending-up', color: colors.blue, soft: colors.blueSoft },
+  { id: 'culture', title: 'Culture Shifts', tagline: 'Shape how your team works', icon: 'sun', color: colors.rose, soft: colors.roseSoft },
 ];
 
 export const areaById = (id: AreaId) => AREAS.find((a) => a.id === id)!;
@@ -152,6 +153,74 @@ export const QUIZZES: Quiz[] = [
       },
     ],
   },
+  {
+    id: 'change-communication',
+    area: 'change',
+    title: 'Communicating Change',
+    subtitle: 'What people need to hear when things shift',
+    minutes: 3,
+    xp: 40,
+    questions: [
+      {
+        q: 'You are announcing a new performance review process. What should come first?',
+        options: ['The new timeline and forms', 'Why the change is happening and what problem it solves', 'Reassurance that nothing will really change', 'Who made the decision'],
+        answer: 1,
+        why: 'People resist what they do not understand. Leading with the why gives them a reason to engage with the what and the how.',
+      },
+      {
+        q: 'Your team asks a question about the reorg that you cannot answer yet. The best response is:',
+        options: ['Make your best guess so they feel informed', '"I can\'t talk about that."', '"I don\'t know yet. I\'ll tell you by Friday what I learn, even if it\'s that we still don\'t know."', 'Change the subject'],
+        answer: 2,
+        why: 'Honesty about uncertainty, paired with a specific follow up date, builds more trust than a confident guess that later proves wrong.',
+      },
+      {
+        q: 'In the ADKAR model of change, what comes right after Awareness of the need for change?',
+        options: ['Ability', 'Desire to support it', 'Knowledge of how', 'Reinforcement'],
+        answer: 1,
+        why: 'ADKAR runs Awareness, Desire, Knowledge, Ability, Reinforcement. Training people (Knowledge) before they want the change (Desire) rarely sticks.',
+      },
+      {
+        q: 'Three weeks after a big change, people are quieter than usual and productivity has dipped. This most likely means:',
+        options: ['The change failed', 'People are in the normal transition dip and need support', 'You should reverse the decision', 'The team is not committed'],
+        answer: 1,
+        why: 'A temporary dip is a normal part of transition. It is the moment to check in, name what people are letting go of, and celebrate early wins.',
+      },
+    ],
+  },
+  {
+    id: 'positive-culture',
+    area: 'culture',
+    title: 'Building a Positive Culture',
+    subtitle: 'Culture is what leaders tolerate and repeat',
+    minutes: 3,
+    xp: 40,
+    questions: [
+      {
+        q: 'What shapes team culture most?',
+        options: ['The values posted on the wall', 'What leaders do, reward, and tolerate every day', 'The annual engagement survey', 'Team offsites'],
+        answer: 1,
+        why: 'Culture is built in daily moments. People watch what you do, what you praise, and what you let slide far more than what you say.',
+      },
+      {
+        q: 'A project failed. Which first question builds a learning culture?',
+        options: ['"Whose fault was this?"', '"What did we learn, and what will we do differently?"', '"Why didn\'t anyone flag this?"', '"How do we explain this to leadership?"'],
+        answer: 1,
+        why: 'Blame teaches people to hide problems. Learning questions teach them to surface problems early, which is where real performance comes from.',
+      },
+      {
+        q: 'You want more candor on your team. What is the most powerful first move?',
+        options: ['Announce that everyone should speak up', 'Ask for feedback on yourself, then visibly act on it', 'Add an anonymous suggestion box', 'Require everyone to share one idea per meeting'],
+        answer: 1,
+        why: 'When a leader asks for critique and then changes something because of it, the team learns that candor is safe and that it matters.',
+      },
+      {
+        q: 'A high performer is consistently dismissive of colleagues. Leaving it alone signals:',
+        options: ['That results matter more than how we treat each other', 'Nothing, as long as targets are met', 'Trust in their judgment', 'That you are a hands off leader'],
+        answer: 0,
+        why: 'The behavior a leader tolerates becomes the standard. Addressing it, privately and clearly, protects the culture everyone else is building.',
+      },
+    ],
+  },
 ];
 
 /* ---------- Scenarios (choose your response) ---------- */
@@ -217,6 +286,66 @@ export const SCENARIOS: Scenario[] = [
       { text: '"I\'ve noticed you seem quieter lately and are online late. I care about how you\'re doing. What\'s on your plate?"', score: 3, feedback: 'Specific observations plus genuine care opens the door without forcing anyone through it.' },
       { text: '"You need to stop working so late."', score: 2, feedback: 'You care about the right thing, but a directive skips understanding the cause.' },
       { text: '"Is this about the reorg?"', score: 2, feedback: 'A guess can feel presumptive. Open questions let Sam tell you what is really going on.' },
+    ],
+  },
+  {
+    id: 'reorg-announcement',
+    area: 'change',
+    title: 'The Reorg Announcement',
+    setup: 'Two teams are merging under you next month. You are in the all hands where you announce it. Someone raises a hand right away.',
+    person: 'Chris, Account Manager',
+    quote: '"So is this a layoff? Just tell us straight."',
+    xp: 30,
+    choices: [
+      { text: '"No one should worry. This is a great opportunity for all of us."', score: 1, feedback: 'Reassurance without facts sounds like spin, and people fill the gap with worst case rumors.' },
+      { text: '"There are no layoffs planned as part of this change. Here is what is changing, what is not, and when you will hear more. I will stay after for questions."', score: 3, feedback: 'Direct answer, clear boundaries, and a path for follow up. That is how you calm a room without overpromising.' },
+      { text: '"I am not able to discuss staffing."', score: 1, feedback: 'Even if true, a flat refusal confirms the fear. Share what you can and say when you will know more.' },
+      { text: '"Good question. Let me get back to you on that."', score: 2, feedback: 'Better than a guess, but give a specific time and share whatever you do know now.' },
+    ],
+  },
+  {
+    id: 'change-fatigue',
+    area: 'change',
+    title: 'Change Fatigue',
+    setup: 'This is the third process change this year. You are rolling out a new project tool, and a respected senior team member sighs in the meeting.',
+    person: 'Dana, Senior Analyst',
+    quote: '"Here we go again. We just learned the last system."',
+    xp: 30,
+    choices: [
+      { text: '"I know, but this one is mandatory from the top."', score: 1, feedback: 'Blaming leadership above you erodes trust in the change and in you as a leader.' },
+      { text: '"You are right, it has been a lot. Let me explain why this one matters, what we are dropping to make room, and how we will support the switch."', score: 3, feedback: 'You validated the fatigue, gave the why, and showed you are removing load rather than only adding it.' },
+      { text: '"Let\'s stay positive, everyone."', score: 1, feedback: 'Asking for positivity dismisses a real concern and pushes the pushback underground.' },
+      { text: '"I hear you. Let\'s talk after the meeting."', score: 2, feedback: 'Good instinct to engage, but the whole room heard the concern. Address it briefly in the moment too.' },
+    ],
+  },
+  {
+    id: 'blame-game',
+    area: 'culture',
+    title: 'The Blame Game',
+    setup: 'A client launch slipped. In the debrief, people start pointing at each other. One team lead turns to you.',
+    person: 'Morgan, Team Lead',
+    quote: '"Honestly, this was design\'s fault. They were two weeks late."',
+    xp: 30,
+    choices: [
+      { text: '"Okay, design, what happened?"', score: 1, feedback: 'You just put one group on trial in front of everyone. Expect less honesty in the next debrief.' },
+      { text: '"Let\'s pause on who and look at what. Where did the process break down, and what will we change so it does not happen again?"', score: 3, feedback: 'You redirected from blame to learning without shutting anyone down. That is how a learning culture is built.' },
+      { text: '"Everyone shares responsibility. Let\'s move on."', score: 2, feedback: 'True, but moving on skips the learning. Use the moment to fix the system.' },
+      { text: 'Say nothing and let the conversation play out.', score: 1, feedback: 'Silence reads as agreement. Whatever you tolerate in the room becomes the norm.' },
+    ],
+  },
+  {
+    id: 'meeting-silence',
+    area: 'culture',
+    title: 'The Silent Meeting',
+    setup: 'You asked your team for ideas to improve how you work together. Ten seconds of silence. Then someone speaks.',
+    person: 'Lee, Coordinator',
+    quote: '"I think things are fine the way they are."',
+    xp: 30,
+    choices: [
+      { text: '"Great, glad everyone is happy!"', score: 1, feedback: 'Silence is rarely agreement. Taking it at face value means you will miss what people are not saying.' },
+      { text: '"Thanks, Lee. Let me go first: one thing I could do better is give clearer priorities. What else would make your week easier?"', score: 3, feedback: 'Going first with your own improvement makes it safe for others to be honest.' },
+      { text: '"Come on, someone must have an idea."', score: 1, feedback: 'Pressure increases the risk of speaking up. People need safety, not a push.' },
+      { text: '"Okay, send me ideas by email if you think of any."', score: 2, feedback: 'A private channel helps, but pair it with modeling candor yourself in the room.' },
     ],
   },
 ];
@@ -306,6 +435,57 @@ export const ROLEPLAYS: Roleplay[] = [
     ],
     xp: 40,
   },
+  {
+    id: 'resistant-veteran',
+    area: 'change',
+    title: 'The Change Skeptic',
+    person: 'Pat',
+    role: 'Operations Lead, 15 years',
+    difficulty: 'Tough',
+    brief: 'Pat is a respected long timer whose influence will make or break a new workflow rollout. They are openly skeptical. Your goal: understand the resistance, involve them, and turn them into a partner.',
+    opener: 'I\'ll be honest, I\'ve seen these rollouts come and go. Why should this one be different?',
+    persona: 'You are Pat, a respected operations lead with 15 years at the company. You have watched several initiatives fail and you worry the new workflow will slow your team down. You are skeptical but fair. Soften if the manager asks about your experience, acknowledges past failures, and gives you real input into the rollout. Keep replies short.',
+    demoReplies: [
+      'The last two systems were dropped after six months. My team did all the work to learn them for nothing.',
+      'If I\'m being fair, the reporting piece of the new workflow would actually help us. It\'s the rollout timing that worries me.',
+      'If I can help shape the pilot and we start with my team\'s feedback, I\'m willing to give it a real shot.',
+    ],
+    xp: 80,
+  },
+  {
+    id: 'rumor-mill',
+    area: 'change',
+    title: 'The Rumor Mill',
+    person: 'Avery',
+    role: 'Team Member',
+    difficulty: 'Moderate',
+    brief: 'A rumor is spreading that your department is being outsourced. It is not true, but some details of upcoming changes are still confidential. Avery comes to you worried.',
+    opener: 'Can I ask you something? People are saying our whole team is getting outsourced. Is that true?',
+    persona: 'You are Avery, an anxious but loyal team member who heard a rumor about outsourcing and is worried about your job. You calm down if the manager is honest, shares what they can, admits what they cannot share yet, and tells you when you will hear more. Keep replies short.',
+    demoReplies: [
+      'Okay. But then why is everyone so secretive lately?',
+      'That makes sense. I guess I just hate not knowing.',
+      'Thanks for being straight with me. Friday works. I\'ll tell the others to wait for the update too.',
+    ],
+    xp: 60,
+  },
+  {
+    id: 'culture-reset',
+    area: 'culture',
+    title: 'Resetting the Tone',
+    person: 'Jordan',
+    role: 'Talented but Dismissive Engineer',
+    difficulty: 'Tough',
+    brief: 'Jordan delivers great work but often dismisses colleagues\' ideas in meetings, and two people have stopped speaking up. Address the behavior and its impact on the team culture, while keeping Jordan engaged.',
+    opener: 'You wanted to talk? If it\'s about the sprint, we hit every target.',
+    persona: 'You are Jordan, a high performing engineer who values results and sees yourself as just being efficient and honest. You do not realize your comments shut others down. You get defensive if the manager is vague or attacks your character. You open up if they give specific examples, explain the impact on the team, and ask for your perspective. Keep replies short.',
+    demoReplies: [
+      'I\'m just being honest. Some of those ideas really aren\'t good.',
+      'I didn\'t know Sam and Priya had stopped talking in meetings. That\'s not what I want.',
+      'Okay. I can ask a question before I critique. And maybe you can tell me if I slip.',
+    ],
+    xp: 80,
+  },
 ];
 
 /* ---------- Reflection prompts, tips, badges ---------- */
@@ -318,6 +498,9 @@ export const REFLECTIONS = [
   { area: 'conflict' as AreaId, prompt: 'Which working relationship feels tense right now? What do you think they need from you?' },
   { area: 'change' as AreaId, prompt: 'What change are you asking your team to make? How have you explained the why?' },
   { area: 'trust' as AreaId, prompt: 'What is one commitment you made to your team that you have not followed through on yet?' },
+  { area: 'change' as AreaId, prompt: 'What is your team being asked to let go of in the current change? Have you acknowledged that loss out loud?' },
+  { area: 'culture' as AreaId, prompt: 'What behavior on your team have you been tolerating that does not match the culture you want?' },
+  { area: 'culture' as AreaId, prompt: 'If a new hire watched you for one week, what would they conclude your team values most?' },
 ];
 
 export const TIPS = [
@@ -328,6 +511,10 @@ export const TIPS = [
   'Replace "Why did you..." with "What led to..." to lower defensiveness.',
   'End every 1:1 with: "What is one thing I could do to make your week easier?"',
   'When emotions run high, name it: "This feels important to both of us."',
+  'People need to hear a change message five to seven times before it sinks in. Repeat the why more than feels natural.',
+  'In every change, say what is staying the same. Stability anchors people while everything else moves.',
+  'Culture is what you reward and what you tolerate. Both send a message every day.',
+  'Celebrate the first small win of any change publicly. Momentum is a communication tool.',
 ];
 
 export const CONVERSATION_STARTERS = [
@@ -335,6 +522,8 @@ export const CONVERSATION_STARTERS = [
   { tag: 'Growth', text: 'What is a skill you want to build this year, and how can I help?' },
   { tag: 'Clarity', text: 'Is there anything on your plate that feels unclear or misaligned?' },
   { tag: 'Trust', text: 'What is something I do that makes your job harder?' },
+  { tag: 'Change', text: 'What worries you most about the changes coming up, and what would help?' },
+  { tag: 'Culture', text: 'What is one thing about how our team works that you would never want to lose?' },
 ];
 
 export interface Badge {
@@ -352,7 +541,9 @@ export const BADGES: Badge[] = [
   { id: 'quiz-ace', title: 'Quiz Ace', description: 'Get a perfect score on a quiz', icon: 'check-circle', color: colors.teal },
   { id: 'roleplay-1', title: 'In the Arena', description: 'Finish an AI role play', icon: 'mic', color: colors.violet },
   { id: 'reflector', title: 'Deep Thinker', description: 'Write 3 reflections', icon: 'feather', color: colors.blue },
-  { id: 'well-rounded', title: 'Well Rounded', description: 'Earn XP in all 6 skill areas', icon: 'compass', color: colors.rose },
+  { id: 'change-champion', title: 'Change Champion', description: 'Earn 100 XP in Leading Change', icon: 'trending-up', color: colors.blue },
+  { id: 'culture-builder', title: 'Culture Builder', description: 'Earn 100 XP in Culture Shifts', icon: 'sun', color: colors.rose },
+  { id: 'well-rounded', title: 'Well Rounded', description: 'Earn XP in all 7 skill areas', icon: 'compass', color: colors.primary },
   { id: 'level-5', title: 'Trusted Leader', description: 'Reach level 5', icon: 'star', color: colors.amber },
 ];
 

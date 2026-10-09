@@ -17,6 +17,8 @@ const SUGGESTIONS = [
   'How do I give feedback to a defensive employee?',
   'Two people on my team are in conflict',
   'Help me announce an unpopular change',
+  'How do I shift a negative team culture?',
+  'My team is tired of constant change',
   'How do I run a better 1:1?',
 ];
 

@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { AREAS, AreaId, BADGES, LEVELS } from '../data/content';
 
-export type ActivityKind = 'quiz' | 'scenario' | 'roleplay' | 'reflection' | 'pulse' | 'coach';
+export type ActivityKind = 'quiz' | 'scenario' | 'roleplay' | 'reflection' | 'pulse' | 'coach' | 'builder';
 
 export type TeamSize = 'none' | '1-5' | '6-15' | '16-50' | '50+';
 
@@ -83,7 +83,9 @@ function computeBadges(p: Progress): string[] {
   if (Object.entries(p.completed).some(([k, v]) => k.startsWith('quiz:') && v.score === 1)) earned.add('quiz-ace');
   if (Object.keys(p.completed).some((k) => k.startsWith('roleplay:'))) earned.add('roleplay-1');
   if (p.reflections.length >= 3) earned.add('reflector');
-  if (AREAS.every((a) => p.areaXp[a.id] > 0)) earned.add('well-rounded');
+  if ((p.areaXp.change ?? 0) >= 100) earned.add('change-champion');
+  if ((p.areaXp.culture ?? 0) >= 100) earned.add('culture-builder');
+  if (AREAS.every((a) => (p.areaXp[a.id] ?? 0) > 0)) earned.add('well-rounded');
   if (levelFor(p.xp).level >= 5) earned.add('level-5');
   return BADGES.map((b) => b.id).filter((id) => earned.has(id));
 }
