@@ -352,5 +352,7 @@ const fr: Record<string, string> = {
   "Rehearse hard conversations with an AI partner": "Répétez les conversations difficiles avec un partenaire IA",
   "Earn XP, streaks, and badges as you grow": "Gagnez des XP, des séries et des badges en progressant",
   "Short enough for chat": "Assez court pour une messagerie",
+  "Your next scenario": "Votre prochain scénario",
+  "You’ve answered every scenario. New ones are on the way.": "Vous avez répondu à tous les scénarios. D’autres arrivent bientôt.",
 };
 export default fr;

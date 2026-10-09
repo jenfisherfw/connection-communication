@@ -18,15 +18,21 @@ function greeting() {
 export default function Home() {
   const { progress, logPulse } = useAppState();
   const { t, locale } = useT();
-  const { PULSE, areaById, dailyPicks, levelTitle } = useContent();
+  const { PULSE, SCENARIOS, areaById, dailyPicks, levelTitle } = useContent();
   const [tipHidden, setTipHidden] = useState(false);
-  const { scenario, tip } = dailyPicks();
+  const { scenario: daily, tip } = dailyPicks();
+  // Once today's scenario is answered, offer the next one they haven't tried. When every
+  // scenario is done, the top card becomes the day's leader tip instead.
+  const answered = (id: string) => !!progress.completed[`scenario:${id}`];
+  const start = Math.max(0, SCENARIOS.findIndex((x) => x.id === daily.id));
+  const scenario = answered(daily.id) ? (SCENARIOS.map((_, i) => SCENARIOS[(start + i) % SCENARIOS.length]).find((x) => !answered(x.id)) ?? null) : daily;
+  const scenarioHref = `/scenario/${(scenario ?? daily).id}` as const;
   const level = levelFor(progress.xp);
   const done = progress.today.done;
   const todayPulse = progress.pulse.find((p) => p.date === progress.today.date)?.value;
 
   const plan: { kind: ActivityKind; title: string; sub: string; xp: number; go: () => void }[] = [
-    { kind: 'scenario', title: t('Scenario of the Day'), sub: t('Choose how you would respond'), xp: 30, go: () => router.push(`/scenario/${scenario.id}`) },
+    { kind: 'scenario', title: t('Scenario of the Day'), sub: t('Choose how you would respond'), xp: 30, go: () => router.push(scenarioHref) },
     { kind: 'pulse', title: t('Energy Check In'), sub: t('How are you showing up today?'), xp: 10, go: () => {} },
     { kind: 'reflection', title: t('Leader Reflection'), sub: t('Two minutes of honest thinking'), xp: 25, go: () => router.push('/reflect') },
     { kind: 'roleplay', title: t('Practice Rep'), sub: t('Rehearse a real conversation with AI'), xp: 60, go: () => router.push('/practice') },
@@ -62,15 +68,33 @@ export default function Home() {
       </View>
 
       <LinearGradient colors={gradients.hero} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.hero}>
-        <View style={s.heroTag}>
-          <Text style={s.heroTagText}>{t('Scenario of the Day').toUpperCase()} · {areaById(scenario.area).title.toUpperCase()}</Text>
-        </View>
-        <Text style={s.heroQuote}>{scenario.quote}</Text>
-        <Text style={s.heroPerson}>{scenario.person}</Text>
-        <Pressable style={s.heroBtn} onPress={() => router.push(`/scenario/${scenario.id}`)}>
-          <Text style={s.heroBtnText}>{t('How do you respond?')}</Text>
-          <Feather name="chevron-right" size={20} color={colors.primary} />
-        </Pressable>
+        {scenario ? (
+          <>
+            <View style={s.heroTag}>
+              <Text style={s.heroTagText}>
+                {(scenario === daily ? t('Scenario of the Day') : t('Your next scenario')).toUpperCase()} · {areaById(scenario.area).title.toUpperCase()}
+              </Text>
+            </View>
+            <Text style={s.heroQuote}>{scenario.quote}</Text>
+            <Text style={s.heroPerson}>{scenario.person}</Text>
+            <Pressable style={s.heroBtn} onPress={() => router.push(scenarioHref)}>
+              <Text style={s.heroBtnText}>{t('How do you respond?')}</Text>
+              <Feather name="chevron-right" size={20} color={colors.primary} />
+            </Pressable>
+          </>
+        ) : (
+          <>
+            <View style={s.heroTag}>
+              <Text style={s.heroTagText}>{t('Leader tip').toUpperCase()}</Text>
+            </View>
+            <Text style={s.heroQuote}>{tip}</Text>
+            <Text style={s.heroPerson}>{t('You’ve answered every scenario. New ones are on the way.')}</Text>
+            <Pressable style={s.heroBtn} onPress={() => router.push('/coach')}>
+              <Text style={s.heroBtnText}>{t('Ask Coach Ari')}</Text>
+              <Feather name="chevron-right" size={20} color={colors.primary} />
+            </Pressable>
+          </>
+        )}
       </LinearGradient>
 
       <Card style={{ marginTop: 18 }}>
@@ -124,7 +148,7 @@ export default function Home() {
         <Feather name="chevron-right" size={20} color={colors.faint} />
       </Card>
 
-      {!tipHidden ? (
+      {!tipHidden && scenario ? (
         <View style={s.tip}>
           <View style={s.tipIcon}>
             <Feather name="zap" size={18} color={colors.coral} />
@@ -142,7 +166,7 @@ export default function Home() {
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginTop: 18, marginHorizontal: -20 }} contentContainerStyle={{ paddingHorizontal: 20, gap: 12 }}>
         {[
           { icon: 'check-square', t: t('Quizzes'), s: t('Test your instincts'), c: colors.teal, soft: colors.tealSoft, go: '/explore' },
-          { icon: 'git-branch', t: t('Scenarios'), s: t('Pick the best move'), c: colors.coral, soft: colors.coralSoft, go: `/scenario/${scenario.id}` },
+          { icon: 'git-branch', t: t('Scenarios'), s: t('Pick the best move'), c: colors.coral, soft: colors.coralSoft, go: scenarioHref },
           { icon: 'mic', t: t('Role Play'), s: t('Rehearse with AI'), c: colors.violet, soft: colors.violetSoft, go: '/practice' },
           { icon: 'feather', t: t('Reflect'), s: t('Write today'), c: colors.blue, soft: colors.blueSoft, go: '/reflect' },
         ].map((x) => (
