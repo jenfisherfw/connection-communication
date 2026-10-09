@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Chat } from '../components/Chat';
 import { BackHeader } from '../components/ui';
-import { ChatMessage, askCoach, coachIsLive } from '../services/coach';
+import { ChatMessage, askCoach, coachErrorMessage, coachIsLive } from '../services/coach';
 import { useAccount } from '../state/Account';
 import { todayKey, useAppState } from '../state/AppState';
 import { colors, fonts } from '../theme';
@@ -40,8 +40,8 @@ export default function Coach() {
       const reply = await askCoach(next.filter((m) => m !== INTRO));
       setMessages([...next, { role: 'assistant', content: reply }]);
       if (next.filter((m) => m.role === 'user').length === 1) award({ key: `coach:${todayKey()}`, kind: 'coach', xp: 15 });
-    } catch {
-      setMessages([...next, { role: 'assistant', content: "Sorry, I couldn't connect just now. Please try again in a moment." }]);
+    } catch (err) {
+      setMessages([...next, { role: 'assistant', content: coachErrorMessage(err) }]);
     } finally {
       setTyping(false);
     }

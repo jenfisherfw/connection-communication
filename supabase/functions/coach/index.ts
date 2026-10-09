@@ -4,8 +4,50 @@
 // Secret:  ANTHROPIC_API_KEY (Edge Functions > Secrets)
 // Optional: ANTHROPIC_WORKSPACE_ID, only needed when the key is not scoped to a workspace
 import Anthropic from 'npm:@anthropic-ai/sdk@0.131.0';
+import { createClient, type SupabaseClient } from 'npm:@supabase/supabase-js@2.117.3';
 
 const MODEL = 'claude-opus-5-5';
+
+/** AI requests allowed per person per day. Override with the DAILY_AI_LIMIT secret. */
+const DAILY_LIMIT = Number(Deno.env.get('DAILY_AI_LIMIT') ?? 40);
+
+let admin: SupabaseClient | null = null;
+/** Service role client (Supabase provides these variables to every Edge Function). */
+function supabaseAdmin(): SupabaseClient | null {
+  const url = Deno.env.get('SUPABASE_URL');
+  const key = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+  if (!url || !key) return null;
+  admin ??= createClient(url, key, { auth: { persistSession: false } });
+  return admin;
+}
+
+/**
+ * The signed in user's id from their access token. Supabase's gateway has already verified
+ * the token's signature (JWT verification is on for this function), so reading it is enough.
+ */
+function userIdFrom(req: Request): string | null {
+  const token = req.headers.get('authorization')?.replace(/^Bearer\s+/i, '');
+  const payload = token?.split('.')[1];
+  if (!payload) return null;
+  try {
+    const claims = JSON.parse(atob(payload.replace(/-/g, '+').replace(/_/g, '/')));
+    return claims.role === 'authenticated' && typeof claims.sub === 'string' ? claims.sub : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Counts one AI request against today's limit. Fails open if usage tracking isn't set up yet. */
+async function withinDailyLimit(userId: string | null): Promise<boolean> {
+  const db = supabaseAdmin();
+  if (!userId || !db) return true;
+  const { data, error } = await db.rpc('use_coach_request', { p_user: userId, p_limit: DAILY_LIMIT });
+  if (error) {
+    console.error('usage tracking unavailable', error.message);
+    return true;
+  }
+  return Array.isArray(data) ? data[0]?.allowed !== false : true;
+}
 
 let client: Anthropic | null = null;
 /** Created on first use, so a missing secret produces a clear error instead of a failed boot. */
@@ -135,6 +177,24 @@ Deno.serve(async (req) => {
 
   try {
     const body = await req.json();
+    const userId = userIdFrom(req);
+
+    // Permanently deletes the signed in person's account. Their progress and usage rows are
+    // removed with it by the database (on delete cascade).
+    if (body.mode === 'delete_account') {
+      const db = supabaseAdmin();
+      if (!userId || !db) return json({ error: 'Not signed in' }, 401);
+      const { error } = await db.auth.admin.deleteUser(userId);
+      if (error) {
+        console.error('delete account failed', error.message);
+        return json({ error: 'Could not delete the account. Please try again.' }, 500);
+      }
+      return json({ ok: true });
+    }
+
+    if (['coach', 'roleplay', 'feedback'].includes(body.mode) && !(await withinDailyLimit(userId))) {
+      return json({ error: `You've reached today's limit of ${DAILY_LIMIT} coaching requests. It resets tomorrow.`, limit: true }, 429);
+    }
     const messages: Msg[] = (body.messages ?? []).slice(-30);
 
     if (body.mode === 'coach') {

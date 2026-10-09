@@ -30,6 +30,11 @@ No code alternatives (FlutterFlow, Bubble, Adalo) are faster for a static protot
 6. Ship to 20 to 50 leaders through TestFlight and Google Play internal testing.
 7. Interview users weekly; watch Day 1, Day 7, Day 30 retention.
 
+### Launch readiness (built)
+- ~~In app account deletion (App Store requirement)~~ (built)
+- ~~Branded app icon, Android adaptive icon, and launch screen~~ (built)
+- ~~Server enforced daily limit on AI requests~~ (built)
+
 ### Phase 3: Public launch
 - 40+ quizzes, 30+ scenarios, 15+ role plays across all six skill areas
 - Subscription paywall (free tier: daily plan and 3 AI reps per week)

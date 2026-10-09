@@ -1,6 +1,7 @@
 import { Fraunces_600SemiBold, Fraunces_700Bold } from '@expo-google-fonts/fraunces';
 import { Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold, useFonts } from '@expo-google-fonts/inter';
 import { Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
@@ -11,6 +12,10 @@ import { applyReminders } from '../services/reminders';
 import { AccountProvider } from '../state/Account';
 import { AppStateProvider, useAppState } from '../state/AppState';
 import { colors } from '../theme';
+
+// Keep the branded launch screen up until the app is ready, with a timeout so it can never stick.
+SplashScreen.preventAutoHideAsync().catch(() => {});
+setTimeout(() => SplashScreen.hideAsync().catch(() => {}), 6000);
 
 // If anything crashes while rendering, show the error on screen instead of a blank page.
 export { ErrorBoundary } from 'expo-router';
@@ -48,6 +53,9 @@ function ProfileEffects() {
 
 function Navigator() {
   const { ready } = useAppState();
+  useEffect(() => {
+    if (ready) SplashScreen.hideAsync().catch(() => {});
+  }, [ready]);
   if (!ready) return <Loading />;
   return (
     <>

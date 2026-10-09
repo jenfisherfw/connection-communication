@@ -7,7 +7,7 @@ import { Chat } from '../../components/Chat';
 import { Reward } from '../../components/Reward';
 import { BackHeader, Button, Card, Chip, Eyebrow } from '../../components/ui';
 import { ROLEPLAYS, areaById } from '../../data/content';
-import { ChatMessage, RoleplayFeedback, roleplayFeedback, roleplayReply } from '../../services/coach';
+import { ChatMessage, RoleplayFeedback, coachErrorMessage, roleplayFeedback, roleplayReply } from '../../services/coach';
 import { AwardResult, useAppState } from '../../state/AppState';
 import { colors, fonts, radius } from '../../theme';
 
@@ -22,27 +22,34 @@ export default function RoleplayScreen() {
   const [typing, setTyping] = useState(false);
   const [feedback, setFeedback] = useState<RoleplayFeedback | null>(null);
   const [result, setResult] = useState<AwardResult | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
   const turns = messages.filter((m) => m.role === 'user').length;
 
   const send = async (text: string) => {
     const next: ChatMessage[] = [...messages, { role: 'user', content: text }];
     setMessages(next);
+    setNotice(null);
     setTyping(true);
     try {
       const reply = await roleplayReply(rp, next);
       setMessages([...next, { role: 'assistant', content: reply }]);
+    } catch (err) {
+      setNotice(coachErrorMessage(err));
     } finally {
       setTyping(false);
     }
   };
 
   const finish = async () => {
+    setNotice(null);
     setTyping(true);
     try {
       const fb = await roleplayFeedback(rp, messages);
       setFeedback(fb);
       const score = fb.score / 100;
       setResult(award({ key: `roleplay:${rp.id}`, kind: 'roleplay', xp: Math.round(rp.xp * (0.5 + score / 2)), area: rp.area, score }));
+    } catch (err) {
+      setNotice(coachErrorMessage(err));
     } finally {
       setTyping(false);
     }
@@ -60,6 +67,8 @@ export default function RoleplayScreen() {
       <Text style={s.briefBody}>{rp.brief}</Text>
     </Card>
   );
+
+  const noticeView = notice ? <Text style={s.notice}>{notice}</Text> : null;
 
   const footer = feedback && result ? (
     <View style={{ gap: 12, marginTop: 8 }}>
@@ -113,7 +122,12 @@ export default function RoleplayScreen() {
         partnerColor={area.color}
         partnerSoft={area.soft}
         header={brief}
-        footer={footer}
+        footer={
+          <>
+            {noticeView}
+            {footer}
+          </>
+        }
         disabled={!!feedback}
       />
     </SafeAreaView>
@@ -124,6 +138,7 @@ const s = StyleSheet.create({
   brief: { backgroundColor: colors.primarySoft, shadowOpacity: 0, marginBottom: 6 },
   briefTitle: { fontFamily: fonts.display, fontSize: 20, color: colors.ink, marginTop: 12 },
   briefBody: { fontFamily: fonts.body, fontSize: 14, lineHeight: 21, color: colors.body, marginTop: 6 },
+  notice: { fontFamily: fonts.medium, fontSize: 13, lineHeight: 19, color: colors.coral, textAlign: 'center', marginTop: 8, paddingHorizontal: 12 },
   hint: { fontFamily: fonts.medium, fontSize: 12, color: colors.muted, textAlign: 'center', marginTop: 6 },
   scoreRing: { width: 72, height: 72, borderRadius: 36, borderWidth: 6, alignItems: 'center', justifyContent: 'center' },
   scoreNum: { fontFamily: fonts.bold, fontSize: 24, color: colors.ink },

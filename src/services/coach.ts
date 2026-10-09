@@ -14,6 +14,13 @@ export interface RoleplayFeedback {
   tryThis: string;
 }
 
+/** An error whose message is safe and friendly to show in the chat. */
+export class CoachError extends Error {}
+
+/** Message to show in chat for any failed coach request. */
+export const coachErrorMessage = (err: unknown) =>
+  err instanceof CoachError ? err.message : "Sorry, I couldn't connect just now. Please try again in a moment.";
+
 /** What the coach knows about the leader, so advice fits their situation. */
 export interface LeaderContext {
   name: string;
@@ -53,7 +60,10 @@ async function post<T>(token: string, body: object): Promise<T> {
     },
     body: JSON.stringify({ ...body, leader }),
   });
-  if (!res.ok) throw new Error(`Coach request failed (${res.status})`);
+  if (!res.ok) {
+    const detail = (await res.json().catch(() => null)) as { error?: string } | null;
+    throw new CoachError(res.status === 429 && detail?.error ? detail.error : "Sorry, I couldn't connect just now. Please try again in a moment.");
+  }
   return res.json() as Promise<T>;
 }
 

@@ -33,6 +33,30 @@ export default function Profile() {
     updateProfile({ reminder: { ...reminder, hour: Math.floor(next), minute: (next % 1) * 60 } });
   };
 
+  const confirmDelete = () => {
+    const title = account.signedIn ? 'Delete your account?' : 'Erase your data?';
+    const body = account.signedIn
+      ? 'This permanently deletes your account, progress, reflections, and badges from this device and our servers. This cannot be undone.'
+      : 'This permanently erases your progress, reflections, and badges from this device and our servers. This cannot be undone.';
+    const go = async () => {
+      const error = await account.deleteAccount();
+      if (error) {
+        if (Platform.OS === 'web') window.alert(error);
+        else Alert.alert('Something went wrong', error);
+        return;
+      }
+      router.replace('/onboarding');
+    };
+    if (Platform.OS === 'web') {
+      if (window.confirm(`${title}\n\n${body}`)) go();
+      return;
+    }
+    Alert.alert(title, body, [
+      { text: 'Cancel', style: 'cancel' },
+      { text: account.signedIn ? 'Delete account' : 'Erase', style: 'destructive', onPress: go },
+    ]);
+  };
+
   const confirmReset = () => {
     const go = () => {
       reset();
@@ -142,7 +166,11 @@ export default function Profile() {
         <Row icon="message-square" title="Send Feedback" last />
       </Card>
 
-      <Pressable onPress={confirmReset} style={s.reset}>
+      <Pressable onPress={confirmDelete} style={s.reset}>
+        <Feather name="trash-2" size={16} color={colors.coral} />
+        <Text style={[s.resetText, { color: colors.coral }]}>{account.signedIn ? 'Delete account' : 'Erase my data'}</Text>
+      </Pressable>
+      <Pressable onPress={confirmReset} style={[s.reset, { marginTop: 14 }]}>
         <Feather name="rotate-ccw" size={16} color={colors.muted} />
         <Text style={s.resetText}>Reset progress</Text>
       </Pressable>

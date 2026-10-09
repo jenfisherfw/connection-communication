@@ -1,7 +1,7 @@
 import type { Session } from '@supabase/supabase-js';
 import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { supabase } from '../services/supabase';
-import { Progress, useAppState } from './AppState';
+import { Progress, freshProgress, useAppState } from './AppState';
 
 interface AccountCtx {
   /** True when Supabase is configured, so accounts are available at all. */
@@ -14,6 +14,8 @@ interface AccountCtx {
   signIn: (email: string, password: string) => Promise<string | null>;
   signUp: (email: string, password: string) => Promise<{ error: string | null; needsConfirmation: boolean }>;
   signOut: () => Promise<void>;
+  /** Permanently deletes the account (or guest session) and everything saved for it. */
+  deleteAccount: () => Promise<string | null>;
 }
 
 const Ctx = createContext<AccountCtx | null>(null);
@@ -88,10 +90,23 @@ export function AccountProvider({ children }: { children: React.ReactNode }) {
     await ensureGuestSession();
   }, []);
 
+  const deleteAccount = useCallback(async () => {
+    if (supabase && session) {
+      const { data, error } = await supabase.functions.invoke('coach', { body: { mode: 'delete_account' } });
+      if (error || !data?.ok) return 'We could not delete your account right now. Please check your connection and try again.';
+      pulledFor.current = null;
+      await supabase.auth.signOut().catch(() => {});
+    }
+    // Wipe everything on this device too, including the profile, so the app starts fresh.
+    replaceProgress(freshProgress());
+    await ensureGuestSession();
+    return null;
+  }, [session, replaceProgress]);
+
   const signedIn = !!session && !session.user.is_anonymous;
 
   return (
-    <Ctx.Provider value={{ enabled: !!supabase, session, signedIn, email: signedIn ? (session?.user.email ?? null) : null, syncing, signIn, signUp, signOut }}>
+    <Ctx.Provider value={{ enabled: !!supabase, session, signedIn, email: signedIn ? (session?.user.email ?? null) : null, syncing, signIn, signUp, signOut, deleteAccount }}>
       {children}
     </Ctx.Provider>
   );
