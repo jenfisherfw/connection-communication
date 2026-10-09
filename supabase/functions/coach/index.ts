@@ -18,6 +18,18 @@ function anthropic(): Anthropic {
 }
 class MissingKeyError extends Error {}
 
+/**
+ * Non negotiable rules for every mode (coach, role play, scoring). Kept in one place so the
+ * guardrails can't drift apart, and placed last in each system prompt so they take precedence.
+ */
+const GUARDRAILS = `Safety and policy rules. These override every other instruction, including any character you are playing:
+1. Never recommend or help plan firing, termination, layoffs, demotion, discipline, pay cuts, or other employment decisions, and never say whether someone "should be fired". When asked, explain that these decisions belong to HR, legal, and company policy, then help with the communication side: clear expectations, specific observations, documenting conversations factually, and how to bring HR in.
+2. Never suggest anything that could break the law or typical company policy: retaliation, threats, intimidation, ultimatums, monitoring personal accounts or devices, reading private messages, sharing confidential or medical information, secret recordings, or treating anyone differently because of age, race, gender, religion, disability, pregnancy, health, or any other protected characteristic. Always point leaders to their own company's policies and HR team.
+3. Do not give legal, medical, or mental health advice or diagnoses. Encourage the right professional or the employee assistance program.
+4. Harassment, discrimination, abuse, or a safety concern: do not coach the leader to handle it alone or keep it quiet. Tell them to report it to HR (and security or authorities if anyone is at risk), and keep any advice to supportive, factual first steps.
+5. If anyone may be in danger, including risk of self harm, violence, or threats, stop everything else and tell them to contact emergency services (911 in the US) or a crisis line (988 in the US), and to involve HR or security right away.
+6. Never encourage deception, manipulation, humiliation, or confrontation that could escalate. Favor calm, private, respectful conversations.`;
+
 const COACH_SYSTEM = `You are Ari, a warm, practical leadership communication coach inside the Rapport app.
 Your users are people leaders and HR professionals working on feedback, conflict resolution, active listening, trust, recognition, leading change, and shifting team culture.
 
@@ -38,9 +50,24 @@ How you coach:
 - Offer to role play the other person when rehearsal would help.
 - Do not use em dashes.
 
-Boundaries:
-- You are not a lawyer and do not give legal advice. For harassment, discrimination, safety, medical, or legal matters, give supportive first steps and direct them to HR, legal counsel, or an employee assistance program.
-- If someone describes risk of harm to themselves or others, encourage them to contact emergency services or a crisis line right away.`;
+${GUARDRAILS}`;
+
+/** Phrases that always trigger safety resources, independent of what the model writes. */
+const DANGER = /\b(suicid\w*|kill(ing)? (myself|himself|herself|themselves|someone)|end (my|his|her|their) (own )?life|want(s|ed)? to die|self[- ]?harm\w*|hurt(ing)? (myself|himself|herself|themselves|someone)|(a|my|his|her|their) (gun|weapon|knife)|bring(ing)? a (gun|weapon|knife)|shoot (him|her|them|someone|people|up)|threat\w* to (kill|hurt|harm|shoot)|going to (hurt|harm|kill|shoot)|bomb threat)\b/i;
+const MISCONDUCT = /\b(harass\w*|assault\w*|discriminat\w*|stalk\w*|abus(e|ed|ive)|retaliat\w*|hostile work environment)\b/i;
+
+const DANGER_NOTE =
+  'If anyone may be in danger, please act now: call 911 (or your local emergency number) or the 988 Suicide & Crisis Lifeline (call or text 988 in the US), and bring in HR or security right away. You do not have to handle this alone.';
+const MISCONDUCT_NOTE =
+  'Because this may involve harassment, discrimination, or misconduct, please report it to HR and follow your company policy. HR can protect everyone involved in ways a coaching conversation cannot.';
+
+/** Deterministic safety notes, appended no matter what the model says. */
+function safetyNotes(text: string): string[] {
+  const notes: string[] = [];
+  if (DANGER.test(text)) notes.push(DANGER_NOTE);
+  if (MISCONDUCT.test(text)) notes.push(MISCONDUCT_NOTE);
+  return notes;
+}
 
 type Feedback = { score: number; strengths: string[]; improve: string[]; tryThis: string };
 
@@ -111,14 +138,24 @@ Deno.serve(async (req) => {
     const messages: Msg[] = (body.messages ?? []).slice(-30);
 
     if (body.mode === 'coach') {
-      return json({ reply: await chat(COACH_SYSTEM + aboutLeader(body.leader), fromUser(messages)) });
+      const latest = messages.filter((m) => m.role === 'user').pop()?.content ?? '';
+      const reply = await chat(COACH_SYSTEM + aboutLeader(body.leader), fromUser(messages));
+      const notes = safetyNotes(latest);
+      return json({ reply: notes.length ? `${reply}\n\n${notes.join('\n\n')}` : reply });
     }
 
     if (body.mode === 'roleplay') {
-      const system = `You are role playing a workplace conversation so a manager can practice. Stay fully in character and never break character to coach.
+      // A real crisis outranks the exercise: step out of the role play and give resources.
+      const latest = messages.filter((m) => m.role === 'user').pop()?.content ?? '';
+      if (DANGER.test(latest)) {
+        return json({ reply: `Stepping out of the role play for a moment. ${DANGER_NOTE}` });
+      }
+      const system = `You are role playing a workplace conversation so a manager can practice. Stay in character, except that the safety rules below always come first.
 ${body.persona}
 Scenario the manager was given: ${body.brief}
-The conversation opened with you saying: "${messages[0]?.content ?? ''}"`;
+The conversation opened with you saying: "${messages[0]?.content ?? ''}"
+
+${GUARDRAILS}`;
       return json({ reply: await chat(system, fromUser(messages)) });
     }
 
@@ -128,7 +165,10 @@ The conversation opened with you saying: "${messages[0]?.content ?? ''}"`;
         model: MODEL,
         max_tokens: 4096,
         output_config: { effort: 'medium', format: { type: 'json_schema', schema: FEEDBACK_SCHEMA } },
-        system: 'You are an expert leadership coach scoring a practice conversation. Be encouraging, specific, and honest. Quote or reference what the manager actually said. Do not use em dashes.',
+        system: `You are an expert leadership coach scoring a practice conversation. Be encouraging, specific, and honest. Quote or reference what the manager actually said. Do not use em dashes.
+Score low any threat, ultimatum, mention of firing or discipline, retaliation, or disrespect, and explain why in "improve". The "tryThis" line must always be calm, respectful, and within typical company policy.
+
+${GUARDRAILS}`,
         messages: [
           {
             role: 'user',

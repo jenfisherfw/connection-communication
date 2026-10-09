@@ -125,7 +125,19 @@ export default function Profile() {
 
       <Eyebrow style={s.section}>Help and support</Eyebrow>
       <Card style={s.group}>
-        <Row icon="life-buoy" iconColor={colors.coral} iconSoft={colors.coralSoft} title="Employee Assistance Resources" subtitle="When a conversation needs more than a manager" />
+        <Row
+          icon="life-buoy"
+          iconColor={colors.coral}
+          iconSoft={colors.coralSoft}
+          title="Safety & Support Resources"
+          subtitle="When a conversation needs more than a manager"
+          onPress={() =>
+            Alert.alert(
+              'Safety & Support Resources',
+              'If anyone is in immediate danger, call 911 or your local emergency number.\n\nFor someone in crisis, call or text 988 (Suicide & Crisis Lifeline, US).\n\nFor harassment, discrimination, safety, or policy concerns, contact your HR team and follow your company policy. Your Employee Assistance Program (EAP) can also help.',
+            )
+          }
+        />
         <Row icon="book-open" title="Recommended Reading" subtitle="Radical Candor, Crucial Conversations, and more" />
         <Row icon="message-square" title="Send Feedback" last />
       </Card>

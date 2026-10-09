@@ -70,6 +70,12 @@ export async function askCoach(messages: ChatMessage[]): Promise<string> {
 
 function demoCoachReply(text: string): string {
   const t = text.toLowerCase();
+  if (/\b(suicid|want to die|self[- ]?harm|hurt (myself|someone)|going to (hurt|kill))/.test(t)) {
+    return 'If anyone may be in danger, please act now: call 911 (or your local emergency number) or the 988 Suicide & Crisis Lifeline (call or text 988 in the US), and bring in HR or security right away. You do not have to handle this alone.';
+  }
+  if (/\b(fire|firing|terminat|let (him|her|them) go|lay ?off|demot|write (him|her|them) up|discipline)/.test(t)) {
+    return "Decisions about firing or discipline belong with HR and your company's policies, so I won't weigh in on whether to take that step. Where I can help is the conversation itself:\n\n1. **Be specific** about what you've observed and the impact.\n2. **Be clear** about the expectation going forward.\n3. **Document** the conversation factually.\n4. **Bring HR in early,** before anything formal.\n\nWant help planning what to say?";
+  }
   if (t.includes('feedback') || t.includes('deadline') || t.includes('performance')) {
     return "Here's a simple structure that works well:\n\n1. Situation: name when and where.\n2. Behavior: describe what you observed, not what you assume.\n3. Impact: share why it matters to the team.\n4. Curiosity: ask \"What's your take?\" and listen.\n\nWant to practice it? Tell me who you're talking to and I'll play them.";
   }

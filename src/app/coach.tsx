@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Chat } from '../components/Chat';
 import { BackHeader } from '../components/ui';
 import { ChatMessage, askCoach, coachIsLive } from '../services/coach';
+import { useAccount } from '../state/Account';
 import { todayKey, useAppState } from '../state/AppState';
 import { colors, fonts } from '../theme';
 
@@ -27,6 +28,7 @@ const SUGGESTIONS = [
 export default function Coach() {
   const { seed } = useLocalSearchParams<{ seed?: string }>();
   const { award } = useAppState();
+  const account = useAccount();
   const [messages, setMessages] = useState<ChatMessage[]>([INTRO]);
   const [typing, setTyping] = useState(false);
 
@@ -47,7 +49,7 @@ export default function Coach() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.bg }} edges={['top']}>
-      <BackHeader title="Coach Ari" onBack={() => (router.canGoBack() ? router.back() : router.replace('/'))} right={<View style={[s.live, { backgroundColor: coachIsLive ? colors.success : colors.amber }]} />} />
+      <BackHeader title="Coach Ari" onBack={() => (router.canGoBack() ? router.back() : router.replace('/'))} right={<View style={[s.live, { backgroundColor: coachIsLive && account.session ? colors.success : colors.amber }]} />} />
       <Chat
         messages={messages}
         typing={typing}
@@ -58,7 +60,7 @@ export default function Coach() {
         partnerSoft={colors.primary}
         suggestions={SUGGESTIONS}
         initialText={seed ?? ''}
-        footer={<Text style={s.note}>Ari offers coaching, not legal advice. For policy, safety, or harassment concerns, loop in HR.</Text>}
+        footer={<Text style={s.note}>Ari coaches the conversation, not the decision. It won’t advise on firing, discipline, or legal matters, and follows your company’s policies. For safety, harassment, or policy concerns, contact HR. In an emergency, call 911 or 988.</Text>}
       />
     </SafeAreaView>
   );
