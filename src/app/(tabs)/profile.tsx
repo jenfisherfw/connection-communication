@@ -100,7 +100,7 @@ export default function Profile() {
       <Card style={s.group}>
         {!account.enabled ? (
           <Row icon="cloud-off" title="Saved on this device" subtitle="Cloud backup turns on when accounts are set up" right={<View />} last />
-        ) : account.session ? (
+        ) : account.signedIn ? (
           <>
             <Row icon="cloud" iconColor={colors.success} iconSoft={colors.successSoft} title="Backed up" subtitle={account.email ?? ''} right={<View />} />
             <Row icon="log-out" title="Sign out" onPress={() => account.signOut()} last />
@@ -117,8 +117,8 @@ export default function Profile() {
           iconColor={colors.primary}
           iconSoft={colors.primarySoft}
           title="AI coach status"
-          subtitle={coachIsLive ? 'Connected' : 'Demo mode (scripted replies)'}
-          right={<View style={[s.status, { backgroundColor: coachIsLive ? colors.success : colors.amber }]} />}
+          subtitle={coachIsLive && account.session ? 'Connected' : coachIsLive ? 'Connecting...' : 'Demo mode (scripted replies)'}
+          right={<View style={[s.status, { backgroundColor: coachIsLive && account.session ? colors.success : colors.amber }]} />}
         />
         <Row icon="shield" title="Privacy & Data" subtitle="Your reflections are private to you" last />
       </Card>

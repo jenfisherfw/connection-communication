@@ -42,7 +42,7 @@ export default function Onboarding() {
   const account = useAccount();
   // From Profile, people edit their answers without the welcome screen or sign up step.
   const editing = useLocalSearchParams<{ edit?: string }>().edit === '1';
-  const steps = STEPS.filter((s) => (s !== 'account' || (account.enabled && !account.session)) && !(editing && (s === 'welcome' || s === 'account')));
+  const steps = STEPS.filter((s) => (s !== 'account' || (account.enabled && !account.signedIn)) && !(editing && (s === 'welcome' || s === 'account')));
   const [i, setI] = useState(0);
   const [name, setName] = useState(progress.name);
   const [role, setRole] = useState(progress.role);

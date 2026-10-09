@@ -7,6 +7,8 @@ interface AccountCtx {
   /** True when Supabase is configured, so accounts are available at all. */
   enabled: boolean;
   session: Session | null;
+  /** True for a real account; guests hold an anonymous session so the coach can verify them. */
+  signedIn: boolean;
   email: string | null;
   syncing: boolean;
   signIn: (email: string, password: string) => Promise<string | null>;
@@ -30,7 +32,10 @@ export function AccountProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!supabase) return;
-    supabase.auth.getSession().then(({ data }) => setSession(data.session));
+    supabase.auth.getSession().then(({ data }) => {
+      setSession(data.session);
+      if (!data.session) ensureGuestSession();
+    });
     const { data } = supabase.auth.onAuthStateChange((_event, s) => setSession(s));
     return () => data.subscription.unsubscribe();
   }, []);
@@ -80,10 +85,13 @@ export function AccountProvider({ children }: { children: React.ReactNode }) {
   const signOut = useCallback(async () => {
     pulledFor.current = null;
     await supabase?.auth.signOut();
+    await ensureGuestSession();
   }, []);
 
+  const signedIn = !!session && !session.user.is_anonymous;
+
   return (
-    <Ctx.Provider value={{ enabled: !!supabase, session, email: session?.user.email ?? null, syncing, signIn, signUp, signOut }}>
+    <Ctx.Provider value={{ enabled: !!supabase, session, signedIn, email: signedIn ? (session?.user.email ?? null) : null, syncing, signIn, signUp, signOut }}>
       {children}
     </Ctx.Provider>
   );
@@ -95,7 +103,18 @@ export function useAccount() {
   return ctx;
 }
 
-/** Access token for calling our own server functions, when signed in. */
+/**
+ * Gives guests an anonymous Supabase session, so every request to the coach carries a real
+ * user token and the coach stays closed to the open internet. Requires "Allow anonymous
+ * sign-ins" in Supabase; without it, guests simply use the coach in demo mode.
+ */
+async function ensureGuestSession() {
+  if (!supabase) return;
+  const { data } = await supabase.auth.getSession();
+  if (!data.session) await supabase.auth.signInAnonymously().catch(() => {});
+}
+
+/** Access token for calling our own server functions (a real or anonymous session). */
 export async function currentAccessToken(): Promise<string | null> {
   if (!supabase) return null;
   const { data } = await supabase.auth.getSession();

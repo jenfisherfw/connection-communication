@@ -37,13 +37,18 @@ export const setLeaderContext = (ctx: LeaderContext) => {
   leader = ctx;
 };
 
-async function post<T>(body: object): Promise<T> {
-  const token = (await currentAccessToken()) ?? supabaseAnonKey;
+/** The live coach needs a user session (real or anonymous). Without one, fall back to demo replies. */
+async function liveToken(): Promise<string | null> {
+  if (!COACH_URL) return null;
+  return currentAccessToken();
+}
+
+async function post<T>(token: string, body: object): Promise<T> {
   const res = await fetch(COACH_URL!, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      Authorization: `Bearer ${token}`,
       ...(supabaseAnonKey ? { apikey: supabaseAnonKey } : {}),
     },
     body: JSON.stringify({ ...body, leader }),
@@ -57,7 +62,8 @@ const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 /* ---------- Ask the Coach ---------- */
 
 export async function askCoach(messages: ChatMessage[]): Promise<string> {
-  if (COACH_URL) return (await post<{ reply: string }>({ mode: 'coach', messages })).reply;
+  const token = await liveToken();
+  if (token) return (await post<{ reply: string }>(token, { mode: 'coach', messages })).reply;
   await wait(700);
   return demoCoachReply(messages[messages.length - 1]?.content ?? '');
 }
@@ -79,14 +85,16 @@ function demoCoachReply(text: string): string {
 /* ---------- Role play ---------- */
 
 export async function roleplayReply(rp: Roleplay, messages: ChatMessage[]): Promise<string> {
-  if (COACH_URL) return (await post<{ reply: string }>({ mode: 'roleplay', roleplayId: rp.id, persona: rp.persona, brief: rp.brief, messages })).reply;
+  const token = await liveToken();
+  if (token) return (await post<{ reply: string }>(token, { mode: 'roleplay', roleplayId: rp.id, persona: rp.persona, brief: rp.brief, messages })).reply;
   await wait(800);
   const userTurns = messages.filter((m) => m.role === 'user').length;
   return rp.demoReplies[Math.min(userTurns - 1, rp.demoReplies.length - 1)];
 }
 
 export async function roleplayFeedback(rp: Roleplay, messages: ChatMessage[]): Promise<RoleplayFeedback> {
-  if (COACH_URL) return post<RoleplayFeedback>({ mode: 'feedback', roleplayId: rp.id, brief: rp.brief, messages });
+  const token = await liveToken();
+  if (token) return post<RoleplayFeedback>(token, { mode: 'feedback', roleplayId: rp.id, brief: rp.brief, messages });
   await wait(900);
   return demoFeedback(messages);
 }

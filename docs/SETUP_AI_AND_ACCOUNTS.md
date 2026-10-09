@@ -33,10 +33,11 @@ One Supabase project powers both the live AI coach and account sign in. Plan on 
 
 ## Step 5: Set up sign in
 1. Open **Authentication > Sign In / Providers** and make sure **Email** is enabled.
-2. For your private beta, you can turn off **Confirm email** so testers can sign in right away. Turn it back on before a public launch.
+2. Turn on **Allow anonymous sign-ins**. This gives people who skip creating an account a private guest session, so they can still use the live coach while it stays closed to everyone outside the app. Without it, guests see demo replies.
+3. For your private beta, you can turn off **Confirm email** so testers can sign in right away. Turn it back on before a public launch.
 
 ## Step 6: Connect the app
-1. Open **Project Settings > API** and copy the **Project URL** and the **anon public** key.
+1. Open **Project Settings > API** and copy the **Project URL** and the **anon public** or **publishable** key (it starts with `eyJ` or `sb_publishable_`). These are already filled in for the Rapport project in the `.env` file at the root of this repo.
 2. In the project folder, copy `.env.example` to a new file called `.env.local` and fill in:
    ```
    EXPO_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
