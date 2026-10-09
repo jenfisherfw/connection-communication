@@ -29,7 +29,7 @@ npm install
 npx expo start        # press i for iOS simulator, a for Android, w for web
 ```
 
-Scan the QR code with the Expo Go app to try it on your phone. On Windows, follow the step by step guide in [docs/RUN_ON_WINDOWS.md](docs/RUN_ON_WINDOWS.md).
+Scan the QR code with the Expo Go app to try it on your phone. On Windows, follow the step by step guide in [docs/RUN_ON_WINDOWS.md](docs/RUN_ON_WINDOWS.md). To put it on a phone without connecting to your computer, see [docs/PREVIEW_ON_PHONE.md](docs/PREVIEW_ON_PHONE.md).
 
 ### Turning on the AI coach and accounts
 
