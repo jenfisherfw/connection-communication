@@ -2,7 +2,8 @@ import { Fraunces_600SemiBold, Fraunces_700Bold } from '@expo-google-fonts/fraun
 import { Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold, useFonts } from '@expo-google-fonts/inter';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { ActivityIndicator, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AREAS } from '../data/content';
 import { setLeaderContext } from '../services/coach';
@@ -10,6 +11,19 @@ import { applyReminders } from '../services/reminders';
 import { AccountProvider } from '../state/Account';
 import { AppStateProvider, useAppState } from '../state/AppState';
 import { colors } from '../theme';
+
+// If anything crashes while rendering, show the error on screen instead of a blank page.
+export { ErrorBoundary } from 'expo-router';
+
+/** Shown while the app gets ready, so a slow start never looks like a blank white screen. */
+function Loading() {
+  return (
+    <View style={{ flex: 1, backgroundColor: colors.primary, alignItems: 'center', justifyContent: 'center', gap: 16 }}>
+      <Text style={{ color: '#fff', fontSize: 28, fontWeight: '700', letterSpacing: 1 }}>Rapport</Text>
+      <ActivityIndicator color="#fff" />
+    </View>
+  );
+}
 
 /** Keeps device reminders and the coach's view of the leader in step with their profile. */
 function ProfileEffects() {
@@ -34,7 +48,7 @@ function ProfileEffects() {
 
 function Navigator() {
   const { ready } = useAppState();
-  if (!ready) return null;
+  if (!ready) return <Loading />;
   return (
     <>
       <ProfileEffects />
@@ -49,8 +63,14 @@ function Navigator() {
 }
 
 export default function RootLayout() {
-  const [loaded] = useFonts({ Fraunces_600SemiBold, Fraunces_700Bold, Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold });
-  if (!loaded) return null;
+  const [loaded, fontError] = useFonts({ Fraunces_600SemiBold, Fraunces_700Bold, Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold });
+  // Brand fonts are a nicety: if they fail or stall, carry on with the system font.
+  const [fontTimeout, setFontTimeout] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setFontTimeout(true), 5000);
+    return () => clearTimeout(t);
+  }, []);
+  if (!loaded && !fontError && !fontTimeout) return <Loading />;
   return (
     <SafeAreaProvider>
       <AppStateProvider>
