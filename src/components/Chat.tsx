@@ -19,6 +19,19 @@ interface Props {
   disabled?: boolean;
 }
 
+/** Ari's replies mark emphasis with **double asterisks**; render those as bold instead of showing the symbols. */
+function renderBold(text: string) {
+  return text.split(/\*\*(.+?)\*\*/g).map((part, i) =>
+    i % 2 === 1 ? (
+      <Text key={i} style={{ fontFamily: fonts.semibold }}>
+        {part}
+      </Text>
+    ) : (
+      part
+    ),
+  );
+}
+
 export function Chat({ messages, typing, onSend, placeholder, partnerInitial, partnerColor, partnerSoft, header, footer, suggestions, initialText = '', disabled }: Props) {
   const [text, setText] = useState(initialText);
   const scroll = useRef<ScrollView>(null);
@@ -45,7 +58,7 @@ export function Chat({ messages, typing, onSend, placeholder, partnerInitial, pa
                 <Text style={[s.avatarText, { color: partnerColor }]}>{partnerInitial}</Text>
               </View>
               <View style={[s.bubble, s.theirs]}>
-                <Text style={s.theirText}>{m.content}</Text>
+                <Text style={s.theirText}>{renderBold(m.content)}</Text>
               </View>
             </View>
           ) : (
