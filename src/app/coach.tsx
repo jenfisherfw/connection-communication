@@ -20,6 +20,8 @@ const SUGGESTIONS = [
   'How do I shift a negative team culture?',
   'My team is tired of constant change',
   'How do I run a better 1:1?',
+  'How do I make our meetings shorter and better?',
+  'How do I keep my remote team connected?',
 ];
 
 export default function Coach() {

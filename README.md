@@ -19,6 +19,8 @@
 | Weekday reminder notifications | `src/services/reminders.ts` |
 | Change management and culture: quizzes, scenarios, and AI role plays in Leading Change and Culture Shifts | `src/data/content.ts` |
 | Change Message Builder: draft a change announcement, then polish it with Ari | `src/app/change-message.tsx` |
+| Effective Meetings, 1:1s That Matter, Digital Communication, and Presence & Presenting skill areas | `src/data/content.ts` |
+| Tone Check: see how an email or chat message will land before sending it | `src/app/tone-check.tsx` |
 | Skill areas with mastery bars | Explore and `src/app/area/[id].tsx` |
 | Levels, badges, weekly goal, team leaderboard | Progress |
 

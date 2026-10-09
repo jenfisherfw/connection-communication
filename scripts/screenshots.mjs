@@ -133,6 +133,18 @@ await go('/roleplay/resistant-veteran');
 await type('Respond to Pat', 'Fair question, Pat. You have seen more rollouts than anyone here. What went wrong with the last two?');
 await settle(1400);                await shot('32-roleplay-change-skeptic');
 
+// Meetings, 1:1s, digital communication, presence
+await go('/area/meetings');        await shot('33-area-meetings');
+await go('/area/oneonones');       await shot('34-area-oneonones');
+await go('/area/digital');         await shot('35-area-digital');
+await go('/area/presence');        await shot('36-area-presence');
+await go('/tone-check');
+await page.getByPlaceholder('Paste or type').fill('Please FIX this ASAP!!! You ALWAYS miss the CEO deadlines.');
+await shot('37-tone-check');
+await go('/scenario/checked-out-1on1');
+await tap('Is this time useful for you'); await settle(); await shot('38-scenario-1on1');
+await go('/explore');              await scrollBy(560); await shot('39-explore-all-skills');
+
 // Onboarding, as a brand new user sees it
 const fresh = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true });
 const p2 = await fresh.newPage();

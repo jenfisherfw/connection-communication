@@ -1,6 +1,6 @@
 import { colors } from '../theme';
 
-export type AreaId = 'feedback' | 'conflict' | 'listening' | 'trust' | 'recognition' | 'change' | 'culture';
+export type AreaId = 'feedback' | 'conflict' | 'listening' | 'trust' | 'recognition' | 'change' | 'culture' | 'meetings' | 'oneonones' | 'digital' | 'presence';
 
 export interface SkillArea {
   id: AreaId;
@@ -19,6 +19,10 @@ export const AREAS: SkillArea[] = [
   { id: 'recognition', title: 'Recognition', tagline: 'Make good work visible', icon: 'award', color: colors.amber, soft: colors.amberSoft },
   { id: 'change', title: 'Leading Change', tagline: 'Bring people with you', icon: 'trending-up', color: colors.blue, soft: colors.blueSoft },
   { id: 'culture', title: 'Culture Shifts', tagline: 'Shape how your team works', icon: 'sun', color: colors.rose, soft: colors.roseSoft },
+  { id: 'meetings', title: 'Effective Meetings', tagline: 'Fewer, shorter, better', icon: 'calendar', color: colors.green, soft: colors.greenSoft },
+  { id: 'oneonones', title: '1:1s That Matter', tagline: 'Their meeting, not yours', icon: 'users', color: colors.plum, soft: colors.plumSoft },
+  { id: 'digital', title: 'Digital Communication', tagline: 'Email, chat, and remote teams', icon: 'send', color: colors.sky, soft: colors.skySoft },
+  { id: 'presence', title: 'Presence & Presenting', tagline: 'Land the message in the room', icon: 'volume-2', color: colors.orange, soft: colors.orangeSoft },
 ];
 
 export const areaById = (id: AreaId) => AREAS.find((a) => a.id === id)!;
@@ -221,6 +225,136 @@ export const QUIZZES: Quiz[] = [
       },
     ],
   },
+  {
+    id: 'meeting-essentials',
+    area: 'meetings',
+    title: 'Meeting Essentials',
+    subtitle: 'Is this meeting worth everyone\'s time?',
+    minutes: 3,
+    xp: 40,
+    questions: [
+      {
+        q: 'Before sending a meeting invite, the first question to ask is:',
+        options: ['Who should attend?', 'Could this be solved without a meeting?', 'How long should it be?', 'Which room is free?'],
+        answer: 1,
+        why: 'Many status updates and announcements work better in writing. Save live time for decisions, problem solving, and connection.',
+      },
+      {
+        q: 'Which agenda item is strongest?',
+        options: ['"Budget"', '"Discuss Q3 budget"', '"Decide which two Q3 projects to fund (decision needed)"', '"Budget updates and other items"'],
+        answer: 2,
+        why: 'Framing agenda items as questions or decisions tells people what to prepare and makes it obvious when the meeting is done.',
+      },
+      {
+        q: 'Two people have done most of the talking. The best facilitation move is:',
+        options: ['Let it run; they clearly care', '"Let\'s hear from someone who hasn\'t spoken yet. Sam, what\'s your take?"', 'End the meeting early', 'Cut the loudest person off'],
+        answer: 1,
+        why: 'Inviting a specific quieter voice, warmly, balances the room without shaming anyone. Rounds and silent writing work well too.',
+      },
+      {
+        q: 'What should every meeting end with?',
+        options: ['A thank you', 'Decisions made, owners, and deadlines, confirmed out loud', 'The date of the next meeting', 'A summary of everything discussed'],
+        answer: 1,
+        why: 'Most meeting value is lost after the meeting. Naming who does what by when, and sending it in writing, turns talk into action.',
+      },
+    ],
+  },
+  {
+    id: 'one-on-one-basics',
+    area: 'oneonones',
+    title: '1:1 Fundamentals',
+    subtitle: 'The most important meeting on your calendar',
+    minutes: 3,
+    xp: 40,
+    questions: [
+      {
+        q: 'Whose meeting is a 1:1?',
+        options: ['The manager\'s, to get status updates', 'The direct report\'s, to raise what matters to them', 'HR\'s, for documentation', 'The team\'s'],
+        answer: 1,
+        why: 'Let your report set most of the agenda. Status can go in a shared doc; the 1:1 is for their priorities, blockers, and growth.',
+      },
+      {
+        q: 'You are slammed this week. What should you do with your 1:1s?',
+        options: ['Cancel them; your team will understand', 'Keep them, even if shorter', 'Move them all to Friday evening', 'Replace them with a team meeting'],
+        answer: 1,
+        why: 'Repeatedly cancelled 1:1s tell people they are not a priority. A short 15 minute check in protects the relationship.',
+      },
+      {
+        q: 'Which question opens up the most useful conversation?',
+        options: ['"Everything good?"', '"Any updates?"', '"What\'s been the hardest part of your week?"', '"Are you on track?"'],
+        answer: 2,
+        why: 'Specific, open questions get past the reflexive "all good" and surface what people actually need help with.',
+      },
+      {
+        q: 'How often should career growth come up in 1:1s?',
+        options: ['Only at annual reviews', 'Regularly, such as once a month or quarter', 'Only when they ask', 'Never; that is HR\'s job'],
+        answer: 1,
+        why: 'People who feel their manager invests in their growth stay longer and do better work. Make it a recurring topic.',
+      },
+    ],
+  },
+  {
+    id: 'digital-clarity',
+    area: 'digital',
+    title: 'Digital Communication',
+    subtitle: 'Clear and kind when nobody can see your face',
+    minutes: 3,
+    xp: 40,
+    questions: [
+      {
+        q: 'You need to give constructive feedback to someone on your remote team. The best channel is:',
+        options: ['A quick chat message', 'An email with the details', 'A video call, followed by a short written recap', 'A comment in the shared doc'],
+        answer: 2,
+        why: 'Text strips out tone, so feedback reads harsher than intended. Talk live, then confirm the agreed next steps in writing.',
+      },
+      {
+        q: 'A manager sends "Can we talk tomorrow?" late at night with no context. The likely effect:',
+        options: ['None, it\'s efficient', 'The person worries all night', 'It shows urgency in a helpful way', 'It saves time'],
+        answer: 1,
+        why: 'Vague messages from a manager create anxiety. Add context: "Can we talk tomorrow about the client launch? Nothing urgent."',
+      },
+      {
+        q: 'What is the strongest first line for a long email?',
+        options: ['"Hope you\'re doing well!"', '"As discussed in the meeting last week..."', '"Decision needed by Friday: which vendor should we choose?"', '"Just following up"'],
+        answer: 2,
+        why: 'Put the ask and deadline first. Busy readers decide from the first line whether to act now or later.',
+      },
+      {
+        q: 'Your team spans time zones. Which habit builds the most trust?',
+        options: ['Expecting replies within an hour', 'Scheduling messages for the recipient\'s working hours', 'Holding all meetings in your time zone', 'Using only email'],
+        answer: 1,
+        why: 'Respecting people\'s off hours signals that you value their wellbeing, and it sets a norm the whole team can follow.',
+      },
+    ],
+  },
+  {
+    id: 'leader-presence',
+    area: 'presence',
+    title: 'Presence & Presenting',
+    subtitle: 'How leaders land a message',
+    minutes: 3,
+    xp: 40,
+    questions: [
+      {
+        q: 'You have five minutes at an all hands. How should you start?',
+        options: ['With your agenda', 'With the single most important point', 'With a long story', 'With an apology for running short on time'],
+        answer: 1,
+        why: 'Lead with the headline. If people remember only one thing, make sure it is the thing that matters.',
+      },
+      {
+        q: 'Someone asks a tough question you cannot fully answer in front of the group. The best response:',
+        options: ['Answer confidently anyway', '"Great question. Here\'s what I know, here\'s what I don\'t, and I\'ll follow up by Thursday."', '"Let\'s take that offline" and move on', 'Ask someone else to answer'],
+        answer: 1,
+        why: 'Honesty plus a specific follow up builds credibility. "Let\'s take it offline" without a commitment sounds like dodging.',
+      },
+      {
+        q: 'What most affects whether people trust a leader\'s message?',
+        options: ['Polished slides', 'Consistency between what they say and what they do', 'A confident tone', 'Using data'],
+        answer: 1,
+        why: 'People watch actions more than words. A message lands when it matches what they have seen you do.',
+      },
+    ],
+  },
 ];
 
 /* ---------- Scenarios (choose your response) ---------- */
@@ -346,6 +480,111 @@ export const SCENARIOS: Scenario[] = [
       { text: '"Thanks, Lee. Let me go first: one thing I could do better is give clearer priorities. What else would make your week easier?"', score: 3, feedback: 'Going first with your own improvement makes it safe for others to be honest.' },
       { text: '"Come on, someone must have an idea."', score: 1, feedback: 'Pressure increases the risk of speaking up. People need safety, not a push.' },
       { text: '"Okay, send me ideas by email if you think of any."', score: 2, feedback: 'A private channel helps, but pair it with modeling candor yourself in the room.' },
+    ],
+  },
+  {
+    id: 'meeting-derail',
+    area: 'meetings',
+    title: 'The Meeting Derails',
+    setup: 'You are 20 minutes into a 30 minute decision meeting. The group has drifted into a long debate about a side topic.',
+    person: 'Riley, Product Manager',
+    quote: '"And another thing about the logo color..."',
+    xp: 30,
+    choices: [
+      { text: 'Let it play out. People seem engaged.', score: 1, feedback: 'Engagement on the wrong topic still burns the meeting. The decision you came for gets rushed or skipped.' },
+      { text: '"This matters, so let\'s park it and give it its own time. We have 10 minutes to decide on the launch date. Where do we land?"', score: 3, feedback: 'You honored the topic, protected the purpose, and refocused the room on the decision.' },
+      { text: '"We\'re off topic. Moving on."', score: 2, feedback: 'Right instinct, but saying when the parked topic will be addressed keeps people from feeling dismissed.' },
+      { text: 'Schedule a follow up meeting to make the decision.', score: 1, feedback: 'Another meeting rewards the drift. Facilitate back to the decision while people are in the room.' },
+    ],
+  },
+  {
+    id: 'meeting-no-actions',
+    area: 'meetings',
+    title: 'Groundhog Day Meeting',
+    setup: 'Your weekly project meeting keeps revisiting the same issues. Nothing seems to move between meetings.',
+    person: 'Sky, Engineer',
+    quote: '"Didn\'t we talk about this last week too?"',
+    xp: 30,
+    choices: [
+      { text: '"Yes, let\'s keep discussing until we figure it out."', score: 1, feedback: 'More discussion without owners produces the same result next week.' },
+      { text: '"You\'re right. From now on we\'ll end with owners and dates, and I\'ll send a recap within an hour. Let\'s start with this one: who takes it?"', score: 3, feedback: 'You named the pattern and fixed the system. Clear owners and a written recap are what make meetings move work forward.' },
+      { text: '"Let\'s make this meeting longer so we have time to finish."', score: 1, feedback: 'Longer meetings rarely fix a lack of follow through.' },
+      { text: '"I\'ll follow up with each of you separately."', score: 2, feedback: 'Helpful, but the group never sees shared commitments. Make accountability visible.' },
+    ],
+  },
+  {
+    id: 'checked-out-1on1',
+    area: 'oneonones',
+    title: 'The "All Good" 1:1',
+    setup: 'In your weekly 1:1, your report gives one word answers and says there is nothing to discuss. This is the third week in a row.',
+    person: 'Taylor, Designer',
+    quote: '"Nothing much to talk about. Everything\'s good."',
+    xp: 30,
+    choices: [
+      { text: '"Great, let\'s end early then!"', score: 1, feedback: 'Three weeks of "all good" is a signal. Ending early means you miss whatever is going unsaid.' },
+      { text: '"I\'m glad things are steady. I\'ve noticed our 1:1s have gotten short lately. Is this time useful for you? What would make it more valuable?"', score: 3, feedback: 'You named the pattern without blame and invited them to shape the meeting. That often unlocks the real conversation.' },
+      { text: '"Okay, let\'s go through your project list then."', score: 2, feedback: 'Status fills the time, but turns the 1:1 into your meeting instead of theirs.' },
+      { text: '"Is something wrong? You seem disengaged."', score: 1, feedback: 'A direct label can feel like an accusation and prompt defensiveness. Lead with curiosity.' },
+    ],
+  },
+  {
+    id: 'career-question',
+    area: 'oneonones',
+    title: 'The Career Question',
+    setup: 'Near the end of a 1:1, your report brings up something you were not expecting.',
+    person: 'Jamie, Analyst',
+    quote: '"Honestly, I\'m not sure where my career is going here."',
+    xp: 30,
+    choices: [
+      { text: '"You\'re doing great, don\'t worry about it."', score: 1, feedback: 'Reassurance closes the door on an important conversation they found the courage to open.' },
+      { text: '"Thank you for telling me. That matters. Let\'s give it real time: can we spend our next 1:1 on where you want to grow, and I\'ll come with ideas too?"', score: 3, feedback: 'You valued the disclosure and committed specific time to it. That builds loyalty and trust.' },
+      { text: '"Have you looked at the internal job board?"', score: 1, feedback: 'Pointing elsewhere can sound like you are not invested in their growth.' },
+      { text: '"What do you want to be doing in two years?"', score: 2, feedback: 'A great question, but at the end of a meeting it may get a rushed answer. Make dedicated time for it.' },
+    ],
+  },
+  {
+    id: 'slack-misfire',
+    area: 'digital',
+    title: 'The Message That Landed Wrong',
+    setup: 'You posted "This needs to be redone" on a team member\'s work in a team chat channel. An hour later they message you privately.',
+    person: 'Robin, Marketing Specialist',
+    quote: '"Was that really necessary in front of everyone?"',
+    xp: 30,
+    choices: [
+      { text: '"It was just feedback, don\'t take it personally."', score: 1, feedback: 'Dismissing their reaction compounds the hit. Text lacks tone, and public critique stings.' },
+      { text: '"You\'re right, and I\'m sorry. That was too blunt and too public. Can we hop on a quick call so I can explain what I meant and how I can help?"', score: 3, feedback: 'You owned the impact and moved to a richer channel to repair it. That models exactly the culture you want.' },
+      { text: 'Delete the message and say nothing.', score: 1, feedback: 'Deleting it without acknowledging it leaves the hurt in place.' },
+      { text: '"Sorry if it came across wrong."', score: 2, feedback: 'A start, but "if" softens accountability. Own it directly, then repair.' },
+    ],
+  },
+  {
+    id: 'remote-quiet',
+    area: 'digital',
+    title: 'Camera Off, Voice Off',
+    setup: 'One remote team member has had their camera off and been silent in video meetings for weeks. You have a team call starting now.',
+    person: 'Casey, Remote Analyst',
+    quote: '(silence)',
+    xp: 30,
+    choices: [
+      { text: 'Ask everyone to turn cameras on.', score: 1, feedback: 'A blanket rule can embarrass people and does not address why they have gone quiet.' },
+      { text: 'Use the chat or a quick round so everyone contributes, then check in with Casey privately afterward.', score: 3, feedback: 'You made participation easier for everyone and followed up one on one, where people are more likely to share what is going on.' },
+      { text: 'Call on Casey first, by name, in front of the group.', score: 1, feedback: 'Putting someone on the spot when they have withdrawn often deepens the withdrawal.' },
+      { text: 'Ignore it; remote work is different.', score: 1, feedback: 'Isolation is a real risk on remote teams. Silence deserves curiosity.' },
+    ],
+  },
+  {
+    id: 'tough-question-allhands',
+    area: 'presence',
+    title: 'The Hard Question at All Hands',
+    setup: 'You are presenting quarterly results to 60 people. Results were mixed. A hand goes up.',
+    person: 'Sam, Sales Rep',
+    quote: '"If we missed the target, why are leaders still getting bonuses?"',
+    xp: 30,
+    choices: [
+      { text: '"That\'s not something we discuss here."', score: 1, feedback: 'Shutting down a question in public tells the whole room that hard questions are unwelcome.' },
+      { text: '"That\'s a fair question, and I can tell it matters. Here\'s what I know about how bonuses work this year. I\'ll get you a fuller answer by Friday."', score: 3, feedback: 'You validated the question, shared what you could, and committed to a follow up. That is credibility under pressure.' },
+      { text: 'Laugh it off and move to the next slide.', score: 1, feedback: 'Deflecting with humor reads as dismissive when stakes are personal for people.' },
+      { text: '"Let\'s take that offline."', score: 2, feedback: 'Sometimes appropriate, but without a specific follow up it sounds like avoidance.' },
     ],
   },
 ];
@@ -486,6 +725,74 @@ export const ROLEPLAYS: Roleplay[] = [
     ],
     xp: 80,
   },
+  {
+    id: 'run-the-meeting',
+    area: 'meetings',
+    title: 'Rein In the Rambler',
+    person: 'Drew',
+    role: 'Senior Sales Lead',
+    difficulty: 'Moderate',
+    brief: 'Drew is passionate and dominates your team meetings, and others have stopped contributing. You are meeting with Drew 1:1 to address it without dampening their energy.',
+    opener: 'Hey! Great meeting yesterday, right? I think we really made progress.',
+    persona: 'You are Drew, an energetic senior sales lead who loves debate and thinks long discussion is a sign of a healthy meeting. You do not notice that you talk most. You are open to feedback if the manager values your energy, gives a specific example, and suggests a concrete role for you. Keep replies short.',
+    demoReplies: [
+      'Oh, I didn\'t realize I was talking that much. I just get excited.',
+      'Huh. Priya didn\'t say anything the whole time, now that you mention it.',
+      'I like that. If I can be the one who asks the quiet folks for their take, I\'m in.',
+    ],
+    xp: 60,
+  },
+  {
+    id: 'first-one-on-one',
+    area: 'oneonones',
+    title: 'Your First 1:1',
+    person: 'Morgan',
+    role: 'New Direct Report',
+    difficulty: 'Warm up',
+    brief: 'You just took over a team. This is your first 1:1 with Morgan, who reported to the previous manager for three years. Build trust, learn how they like to work, and set expectations together.',
+    opener: 'Hi. So, I guess this is our first one of these. What did you want to cover?',
+    persona: 'You are Morgan, a capable team member who liked the previous manager and is a little guarded with the new one. You warm up if the new manager asks about your work, how you like to be managed, and what you hope stays the same. Keep replies short.',
+    demoReplies: [
+      'Sure. I\'ve been here three years, mostly on the client reporting side.',
+      'I like a lot of autonomy, honestly. But I appreciate a heads up when priorities shift.',
+      'That sounds good. Weekly works, and I like that I can set the agenda.',
+    ],
+    xp: 40,
+  },
+  {
+    id: 'remote-tone',
+    area: 'digital',
+    title: 'Repairing a Remote Misread',
+    person: 'Robin',
+    role: 'Remote Marketing Specialist',
+    difficulty: 'Moderate',
+    brief: 'A short message you sent on chat came across as harsh, and Robin has been distant since. You have scheduled a video call to repair it.',
+    opener: 'Hi. You wanted to talk?',
+    persona: 'You are Robin, a remote marketing specialist who felt publicly criticized by a terse chat message from your manager. You are hurt and a bit guarded. You relax if the manager owns the impact without excuses, explains their intent, and asks what would help. Keep replies short.',
+    demoReplies: [
+      'Honestly, it felt like you were calling me out in front of the whole team.',
+      'I appreciate you saying that. It\'s hard to read tone over chat.',
+      'A quick call for anything critical would help. And I\'ll ask if I\'m unsure what you meant.',
+    ],
+    xp: 60,
+  },
+  {
+    id: 'present-bad-news',
+    area: 'presence',
+    title: 'Presenting Bad News Upward',
+    person: 'Alex',
+    role: 'Your VP',
+    difficulty: 'Tough',
+    brief: 'Your project will miss its launch date by six weeks. You are briefing your VP. Be clear, own it, and come with options.',
+    opener: 'You said you needed ten minutes. What\'s going on with the launch?',
+    persona: 'You are Alex, a busy VP who values directness and hates surprises. You get frustrated by long preambles or excuses. You respond well when the manager leads with the headline, takes ownership, and offers options with a recommendation. Keep replies short.',
+    demoReplies: [
+      'Six weeks. Okay. Why am I only hearing about this now?',
+      'I appreciate you owning that. What are my options?',
+      'Your recommendation makes sense. Send me a one page summary today and I\'ll back you with the client.',
+    ],
+    xp: 80,
+  },
 ];
 
 /* ---------- Reflection prompts, tips, badges ---------- */
@@ -501,6 +808,10 @@ export const REFLECTIONS = [
   { area: 'change' as AreaId, prompt: 'What is your team being asked to let go of in the current change? Have you acknowledged that loss out loud?' },
   { area: 'culture' as AreaId, prompt: 'What behavior on your team have you been tolerating that does not match the culture you want?' },
   { area: 'culture' as AreaId, prompt: 'If a new hire watched you for one week, what would they conclude your team values most?' },
+  { area: 'meetings' as AreaId, prompt: 'Look at your calendar for next week. Which meeting could become an email, and which deserves more time than it gets?' },
+  { area: 'oneonones' as AreaId, prompt: 'In your last round of 1:1s, who did most of the talking? What did you learn that you could not have learned any other way?' },
+  { area: 'digital' as AreaId, prompt: 'Reread the last three messages you sent your team. How would they sound if you read them on a stressful day?' },
+  { area: 'presence' as AreaId, prompt: 'What is the one message you want your team to remember from you this month? How many times have you said it?' },
 ];
 
 export const TIPS = [
@@ -515,6 +826,12 @@ export const TIPS = [
   'In every change, say what is staying the same. Stability anchors people while everything else moves.',
   'Culture is what you reward and what you tolerate. Both send a message every day.',
   'Celebrate the first small win of any change publicly. Momentum is a communication tool.',
+  'Every meeting needs a purpose you can say in one sentence. If you cannot, it might be an email.',
+  'End meetings by saying who does what by when, then send it in writing within the hour.',
+  'Never cancel a 1:1 twice in a row. Shorten it instead.',
+  'Before you hit send, reread your message as if you were having a bad day.',
+  'Put the ask and the deadline in the first line of an email.',
+  'Lead with the headline. If people remember one thing, make it the thing that matters.',
 ];
 
 export const CONVERSATION_STARTERS = [
@@ -524,6 +841,8 @@ export const CONVERSATION_STARTERS = [
   { tag: 'Trust', text: 'What is something I do that makes your job harder?' },
   { tag: 'Change', text: 'What worries you most about the changes coming up, and what would help?' },
   { tag: 'Culture', text: 'What is one thing about how our team works that you would never want to lose?' },
+  { tag: '1:1', text: 'What should we talk about today that we did not plan to?' },
+  { tag: 'Remote', text: 'How are you doing with the remote setup? What would make it easier to stay connected?' },
 ];
 
 export interface Badge {
@@ -543,7 +862,9 @@ export const BADGES: Badge[] = [
   { id: 'reflector', title: 'Deep Thinker', description: 'Write 3 reflections', icon: 'feather', color: colors.blue },
   { id: 'change-champion', title: 'Change Champion', description: 'Earn 100 XP in Leading Change', icon: 'trending-up', color: colors.blue },
   { id: 'culture-builder', title: 'Culture Builder', description: 'Earn 100 XP in Culture Shifts', icon: 'sun', color: colors.rose },
-  { id: 'well-rounded', title: 'Well Rounded', description: 'Earn XP in all 7 skill areas', icon: 'compass', color: colors.primary },
+  { id: 'meeting-master', title: 'Meeting Master', description: 'Earn 100 XP in Effective Meetings', icon: 'calendar', color: colors.green },
+  { id: 'connector', title: 'Connector', description: 'Earn 100 XP in 1:1s That Matter', icon: 'users', color: colors.plum },
+  { id: 'well-rounded', title: 'Well Rounded', description: 'Earn XP in every skill area', icon: 'compass', color: colors.primary },
   { id: 'level-5', title: 'Trusted Leader', description: 'Reach level 5', icon: 'star', color: colors.amber },
 ];
 

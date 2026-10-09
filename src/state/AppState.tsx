@@ -85,6 +85,8 @@ function computeBadges(p: Progress): string[] {
   if (p.reflections.length >= 3) earned.add('reflector');
   if ((p.areaXp.change ?? 0) >= 100) earned.add('change-champion');
   if ((p.areaXp.culture ?? 0) >= 100) earned.add('culture-builder');
+  if ((p.areaXp.meetings ?? 0) >= 100) earned.add('meeting-master');
+  if ((p.areaXp.oneonones ?? 0) >= 100) earned.add('connector');
   if (AREAS.every((a) => (p.areaXp[a.id] ?? 0) > 0)) earned.add('well-rounded');
   if (levelFor(p.xp).level >= 5) earned.add('level-5');
   return BADGES.map((b) => b.id).filter((id) => earned.has(id));

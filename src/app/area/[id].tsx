@@ -6,6 +6,11 @@ import { AREAS, AreaId, QUIZZES, ROLEPLAYS, SCENARIOS } from '../../data/content
 import { useAppState } from '../../state/AppState';
 import { colors, fonts } from '../../theme';
 
+const TOOLS: Partial<Record<AreaId, { title: string; subtitle: string; icon: 'edit-3' | 'send'; href: '/change-message' | '/tone-check' }>> = {
+  change: { title: 'Change Message Builder', subtitle: 'Draft an announcement, then polish it with Ari', icon: 'edit-3', href: '/change-message' },
+  digital: { title: 'Tone Check', subtitle: 'See how a message will land before you send it', icon: 'send', href: '/tone-check' },
+};
+
 export default function AreaScreen() {
   const { id } = useLocalSearchParams<{ id: AreaId }>();
   const area = AREAS.find((a) => a.id === id) ?? AREAS[0];
@@ -61,11 +66,11 @@ export default function AreaScreen() {
         </>
       ) : null}
       {empty ? <Text style={s.empty}>New content for this skill is on the way. Ask Coach Ari anything in the meantime.</Text> : null}
-      {area.id === 'change' ? (
+      {TOOLS[area.id] ? (
         <>
           <SectionHeader title="Tools" />
           <Card style={{ padding: 0, overflow: 'hidden' }}>
-            <Row icon="edit-3" iconColor={area.color} iconSoft={area.soft} title="Change Message Builder" subtitle="Draft an announcement, then polish it with Ari" onPress={() => router.push('/change-message')} last />
+            <Row icon={TOOLS[area.id]!.icon} iconColor={area.color} iconSoft={area.soft} title={TOOLS[area.id]!.title} subtitle={TOOLS[area.id]!.subtitle} onPress={() => router.push(TOOLS[area.id]!.href)} last />
           </Card>
         </>
       ) : null}

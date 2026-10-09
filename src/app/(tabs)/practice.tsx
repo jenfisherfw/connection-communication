@@ -74,6 +74,17 @@ export default function Practice() {
         <Feather name="chevron-right" size={20} color={colors.faint} />
       </Card>
 
+      <Card style={s.tool} onPress={() => router.push('/tone-check')}>
+        <View style={[s.toolIcon, { backgroundColor: colors.skySoft }]}>
+          <Feather name="send" size={22} color={colors.sky} />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Text style={s.rpTitle}>Tone Check</Text>
+          <Text style={s.rpSub}>Paste an email or chat message and see how it will land before you send it</Text>
+        </View>
+        <Feather name="chevron-right" size={20} color={colors.faint} />
+      </Card>
+
       <Card style={s.custom} onPress={() => router.push({ pathname: '/coach', params: { seed: 'I want to rehearse a conversation. Here is the situation: ' } })}>
         <Feather name="plus-circle" size={24} color={colors.primary} />
         <View style={{ flex: 1 }}>
