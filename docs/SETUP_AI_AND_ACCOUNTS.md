@@ -19,6 +19,7 @@ One Supabase project powers both the live AI coach and account sign in. Plan on 
 ## Step 3: Add your Anthropic key as a secret
 1. Open **Edge Functions**, then **Secrets** (or **Project Settings > Edge Functions**).
 2. Add a secret named `ANTHROPIC_API_KEY` with your key as the value. It stays on Supabase's servers and never goes into the app.
+3. Use a key that belongs to a workspace: in the Anthropic console, open **Workspaces**, pick one (or create one called `Rapport`), and create the API key from inside it. If your key is not tied to a workspace, the coach logs "This API key is not scoped to a workspace." In that case either create a new key inside a workspace, or add a second secret named `ANTHROPIC_WORKSPACE_ID` with the workspace ID (it starts with `wrkspc_` and is shown on the workspace's page).
 
 ## Step 4: Deploy the coach
 1. In **Edge Functions**, click **Deploy a new function**, then **Via Editor**.

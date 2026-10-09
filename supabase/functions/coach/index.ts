@@ -2,6 +2,7 @@
 // Deploy from the dashboard (Edge Functions > Deploy a new function > Via Editor, name it "coach")
 // or with the CLI:  supabase functions deploy coach
 // Secret:  ANTHROPIC_API_KEY (Edge Functions > Secrets)
+// Optional: ANTHROPIC_WORKSPACE_ID, only needed when the key is not scoped to a workspace
 import Anthropic from 'npm:@anthropic-ai/sdk@0.131.0';
 
 const MODEL = 'claude-opus-5-5';
@@ -11,7 +12,8 @@ let client: Anthropic | null = null;
 function anthropic(): Anthropic {
   const apiKey = Deno.env.get('ANTHROPIC_API_KEY');
   if (!apiKey) throw new MissingKeyError();
-  client ??= new Anthropic({ apiKey });
+  const workspaceId = Deno.env.get('ANTHROPIC_WORKSPACE_ID')?.trim();
+  client ??= new Anthropic({ apiKey, defaultHeaders: workspaceId ? { 'anthropic-workspace-id': workspaceId } : undefined });
   return client;
 }
 class MissingKeyError extends Error {}
