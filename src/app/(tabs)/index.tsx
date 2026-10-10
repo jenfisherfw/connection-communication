@@ -6,7 +6,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Card, Chip, Eyebrow, IconBubble, ProgressBar, Screen, Title } from '../../components/ui';
 import { useContent } from '../../data/localized';
 import { useT } from '../../i18n';
-import { ActivityKind, levelFor, useAppState } from '../../state/AppState';
+import { ActivityKind, journeyDay, levelFor, useAppState } from '../../state/AppState';
 import { colors, fonts, gradients, radius } from '../../theme';
 
 function greeting() {
@@ -18,14 +18,14 @@ function greeting() {
 export default function Home() {
   const { progress, logPulse } = useAppState();
   const { t, locale } = useT();
-  const { PULSE, SCENARIOS, areaById, dailyPicks, levelTitle } = useContent();
+  const { PULSE, areaById, dailyPicks, scenarioQueue, levelTitle } = useContent();
   const [tipHidden, setTipHidden] = useState(false);
-  const { scenario: daily, tip } = dailyPicks();
-  // Once today's scenario is answered, offer the next one they haven't tried. When every
-  // scenario is done, the top card becomes the day's leader tip instead.
+  const day = journeyDay(progress);
+  const { scenario: daily, tip, week } = dailyPicks(day);
+  // Once today's scenario is answered, offer the next one in the curriculum they haven't tried.
+  // When every scenario is done, the top card becomes the day's leader tip instead.
   const answered = (id: string) => !!progress.completed[`scenario:${id}`];
-  const start = Math.max(0, SCENARIOS.findIndex((x) => x.id === daily.id));
-  const scenario = answered(daily.id) ? (SCENARIOS.map((_, i) => SCENARIOS[(start + i) % SCENARIOS.length]).find((x) => !answered(x.id)) ?? null) : daily;
+  const scenario = answered(daily.id) ? (scenarioQueue(day).find((x) => !answered(x.id)) ?? null) : daily;
   const scenarioHref = `/scenario/${(scenario ?? daily).id}` as const;
   const level = levelFor(progress.xp);
   const done = progress.today.done;
@@ -50,6 +50,13 @@ export default function Home() {
           </Title>
         </View>
       </View>
+      {week ? (
+        <Pressable onPress={() => router.push(`/area/${week.area}`)} style={s.weekRow}>
+          <Text style={s.weekText} numberOfLines={1}>
+            {t('Week {week}, Day {day}', { week: week.number, day: week.day })} · <Text style={{ color: colors.primary }}>{week.theme}</Text>
+          </Text>
+        </Pressable>
+      ) : null}
 
       <View style={s.statusRow}>
         <View style={[s.statusPill, { backgroundColor: colors.amberSoft }]}>
@@ -183,6 +190,8 @@ export default function Home() {
 
 const s = StyleSheet.create({
   header: { flexDirection: 'row', alignItems: 'flex-end', marginTop: 12 },
+  weekRow: { marginTop: 8 },
+  weekText: { fontFamily: fonts.semibold, fontSize: 14, color: colors.muted },
   statusRow: { flexDirection: 'row', gap: 10, marginTop: 16, marginBottom: 18 },
   statusPill: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 14, paddingVertical: 10, borderRadius: radius.pill },
   statusEmoji: { fontSize: 15 },

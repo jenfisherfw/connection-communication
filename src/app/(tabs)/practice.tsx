@@ -6,7 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Card, Chip, Screen, SectionHeader, Title } from '../../components/ui';
 import { useContent } from '../../data/localized';
 import { useT } from '../../i18n';
-import { useAppState } from '../../state/AppState';
+import { journeyDay, useAppState } from '../../state/AppState';
 import { colors, gradients, fonts, radius } from '../../theme';
 
 const DIFF = {
@@ -18,7 +18,8 @@ const DIFF = {
 export default function Practice() {
   const { progress } = useAppState();
   const { t } = useT();
-  const { ROLEPLAYS, SCENARIOS, areaById } = useContent();
+  const { ROLEPLAYS, areaById, weekScenarios } = useContent();
+  const SCENARIOS = weekScenarios(journeyDay(progress));
   const reps = Object.keys(progress.completed).filter((k) => k.startsWith('roleplay:')).length;
 
   return (
@@ -96,7 +97,7 @@ export default function Practice() {
         </View>
       </Card>
 
-      <SectionHeader title={t('Quick scenarios')} />
+      <SectionHeader title={t('This week’s scenarios')} />
       {SCENARIOS.map((sc) => {
         const a = areaById(sc.area);
         const done = !!progress.completed[`scenario:${sc.id}`];

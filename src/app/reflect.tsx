@@ -5,15 +5,15 @@ import { Reward } from '../components/Reward';
 import { BackHeader, Button, Card, Chip, Eyebrow, Screen } from '../components/ui';
 import { useContent } from '../data/localized';
 import { useT } from '../i18n';
-import { AwardResult, useAppState } from '../state/AppState';
+import { AwardResult, journeyDay, useAppState } from '../state/AppState';
 import { colors, fonts, radius } from '../theme';
 
 export default function Reflect() {
   const { t, locale } = useT();
   const { areaById, dailyPicks } = useContent();
-  const { reflection } = dailyPicks();
-  const area = areaById(reflection.area);
   const { progress, addReflection } = useAppState();
+  const { reflection } = dailyPicks(journeyDay(progress));
+  const area = areaById(reflection.area);
   const [text, setText] = useState('');
   const [result, setResult] = useState<AwardResult | null>(null);
 

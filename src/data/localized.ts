@@ -2,9 +2,10 @@ import { useMemo } from 'react';
 import { useT } from '../i18n';
 import { Lang } from '../i18n/lang';
 import * as EN from './content';
-import { AreaId } from './content';
+import { AreaId, Scenario } from './content';
 import esContent from './i18n/es';
 import frContent from './i18n/fr';
+import { WEEKS } from './library';
 
 /**
  * Translated text for the content library, keyed by the same ids as content.ts. Only text
@@ -28,7 +29,7 @@ export interface ContentTranslation {
 
 const TRANSLATIONS: Partial<Record<Lang, ContentTranslation>> = { es: esContent, fr: frContent };
 
-function localize(lang: Lang) {
+function localizeCore(lang: Lang) {
   const tr = TRANSLATIONS[lang];
   if (!tr) {
     return {
@@ -68,6 +69,29 @@ function localize(lang: Lang) {
   };
 }
 
+/** The core library plus every curriculum week, with the day by day schedule. */
+function localize(lang: Lang) {
+  const core = localizeCore(lang);
+  const SCENARIOS: Scenario[] = [...core.SCENARIOS];
+  const reflections: Record<string, { area: AreaId; prompt: string }> = {};
+  const tips: Record<string, string> = {};
+  core.REFLECTIONS.forEach((r, i) => (reflections[`core-${i}`] = r));
+  core.TIPS.forEach((tip, i) => (tips[`core-${i}`] = tip));
+
+  const schedule: { scenario: string; reflection: string; tip: string; week: number; day: number; area: AreaId; theme: string }[] = [];
+  for (const w of WEEKS) {
+    const tr = lang === 'en' ? null : w[lang];
+    for (const sc of w.scenarios) {
+      const x = tr?.scenarios[sc.id];
+      SCENARIOS.push(x ? { ...sc, title: x.title, setup: x.setup, person: x.person, quote: x.quote, choices: sc.choices.map((c, i) => ({ ...c, ...(x.choices[i] ?? {}) })) } : sc);
+    }
+    for (const r of w.reflections) reflections[r.id] = { area: r.area, prompt: tr?.reflections[r.id] ?? r.prompt };
+    for (const tip of w.tips) tips[tip.id] = tr?.tips[tip.id] ?? tip.text;
+    w.days.forEach((d, i) => schedule.push({ ...d, week: w.week, day: i + 1, area: w.area, theme: tr?.title || w.title }));
+  }
+  return { ...core, SCENARIOS, reflections, tips, schedule };
+}
+
 const CACHE: Partial<Record<Lang, ReturnType<typeof localize>>> = {};
 export const contentFor = (lang: Lang) => (CACHE[lang] ??= localize(lang));
 
@@ -80,7 +104,35 @@ export function useContent() {
       ...c,
       areaById: (id: AreaId) => c.AREAS.find((a) => a.id === id)!,
       levelTitle: (level: number) => c.LEVELS.find((l) => l.level === level)?.title ?? '',
-      dailyPicks: (d = Math.floor(Date.now() / 86400000)) => ({ scenario: c.SCENARIOS[d % c.SCENARIOS.length], reflection: c.REFLECTIONS[d % c.REFLECTIONS.length], tip: c.TIPS[d % c.TIPS.length] }),
+      /**
+       * Today's scenario, reflection, and tip for someone on day `day` of their journey (0 based).
+       * After the last written day the schedule starts over from the top.
+       */
+      dailyPicks: (day: number) => {
+        const n = c.schedule.length;
+        if (!n) return { scenario: c.SCENARIOS[day % c.SCENARIOS.length], reflection: c.REFLECTIONS[day % c.REFLECTIONS.length], tip: c.TIPS[day % c.TIPS.length], week: null };
+        const e = c.schedule[((day % n) + n) % n];
+        return {
+          scenario: c.SCENARIOS.find((x) => x.id === e.scenario) ?? c.SCENARIOS[0],
+          reflection: c.reflections[e.reflection] ?? c.REFLECTIONS[0],
+          tip: c.tips[e.tip] ?? c.TIPS[0],
+          week: { number: e.week, day: e.day, area: e.area, theme: e.theme },
+        };
+      },
+      /** Scenarios in the order the curriculum offers them, starting from `day`, then any others. */
+      scenarioQueue: (day: number) => {
+        const n = c.schedule.length;
+        const ids = c.schedule.map((_, i) => c.schedule[(((day + i) % n) + n) % n].scenario);
+        const rest = c.SCENARIOS.filter((x) => !ids.includes(x.id)).map((x) => x.id);
+        return [...ids, ...rest].map((id) => c.SCENARIOS.find((x) => x.id === id)!).filter(Boolean);
+      },
+      /** The seven scenarios of the curriculum week that contains `day`. */
+      weekScenarios: (day: number) => {
+        const n = c.schedule.length;
+        if (!n) return c.SCENARIOS;
+        const week = c.schedule[((day % n) + n) % n].week;
+        return c.schedule.filter((e) => e.week === week).map((e) => c.SCENARIOS.find((x) => x.id === e.scenario)!).filter(Boolean);
+      },
     };
   }, [lang]);
 }

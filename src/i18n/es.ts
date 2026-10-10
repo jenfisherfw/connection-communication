@@ -354,5 +354,7 @@ const es: Record<string, string> = {
   "Short enough for chat": "Lo bastante breve para un chat",
   "Your next scenario": "Tu próximo escenario",
   "You’ve answered every scenario. New ones are on the way.": "Ya respondiste todos los escenarios. Pronto llegarán más.",
+  "Week {week}, Day {day}": "Semana {week}, día {day}",
+  "This week’s scenarios": "Escenarios de esta semana",
 };
 export default es;

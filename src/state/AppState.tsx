@@ -16,6 +16,8 @@ export interface ReminderPref {
 export interface Progress {
   onboarded: boolean;
   language: Lang;
+  /** The day this person started; their curriculum day counts from here. */
+  startDate: string;
   name: string;
   role: string;
   teamSize: TeamSize | null;
@@ -50,6 +52,7 @@ const emptyAreas = () => Object.fromEntries(AREAS.map((a) => [a.id, 0])) as Reco
 export const freshProgress = (): Progress => ({
   onboarded: false,
   language: deviceLang(),
+  startDate: todayKey(),
   name: '',
   role: '',
   teamSize: null,
@@ -67,6 +70,10 @@ export const freshProgress = (): Progress => ({
   today: { date: todayKey(), done: [] },
   weekly: { weekStart: weekStartKey(), count: 0, goal: 5 },
 });
+
+/** Which day of the curriculum this person is on, counting from 0 on the day they started. */
+export const journeyDay = (p: Pick<Progress, 'startDate'>, today = todayKey()) =>
+  Math.max(0, Math.round((Date.parse(today) - Date.parse(p.startDate || today)) / 86400000));
 
 export function levelFor(xp: number) {
   let current = LEVELS[0];
