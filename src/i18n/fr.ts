@@ -356,5 +356,12 @@ const fr: Record<string, string> = {
   "You’ve answered every scenario. New ones are on the way.": "Vous avez répondu à tous les scénarios. D’autres arrivent bientôt.",
   "Week {week}, Day {day}": "Semaine {week}, jour {day}",
   "This week’s scenarios": "Scénarios de la semaine",
+  "Weekend · New lessons arrive Monday": "Week-end · Nouvelles leçons lundi",
+  "Weekend": "Week-end",
+  "Rest up. Great leaders recharge too.": "Reposez-vous. Les grands managers aussi rechargent leurs batteries.",
+  "You have 1 scenario from this week to catch up on, if you like.": "Il vous reste 1 scénario de la semaine à rattraper, si vous le souhaitez.",
+  "You have {n} scenarios from this week to catch up on, if you like.": "Il vous reste {n} scénarios de la semaine à rattraper, si vous le souhaitez.",
+  "You finished every lesson this week. Nicely done.": "Vous avez terminé toutes les leçons de la semaine. Bravo !",
+  "Catch up": "Rattraper",
 };
 export default fr;

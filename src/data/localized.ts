@@ -78,8 +78,18 @@ function localize(lang: Lang) {
   core.REFLECTIONS.forEach((r, i) => (reflections[`core-${i}`] = r));
   core.TIPS.forEach((tip, i) => (tips[`core-${i}`] = tip));
 
-  const schedule: { scenario: string; reflection: string; tip: string; week: number; day: number; area: AreaId; theme: string }[] = [];
-  for (const w of WEEKS) {
+  type Day = { scenario: string; reflection: string; tip: string };
+  const schedule: (Day & { week: number; day: number; area: AreaId; theme: string; mixed: boolean })[] = [];
+  let weekNo = 0;
+  const addWeek = (days: (Day & { area: AreaId })[], theme: string, mixed: boolean) => {
+    weekNo++;
+    days.forEach((d, i) => schedule.push({ ...d, week: weekNo, day: i + 1, theme, mixed }));
+  };
+  // Each written unit has seven lessons. The first five become that theme's Monday to Friday week.
+  // The last two, the toughest, are held back and mixed into two Level Up weeks after every five
+  // themes. Leftovers wait for the next set of five, so adding units only ever appends days.
+  const levelUp: (Day & { area: AreaId })[] = [];
+  WEEKS.forEach((w, idx) => {
     const tr = lang === 'en' ? null : w[lang];
     for (const sc of w.scenarios) {
       const x = tr?.scenarios[sc.id];
@@ -87,10 +97,17 @@ function localize(lang: Lang) {
     }
     for (const r of w.reflections) reflections[r.id] = { area: r.area, prompt: tr?.reflections[r.id] ?? r.prompt };
     for (const tip of w.tips) tips[tip.id] = tr?.tips[tip.id] ?? tip.text;
-    w.days.forEach((d, i) => schedule.push({ ...d, week: w.week, day: i + 1, area: w.area, theme: tr?.title || w.title }));
-  }
+    if (w.days.length) {
+      const days = w.days.map((d) => ({ ...d, area: w.area }));
+      addWeek(days.slice(0, 5), tr?.title || w.title, false);
+      levelUp.push(...days.slice(5));
+    }
+    if ((idx + 1) % 5 === 0) while (levelUp.length >= 5) addWeek(levelUp.splice(0, 5), LEVEL_UP[lang], true);
+  });
   return { ...core, SCENARIOS, reflections, tips, schedule };
 }
+
+const LEVEL_UP: Record<Lang, string> = { en: 'Level up: mixed practice', es: 'Sube de nivel: práctica mixta', fr: 'Niveau supérieur : pratique mixte' };
 
 const CACHE: Partial<Record<Lang, ReturnType<typeof localize>>> = {};
 export const contentFor = (lang: Lang) => (CACHE[lang] ??= localize(lang));
@@ -116,7 +133,7 @@ export function useContent() {
           scenario: c.SCENARIOS.find((x) => x.id === e.scenario) ?? c.SCENARIOS[0],
           reflection: c.reflections[e.reflection] ?? c.REFLECTIONS[0],
           tip: c.tips[e.tip] ?? c.TIPS[0],
-          week: { number: e.week, day: e.day, area: e.area, theme: e.theme },
+          week: { number: e.week, day: e.day, area: e.area, theme: e.theme, mixed: e.mixed },
         };
       },
       /** Scenarios in the order the curriculum offers them, starting from `day`, then any others. */

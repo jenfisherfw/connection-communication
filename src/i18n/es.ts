@@ -356,5 +356,12 @@ const es: Record<string, string> = {
   "You’ve answered every scenario. New ones are on the way.": "Ya respondiste todos los escenarios. Pronto llegarán más.",
   "Week {week}, Day {day}": "Semana {week}, día {day}",
   "This week’s scenarios": "Escenarios de esta semana",
+  "Weekend · New lessons arrive Monday": "Fin de semana · Nuevas lecciones el lunes",
+  "Weekend": "Fin de semana",
+  "Rest up. Great leaders recharge too.": "Descansa. Los grandes líderes también recargan energía.",
+  "You have 1 scenario from this week to catch up on, if you like.": "Tienes 1 escenario de esta semana pendiente, si quieres ponerte al día.",
+  "You have {n} scenarios from this week to catch up on, if you like.": "Tienes {n} escenarios de esta semana pendientes, si quieres ponerte al día.",
+  "You finished every lesson this week. Nicely done.": "Completaste todas las lecciones de esta semana. ¡Bien hecho!",
+  "Catch up": "Ponerme al día",
 };
 export default es;

@@ -34,7 +34,7 @@ No code alternatives (FlutterFlow, Bubble, Adalo) are faster for a static protot
 - ~~In app account deletion (App Store requirement)~~ (built)
 - ~~Branded app icon, Android adaptive icon, and launch screen~~ (built)
 - ~~Server enforced daily limit on AI requests~~ (built)
-- 365 day curriculum: each person starts at Week 1, Day 1 with a new scenario, reflection, and tip every day on a weekly theme (`src/data/library/`). Weeks 1 to 8 written (56 days); weeks 9 to 52 to follow in batches.
+- Year long weekday curriculum (`src/data/library/`): a new scenario, reflection, and tip every Monday to Friday, with a weekend catch up card and streaks that skip weekends. Each written unit gives a five day theme week, and its two toughest lessons feed Level Up mixed practice weeks after every five themes. Units 1 to 16 written: 22 weeks, 110 lessons. About 260 lessons make a full year; the rest follow in batches.
 - ~~English, Spanish, and French: every screen, the full content library, reminders, Tone Check, and Coach Ari~~ (built). Have a native speaker review the Spanish and French before launch.
 
 ### Phase 3: Public launch

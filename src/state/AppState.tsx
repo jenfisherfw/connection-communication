@@ -71,9 +71,29 @@ export const freshProgress = (): Progress => ({
   weekly: { weekStart: weekStartKey(), count: 0, goal: 5 },
 });
 
-/** Which day of the curriculum this person is on, counting from 0 on the day they started. */
-export const journeyDay = (p: Pick<Progress, 'startDate'>, today = todayKey()) =>
-  Math.max(0, Math.round((Date.parse(today) - Date.parse(p.startDate || today)) / 86400000));
+const DAY = 86400000;
+const noon = (key: string) => Date.parse(`${key}T12:00:00Z`);
+const isWeekday = (ms: number) => ![0, 6].includes(new Date(ms).getUTCDay());
+
+/** Lessons arrive Monday to Friday. Weekends are for rest and catching up. */
+export const isWeekend = (today = todayKey()) => !isWeekday(noon(today));
+
+/** The most recent weekday before `today`, so a weekend never breaks a streak. */
+export const previousWeekday = (today = todayKey()) => {
+  let d = noon(today) - DAY;
+  while (!isWeekday(d)) d -= DAY;
+  return new Date(d).toISOString().slice(0, 10);
+};
+
+/**
+ * Which lesson of the curriculum this person is on, counting weekdays from 0 on the day they
+ * started. On a weekend it stays on Friday's lesson.
+ */
+export function journeyDay(p: Pick<Progress, 'startDate'>, today = todayKey()) {
+  let n = 0;
+  for (let d = noon(p.startDate || today); d < noon(today); d += DAY) if (isWeekday(d)) n++;
+  return isWeekend(today) ? Math.max(0, n - 1) : n;
+}
 
 export function levelFor(xp: number) {
   let current = LEVELS[0];
@@ -142,9 +162,9 @@ function rollDay(p: Progress): Progress {
 function applyAward(prev: Progress, input: AwardInput): { next: Progress; result: AwardResult } {
   const p = rollDay(prev);
   const t = todayKey();
-  const yesterday = todayKey(new Date(Date.now() - 86400000));
+  // A streak continues if they were active on the last weekday (or over the weekend since).
   let streak = p.streak;
-  if (p.lastActive !== t) streak = p.lastActive === yesterday ? p.streak + 1 : 1;
+  if (p.lastActive !== t) streak = p.lastActive && p.lastActive >= previousWeekday(t) ? p.streak + 1 : 1;
 
   const repeat = !!p.completed[input.key] && input.kind !== 'reflection' && input.kind !== 'pulse';
   const xpGain = repeat ? Math.round(input.xp / 4) : input.xp;
