@@ -15,8 +15,16 @@ import week13 from './week13';
 import week14 from './week14';
 import week15 from './week15';
 import week16 from './week16';
+import week17 from './week17';
+import week18 from './week18';
+import week19 from './week19';
+import week20 from './week20';
+import week21 from './week21';
+import week22 from './week22';
+import week23 from './week23';
+import week24 from './week24';
 
 export type { CurriculumWeek, WeekTranslation } from './types';
 
 /** The year long daily curriculum, in order. Add new weeks to the end; never reorder. */
-export const WEEKS: CurriculumWeek[] = [week01, week02, week03, week04, week05, week06, week07, week08, week09, week10, week11, week12, week13, week14, week15, week16];
+export const WEEKS: CurriculumWeek[] = [week01, week02, week03, week04, week05, week06, week07, week08, week09, week10, week11, week12, week13, week14, week15, week16, week17, week18, week19, week20, week21, week22, week23, week24];
