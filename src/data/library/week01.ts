@@ -14,10 +14,10 @@ const week: CurriculumWeek = {
       quote: '"Hey, did that customer at register two get sorted out? She seemed pretty annoyed."',
       xp: 30,
       choices: [
-        { text: '"Yep, all good. Don\'t worry about it."', score: 1, feedback: 'Kind in the moment, but Ben misses the chance to fix it, and small misses tend to repeat when no one names them.' },
-        { text: '"She did. Quick heads up: the promo should ring at 20%, and twice today it rang at 10%. Want to walk through it on the register together?"', score: 3, feedback: 'Timely, specific, and paired with support. Small feedback given early keeps it small.' },
+        { text: '"She’s all set, I gave her the right price. Don’t worry about it, promos are confusing, and I’ll keep an eye on your register this weekend."', score: 1, feedback: 'Kind and protective, but taking it over means Ben never learns what went wrong, and small misses tend to repeat when no one names them.' },
+        { text: '"She is. Heads up: the promo rings at 20%, and twice today it rang at 10%. Want to check it together?"', score: 3, feedback: 'Timely, specific, and paired with support. Small feedback given early keeps it small.' },
         { text: 'Mention it at next month\'s team meeting as a general reminder for everyone about checking promotions.', score: 1, feedback: 'Group reminders feel safe to give, but they rarely reach the one person who needs them and can confuse everyone else.' },
-        { text: '"Yeah, you need to be more careful with the promos."', score: 2, feedback: 'Direct and timely, but "be more careful" is vague. Naming exactly what happened tells Ben what to change.' },
+        { text: '"She is. You need to be more careful with the promos, okay?"', score: 2, feedback: 'Direct and timely, but "be more careful" is vague. Naming exactly what happened tells Ben what to change.' },
       ],
     },
     {
@@ -29,10 +29,10 @@ const week: CurriculumWeek = {
       quote: '"Honestly, last night was rough. I\'m just glad it\'s over."',
       xp: 30,
       choices: [
-        { text: '"Great job last night! You\'re a rock star."', score: 2, feedback: 'Warm and appreciated, but general praise is hard to repeat. Naming the exact behavior helps her know what to keep doing.' },
+        { text: '"Great job last night, truly. You’re a rock star, and this unit is lucky to have you on nights."', score: 2, feedback: 'Warm and appreciated, but general praise is hard to repeat. Naming the exact behavior helps her know what to keep doing.' },
         { text: '"Rough nights come with the job. Hang in there."', score: 1, feedback: 'You missed a chance to show you noticed. Appreciation that stays in your head does not reach her.' },
-        { text: '"I saw you sit with that family, explain each step, and stay calm when they raised their voices. It turned the room around. Thank you."', score: 3, feedback: 'Specific praise names the behavior and its impact, so Aisha knows exactly what worked and that you saw it.' },
-        { text: 'Send a unit wide email thanking the whole night shift for their hard work.', score: 1, feedback: 'Team thanks has its place, but it blurs what Aisha did. Recognize the person first, then the team.' },
+        { text: '"I saw you explain each step to that family and stay calm when they got loud. It turned the room around. Thank you."', score: 3, feedback: 'Specific praise names the behavior and its impact, so Aisha knows exactly what worked and that you saw it.' },
+        { text: 'Send a heartfelt email to the whole unit thanking the night shift, by name, for staying calm and caring through a really tough admission.', score: 1, feedback: 'Warm and public, but thanking everyone blurs what Aisha did. Recognize her specific behavior first, then the team.' },
       ],
     },
     {
@@ -44,10 +44,10 @@ const week: CurriculumWeek = {
       quote: '"Can you be straight with me? What\'s one thing holding me back right now?"',
       xp: 30,
       choices: [
-        { text: '"Your code reviews are a real strength. One growth area: you raised the API risk late last sprint. Flagging risks earlier would raise your impact. How does that land?"', score: 3, feedback: 'You answered the question she asked: one clear strength, one specific example, and an invitation to respond.' },
-        { text: '"Honestly, you\'re doing great. I wouldn\'t worry about anything."', score: 1, feedback: 'Reassuring, but she asked for something to work on. Empty praise can leave people feeling unseen, or blindsided later.' },
+        { text: '"Your code reviews are a strength. One growth area: you flagged the API risk late last sprint. Earlier flags would raise your impact. Fair?"', score: 3, feedback: 'You answered the question she asked: one clear strength, one specific example, and an invitation to respond.' },
+        { text: '"Honestly? You’re doing great, and I promise I’d tell you if you weren’t. Keep doing exactly what you’re doing, and I’ll make sure your review reflects it."', score: 1, feedback: 'Warm and loyal, but she asked for something to work on. Empty praise can leave people feeling unseen, or blindsided later.' },
         { text: '"Let\'s save that for your review, so I can give you the full picture with everything I\'ve gathered from your peers and the cross functional team."', score: 1, feedback: 'Waiting turns a growth moment into a future surprise. If you can name it now, do.' },
-        { text: '"Maybe work on communication a bit more?"', score: 2, feedback: 'It points in a direction, but "communication" is too broad to act on. A concrete example makes it usable.' },
+        { text: '"Maybe communication? Sometimes I hear about things later than I’d like."', score: 2, feedback: 'It points the right way, but stays too broad to act on. A concrete example, like the API risk, makes it usable.' },
       ],
     },
     {
@@ -59,10 +59,10 @@ const week: CurriculumWeek = {
       quote: '"My numbers speak for themselves. Isn\'t that what matters?"',
       xp: 30,
       choices: [
-        { text: '"They do, so let\'s not sweat the small stuff."', score: 1, feedback: 'Excusing behavior because of results tells the whole branch that top performers play by different rules.' },
+        { text: '"They absolutely do, and I’m grateful for them. Some people are just more intense than others, and I’ll talk to the team about giving you a little more room."', score: 1, feedback: 'Protecting your top performer feels loyal, but it excuses the behavior and tells the branch that top performers play by different rules.' },
         { text: '"A couple of people have complained about you. You need to fix your attitude."', score: 1, feedback: '"Attitude" is a label, not a behavior, and leading with complaints invites him to guess who said what instead of listening.' },
-        { text: '"Results matter a lot. I\'d also like you to be more of a team player."', score: 2, feedback: 'You held both ideas, but "team player" is vague. Name what you saw so he knows what to change.' },
-        { text: '"They matter, and I value them. How we work together matters too. In Monday\'s huddle, I saw you talk over two teammates. What was going on for you there?"', score: 3, feedback: 'You honored his strength, named a behavior you saw yourself, and asked for his view. That keeps it fair and hard to dismiss.' },
+        { text: '"Results matter a lot, and yours are great. I’d also like you to be more of a team player in huddles."', score: 2, feedback: 'You held both ideas, but "team player" is vague. Name what you saw so he knows what to change.' },
+        { text: '"They do. So does how we work together. In Monday’s huddle you talked over two teammates. What was going on there?"', score: 3, feedback: 'You honored his strength, named a behavior you saw yourself, and asked for his view. That keeps it fair and hard to dismiss.' },
       ],
     },
     {
@@ -74,10 +74,10 @@ const week: CurriculumWeek = {
       quote: '"The kitchen\'s holding up okay with all the changes, right?"',
       xp: 30,
       choices: [
-        { text: '"Yep, we\'re fine."', score: 1, feedback: 'Protecting the relationship today costs your team tomorrow. Your manager cannot fix what she never hears about.' },
-        { text: '"Mostly. Can I share something I\'m seeing? Priorities have shifted three times this month, and prep gets redone each time. Could we lock changes a week out?"', score: 3, feedback: 'You asked permission, named a specific pattern and its impact, and offered a workable request. That is feedback a boss can act on.' },
+        { text: '"We’re fine, honestly. The team is amazing and they’ll roll with whatever you need. Don’t worry about us, you’ve got enough on your plate already."', score: 1, feedback: 'Loyal and kind, but shielding her from the news costs your team. Your manager cannot fix what she never hears about.' },
+        { text: '"Mostly. Can I share one thing? Three priority changes this month meant redoing prep each time. Could we lock changes a week out?"', score: 3, feedback: 'You asked permission, named a specific pattern and its impact, and offered a workable request. That is feedback a boss can act on.' },
         { text: '"Honestly, the constant changes are chaos. Nobody back here knows what you want anymore, and people are starting to talk about it."', score: 1, feedback: 'The frustration is real, but blame and sweeping words like "nobody" make the message easy to dismiss.' },
-        { text: '"It\'s been a lot. The team\'s pretty tired."', score: 2, feedback: 'Honest, but without the cause or a request, she may not know what to change.' },
+        { text: '"It’s been a lot. The team’s pretty tired from all the switching."', score: 2, feedback: 'Honest, but without the cause or a request, she may not know what to change.' },
       ],
     },
     {
@@ -89,9 +89,9 @@ const week: CurriculumWeek = {
       quote: '"We\'re behind schedule. We\'ll do the full check after lunch, I promise."',
       xp: 30,
       choices: [
-        { text: 'Let it go for now and bring it up at Friday\'s safety debrief.', score: 1, feedback: 'Waiting on a safety issue puts people at real risk. Feedback on safety belongs in the moment.' },
+        { text: 'Trust Felix’s promise this once, since he is reliable and under pressure, and offer to help his crew catch up so they can do the full check after lunch.', score: 1, feedback: 'Supportive of a reliable lead, but a promise is not a harness check. Safety issues need action right now, plus the reporting process.' },
         { text: 'Shout across the site for the whole crew to get down, then lecture Felix in front of them.', score: 1, feedback: 'Stopping the work is right, but public shaming teaches people to hide problems instead of raising them.' },
-        { text: '"I hear the pressure, and I\'ll help with the schedule. But nobody goes up without the harness check. Let\'s do it now, and I\'ll log this through our safety process as policy requires."', score: 3, feedback: 'You stopped the risk right away, stayed respectful, and followed the safety process. Clear standards protect both people and trust.' },
+        { text: '"Stop. Nobody goes up without the harness check. Let’s do it now. I’ll help with the schedule, and I’ll log this per our safety process."', score: 3, feedback: 'You stopped the risk right away, stayed respectful, and followed the safety process. Clear standards protect both people and trust.' },
         { text: 'Quietly stop the crew, have them do the check, and talk with Felix privately after the shift.', score: 2, feedback: 'You handled the risk with respect, but skipping the reporting step means the pattern may never be tracked or fixed.' },
       ],
     },
@@ -131,10 +131,10 @@ const week: CurriculumWeek = {
         person: 'Ben, asociado de ventas',
         quote: '“Oye, ¿se resolvió lo de la clienta de la caja dos? Se veía bastante molesta.”',
         choices: [
-          { text: '“Sí, todo bien. No te preocupes.”', feedback: 'Amable en el momento, pero Ben pierde la oportunidad de corregirlo, y los pequeños errores suelen repetirse cuando nadie los nombra.' },
-          { text: '“Sí. Un aviso rápido: la promoción debe cobrarse al 20%, y hoy dos veces salió al 10%. ¿Lo repasamos juntos en la caja?”', feedback: 'A tiempo, específico y con apoyo. La retroalimentación pequeña dada temprano mantiene pequeño el problema.' },
+          { text: '“Ya quedó, le cobré el precio correcto. No te preocupes, las promociones confunden, y yo vigilo tu caja este fin de semana.”', feedback: 'Amable y protector, pero si te encargas tú, Ben nunca aprende qué salió mal, y los pequeños errores suelen repetirse cuando nadie los nombra.' },
+          { text: '“Sí. Un aviso: la promoción va al 20%, y hoy dos veces salió al 10%. ¿Lo revisamos juntos?”', feedback: 'A tiempo, específico y con apoyo. La retroalimentación pequeña dada temprano mantiene pequeño el problema.' },
           { text: 'Mencionarlo en la reunión de equipo del próximo mes como recordatorio general para todos sobre revisar las promociones.', feedback: 'Los recordatorios grupales se sienten seguros, pero rara vez llegan a la persona que los necesita y pueden confundir a los demás.' },
-          { text: '“Sí, tienes que tener más cuidado con las promociones.”', feedback: 'Directo y a tiempo, pero “más cuidado” es vago. Nombrar exactamente lo que pasó le dice a Ben qué cambiar.' },
+          { text: '“Sí. Tienes que tener más cuidado con las promociones, ¿de acuerdo?”', feedback: 'Directo y a tiempo, pero “más cuidado” es vago. Nombrar exactamente lo que pasó le dice a Ben qué cambiar.' },
         ],
       },
       'w01-specific-praise': {
@@ -143,10 +143,10 @@ const week: CurriculumWeek = {
         person: 'Aisha, enfermera titulada',
         quote: '“Sinceramente, anoche fue pesado. Solo me alegra que ya pasó.”',
         choices: [
-          { text: '“¡Excelente trabajo anoche! Eres una estrella.”', feedback: 'Cálido y apreciado, pero un elogio general es difícil de repetir. Nombrar la conducta exacta le ayuda a saber qué seguir haciendo.' },
+          { text: '“Excelente trabajo anoche, de verdad. Eres una estrella, y la unidad tiene suerte de tenerte en las noches.”', feedback: 'Cálido y apreciado, pero un elogio general es difícil de repetir. Nombrar la conducta exacta le ayuda a saber qué seguir haciendo.' },
           { text: '“Las noches difíciles vienen con el trabajo. Ánimo.”', feedback: 'Perdiste la oportunidad de mostrar que lo notaste. El aprecio que se queda en tu cabeza no le llega.' },
-          { text: '“Vi cómo te sentaste con esa familia, explicaste cada paso y mantuviste la calma cuando alzaron la voz. Cambiaste el ambiente. Gracias.”', feedback: 'El elogio específico nombra la conducta y su impacto, así Aisha sabe exactamente qué funcionó y que tú lo viste.' },
-          { text: 'Enviar un correo a toda la unidad agradeciendo al turno de noche por su esfuerzo.', feedback: 'Agradecer al equipo tiene su lugar, pero diluye lo que hizo Aisha. Reconoce primero a la persona y luego al equipo.' },
+          { text: '“Vi cómo le explicaste cada paso a esa familia y mantuviste la calma cuando alzaron la voz. Cambiaste el ambiente. Gracias.”', feedback: 'El elogio específico nombra la conducta y su impacto, así Aisha sabe exactamente qué funcionó y que tú lo viste.' },
+          { text: 'Enviar un correo sentido a toda la unidad agradeciendo al turno de noche, con nombre y apellido, por mantener la calma y el cuidado en un ingreso muy difícil.', feedback: 'Cálido y público, pero agradecer a todos diluye lo que hizo Aisha. Reconoce primero su conducta específica y luego al equipo.' },
         ],
       },
       'w01-how-am-i-doing': {
@@ -155,10 +155,10 @@ const week: CurriculumWeek = {
         person: 'Carmen, ingeniera de software',
         quote: '“¿Puedes ser directo conmigo? ¿Qué es lo que más me está frenando ahora?”',
         choices: [
-          { text: '“Tus revisiones de código son una verdadera fortaleza. Un área de crecimiento: avisaste del riesgo de la API tarde en el último sprint. Señalar riesgos antes aumentaría tu impacto. ¿Cómo te cae eso?”', feedback: 'Respondiste lo que te preguntó: una fortaleza clara, un ejemplo específico y una invitación a responder.' },
-          { text: '“Sinceramente, vas muy bien. Yo no me preocuparía por nada.”', feedback: 'Tranquilizador, pero te pidió algo en qué trabajar. Los elogios vacíos pueden hacer que alguien se sienta invisible o sorprendido después.' },
+          { text: '“Tus revisiones de código son una fortaleza. Un área de crecimiento: avisaste tarde del riesgo de la API en el último sprint. Avisar antes aumentaría tu impacto. ¿Te parece justo?”', feedback: 'Respondiste lo que te preguntó: una fortaleza clara, un ejemplo específico y una invitación a responder.' },
+          { text: '“¿Sinceramente? Vas muy bien, y te prometo que te lo diría si no fuera así. Sigue haciendo exactamente lo que haces y me aseguraré de que tu evaluación lo refleje.”', feedback: 'Cálido y leal, pero te pidió algo en qué trabajar. Los elogios vacíos pueden hacer que alguien se sienta invisible o sorprendido después.' },
           { text: '“Dejémoslo para tu evaluación, así te doy el panorama completo con todo lo que he reunido de tus compañeros y del equipo multifuncional.”', feedback: 'Esperar convierte un momento de crecimiento en una sorpresa futura. Si puedes nombrarlo ahora, hazlo.' },
-          { text: '“¿Quizás trabajar un poco más la comunicación?”', feedback: 'Señala una dirección, pero “comunicación” es demasiado amplio para actuar. Un ejemplo concreto lo vuelve útil.' },
+          { text: '“¿Quizás la comunicación? A veces me entero de las cosas más tarde de lo que quisiera.”', feedback: 'Apunta en la dirección correcta, pero sigue siendo demasiado amplio para actuar. Un ejemplo concreto, como el riesgo de la API, lo vuelve útil.' },
         ],
       },
       'w01-sharp-edges': {
@@ -167,10 +167,10 @@ const week: CurriculumWeek = {
         person: 'Deshawn, banquero sénior de relaciones',
         quote: '“Mis números hablan por sí solos. ¿No es eso lo que importa?”',
         choices: [
-          { text: '“Así es, así que no nos preocupemos por los detalles.”', feedback: 'Excusar la conducta por los resultados le dice a toda la sucursal que los mejores juegan con otras reglas.' },
+          { text: '“Claro que sí, y te los agradezco. Hay personas más intensas que otras, y hablaré con el equipo para que te den un poco más de espacio.”', feedback: 'Proteger a tu mejor vendedor se siente leal, pero excusa la conducta y le dice a la sucursal que los mejores juegan con otras reglas.' },
           { text: '“Un par de personas se han quejado de ti. Tienes que corregir tu actitud.”', feedback: '“Actitud” es una etiqueta, no una conducta, y empezar con quejas lo invita a adivinar quién dijo qué en lugar de escuchar.' },
-          { text: '“Los resultados importan mucho. También me gustaría que trabajaras más en equipo.”', feedback: 'Sostuviste ambas ideas, pero “trabajar en equipo” es vago. Nombra lo que viste para que sepa qué cambiar.' },
-          { text: '“Importan, y los valoro. Cómo trabajamos juntos también importa. En la reunión del lunes vi que interrumpiste a dos compañeros. ¿Qué pasaba para ti en ese momento?”', feedback: 'Honraste su fortaleza, nombraste una conducta que viste tú mismo y le pediste su punto de vista. Eso lo hace justo y difícil de descartar.' },
+          { text: '“Los resultados importan mucho, y los tuyos son excelentes. También me gustaría que trabajaras más en equipo en las reuniones.”', feedback: 'Sostuviste ambas ideas, pero “trabajar en equipo” es vago. Nombra lo que viste para que sepa qué cambiar.' },
+          { text: '“Importan. Y también cómo trabajamos juntos. En la reunión del lunes interrumpiste a dos compañeros. ¿Qué pasaba ahí?”', feedback: 'Honraste su fortaleza, nombraste una conducta que viste tú mismo y le pediste su punto de vista. Eso lo hace justo y difícil de descartar.' },
         ],
       },
       'w01-feedback-up': {
@@ -179,10 +179,10 @@ const week: CurriculumWeek = {
         person: 'Elena, gerente general',
         quote: '“La cocina va aguantando bien con todos los cambios, ¿verdad?”',
         choices: [
-          { text: '“Sí, estamos bien.”', feedback: 'Proteger la relación hoy le cuesta a tu equipo mañana. Tu jefa no puede arreglar lo que nunca escucha.' },
-          { text: '“Más o menos. ¿Puedo compartirte algo que estoy viendo? Las prioridades cambiaron tres veces este mes, y la preparación se rehace cada vez. ¿Podríamos fijar los cambios con una semana de anticipación?”', feedback: 'Pediste permiso, nombraste un patrón específico y su impacto, y ofreciste una petición viable. Esa es retroalimentación con la que una jefa puede actuar.' },
+          { text: '“Estamos bien, de verdad. El equipo es increíble y se adapta a lo que necesites. No te preocupes por nosotros, ya tienes suficiente con lo tuyo.”', feedback: 'Leal y amable, pero protegerla de la noticia le cuesta a tu equipo. Tu jefa no puede arreglar lo que nunca escucha.' },
+          { text: '“Más o menos. ¿Puedo compartirte algo? Tres cambios de prioridad este mes nos obligaron a rehacer la preparación. ¿Podemos fijar los cambios una semana antes?”', feedback: 'Pediste permiso, nombraste un patrón específico y su impacto, y ofreciste una petición viable. Esa es retroalimentación con la que una jefa puede actuar.' },
           { text: '“Sinceramente, los cambios constantes son un caos. Aquí atrás nadie sabe ya lo que quieres, y la gente empieza a comentarlo.”', feedback: 'La frustración es real, pero culpar y usar palabras absolutas como “nadie” hace fácil descartar el mensaje.' },
-          { text: '“Ha sido mucho. El equipo está bastante cansado.”', feedback: 'Honesto, pero sin la causa ni una petición, quizá no sepa qué cambiar.' },
+          { text: '“Ha sido mucho. El equipo está bastante cansado de tantos cambios.”', feedback: 'Honesto, pero sin la causa ni una petición, quizá no sepa qué cambiar.' },
         ],
       },
       'w01-safety-callout': {
@@ -191,9 +191,9 @@ const week: CurriculumWeek = {
         person: 'Felix, jefe de cuadrilla',
         quote: '“Vamos atrasados. Hacemos la revisión completa después del almuerzo, te lo prometo.”',
         choices: [
-          { text: 'Dejarlo pasar por ahora y mencionarlo en la reunión de seguridad del viernes.', feedback: 'Esperar ante un tema de seguridad pone a las personas en riesgo real. La retroalimentación sobre seguridad va en el momento.' },
+          { text: 'Confiar esta vez en la promesa de Felix, porque es confiable y está bajo presión, y ofrecer ayuda a su cuadrilla para ponerse al día y hacer la revisión completa después del almuerzo.', feedback: 'Apoyas a un jefe confiable, pero una promesa no es una revisión de arneses. La seguridad exige actuar ahora y seguir el proceso de reporte.' },
           { text: 'Gritar en toda la obra para que la cuadrilla baje y luego regañar a Felix frente a todos.', feedback: 'Detener el trabajo es correcto, pero avergonzar en público enseña a esconder los problemas en lugar de plantearlos.' },
-          { text: '“Entiendo la presión, y te ayudaré con el cronograma. Pero nadie sube sin la revisión de arneses. Hagámosla ahora, y lo registraré en nuestro proceso de seguridad como pide la política.”', feedback: 'Detuviste el riesgo de inmediato, fuiste respetuoso y seguiste el proceso de seguridad. Los estándares claros protegen a las personas y la confianza.' },
+          { text: '“Alto. Nadie sube sin la revisión de arneses. Hagámosla ahora. Te ayudo con el cronograma, y lo registraré según nuestro proceso de seguridad.”', feedback: 'Detuviste el riesgo de inmediato, fuiste respetuoso y seguiste el proceso de seguridad. Los estándares claros protegen a las personas y la confianza.' },
           { text: 'Detener a la cuadrilla discretamente, pedir que hagan la revisión y hablar con Felix en privado después del turno.', feedback: 'Manejaste el riesgo con respeto, pero omitir el reporte significa que el patrón quizá nunca se registre ni se corrija.' },
         ],
       },
@@ -225,10 +225,10 @@ const week: CurriculumWeek = {
         person: 'Ben, vendeur',
         quote: '« Dites, la cliente de la caisse deux, ça s’est arrangé ? Elle avait l’air assez agacée. »',
         choices: [
-          { text: '« Oui, tout va bien. Ne vous inquiétez pas. »', feedback: 'Gentil sur le moment, mais Ben perd l’occasion de corriger le tir, et les petites erreurs se répètent quand personne ne les nomme.' },
-          { text: '« Oui. Petite remarque : la promo doit passer à 20 %, et deux fois aujourd’hui elle est passée à 10 %. On la refait ensemble sur la caisse ? »', feedback: 'Au bon moment, précis et accompagné d’un soutien. Un petit feedback donné tôt garde le problème petit.' },
+          { text: '« C’est réglé, je lui ai fait le bon prix. Ne vous inquiétez pas, les promos sont compliquées, et je garderai un œil sur votre caisse ce week-end. »', feedback: 'Gentil et protecteur, mais en reprenant la main, vous empêchez Ben de comprendre ce qui n’a pas marché, et les petites erreurs se répètent quand personne ne les nomme.' },
+          { text: '« Oui. Petite remarque : la promo passe à 20 %, et deux fois aujourd’hui elle est passée à 10 %. On vérifie ensemble ? »', feedback: 'Au bon moment, précis et accompagné d’un soutien. Un petit feedback donné tôt garde le problème petit.' },
           { text: 'En parler à la réunion d’équipe du mois prochain comme rappel général à tous sur la vérification des promotions.', feedback: 'Les rappels collectifs semblent sans risque, mais ils atteignent rarement la personne concernée et peuvent semer le doute chez les autres.' },
-          { text: '« Oui, il faut faire plus attention avec les promos. »', feedback: 'Direct et au bon moment, mais « faire plus attention » reste vague. Nommer précisément ce qui s’est passé indique à Ben quoi changer.' },
+          { text: '« Oui. Il faut faire plus attention avec les promos, d’accord ? »', feedback: 'Direct et au bon moment, mais « faire plus attention » reste vague. Nommer précisément ce qui s’est passé indique à Ben quoi changer.' },
         ],
       },
       'w01-specific-praise': {
@@ -237,10 +237,10 @@ const week: CurriculumWeek = {
         person: 'Aisha, infirmière diplômée',
         quote: '« Honnêtement, la nuit a été dure. Je suis juste contente que ce soit fini. »',
         choices: [
-          { text: '« Super travail hier soir ! Vous êtes une star. »', feedback: 'Chaleureux et apprécié, mais un compliment général est difficile à reproduire. Nommer le comportement exact l’aide à savoir quoi continuer.' },
+          { text: '« Super travail hier soir, vraiment. Vous êtes une star, et le service a de la chance de vous avoir de nuit. »', feedback: 'Chaleureux et apprécié, mais un compliment général est difficile à reproduire. Nommer le comportement exact l’aide à savoir quoi continuer.' },
           { text: '« Les nuits difficiles font partie du métier. Courage. »', feedback: 'Vous avez manqué l’occasion de montrer que vous aviez remarqué. Une reconnaissance qui reste dans votre tête ne lui parvient pas.' },
-          { text: '« Je vous ai vue vous asseoir avec cette famille, expliquer chaque étape et rester calme quand ils ont haussé le ton. Vous avez changé l’ambiance. Merci. »', feedback: 'Un compliment précis nomme le comportement et son impact : Aisha sait exactement ce qui a fonctionné, et que vous l’avez vu.' },
-          { text: 'Envoyer un e-mail à tout le service pour remercier l’équipe de nuit de ses efforts.', feedback: 'Remercier l’équipe a sa place, mais cela dilue ce qu’Aisha a fait. Reconnaissez d’abord la personne, puis l’équipe.' },
+          { text: '« Je vous ai vue expliquer chaque étape à cette famille et rester calme quand ils ont haussé le ton. Vous avez changé l’ambiance. Merci. »', feedback: 'Un compliment précis nomme le comportement et son impact : Aisha sait exactement ce qui a fonctionné, et que vous l’avez vu.' },
+          { text: 'Envoyer un e-mail chaleureux à tout le service pour remercier nommément l’équipe de nuit d’être restée calme et attentionnée lors d’une admission très difficile.', feedback: 'Chaleureux et public, mais remercier tout le monde dilue ce qu’Aisha a fait. Reconnaissez d’abord son comportement précis, puis l’équipe.' },
         ],
       },
       'w01-how-am-i-doing': {
@@ -249,10 +249,10 @@ const week: CurriculumWeek = {
         person: 'Carmen, ingénieure logiciel',
         quote: '« Vous pouvez être franc avec moi ? Qu’est-ce qui me freine le plus en ce moment ? »',
         choices: [
-          { text: '« Vos revues de code sont une vraie force. Un axe de progrès : vous avez signalé le risque sur l’API tard lors du dernier sprint. Signaler les risques plus tôt augmenterait votre impact. Qu’en pensez-vous ? »', feedback: 'Vous avez répondu à sa question : une force claire, un exemple précis et une invitation à réagir.' },
-          { text: '« Honnêtement, tout va très bien. Je ne m’inquiéterais de rien. »', feedback: 'Rassurant, mais elle vous demandait un point à travailler. Les compliments vides peuvent donner le sentiment de ne pas être vue, ou réserver une mauvaise surprise plus tard.' },
+          { text: '« Vos revues de code sont une force. Un axe de progrès : vous avez signalé tard le risque sur l’API au dernier sprint. Le signaler plus tôt augmenterait votre impact. Juste ? »', feedback: 'Vous avez répondu à sa question : une force claire, un exemple précis et une invitation à réagir.' },
+          { text: '« Honnêtement ? Tout va très bien, et je vous promets que je vous le dirais sinon. Continuez exactement comme ça, et je veillerai à ce que votre évaluation le reflète. »', feedback: 'Chaleureux et loyal, mais elle vous demandait un point à travailler. Les compliments vides peuvent donner le sentiment de ne pas être vue, ou réserver une mauvaise surprise.' },
           { text: '« Gardons ça pour votre évaluation, pour que je vous donne une vue complète avec tout ce que j’ai recueilli auprès de vos pairs et de l’équipe transverse. »', feedback: 'Attendre transforme une occasion de progresser en surprise future. Si vous pouvez le nommer maintenant, faites-le.' },
-          { text: '« Peut-être travailler un peu plus la communication ? »', feedback: 'Cela indique une direction, mais « la communication » est trop large pour agir. Un exemple concret rend le feedback utilisable.' },
+          { text: '« Peut-être la communication ? J’apprends parfois les choses plus tard que je ne le voudrais. »', feedback: 'Cela va dans le bon sens, mais reste trop large pour agir. Un exemple concret, comme le risque sur l’API, le rend utilisable.' },
         ],
       },
       'w01-sharp-edges': {
@@ -261,10 +261,10 @@ const week: CurriculumWeek = {
         person: 'Deshawn, conseiller clientèle senior',
         quote: '« Mes chiffres parlent d’eux-mêmes. N’est-ce pas ce qui compte ? »',
         choices: [
-          { text: '« C’est vrai, alors ne nous attardons pas sur les détails. »', feedback: 'Excuser un comportement à cause des résultats dit à toute l’agence que les meilleurs jouent selon d’autres règles.' },
+          { text: '« Absolument, et je vous en suis reconnaissant. Certaines personnes sont simplement plus intenses que d’autres, et je parlerai à l’équipe pour qu’elle vous laisse un peu plus de place. »', feedback: 'Protéger votre meilleur élément semble loyal, mais cela excuse le comportement et dit à l’agence que les meilleurs jouent selon d’autres règles.' },
           { text: '« Deux personnes se sont plaintes de vous. Il faut revoir votre attitude. »', feedback: '« Attitude » est une étiquette, pas un comportement, et commencer par des plaintes l’invite à deviner qui a parlé au lieu d’écouter.' },
-          { text: '« Les résultats comptent beaucoup. J’aimerais aussi que vous ayez davantage l’esprit d’équipe. »', feedback: 'Vous avez tenu les deux idées, mais « l’esprit d’équipe » reste vague. Nommez ce que vous avez vu pour qu’il sache quoi changer.' },
-          { text: '« Ils comptent, et je les apprécie. Notre façon de travailler ensemble compte aussi. Lundi, au point du matin, je vous ai vu couper la parole à deux collègues. Que se passait-il pour vous à ce moment-là ? »', feedback: 'Vous avez reconnu sa force, nommé un comportement que vous avez vu vous-même et demandé son point de vue. C’est juste, et difficile à balayer.' },
+          { text: '« Les résultats comptent beaucoup, et les vôtres sont excellents. J’aimerais aussi plus d’esprit d’équipe aux points du matin. »', feedback: 'Vous avez tenu les deux idées, mais « l’esprit d’équipe » reste vague. Nommez ce que vous avez vu pour qu’il sache quoi changer.' },
+          { text: '« Oui. Notre façon de travailler ensemble aussi. Lundi, au point du matin, vous avez coupé la parole à deux collègues. Que se passait-il ? »', feedback: 'Vous avez reconnu sa force, nommé un comportement que vous avez vu vous-même et demandé son point de vue. C’est juste, et difficile à balayer.' },
         ],
       },
       'w01-feedback-up': {
@@ -273,10 +273,10 @@ const week: CurriculumWeek = {
         person: 'Elena, directrice générale',
         quote: '« La cuisine tient le coup avec tous ces changements, n’est-ce pas ? »',
         choices: [
-          { text: '« Oui, ça va. »', feedback: 'Protéger la relation aujourd’hui coûte à votre équipe demain. Votre responsable ne peut pas corriger ce qu’elle n’entend jamais.' },
-          { text: '« Plus ou moins. Puis-je vous partager quelque chose que j’observe ? Les priorités ont changé trois fois ce mois-ci, et la mise en place est refaite à chaque fois. Pourrait-on figer les changements une semaine à l’avance ? »', feedback: 'Vous avez demandé la permission, nommé un schéma précis et son impact, et proposé une demande réaliste. C’est un feedback sur lequel une responsable peut agir.' },
+          { text: '« Ça va, vraiment. L’équipe est formidable et s’adaptera à tout ce dont vous avez besoin. Ne vous inquiétez pas pour nous, vous avez déjà bien assez à gérer. »', feedback: 'Loyal et gentil, mais la protéger de l’information coûte à votre équipe. Votre responsable ne peut pas corriger ce qu’elle n’entend jamais.' },
+          { text: '« Plus ou moins. Puis-je partager une chose ? Trois changements de priorité ce mois-ci ont fait refaire la mise en place. Peut-on figer les changements une semaine avant ? »', feedback: 'Vous avez demandé la permission, nommé un schéma précis et son impact, et proposé une demande réaliste. C’est un feedback sur lequel une responsable peut agir.' },
           { text: '« Honnêtement, ces changements permanents, c’est le chaos. Plus personne ici ne sait ce que vous voulez, et ça commence à jaser. »', feedback: 'La frustration est réelle, mais le reproche et les mots absolus comme « personne » rendent le message facile à écarter.' },
-          { text: '« Ça fait beaucoup. L’équipe est assez fatiguée. »', feedback: 'Honnête, mais sans la cause ni une demande, elle risque de ne pas savoir quoi changer.' },
+          { text: '« Ça fait beaucoup. L’équipe est assez fatiguée par tous ces changements. »', feedback: 'Honnête, mais sans la cause ni une demande, elle risque de ne pas savoir quoi changer.' },
         ],
       },
       'w01-safety-callout': {
@@ -285,9 +285,9 @@ const week: CurriculumWeek = {
         person: 'Felix, chef d’équipe',
         quote: '« On est en retard. On fera la vérification complète après le déjeuner, promis. »',
         choices: [
-          { text: 'Laisser passer pour l’instant et en parler au point sécurité de vendredi.', feedback: 'Attendre sur un sujet de sécurité expose les gens à un risque réel. Un feedback sur la sécurité se donne sur le moment.' },
+          { text: 'Faire confiance à la promesse de Felix pour cette fois, car il est fiable et sous pression, et proposer d’aider son équipe à rattraper le retard pour faire la vérification complète après le déjeuner.', feedback: 'Vous soutenez un chef fiable, mais une promesse n’est pas une vérification des harnais. La sécurité exige d’agir tout de suite et de suivre le processus de signalement.' },
           { text: 'Crier à travers le chantier pour faire descendre toute l’équipe, puis sermonner Felix devant tout le monde.', feedback: 'Arrêter le travail est juste, mais l’humiliation publique apprend à cacher les problèmes plutôt qu’à les signaler.' },
-          { text: '« Je comprends la pression, et je vais vous aider sur le planning. Mais personne ne monte sans la vérification des harnais. Faisons-la maintenant, et je vais le consigner dans notre processus sécurité comme le prévoit la politique. »', feedback: 'Vous avez stoppé le risque immédiatement, êtes resté respectueux et avez suivi le processus sécurité. Des règles claires protègent les personnes et la confiance.' },
+          { text: '« Stop. Personne ne monte sans la vérification des harnais. Faisons-la maintenant. Je vous aide pour le planning, et je le consigne selon notre processus sécurité. »', feedback: 'Vous avez stoppé le risque immédiatement, êtes resté respectueux et avez suivi le processus sécurité. Des règles claires protègent les personnes et la confiance.' },
           { text: 'Arrêter discrètement l’équipe, lui faire faire la vérification et parler à Felix en privé après le poste.', feedback: 'Vous avez géré le risque avec respect, mais sauter le signalement signifie que le problème risque de n’être jamais suivi ni corrigé.' },
         ],
       },

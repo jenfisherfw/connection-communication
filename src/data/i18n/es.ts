@@ -269,10 +269,10 @@ const es: ContentTranslation = {
       person: 'Maya, diseñadora sénior',
       quote: '“Sinceramente, nadie me dijo que esas revisiones eran obligatorias. Esto me parece injusto.”',
       choices: [
-        { text: '“Estaba en el documento de arranque del proyecto. Deberías haberlo leído.”', feedback: 'Es cierto, pero ganas el punto y pierdes a la persona. La actitud defensiva suele crecer cuando se le responde con más pruebas.' },
-        { text: '“Es justo que lo menciones. Parece que las expectativas no estaban claras. Pongámonos de acuerdo sobre cómo serán las revisiones de aquí en adelante.”', feedback: 'Validaste su experiencia sin abandonar el estándar y avanzaste hacia una solución compartida.' },
-        { text: '“Está bien, olvida que lo mencioné.”', feedback: 'Retroceder evita la incomodidad ahora, pero deja el tema sin resolver y transmite que el estándar es opcional.' },
-        { text: '“Te escucho. Aun así, tiene que hacerse.”', feedback: 'Mejor. La reconociste, pero mostrar curiosidad por lo que se lo impidió generaría más compromiso.' },
+        { text: '“Estaba en el documento de arranque, página dos, y lo vimos en la primera reunión. Sé que es mucho para seguir, pero las revisiones nunca fueron opcionales.”', feedback: 'Es cierto y hasta cortés, pero ganas el punto y pierdes a la persona. La actitud defensiva suele crecer cuando se le responde con más pruebas.' },
+        { text: '“Es justo que lo menciones. ¿Qué te lo impidió? Pongámonos de acuerdo sobre cómo funcionarán las revisiones de aquí en adelante.”', feedback: 'Validaste su experiencia sin abandonar el estándar, mostraste curiosidad por la causa y avanzaste hacia una solución compartida.' },
+        { text: '“Perdón, es mi culpa por no dejarlo más claro. No te preocupes por las que faltaste. Yo lo arreglo con las partes interesadas y empezamos de cero en el próximo proyecto.”', feedback: 'Amable, pero le quitaste todo el problema de encima y, sin decirlo, volviste opcional el estándar. Asumir tu parte está bien; rescatarla de la suya, no.' },
+        { text: '“Te escucho, y lamento que se sienta injusto. Aun así, las revisiones tienen que hacerse.”', feedback: 'Casi. Reconociste lo que siente, pero volviste directo a la regla sin preguntar qué se lo impidió, y esa pregunta es la que genera compromiso.' },
       ],
     },
     'peer-credit': {
@@ -281,10 +281,10 @@ const es: ContentTranslation = {
       person: 'Jordan, gerente colega',
       quote: '“Gran reunión, ¿no? A la dirección le encantaron los números.”',
       choices: [
-        { text: 'Escribirle a la dirección para aclarar las cosas.', feedback: 'Pasar por encima de tu colega como primer paso daña la confianza y te hace ver político, aunque tengas razón.' },
-        { text: '“¡Sí! Me sorprendió que no se mencionara a mi equipo. ¿Podemos hablar de cómo reconocer el trabajo de aquí en adelante?”', feedback: 'Directo, tranquilo y orientado al futuro. Nombraste el impacto sin acusar intenciones.' },
-        { text: 'No decir nada, pero dejar de compartir trabajo con Jordan.', feedback: 'Retirarte en silencio genera resentimiento y desgasta la colaboración entre equipos.' },
-        { text: '“Sí. La próxima vez, incluye a mi equipo.”', feedback: 'Una petición clara, pero nombrar lo que pasó y por qué importa hace más probable que la conversación tenga efecto.' },
+        { text: 'Enviar a la dirección una nota breve y cordial agradeciendo su interés y mencionando que tu equipo hizo el análisis.', feedback: 'El tono es cortés, pero pasar por encima de Jordan como primer paso sigue pareciendo político y evita a la persona con quien necesitas resolverlo.' },
+        { text: '“Sí. Aunque noté que no se mencionó a mi equipo. ¿Podemos hablar de cómo reconocemos el trabajo compartido?”', feedback: 'Directo, tranquilo y orientado al futuro. Nombraste el impacto sin acusar intenciones.' },
+        { text: '“¡Salió genial! La verdad, el mérito no importa mientras la dirección tenga lo que necesitaba. Yo me encargo de que mi equipo sepa que vi su trabajo.”', feedback: 'Generoso, pero tragártelo deja a tu equipo sin reconocimiento y permite que el patrón siga. El resentimiento callado suele salir después.' },
+        { text: '“Sí. La próxima vez, ¿podrías incluir a mi equipo para que presente su propio trabajo?”', feedback: 'Una petición clara y justa, pero no nombraste lo que pasó hoy, así que Jordan quizá ni se dé cuenta de que hubo un problema.' },
       ],
     },
     'burnout-signal': {
@@ -293,10 +293,10 @@ const es: ContentTranslation = {
       person: 'Sam, analista',
       quote: '“Sí, todo bien. Solo tengo muchas cosas encima.”',
       choices: [
-        { text: '“Perfecto. Avísame si necesitas algo.”', feedback: 'Con buena intención, pero pone en Sam la carga de pedir ayuda. Rara vez la gente lo hace.' },
-        { text: '“Te he notado más callado últimamente y conectado hasta tarde. Me importa cómo estás. ¿Qué tienes encima?”', feedback: 'Observaciones específicas más interés genuino abren la puerta sin obligar a nadie a cruzarla.' },
-        { text: '“Tienes que dejar de trabajar tan tarde.”', feedback: 'Te importa lo correcto, pero una orden se salta el entender la causa.' },
-        { text: '“¿Esto es por la reorganización?”', feedback: 'Adivinar puede sentirse presuntuoso. Las preguntas abiertas dejan que Sam te cuente lo que realmente pasa.' },
+        { text: '“Te entiendo totalmente, es una época intensa para todos. Mi puerta siempre está abierta, así que avísame si alguna vez necesitas cualquier cosa, ¿sí?”', feedback: 'Con buena intención, pero pone en Sam la carga de pedir ayuda. Quien está pasándola mal rara vez lo hace.' },
+        { text: '“Te he notado más callado y conectado hasta tarde. Me importa cómo estás. ¿Qué tienes encima?”', feedback: 'Observaciones específicas más interés genuino abren la puerta sin obligar a nadie a cruzarla.' },
+        { text: '“He notado que trabajas hasta tarde y no quiero que te quemes. Desconéctate a las siete, por favor, y yo te quito un par de cosas de la lista.”', feedback: 'Nombraste lo que viste y te importa lo correcto, pero saltar a una regla y una solución se salta entender qué causa las noches largas.' },
+        { text: '“Sé que la reorganización ha sido dura para todos. ¿Es eso lo que te pesa últimamente?”', feedback: 'Con cariño, pero es una suposición que dirige la respuesta. Una pregunta abierta deja que Sam te cuente lo que realmente pasa.' },
       ],
     },
     'reorg-announcement': {
@@ -305,10 +305,10 @@ const es: ContentTranslation = {
       person: 'Chris, gerente de cuentas',
       quote: '“Entonces, ¿esto es un recorte de personal? Dínoslo directamente.”',
       choices: [
-        { text: '“Nadie debe preocuparse. Es una gran oportunidad para todos.”', feedback: 'Tranquilizar sin datos suena a propaganda, y la gente llena el vacío con los peores rumores.' },
-        { text: '“No hay recortes de personal previstos con este cambio. Esto es lo que cambia, lo que no, y cuándo sabrán más. Me quedaré después para responder preguntas.”', feedback: 'Respuesta directa, límites claros y un camino de seguimiento. Así se calma una sala sin prometer de más.' },
-        { text: '“No puedo hablar de temas de personal.”', feedback: 'Aunque sea cierto, una negativa seca confirma el miedo. Comparte lo que puedas y di cuándo sabrás más.' },
-        { text: '“Buena pregunta. Déjame averiguarlo y te respondo.”', feedback: 'Mejor que adivinar, pero da un momento concreto y comparte lo que sí sabes ahora.' },
+        { text: '“Excelente pregunta, y entiendo totalmente la preocupación. El trabajo de todos está seguro, lo prometo. Es una gran oportunidad para todos y me entusiasma.”', feedback: 'Cálido, pero una promesa total sobre algo que quizá no controlas suena a propaganda, y si algo cambia después, tu palabra se pierde.' },
+        { text: '“No hay recortes previstos con este cambio. Les explico qué cambia, qué no, y cuándo sabrán más.”', feedback: 'Respuesta directa, límites claros y un camino de seguimiento. Así se calma una sala sin prometer de más.' },
+        { text: '“No puedo hablar de temas de personal en este espacio, pero Recursos Humanos compartirá más detalles cuando sea el momento.”', feedback: 'Aunque sea cierto, una negativa seca confirma el miedo. Comparte lo que puedas y di cuándo sabrás más.' },
+        { text: '“Buena pregunta. Que yo sepa, no hay recortes previstos. Déjame confirmar los detalles y les respondo pronto a todos.”', feedback: 'Respondiste de forma directa, pero “pronto” es vago y “que yo sepa” invita a dudar. Da un momento concreto y comparte qué cambia y qué no.' },
       ],
     },
     'change-fatigue': {
@@ -317,10 +317,10 @@ const es: ContentTranslation = {
       person: 'Dana, analista sénior',
       quote: '“Otra vez lo mismo. Apenas aprendimos el último sistema.”',
       choices: [
-        { text: '“Lo sé, pero esto viene obligatorio desde arriba.”', feedback: 'Culpar a la dirección por encima de ti debilita la confianza en el cambio y en ti como líder.' },
-        { text: '“Tienes razón, ha sido mucho. Déjame explicar por qué este importa, qué vamos a dejar de hacer para hacer espacio y cómo vamos a apoyar la transición.”', feedback: 'Validaste el cansancio, explicaste el porqué y mostraste que estás quitando carga, no solo sumándola.' },
-        { text: '“Mantengamos una actitud positiva, equipo.”', feedback: 'Pedir positividad descarta una preocupación real y empuja la resistencia a la clandestinidad.' },
-        { text: '“Te escucho. Hablemos después de la reunión.”', feedback: 'Buen instinto, pero toda la sala escuchó la preocupación. Abórdala brevemente en el momento también.' },
+        { text: '“Lo sé, créeme. Sinceramente, esto viene de arriba y es obligatorio, pero voy a dar la pelea donde pueda.”', feedback: 'Culpar a la dirección por encima de ti debilita la confianza en el cambio y en ti como líder.' },
+        { text: '“Es justo, ha sido mucho. Les explico por qué este importa, qué dejaremos de hacer para hacer espacio y cómo los apoyaremos.”', feedback: 'Validaste el cansancio, explicaste el porqué y mostraste que estás quitando carga, no solo sumándola.' },
+        { text: '“Te escucho totalmente, y sé que el cambio cuesta. Intentemos mantener una actitud positiva y darle una oportunidad real. Te prometo que será el último gran cambio por un tiempo.”', feedback: 'Amable, pero pedir positividad descarta una preocupación real, y prometer que es el último cambio es una promesa que probablemente no podrás cumplir.' },
+        { text: '“Es justo, Dana, y te escucho. Tomemos diez minutos después de la reunión para entender qué te preocupa.”', feedback: 'Buen instinto, pero toda la sala escuchó la preocupación. Abórdala brevemente en el momento también y luego da seguimiento.' },
       ],
     },
     'blame-game': {
@@ -329,10 +329,10 @@ const es: ContentTranslation = {
       person: 'Morgan, líder de equipo',
       quote: '“Sinceramente, fue culpa de diseño. Se retrasaron dos semanas.”',
       choices: [
-        { text: '“Bien, diseño, ¿qué pasó?”', feedback: 'Acabas de poner a un grupo en el banquillo frente a todos. Espera menos honestidad en la próxima revisión.' },
-        { text: '“Dejemos el quién y veamos el qué. ¿Dónde falló el proceso y qué vamos a cambiar para que no vuelva a pasar?”', feedback: 'Pasaste de la culpa al aprendizaje sin callar a nadie. Así se construye una cultura de aprendizaje.' },
-        { text: '“Todos compartimos la responsabilidad. Sigamos.”', feedback: 'Es cierto, pero seguir adelante se salta el aprendizaje. Usa el momento para arreglar el sistema.' },
-        { text: 'No decir nada y dejar que la conversación siga.', feedback: 'El silencio se interpreta como acuerdo. Lo que toleras en la sala se vuelve la norma.' },
+        { text: '“Está bien, reunamos todos los datos. Diseño, ¿pueden explicarnos su cronograma y qué causó el retraso de dos semanas?”', feedback: 'Suena neutral, pero acabas de poner a un grupo en el banquillo frente a todos. Espera menos honestidad en la próxima revisión.' },
+        { text: '“Dejemos el quién y veamos el qué. ¿Dónde falló el proceso y qué vamos a cambiar?”', feedback: 'Pasaste de la culpa al aprendizaje sin callar a nadie. Así se construye una cultura de aprendizaje.' },
+        { text: '“Todos compartimos la responsabilidad, así que no señalemos a nadie. Pasemos a planear el próximo lanzamiento.”', feedback: 'Es cierto, y frena la culpa, pero seguir adelante se salta el aprendizaje. Usa el momento para arreglar el proceso.' },
+        { text: 'No decir nada por ahora y luego hablar en privado con diseño para ver cómo están.', feedback: 'Un seguimiento con cariño, pero el silencio en la sala se interpreta como acuerdo con la culpa. Lo que toleras en la sala se vuelve la norma.' },
       ],
     },
     'meeting-silence': {
@@ -341,10 +341,10 @@ const es: ContentTranslation = {
       person: 'Lee, coordinador',
       quote: '“Creo que las cosas están bien como están.”',
       choices: [
-        { text: '“¡Genial, me alegra que todos estén contentos!”', feedback: 'El silencio casi nunca es acuerdo. Tomarlo al pie de la letra significa perderte lo que la gente no dice.' },
-        { text: '“Gracias, Lee. Empiezo yo: algo que podría hacer mejor es dar prioridades más claras. ¿Qué más les facilitaría la semana?”', feedback: 'Empezar con tu propia mejora hace que sea seguro para los demás ser honestos.' },
-        { text: '“Vamos, alguien debe tener una idea.”', feedback: 'La presión aumenta el riesgo de hablar. La gente necesita seguridad, no un empujón.' },
-        { text: '“Bueno, mándenme ideas por correo si se les ocurre algo.”', feedback: 'Un canal privado ayuda, pero acompáñalo dando tú el ejemplo de franqueza en la sala.' },
+        { text: '“Gracias, Lee, qué bueno escucharlo. Me alegra que todos sientan que las cosas funcionan, y mi puerta siempre está abierta si surge algo.”', feedback: 'El silencio casi nunca es acuerdo. Tomarlo al pie de la letra, por cálido que sea, significa perderte lo que la gente no dice.' },
+        { text: '“Gracias, Lee. Empiezo yo: podría dar prioridades más claras. ¿Qué más les facilitaría la semana?”', feedback: 'Empezar con tu propia mejora hace que sea seguro para los demás ser honestos.' },
+        { text: '“Vamos, equipo, sé que alguien tiene una idea. Aquí no hay respuestas incorrectas, así que escuchemos al menos a dos personas más antes de seguir.”', feedback: 'La presión amistosa sigue aumentando el riesgo de hablar. La gente necesita seguridad, no un empujón.' },
+        { text: '“Bueno. Después de esto enviaré una encuesta anónima para que todos compartan ideas en privado.”', feedback: 'Un canal anónimo ayuda, pero por sí solo se salta lo más poderoso: dar tú el ejemplo de franqueza en la sala.' },
       ],
     },
     'meeting-derail': {
@@ -353,10 +353,10 @@ const es: ContentTranslation = {
       person: 'Riley, gerente de producto',
       quote: '“Y otra cosa sobre el color del logo...”',
       choices: [
-        { text: 'Dejarlo seguir. La gente parece interesada.', feedback: 'El interés en el tema equivocado igual consume la reunión. La decisión por la que vinieron se apresura o se omite.' },
-        { text: '“Esto importa, así que dejémoslo aparte y démosle su propio espacio. Tenemos 10 minutos para decidir la fecha de lanzamiento. ¿Qué decidimos?”', feedback: 'Respetaste el tema, protegiste el propósito y volviste a enfocar la sala en la decisión.' },
-        { text: '“Nos salimos del tema. Sigamos.”', feedback: 'Buen instinto, pero decir cuándo se tratará el tema pendiente evita que la gente se sienta ignorada.' },
-        { text: 'Agendar otra reunión para tomar la decisión.', feedback: 'Otra reunión premia la desviación. Guía de vuelta a la decisión mientras la gente está presente.' },
+        { text: 'Dejar que el debate siga unos minutos más, ya que la gente está claramente interesada y el logo también importa para el lanzamiento.', feedback: 'El interés en el tema equivocado igual consume la reunión. La decisión por la que vinieron se apresura o se omite.' },
+        { text: '“Esto importa, así que dejémoslo para el jueves. Tenemos 10 minutos para elegir la fecha de lanzamiento. ¿Qué decidimos?”', feedback: 'Respetaste el tema, protegiste el propósito y volviste a enfocar la sala en la decisión.' },
+        { text: '“Buenos puntos, pero nos salimos del tema. Volvamos a la fecha de lanzamiento, solo nos quedan 10 minutos.”', feedback: 'Buen instinto, pero decir cuándo se tratará el tema pendiente evita que la gente se sienta ignorada.' },
+        { text: '“Riley, esto claramente te importa. Agendemos otra reunión para el logo y la fecha de lanzamiento, para que ninguno se decida con prisa.”', feedback: 'Considerado, pero otra reunión premia la desviación y retrasa la decisión por la que vinieron. Guía de vuelta a ella mientras la gente está presente.' },
       ],
     },
     'meeting-no-actions': {
@@ -365,10 +365,10 @@ const es: ContentTranslation = {
       person: 'Sky, ingeniera',
       quote: '“¿No hablamos de esto la semana pasada también?”',
       choices: [
-        { text: '“Sí, sigamos discutiéndolo hasta resolverlo.”', feedback: 'Más discusión sin responsables produce el mismo resultado la próxima semana.' },
-        { text: '“Tienes razón. De ahora en adelante cerraremos con responsables y fechas, y enviaré un resumen en menos de una hora. Empecemos con este: ¿quién lo toma?”', feedback: 'Nombraste el patrón y arreglaste el sistema. Los responsables claros y un resumen escrito hacen que las reuniones muevan el trabajo.' },
-        { text: '“Hagamos esta reunión más larga para tener tiempo de terminar.”', feedback: 'Las reuniones más largas rara vez resuelven la falta de seguimiento.' },
-        { text: '“Le daré seguimiento a cada uno por separado.”', feedback: 'Ayuda, pero el grupo nunca ve los compromisos compartidos. Haz visible la responsabilidad.' },
+        { text: '“Bien visto, Sky. Algunos son problemas difíciles, así que sigamos hablándolos hasta resolverlos juntos.”', feedback: 'Más discusión sin responsables produce el mismo resultado la próxima semana.' },
+        { text: '“Tienes razón. De ahora en adelante cerramos con responsables y fechas, y enviaré un resumen. ¿Quién toma este?”', feedback: 'Nombraste el patrón y arreglaste el sistema. Los responsables claros y un resumen escrito hacen que las reuniones muevan el trabajo.' },
+        { text: '“Buen punto. Alarguemos esta reunión a noventa minutos para tener por fin espacio de terminar cada tema bien, sin prisas.”', feedback: 'Las reuniones más largas rara vez resuelven la falta de seguimiento.' },
+        { text: '“Tienes razón. Después de esto hablaré con cada uno para asignar responsables y asegurar que las cosas avancen.”', feedback: 'Los responsables son la solución correcta, pero asignarlos en privado hace que el grupo nunca vea los compromisos compartidos. Haz visible la responsabilidad en la sala.' },
       ],
     },
     'checked-out-1on1': {
@@ -377,10 +377,10 @@ const es: ContentTranslation = {
       person: 'Taylor, diseñadora',
       quote: '“No hay mucho que hablar. Todo bien.”',
       choices: [
-        { text: '“¡Genial, terminemos temprano entonces!”', feedback: 'Tres semanas de “todo bien” son una señal. Terminar temprano significa perderte lo que no se está diciendo.' },
-        { text: '“Me alegra que las cosas estén estables. He notado que nuestras 1:1 se han acortado. ¿Te resulta útil este tiempo? ¿Qué lo haría más valioso?”', feedback: 'Nombraste el patrón sin culpar e invitaste a la persona a darle forma a la reunión. Eso suele abrir la conversación real.' },
-        { text: '“Bueno, repasemos tu lista de proyectos entonces.”', feedback: 'El estado de los proyectos llena el tiempo, pero convierte la 1:1 en tu reunión en lugar de la suya.' },
-        { text: '“¿Pasa algo? Te noto desconectada.”', feedback: 'Una etiqueta directa puede sentirse como acusación y provocar una actitud defensiva. Empieza con curiosidad.' },
+        { text: '“¡Me alegra! Te devuelvo la media hora, te la ganaste. Escríbeme cuando quieras si surge algo, ¿sí?”', feedback: 'Generoso, pero tres semanas de “todo bien” son una señal. Terminar temprano significa perderte lo que no se está diciendo.' },
+        { text: '“Me alegra que todo esté estable. Nuestras 1:1 se han acortado. ¿Qué haría útil este tiempo para ti?”', feedback: 'Nombraste el patrón sin culpar e invitaste a la persona a darle forma a la reunión. Eso suele abrir la conversación real.' },
+        { text: '“Bueno. Entonces usemos el tiempo para repasar tu lista de proyectos y asegurarme de que nada esté trabado.”', feedback: 'El estado de los proyectos llena el tiempo, pero convierte la 1:1 en tu reunión en lugar de la suya.' },
+        { text: '“Te he notado algo desconectada últimamente y me preocupa. ¿Pasa algo con el equipo o en casa?”', feedback: 'Con cariño, pero etiquetar a alguien de “desconectada” y adivinar causas puede sentirse como acusación. Nombra el patrón y pregunta de forma abierta.' },
       ],
     },
     'career-question': {
@@ -389,10 +389,10 @@ const es: ContentTranslation = {
       person: 'Jamie, analista',
       quote: '“Sinceramente, no sé hacia dónde va mi carrera aquí.”',
       choices: [
-        { text: '“Lo estás haciendo muy bien, no te preocupes.”', feedback: 'Tranquilizar cierra la puerta a una conversación importante que la persona se atrevió a abrir.' },
-        { text: '“Gracias por decírmelo. Es importante. Démosle tiempo de verdad: ¿podemos dedicar nuestra próxima 1:1 a hacia dónde quieres crecer? Yo también llevaré ideas.”', feedback: 'Valoraste lo que compartió y comprometiste tiempo específico para ello. Eso genera lealtad y confianza.' },
-        { text: '“¿Has revisado las vacantes internas?”', feedback: 'Mandar a la persona a otro lado puede sonar a que no te interesa su crecimiento.' },
-        { text: '“¿Qué te gustaría estar haciendo dentro de dos años?”', feedback: 'Gran pregunta, pero al final de una reunión puede recibir una respuesta apresurada. Dale un espacio dedicado.' },
+        { text: '“Lo estás haciendo muy bien, de verdad. No te preocupes, aquí definitivamente hay un camino de ascenso para ti, y me aseguraré de que lo tengas.”', feedback: 'Tranquilizar y prometer algo que quizá no controlas cierra la conversación que la persona se atrevió a abrir.' },
+        { text: '“Gracias por decírmelo. Démosle tiempo de verdad: ¿dedicamos nuestra próxima 1:1 a hacia dónde quieres crecer?”', feedback: 'Valoraste lo que compartió y comprometiste tiempo específico para ello. Eso genera lealtad y confianza.' },
+        { text: '“Es muy bueno pensar en eso. ¿Has revisado las vacantes internas? Hay puestos interesantes abiertos en otros equipos.”', feedback: 'Mandar a la persona a otro lado puede sonar a que no te interesa su crecimiento.' },
+        { text: '“Me alegra que lo menciones. ¿Qué te gustaría estar haciendo dentro de dos años?”', feedback: 'Gran pregunta, pero al final de una reunión puede recibir una respuesta apresurada. Dale un espacio dedicado.' },
       ],
     },
     'slack-misfire': {
@@ -401,10 +401,10 @@ const es: ContentTranslation = {
       person: 'Robin, especialista de marketing',
       quote: '“¿De verdad era necesario frente a todos?”',
       choices: [
-        { text: '“Solo era retroalimentación, no lo tomes personal.”', feedback: 'Restarle importancia a su reacción agrava el golpe. El texto no tiene tono y la crítica pública duele.' },
-        { text: '“Tienes razón, y lo siento. Fue demasiado directo y demasiado público. ¿Hacemos una llamada rápida para explicarte lo que quise decir y cómo puedo ayudar?”', feedback: 'Asumiste el impacto y pasaste a un canal más rico para repararlo. Eso modela exactamente la cultura que quieres.' },
-        { text: 'Borrar el mensaje y no decir nada.', feedback: 'Borrarlo sin reconocerlo deja intacta la herida.' },
-        { text: '“Perdón si sonó mal.”', feedback: 'Es un comienzo, pero el “si” suaviza la responsabilidad. Asúmelo directamente y luego repara.' },
+        { text: '“Siento que te haya dolido. De verdad era solo retroalimentación sobre el trabajo, no sobre ti, así que no lo tomes personal. En general lo haces muy bien.”', feedback: 'Tranquilizar es amable, pero decirle cómo sentirse descarta el impacto. El texto no tiene tono y la crítica pública duele.' },
+        { text: '“Tienes razón, y lo siento. Fue demasiado directo y demasiado público. ¿Lo hablamos en una llamada rápida?”', feedback: 'Asumiste el impacto y pasaste a un canal más rico para repararlo. Eso modela exactamente la cultura que quieres.' },
+        { text: 'Borrar el mensaje y luego publicar en el canal un agradecimiento amable por su esfuerzo para que el hilo termine en buen tono.', feedback: 'Suaviza la superficie, pero nunca reconoce el daño. La persona sigue necesitando una disculpa directa.' },
+        { text: '“Perdón si sonó mal. Debí escribirte en privado. ¿Hacemos una llamada rápida?”', feedback: 'Casi, y pasar a una llamada es correcto, pero el “si” suaviza la responsabilidad. Asume el impacto con claridad.' },
       ],
     },
     'remote-quiet': {
@@ -413,10 +413,10 @@ const es: ContentTranslation = {
       person: 'Casey, analista remoto',
       quote: '(silencio)',
       choices: [
-        { text: 'Pedir a todos que enciendan la cámara.', feedback: 'Una regla general puede incomodar a la gente y no atiende por qué alguien se ha quedado en silencio.' },
+        { text: 'Pedir a todos que enciendan la cámara hoy, explicando con calidez que ayuda a que el equipo se sienta conectado y a leer mejor el ambiente.', feedback: 'Una razón amable no cambia el efecto: una regla general puede incomodar a la gente y no atiende por qué alguien se ha quedado en silencio.' },
         { text: 'Usar el chat o una ronda rápida para que todos participen, y luego hablar con Casey en privado.', feedback: 'Facilitaste la participación de todos y diste seguimiento uno a uno, donde es más probable que la gente cuente lo que pasa.' },
-        { text: 'Pedirle a Casey que hable primero, por su nombre, frente al grupo.', feedback: 'Poner a alguien en evidencia cuando se ha retraído suele profundizar ese retraimiento.' },
-        { text: 'Ignorarlo; el trabajo remoto es diferente.', feedback: 'El aislamiento es un riesgo real en los equipos remotos. El silencio merece curiosidad.' },
+        { text: 'Invitar con calidez a Casey a hablar primero, por su nombre, para que sepa que su voz importa al grupo.', feedback: 'Buena intención, pero poner el foco en alguien que se ha retraído suele profundizar ese retraimiento.' },
+        { text: 'Dejarlo así; el trabajo remoto es diferente y hay gente que prefiere escuchar.', feedback: 'El aislamiento es un riesgo real en los equipos remotos. El silencio merece curiosidad.' },
       ],
     },
     'tough-question-allhands': {
@@ -425,10 +425,10 @@ const es: ContentTranslation = {
       person: 'Sam, representante de ventas',
       quote: '“Si no alcanzamos la meta, ¿por qué los líderes siguen recibiendo bonos?”',
       choices: [
-        { text: '“De eso no hablamos aquí.”', feedback: 'Cerrar una pregunta en público le dice a toda la sala que las preguntas difíciles no son bienvenidas.' },
-        { text: '“Es una pregunta justa y veo que importa. Esto es lo que sé sobre cómo funcionan los bonos este año. Te daré una respuesta más completa el viernes.”', feedback: 'Validaste la pregunta, compartiste lo que podías y te comprometiste a dar seguimiento. Eso es credibilidad bajo presión.' },
-        { text: 'Tomarlo con humor y pasar a la siguiente diapositiva.', feedback: 'Desviar con humor parece despectivo cuando el tema es personal para la gente.' },
-        { text: '“Lo vemos aparte.”', feedback: 'A veces es apropiado, pero sin un seguimiento concreto suena a evasión.' },
+        { text: '“Es una pregunta muy justa y te agradezco que la hagas. Los detalles de compensación no se tratan en este espacio, pero ten por seguro que la dirección lo toma en serio.”', feedback: 'Cortés, pero igual cierra la pregunta en público, y eso le dice a toda la sala que las preguntas difíciles no son bienvenidas.' },
+        { text: '“Pregunta justa. Esto es lo que sé de los bonos este año, y te daré una respuesta más completa el viernes.”', feedback: 'Validaste la pregunta, compartiste lo que podías y te comprometiste a dar seguimiento. Eso es credibilidad bajo presión.' },
+        { text: 'Sonreír, decir “Ja, me la puse yo solo” y pasar a la siguiente diapositiva.', feedback: 'Desviar con humor parece despectivo cuando el tema es personal para la gente.' },
+        { text: '“Pregunta justa, y no quiero adivinar. Lo vemos aparte para darte una respuesta precisa.”', feedback: 'No adivinar es correcto, pero sin compartir lo que sí sabes ni un momento concreto de seguimiento, “aparte” suena a evasión.' },
       ],
     },
   },

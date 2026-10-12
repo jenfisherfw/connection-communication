@@ -386,10 +386,10 @@ export const SCENARIOS: Scenario[] = [
     quote: '"Honestly, nobody told me those reviews were required. This feels unfair."',
     xp: 30,
     choices: [
-      { text: '"It was in the project kickoff doc. You should have read it."', score: 1, feedback: 'Accurate, but it wins the point and loses the person. Defensiveness usually escalates when met with more evidence.' },
-      { text: '"That\'s fair to raise. It sounds like expectations weren\'t clear. Let\'s get aligned on what reviews look like going forward."', score: 3, feedback: 'You validated her experience without abandoning the standard, and moved toward a shared solution.' },
-      { text: '"Okay, forget I mentioned it."', score: 1, feedback: 'Backing off avoids discomfort now but leaves the issue unresolved and signals the standard is optional.' },
-      { text: '"I hear you. Still, it needs to happen."', score: 2, feedback: 'Better. You acknowledged her, but adding curiosity about what got in the way would build more buy in.' },
+      { text: '"It was in the kickoff doc, page two, and we went over it in the first sync. I know it’s a lot to track, but the reviews were never optional."', score: 1, feedback: 'Accurate and even polite, but it wins the point and loses the person. Defensiveness usually grows when it is met with more evidence.' },
+      { text: '"That’s fair to raise. What got in the way? Let’s get clear together on how reviews work from here."', score: 3, feedback: 'You validated her experience without dropping the standard, got curious about the cause, and moved toward a shared fix.' },
+      { text: '"I’m sorry, that’s on me for not making it clearer. Don’t worry about the ones you missed. I’ll smooth it over with the stakeholders and we’ll start fresh next project."', score: 1, feedback: 'Kind, but you took the whole problem off her plate and quietly made the standard optional. Owning your part is good; rescuing her from hers is not.' },
+      { text: '"I hear you, and I’m sorry it feels unfair. Still, the reviews need to happen."', score: 2, feedback: 'Close. You acknowledged her feelings, but went straight back to the rule without asking what got in the way, and that question is what builds buy in.' },
     ],
   },
   {
@@ -401,10 +401,10 @@ export const SCENARIOS: Scenario[] = [
     quote: '"Great meeting, right? Leadership loved the numbers."',
     xp: 30,
     choices: [
-      { text: 'Email leadership to set the record straight.', score: 1, feedback: 'Going over their head first damages trust and makes you look political, even if you are right.' },
-      { text: '"They did! I was surprised my team wasn\'t mentioned. Can we talk about how we credit work going forward?"', score: 3, feedback: 'Direct, calm, and future focused. You named the impact without accusing intent.' },
-      { text: 'Say nothing, but stop sharing work with Jordan.', score: 1, feedback: 'Silent withdrawal builds resentment and erodes collaboration across teams.' },
-      { text: '"Yeah. Next time, loop my team in."', score: 2, feedback: 'Clear request, but naming what happened and why it matters makes the conversation more likely to stick.' },
+      { text: 'Send leadership a short, friendly note thanking them for their interest and mentioning that your team built the analysis.', score: 1, feedback: 'Polite in tone, but going around Jordan first still reads as political and skips the person you actually need to sort this out with.' },
+      { text: '"They did. I noticed my team wasn’t mentioned, though. Can we talk about how we credit shared work?"', score: 3, feedback: 'Direct, calm, and future focused. You named the impact without accusing intent.' },
+      { text: '"It went great! Honestly, credit doesn’t matter as long as leadership got what they needed. I’ll just make sure my own team knows I saw their work."', score: 1, feedback: 'Generous, but swallowing it leaves your team uncredited and lets the pattern continue. Unspoken resentment tends to leak out later.' },
+      { text: '"It did. Next time, could you loop my team in so they can present their own work?"', score: 2, feedback: 'A clear, fair request, but you skipped naming what happened today, so Jordan may not realize there was a problem at all.' },
     ],
   },
   {
@@ -416,10 +416,10 @@ export const SCENARIOS: Scenario[] = [
     quote: '"Yeah, everything\'s good. Just a lot going on."',
     xp: 30,
     choices: [
-      { text: '"Cool. Let me know if you need anything."', score: 1, feedback: 'Well meant, but it puts the burden on Sam to raise it. People rarely do.' },
-      { text: '"I\'ve noticed you seem quieter lately and are online late. I care about how you\'re doing. What\'s on your plate?"', score: 3, feedback: 'Specific observations plus genuine care opens the door without forcing anyone through it.' },
-      { text: '"You need to stop working so late."', score: 2, feedback: 'You care about the right thing, but a directive skips understanding the cause.' },
-      { text: '"Is this about the reorg?"', score: 2, feedback: 'A guess can feel presumptive. Open questions let Sam tell you what is really going on.' },
+      { text: '"Totally get it, it’s a busy stretch for everyone. My door is always open, so just shout if you ever need anything at all, okay?"', score: 1, feedback: 'Well meant, but it puts the burden on Sam to raise it. People who are struggling rarely do.' },
+      { text: '"You’ve seemed quieter, and you’re online late. I care how you’re doing. What’s on your plate?"', score: 3, feedback: 'Specific observations plus genuine care opens the door without forcing anyone through it.' },
+      { text: '"I’ve noticed the late nights, and I don’t want you burning out. Please log off by seven, and I’ll take a couple of things off your list."', score: 2, feedback: 'You named what you saw and care about the right thing, but jumping to a rule and a fix skips understanding what is driving the late nights.' },
+      { text: '"I know the reorg has been hard on everyone. Is that what’s weighing on you lately?"', score: 2, feedback: 'Caring, but it is a leading guess. An open question lets Sam tell you what is really going on.' },
     ],
   },
   {
@@ -431,10 +431,10 @@ export const SCENARIOS: Scenario[] = [
     quote: '"So is this a layoff? Just tell us straight."',
     xp: 30,
     choices: [
-      { text: '"No one should worry. This is a great opportunity for all of us."', score: 1, feedback: 'Reassurance without facts sounds like spin, and people fill the gap with worst case rumors.' },
-      { text: '"There are no layoffs planned as part of this change. Here is what is changing, what is not, and when you will hear more. I will stay after for questions."', score: 3, feedback: 'Direct answer, clear boundaries, and a path for follow up. That is how you calm a room without overpromising.' },
-      { text: '"I am not able to discuss staffing."', score: 1, feedback: 'Even if true, a flat refusal confirms the fear. Share what you can and say when you will know more.' },
-      { text: '"Good question. Let me get back to you on that."', score: 2, feedback: 'Better than a guess, but give a specific time and share whatever you do know now.' },
+      { text: '"Great question, and I totally understand the worry. Everyone’s job is safe, I promise. This is a great opportunity for all of us, and I’m excited about it."', score: 1, feedback: 'Warm, but a blanket promise about things you may not control sounds like spin, and if anything changes later, your word is gone.' },
+      { text: '"No layoffs are planned in this change. I’ll walk through what changes, what doesn’t, and when you’ll hear more."', score: 3, feedback: 'A direct answer, clear boundaries, and a path for follow up. That is how you calm a room without overpromising.' },
+      { text: '"I’m not able to discuss staffing in this forum, but HR will share more details with everyone when the time is right."', score: 1, feedback: 'Even if true, a flat refusal confirms the fear. Share what you can and say when you will know more.' },
+      { text: '"Good question. There are no layoffs planned that I know of. Let me confirm the details and get back to everyone soon."', score: 2, feedback: 'You answered directly, but "soon" is vague and "that I know of" invites doubt. Give a specific time and share what is and is not changing.' },
     ],
   },
   {
@@ -446,10 +446,10 @@ export const SCENARIOS: Scenario[] = [
     quote: '"Here we go again. We just learned the last system."',
     xp: 30,
     choices: [
-      { text: '"I know, but this one is mandatory from the top."', score: 1, feedback: 'Blaming leadership above you erodes trust in the change and in you as a leader.' },
-      { text: '"You are right, it has been a lot. Let me explain why this one matters, what we are dropping to make room, and how we will support the switch."', score: 3, feedback: 'You validated the fatigue, gave the why, and showed you are removing load rather than only adding it.' },
-      { text: '"Let\'s stay positive, everyone."', score: 1, feedback: 'Asking for positivity dismisses a real concern and pushes the pushback underground.' },
-      { text: '"I hear you. Let\'s talk after the meeting."', score: 2, feedback: 'Good instinct to engage, but the whole room heard the concern. Address it briefly in the moment too.' },
+      { text: '"I know, believe me. Honestly, this one is coming from the top and it’s mandatory, but I’ll push back where I can."', score: 1, feedback: 'Blaming leadership above you erodes trust in the change and in you as a leader.' },
+      { text: '"Fair, it’s been a lot. Here’s why this one matters, what we’re dropping to make room, and how we’ll support you."', score: 3, feedback: 'You validated the fatigue, gave the why, and showed you are removing load rather than only adding it.' },
+      { text: '"I totally hear you, and I know change is hard. Let’s try to stay positive and give it a real chance. I promise this will be the last big change for a while."', score: 1, feedback: 'Kind, but asking for positivity dismisses a real concern, and promising it is the last change is a promise you probably cannot keep.' },
+      { text: '"That’s fair, Dana, and I hear you. Let’s grab ten minutes after the meeting so I can understand what’s worrying you."', score: 2, feedback: 'Good instinct to engage, but the whole room heard the concern. Address it briefly in the moment too, then follow up.' },
     ],
   },
   {
@@ -461,10 +461,10 @@ export const SCENARIOS: Scenario[] = [
     quote: '"Honestly, this was design\'s fault. They were two weeks late."',
     xp: 30,
     choices: [
-      { text: '"Okay, design, what happened?"', score: 1, feedback: 'You just put one group on trial in front of everyone. Expect less honesty in the next debrief.' },
-      { text: '"Let\'s pause on who and look at what. Where did the process break down, and what will we change so it does not happen again?"', score: 3, feedback: 'You redirected from blame to learning without shutting anyone down. That is how a learning culture is built.' },
-      { text: '"Everyone shares responsibility. Let\'s move on."', score: 2, feedback: 'True, but moving on skips the learning. Use the moment to fix the system.' },
-      { text: 'Say nothing and let the conversation play out.', score: 1, feedback: 'Silence reads as agreement. Whatever you tolerate in the room becomes the norm.' },
+      { text: '"Fair enough, let’s get all the facts. Design, can you walk us through your timeline and what caused the two week delay?"', score: 1, feedback: 'It sounds neutral, but you just put one group on trial in front of everyone. Expect less honesty in the next debrief.' },
+      { text: '"Let’s pause on who and look at what. Where did the process break, and what will we change?"', score: 3, feedback: 'You redirected from blame to learning without shutting anyone down. That is how a learning culture is built.' },
+      { text: '"Everyone shares responsibility for this, so let’s not point fingers. Let’s move on to planning the next launch."', score: 2, feedback: 'True, and it stops the blame, but moving on skips the learning. Use the moment to fix the process.' },
+      { text: 'Say nothing for now, then check in with design privately afterward to make sure they are okay.', score: 1, feedback: 'A caring follow up, but silence in the room reads as agreement with the blame. Whatever you tolerate in the room becomes the norm.' },
     ],
   },
   {
@@ -476,10 +476,10 @@ export const SCENARIOS: Scenario[] = [
     quote: '"I think things are fine the way they are."',
     xp: 30,
     choices: [
-      { text: '"Great, glad everyone is happy!"', score: 1, feedback: 'Silence is rarely agreement. Taking it at face value means you will miss what people are not saying.' },
-      { text: '"Thanks, Lee. Let me go first: one thing I could do better is give clearer priorities. What else would make your week easier?"', score: 3, feedback: 'Going first with your own improvement makes it safe for others to be honest.' },
-      { text: '"Come on, someone must have an idea."', score: 1, feedback: 'Pressure increases the risk of speaking up. People need safety, not a push.' },
-      { text: '"Okay, send me ideas by email if you think of any."', score: 2, feedback: 'A private channel helps, but pair it with modeling candor yourself in the room.' },
+      { text: '"Thanks, Lee, that’s really good to hear. I’m glad everyone feels things are working well, and my door is always open if anything comes up."', score: 1, feedback: 'Silence is rarely agreement. Taking it at face value, however warmly, means you will miss what people are not saying.' },
+      { text: '"Thanks, Lee. I’ll go first: I could give clearer priorities. What else would make your week easier?"', score: 3, feedback: 'Going first with your own improvement makes it safe for others to be honest.' },
+      { text: '"Come on, team, I know someone has an idea. No wrong answers here, so let’s hear from at least two more people before we move on."', score: 1, feedback: 'Friendly pressure still raises the risk of speaking up. People need safety, not a push.' },
+      { text: '"Okay. I’ll send a quick anonymous survey after this so everyone can share ideas privately."', score: 2, feedback: 'An anonymous channel helps, but on its own it skips the strongest move: modeling candor yourself in the room.' },
     ],
   },
   {
@@ -491,10 +491,10 @@ export const SCENARIOS: Scenario[] = [
     quote: '"And another thing about the logo color..."',
     xp: 30,
     choices: [
-      { text: 'Let it play out. People seem engaged.', score: 1, feedback: 'Engagement on the wrong topic still burns the meeting. The decision you came for gets rushed or skipped.' },
-      { text: '"This matters, so let\'s park it and give it its own time. We have 10 minutes to decide on the launch date. Where do we land?"', score: 3, feedback: 'You honored the topic, protected the purpose, and refocused the room on the decision.' },
-      { text: '"We\'re off topic. Moving on."', score: 2, feedback: 'Right instinct, but saying when the parked topic will be addressed keeps people from feeling dismissed.' },
-      { text: 'Schedule a follow up meeting to make the decision.', score: 1, feedback: 'Another meeting rewards the drift. Facilitate back to the decision while people are in the room.' },
+      { text: 'Let the debate run a few more minutes, since people are clearly engaged and the logo matters to the launch too.', score: 1, feedback: 'Engagement on the wrong topic still burns the meeting. The decision you came for gets rushed or skipped.' },
+      { text: '"This matters, so let’s park it for Thursday. We have 10 minutes to pick the launch date. Where do we land?"', score: 3, feedback: 'You honored the topic, protected the purpose, and refocused the room on the decision.' },
+      { text: '"Good points, but we’re off topic. Let’s get back to the launch date, since we only have 10 minutes left."', score: 2, feedback: 'Right instinct, but saying when the parked topic will be addressed keeps people from feeling dismissed.' },
+      { text: '"Riley, this is clearly important to you. Let’s set up a separate meeting for the logo and the launch date, so neither one gets rushed."', score: 1, feedback: 'Considerate, but another meeting rewards the drift and delays the decision you came for. Facilitate back to it while people are in the room.' },
     ],
   },
   {
@@ -506,10 +506,10 @@ export const SCENARIOS: Scenario[] = [
     quote: '"Didn\'t we talk about this last week too?"',
     xp: 30,
     choices: [
-      { text: '"Yes, let\'s keep discussing until we figure it out."', score: 1, feedback: 'More discussion without owners produces the same result next week.' },
-      { text: '"You\'re right. From now on we\'ll end with owners and dates, and I\'ll send a recap within an hour. Let\'s start with this one: who takes it?"', score: 3, feedback: 'You named the pattern and fixed the system. Clear owners and a written recap are what make meetings move work forward.' },
-      { text: '"Let\'s make this meeting longer so we have time to finish."', score: 1, feedback: 'Longer meetings rarely fix a lack of follow through.' },
-      { text: '"I\'ll follow up with each of you separately."', score: 2, feedback: 'Helpful, but the group never sees shared commitments. Make accountability visible.' },
+      { text: '"Good catch, Sky. Some of these are just hard problems, so let’s keep talking them through until we get there together."', score: 1, feedback: 'More discussion without owners produces the same result next week.' },
+      { text: '"You’re right. From now on we end with owners and dates, and I’ll send a recap. Who takes this one?"', score: 3, feedback: 'You named the pattern and fixed the system. Clear owners and a written recap are what make meetings move work forward.' },
+      { text: '"Fair point. Let’s extend this meeting to ninety minutes so we finally have room to finish each topic properly instead of rushing."', score: 1, feedback: 'Longer meetings rarely fix a lack of follow through.' },
+      { text: '"You’re right. I’ll follow up with each of you after this to assign owners and make sure things move."', score: 2, feedback: 'Owners are the right fix, but assigning them privately means the group never sees shared commitments. Make accountability visible in the room.' },
     ],
   },
   {
@@ -521,10 +521,10 @@ export const SCENARIOS: Scenario[] = [
     quote: '"Nothing much to talk about. Everything\'s good."',
     xp: 30,
     choices: [
-      { text: '"Great, let\'s end early then!"', score: 1, feedback: 'Three weeks of "all good" is a signal. Ending early means you miss whatever is going unsaid.' },
-      { text: '"I\'m glad things are steady. I\'ve noticed our 1:1s have gotten short lately. Is this time useful for you? What would make it more valuable?"', score: 3, feedback: 'You named the pattern without blame and invited them to shape the meeting. That often unlocks the real conversation.' },
-      { text: '"Okay, let\'s go through your project list then."', score: 2, feedback: 'Status fills the time, but turns the 1:1 into your meeting instead of theirs.' },
-      { text: '"Is something wrong? You seem disengaged."', score: 1, feedback: 'A direct label can feel like an accusation and prompt defensiveness. Lead with curiosity.' },
+      { text: '"Glad to hear it! Let’s give you the half hour back, you’ve earned it. Just ping me anytime if something comes up, okay?"', score: 1, feedback: 'Generous, but three weeks of "all good" is a signal. Ending early means you miss whatever is going unsaid.' },
+      { text: '"Glad things are steady. Our 1:1s have gotten short lately. What would make this time useful for you?"', score: 3, feedback: 'You named the pattern without blame and invited them to shape the meeting. That often unlocks the real conversation.' },
+      { text: '"Okay. Then let’s use the time to go through your project list, so I can be sure nothing is stuck."', score: 2, feedback: 'Status fills the time, but turns the 1:1 into your meeting instead of theirs.' },
+      { text: '"I’ve noticed you seem a bit disengaged lately, and I’m worried. Is something going on with the team or at home?"', score: 1, feedback: 'Caring, but labeling someone "disengaged" and guessing at causes can feel like an accusation. Name the pattern and ask openly.' },
     ],
   },
   {
@@ -536,10 +536,10 @@ export const SCENARIOS: Scenario[] = [
     quote: '"Honestly, I\'m not sure where my career is going here."',
     xp: 30,
     choices: [
-      { text: '"You\'re doing great, don\'t worry about it."', score: 1, feedback: 'Reassurance closes the door on an important conversation they found the courage to open.' },
-      { text: '"Thank you for telling me. That matters. Let\'s give it real time: can we spend our next 1:1 on where you want to grow, and I\'ll come with ideas too?"', score: 3, feedback: 'You valued the disclosure and committed specific time to it. That builds loyalty and trust.' },
-      { text: '"Have you looked at the internal job board?"', score: 1, feedback: 'Pointing elsewhere can sound like you are not invested in their growth.' },
-      { text: '"What do you want to be doing in two years?"', score: 2, feedback: 'A great question, but at the end of a meeting it may get a rushed answer. Make dedicated time for it.' },
+      { text: '"You’re doing great, honestly. I wouldn’t worry, there’s definitely a promotion path for you here, and I’ll make sure you get it."', score: 1, feedback: 'Reassurance plus a promise you may not control closes the conversation they found the courage to open.' },
+      { text: '"Thank you for telling me. Let’s give it real time: can our next 1:1 be about where you want to grow?"', score: 3, feedback: 'You valued the disclosure and committed specific time to it. That builds loyalty and trust.' },
+      { text: '"That’s a great thing to think about. Have you looked at the internal job board? There are some interesting roles open on other teams."', score: 1, feedback: 'Pointing elsewhere can sound like you are not invested in their growth.' },
+      { text: '"I’m glad you raised it. What do you want to be doing in two years?"', score: 2, feedback: 'A great question, but at the end of a meeting it may get a rushed answer. Make dedicated time for it.' },
     ],
   },
   {
@@ -551,10 +551,10 @@ export const SCENARIOS: Scenario[] = [
     quote: '"Was that really necessary in front of everyone?"',
     xp: 30,
     choices: [
-      { text: '"It was just feedback, don\'t take it personally."', score: 1, feedback: 'Dismissing their reaction compounds the hit. Text lacks tone, and public critique stings.' },
-      { text: '"You\'re right, and I\'m sorry. That was too blunt and too public. Can we hop on a quick call so I can explain what I meant and how I can help?"', score: 3, feedback: 'You owned the impact and moved to a richer channel to repair it. That models exactly the culture you want.' },
-      { text: 'Delete the message and say nothing.', score: 1, feedback: 'Deleting it without acknowledging it leaves the hurt in place.' },
-      { text: '"Sorry if it came across wrong."', score: 2, feedback: 'A start, but "if" softens accountability. Own it directly, then repair.' },
+      { text: '"I’m sorry it stung. It really was just feedback on the work, not on you, so please don’t take it personally. You’re doing great overall."', score: 1, feedback: 'The reassurance is kind, but telling them how to feel dismisses the impact. Text lacks tone, and public critique stings.' },
+      { text: '"You’re right, and I’m sorry. That was too blunt and too public. Can we talk it through on a quick call?"', score: 3, feedback: 'You owned the impact and moved to a richer channel to repair it. That models exactly the culture you want.' },
+      { text: 'Delete the message, then post a friendly thanks for their effort in the channel so the thread ends on a positive note.', score: 1, feedback: 'It smooths the surface, but it never acknowledges the hurt. They still need a direct apology.' },
+      { text: '"Sorry if it came across wrong. I should have messaged you directly. Can we hop on a quick call?"', score: 2, feedback: 'Close, and moving to a call is right, but "if" softens accountability. Own the impact plainly.' },
     ],
   },
   {
@@ -566,10 +566,10 @@ export const SCENARIOS: Scenario[] = [
     quote: '(silence)',
     xp: 30,
     choices: [
-      { text: 'Ask everyone to turn cameras on.', score: 1, feedback: 'A blanket rule can embarrass people and does not address why they have gone quiet.' },
-      { text: 'Use the chat or a quick round so everyone contributes, then check in with Casey privately afterward.', score: 3, feedback: 'You made participation easier for everyone and followed up one on one, where people are more likely to share what is going on.' },
-      { text: 'Call on Casey first, by name, in front of the group.', score: 1, feedback: 'Putting someone on the spot when they have withdrawn often deepens the withdrawal.' },
-      { text: 'Ignore it; remote work is different.', score: 1, feedback: 'Isolation is a real risk on remote teams. Silence deserves curiosity.' },
+      { text: 'Ask everyone to turn cameras on today, explaining warmly that it helps the team feel connected and makes it easier to read the room.', score: 1, feedback: 'A friendly reason does not change the effect: a blanket rule can embarrass people and does not address why someone has gone quiet.' },
+      { text: 'Use the chat or a quick round so everyone contributes, then check in with Casey privately.', score: 3, feedback: 'You made participation easier for everyone and followed up one on one, where people are more likely to share what is going on.' },
+      { text: 'Warmly invite Casey to share first, by name, so they know their voice matters to the group.', score: 1, feedback: 'Kind intent, but spotlighting someone who has withdrawn often deepens the withdrawal.' },
+      { text: 'Leave it alone; remote work is different, and some people just prefer to listen.', score: 1, feedback: 'Isolation is a real risk on remote teams. Silence deserves curiosity.' },
     ],
   },
   {
@@ -581,10 +581,10 @@ export const SCENARIOS: Scenario[] = [
     quote: '"If we missed the target, why are leaders still getting bonuses?"',
     xp: 30,
     choices: [
-      { text: '"That\'s not something we discuss here."', score: 1, feedback: 'Shutting down a question in public tells the whole room that hard questions are unwelcome.' },
-      { text: '"That\'s a fair question, and I can tell it matters. Here\'s what I know about how bonuses work this year. I\'ll get you a fuller answer by Friday."', score: 3, feedback: 'You validated the question, shared what you could, and committed to a follow up. That is credibility under pressure.' },
-      { text: 'Laugh it off and move to the next slide.', score: 1, feedback: 'Deflecting with humor reads as dismissive when stakes are personal for people.' },
-      { text: '"Let\'s take that offline."', score: 2, feedback: 'Sometimes appropriate, but without a specific follow up it sounds like avoidance.' },
+      { text: '"That’s a really fair question, and I appreciate you asking it. Comp details aren’t something we cover in this forum, but please know leadership takes it seriously."', score: 1, feedback: 'Polite, but it still shuts the question down in public, which tells the whole room that hard questions are unwelcome.' },
+      { text: '"Fair question. Here’s what I know about bonuses this year, and I’ll get you a fuller answer by Friday."', score: 3, feedback: 'You validated the question, shared what you could, and committed to a follow up. That is credibility under pressure.' },
+      { text: 'Smile, say "Ha, I walked into that one," and move to the next slide.', score: 1, feedback: 'Deflecting with humor reads as dismissive when stakes are personal for people.' },
+      { text: '"Fair question, and I don’t want to guess. Let’s take it offline so I can give you an accurate answer."', score: 2, feedback: 'Not guessing is right, but without sharing what you do know or a specific follow up time, "offline" sounds like avoidance.' },
     ],
   },
 ];
