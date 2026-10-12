@@ -15,9 +15,9 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"Really? I think I’m just trying to keep things moving. We have so little time in those meetings, and I want to make sure we get through everything on the agenda."', score: 1, feedback: 'Explaining your intent turns her courage into a debate. She came to tell you about the impact, and that is what you need to hear first.' },
-        { text: '"Thanks. I’ll work on it."', score: 2, feedback: 'Gracious and quick, but you closed the door just as it opened. One curious question would show you want the full picture.' },
-        { text: '"Thank you for telling me. That can’t have been easy. Can you think of a recent meeting where it happened, so I can picture it?"', score: 3, feedback: 'You thanked her, named the courage it took, and asked for an example instead of defending. That is how you make sure she tells you the next hard thing too.' },
-        { text: '"Who else feels that way? I’d like to talk to them directly."', score: 1, feedback: 'Asking for names puts her in an awkward spot and can feel like you are checking her story. Stay with what she saw.' },
+        { text: '"Thank you, I really appreciate you telling me. I’ll work on it, starting with our next meeting."', score: 2, feedback: 'Close. Gracious and committed, but you closed the door just as it opened. One curious question would show you want the full picture.' },
+        { text: '"Thank you. That can’t have been easy. Can you think of a recent meeting where it happened, so I can picture it?"', score: 3, feedback: 'You thanked her, named the courage it took, and asked for an example instead of defending. That is how you make sure she tells you the next hard thing too.' },
+        { text: '"I’m so glad you said something, and I want to fix this properly. Who else feels that way? I’d love to talk with each of them directly this week."', score: 1, feedback: 'Eager to fix it, but asking for names puts her in an awkward spot and can feel like you are checking her story. Stay with what she saw.' },
       ],
     },
     {
@@ -29,10 +29,10 @@ const week: CurriculumWeek = {
       quote: '"We give our supervisors ideas all the time. They go nowhere. Honestly, it feels like nobody up top cares what nights think."',
       xp: 30,
       choices: [
-        { text: '"Thank you for saying it plainly. Give me one idea that went nowhere, so I can understand what happened to it. I’m taking notes, and I’ll come back to this group in two weeks with what I found."', score: 3, feedback: 'You asked for specifics and committed to a date. You listened without blaming your supervisors or defending them, which is what earns you a second skip level.' },
-        { text: '"I hear you, but your supervisors work hard, and they pass along a lot more than you think."', score: 1, feedback: 'Defending your managers in this moment tells the room the session is not really for listening. You can learn the whole story later.' },
-        { text: '"That’s not okay. Which supervisor is it? I’ll talk to them tomorrow."', score: 1, feedback: 'Quick action feels supportive, but hunting for a culprit in front of the group puts people on the spot and can damage your supervisors’ trust in you.' },
-        { text: '"That’s fair. Let’s set up an idea box by the break room, and I’ll read every card myself each Friday so nothing gets filtered on the way up."', score: 2, feedback: 'A new channel can help, but jumping to a fix skips the listening. Find out why ideas stall before you build a path around your supervisors.' },
+        { text: '"Thanks for saying it plainly. Tell me about one idea that went nowhere. I’m taking notes, and I’ll report back to this group in two weeks."', score: 3, feedback: 'You asked for specifics and committed to a date. You listened without blaming your supervisors or defending them, which is what earns you a second skip level.' },
+        { text: '"I hear you, but your supervisors work hard, and honestly they pass along a lot more than you might think. Let’s give them some credit here."', score: 1, feedback: 'Defending your managers in this moment tells the room the session is not really for listening. You can learn the whole story later.' },
+        { text: '"That’s not okay, and I’m on your side. Which supervisor is it? I’ll talk to them first thing tomorrow, and I promise none of you will be named."', score: 1, feedback: 'It sounds protective, but hunting for a culprit in front of the group puts people on the spot, promises anonymity the room cannot have, and can damage your supervisors’ trust in you.' },
+        { text: '"That’s fair. Let’s set up an idea box by the break room, and I’ll read every card myself each Friday so nothing gets filtered on the way up."', score: 2, feedback: 'Close. A new channel can help, but jumping to a fix skips the listening. Find out why ideas stall before you build a path around your supervisors.' },
       ],
     },
     {
@@ -45,9 +45,9 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"One in fifty is pretty rare, and the CEO already told the board. Can we ship Thursday with a known issues note and patch it the following week?"', score: 1, feedback: 'Negotiating the bug down before you understand it tells her that bad news gets argued with. Next time she may wait longer to bring it.' },
-        { text: '"Why am I only hearing about this now? We’ve had weeks to catch this."', score: 1, feedback: 'The frustration is human, but the blame lands on the person brave enough to raise it. That is how teams learn to hide problems.' },
-        { text: '"Okay. Put it in a doc and I’ll review it tonight."', score: 2, feedback: 'Taking it seriously is good, but moving straight to paperwork skips the chance to understand what she is seeing while she is right in front of you.' },
-        { text: '"Thank you for flagging this now, not Thursday. Walk me through it: what do you know, what don’t you know yet, and what would you need to feel confident?"', score: 3, feedback: 'You thanked her for the timing, then asked questions that separate facts from unknowns. That gives you what you need for an honest conversation with the CEO.' },
+        { text: '"Why am I only hearing about this now? We’ve had weeks of testing, and I promised the CEO this date personally."', score: 1, feedback: 'The frustration is human, but the blame lands on the person brave enough to raise it. That is how teams learn to hide problems.' },
+        { text: '"Thanks for the heads up, that’s important. Put everything in a doc tonight, and I’ll review it first thing tomorrow before I talk to the CEO."', score: 2, feedback: 'Close. Appreciative and serious, but moving straight to paperwork skips the chance to understand what she is seeing while she is right in front of you.' },
+        { text: '"Thank you for flagging this now. Walk me through what you know, what you don’t yet, and what you’d need to feel confident."', score: 3, feedback: 'You thanked her for the timing, then asked questions that separate facts from unknowns. That gives you what you need for an honest conversation with the CEO.' },
       ],
     },
     {
@@ -59,10 +59,10 @@ const week: CurriculumWeek = {
       quote: '"Honestly, the loan files from lending are why our closings keep slipping. Half of them come over incomplete."',
       xp: 30,
       choices: [
-        { text: '"That’s not what our numbers show. Our turnaround is the best it’s been all year."', score: 1, feedback: 'Counter data in the moment turns a shared problem into a turf war. You could both be right, and you will not find out by debating in front of your boss.' },
-        { text: '"That’s worth understanding. Can you walk me through a couple of recent files that came over incomplete? I’d like to see what’s missing before we decide what to fix."', score: 3, feedback: 'Curiosity in front of senior leaders shows confidence, not weakness. Asking for specific cases turns a complaint into something you can solve together.' },
-        { text: 'Say nothing in the meeting, then message your boss afterward to explain your side.', score: 1, feedback: 'Going around the conversation leaves the criticism unanswered in the room and quietly escalates the conflict. Listen to Hana directly first.' },
-        { text: '"Fair enough. I’ll look into it with my team and get back to you."', score: 2, feedback: 'Calm and open, but vague. Without asking what she is seeing, you may fix the wrong thing, and she may not feel heard.' },
+        { text: '"That’s not quite what our numbers show. Our turnaround is the best it’s been all year, so I’d want to see the data before we assign blame."', score: 1, feedback: 'It sounds reasonable, but counter data in the moment turns a shared problem into a turf war. You could both be right, and you will not find out by debating in front of your boss.' },
+        { text: '"That’s worth understanding. Can you walk me through a couple of recent files that came over incomplete?"', score: 3, feedback: 'Curiosity in front of senior leaders shows confidence, not weakness. Asking for specific cases turns a complaint into something you can solve together.' },
+        { text: 'Stay gracious in the meeting, then message your boss afterward with a short, factual note explaining your side so she has the full picture.', score: 1, feedback: 'Composed, but going around the conversation leaves the criticism unanswered in the room and quietly escalates the conflict. Listen to Hana directly first.' },
+        { text: '"Fair enough, and thanks for raising it. I’ll look into it with my team this week and come back to you with a plan by our next meeting."', score: 2, feedback: 'Close. Calm, open, and accountable, but without asking what she is seeing, you may fix the wrong thing, and she may not feel heard.' },
       ],
     },
     {
@@ -74,9 +74,9 @@ const week: CurriculumWeek = {
       quote: '"Honestly? Every time I bring you a problem, you turn it into a project with a deadline. So I started solving things on my own."',
       xp: 30,
       choices: [
-        { text: '"That’s my job, though. If I see a problem, I need a plan for it."', score: 1, feedback: 'Explaining why you do it confirms his point. He is telling you how your help feels on the receiving end.' },
-        { text: '"Okay, from now on just send me updates and I won’t assign anything."', score: 2, feedback: 'You are willing to change, but you swung to the other extreme before understanding what he needs. Ask first.' },
-        { text: '"That’s hard to hear, and useful. When you bring me something, what would actually help? A sounding board, a hand, or just a heads up?"', score: 3, feedback: 'You took in feedback about your own pattern and asked what he needs instead of guessing. That is how the early warnings start coming back.' },
+        { text: '"That’s my job, though. If I see a problem, I need a plan for it, and deadlines are how we make sure nothing slips through the cracks."', score: 1, feedback: 'Explaining why you do it confirms his point. He is telling you how your help feels on the receiving end.' },
+        { text: '"Fair, and I’m sorry. From now on, just send me updates when something comes up, and I promise I won’t assign you anything."', score: 2, feedback: 'Close. You owned it, but you swung to the other extreme and made a promise before understanding what he needs. Ask first.' },
+        { text: '"That’s hard to hear, and useful. When you bring me something, what would help? A sounding board, a hand, or a heads up?"', score: 3, feedback: 'You took in feedback about your own pattern and asked what he needs instead of guessing. That is how the early warnings start coming back.' },
         { text: '"I get it, but you can’t keep problems from me. That’s not how this works, and it puts both of us in a bad spot with leadership."', score: 1, feedback: 'Setting an expectation is fair, but leading with it while he names your blind spot makes telling you even riskier.' },
       ],
     },
@@ -91,8 +91,8 @@ const week: CurriculumWeek = {
       choices: [
         { text: '"No, not fully. I’m here now, and I want to hear it. Tell me what tonight was like."', score: 3, feedback: 'You did not correct her or defend administration. You let her anger stand and invited the story underneath it, which is what grief usually needs first.' },
         { text: '"I understand you’re upset, but that isn’t fair. I called the unit twice last night, and I’ve been in every staffing meeting this month fighting for more help."', score: 1, feedback: 'Correcting the record is tempting when you feel accused, but it makes the moment about you. The facts can wait. Her grief can’t.' },
-        { text: '"I’m so sorry. Please reach out to the employee assistance program. Here’s the number."', score: 2, feedback: 'Support resources matter and should be offered, but handing over a number first can feel like a handoff. Listen, then offer it.' },
-        { text: '"Let’s debrief as a team next week, when everyone’s rested."', score: 1, feedback: 'A debrief is valuable later, but scheduling it now tells her this is not the moment to be heard. She came to you tonight.' },
+        { text: '"I’m so sorry. Tonight sounds devastating. Please reach out to the employee assistance program, they’re there for exactly this. Here’s the number."', score: 2, feedback: 'Close. Your care is real and the resource matters, but handing over a number first can feel like a handoff. Listen, then offer it.' },
+        { text: '"You all gave everything tonight, and I’m so proud of you. Go home and rest, and let’s debrief as a team next week when everyone’s had some sleep."', score: 1, feedback: 'Kind, and a debrief is valuable later, but sending her home tells her this is not the moment to be heard. She came to you tonight.' },
       ],
     },
     {
@@ -105,9 +105,9 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"I don’t think that’s accurate. I ask for pushback in every review, and I’ve changed plenty of decisions because of it. But I appreciate you sharing your perspective."', score: 1, feedback: 'A polite rebuttal in public shows forty people exactly what happens when they disagree with you. It proves his point.' },
-        { text: '"Let’s take that offline so we can stay on the survey results."', score: 1, feedback: 'He is talking about the survey results. Moving on signals that criticism of you is out of bounds, which is the very problem he named.' },
-        { text: '"Wow. Is that how everyone feels? Show of hands?"', score: 1, feedback: 'A public vote puts everyone on the spot and turns his courage into a spectacle. Few will raise a hand, and you will learn less.' },
-        { text: '"Thank you. That took courage, and I won’t argue with it. I’ll hold small listening sessions this month, and I’ll report back here on what I heard and what I’m changing."', score: 3, feedback: 'You thanked him, resisted defending yourself, and gave people safer ways to say more. Reporting back publicly shows the listening led somewhere.' },
+        { text: '"I really appreciate you raising it, and I want to give it proper time. Let’s take it offline after this so we can stay on the survey results."', score: 1, feedback: 'Respectful in tone, but he is talking about the survey results. Moving on signals that criticism of you is out of bounds, which is the very problem he named.' },
+        { text: '"Wow, thank you for being so honest. Is that how everyone feels? Let’s see a quick show of hands so I know how widespread this is."', score: 1, feedback: 'Grateful, but a public vote puts everyone on the spot and turns his courage into a spectacle. Few will raise a hand, and you will learn less.' },
+        { text: '"Thank you. That took courage, and I won’t argue with it. I’ll hold small listening sessions this month and report back here."', score: 3, feedback: 'You thanked him, resisted defending yourself, and gave people safer ways to say more. Reporting back publicly shows the listening led somewhere.' },
       ],
     },
   ],
@@ -148,9 +148,9 @@ const week: CurriculumWeek = {
         quote: '“¿Puedo decirte algo un poco incómodo? En las reuniones de equipo, sueles terminar las frases de los demás. Creo que no lo notas, pero algunos ya dejamos de intentar explicar las cosas.”',
         choices: [
           { text: '“¿En serio? Creo que solo intento que las cosas avancen. Tenemos muy poco tiempo en esas reuniones y quiero asegurarme de cubrir toda la agenda.”', feedback: 'Explicar tu intención convierte su valentía en un debate. Vino a contarte el impacto, y eso es lo que necesitas escuchar primero.' },
-          { text: '“Gracias. Voy a trabajar en eso.”', feedback: 'Amable y rápido, pero cerraste la puerta justo cuando se abría. Una pregunta con curiosidad mostraría que quieres el panorama completo.' },
-          { text: '“Gracias por decírmelo. No debe haber sido fácil. ¿Recuerdas alguna reunión reciente donde pasó, para poder imaginarlo?”', feedback: 'Le agradeciste, reconociste la valentía que requirió y pediste un ejemplo en lugar de defenderte. Así te aseguras de que también te cuente lo próximo difícil.' },
-          { text: '“¿Quién más se siente así? Me gustaría hablar con ellos directamente.”', feedback: 'Pedir nombres la pone en una situación incómoda y puede sentirse como si estuvieras verificando su versión. Quédate con lo que ella vio.' },
+          { text: '“Gracias, de verdad valoro que me lo digas. Voy a trabajar en eso, empezando por la próxima reunión.”', feedback: 'Casi. Amable y comprometido, pero cerraste la puerta justo cuando se abría. Una pregunta con curiosidad mostraría que quieres el panorama completo.' },
+          { text: '“Gracias. No debe haber sido fácil. ¿Recuerdas alguna reunión reciente donde pasó, para poder imaginarlo?”', feedback: 'Le agradeciste, reconociste la valentía que requirió y pediste un ejemplo en lugar de defenderte. Así te aseguras de que también te diga lo próximo difícil.' },
+          { text: '“Me alegra mucho que lo digas, y quiero arreglarlo bien. ¿Quién más se siente así? Me encantaría hablar con cada uno directamente esta semana.”', feedback: 'Con ganas de arreglarlo, pero pedir nombres la pone en una situación incómoda y puede sentirse como si estuvieras verificando su versión. Quédate con lo que ella vio.' },
         ],
       },
       'w13-skip-level': {
@@ -159,10 +159,10 @@ const week: CurriculumWeek = {
         person: 'Emeka, operador de línea',
         quote: '“Les damos ideas a nuestros supervisores todo el tiempo. No llegan a ningún lado. Sinceramente, parece que a nadie allá arriba le importa lo que piensa el turno de noche.”',
         choices: [
-          { text: '“Gracias por decirlo tan claro. Dame un ejemplo de una idea que no llegó a ningún lado, para entender qué pasó con ella. Estoy tomando notas y volveré con este grupo en dos semanas con lo que encuentre.”', feedback: 'Pediste detalles y te comprometiste con una fecha. Escuchaste sin culpar ni defender a tus supervisores, y eso es lo que te gana una segunda sesión.' },
-          { text: '“Te entiendo, pero tus supervisores trabajan duro y transmiten mucho más de lo que crees.”', feedback: 'Defender a tus gerentes en este momento le dice al grupo que la sesión no es realmente para escuchar. Puedes conocer la historia completa después.' },
-          { text: '“Eso no está bien. ¿Qué supervisor es? Mañana hablo con él.”', feedback: 'Actuar rápido parece un apoyo, pero buscar un culpable frente al grupo expone a las personas y puede dañar la confianza de tus supervisores en ti.' },
-          { text: '“Es justo. Pongamos un buzón de ideas junto a la sala de descanso, y yo mismo leeré cada tarjeta los viernes para que nada se filtre en el camino.”', feedback: 'Un canal nuevo puede ayudar, pero saltar a una solución se salta la escucha. Averigua por qué se estancan las ideas antes de crear un camino que rodee a tus supervisores.' },
+          { text: '“Gracias por decirlo tan claro. Cuéntame de una idea que no llegó a ningún lado. Estoy tomando notas, y volveré con este grupo en dos semanas.”', feedback: 'Pediste detalles y te comprometiste con una fecha. Escuchaste sin culpar ni defender a tus supervisores, y eso es lo que te gana una segunda sesión.' },
+          { text: '“Te entiendo, pero tus supervisores trabajan duro y, la verdad, transmiten mucho más de lo que crees. Démosles un poco de crédito.”', feedback: 'Defender a tus gerentes en este momento le dice al grupo que la sesión no es realmente para escuchar. Puedes conocer la historia completa después.' },
+          { text: '“Eso no está bien, y estoy de su lado. ¿Qué supervisor es? Mañana a primera hora hablo con él, y les prometo que nadie de ustedes será mencionado.”', feedback: 'Suena protector, pero buscar un culpable frente al grupo expone a las personas, promete un anonimato que la sala no puede tener y puede dañar la confianza de tus supervisores en ti.' },
+          { text: '“Es justo. Pongamos un buzón de ideas junto a la sala de descanso, y yo mismo leeré cada tarjeta los viernes para que nada se filtre en el camino.”', feedback: 'Casi. Un canal nuevo puede ayudar, pero saltar a una solución se salta la escucha. Averigua por qué se estancan las ideas antes de crear un camino que rodee a tus supervisores.' },
         ],
       },
       'w13-not-ready': {
@@ -172,9 +172,9 @@ const week: CurriculumWeek = {
         quote: '“No creo que debamos lanzar el jueves. Seguimos viendo pérdida de datos en una de cada cincuenta cuentas de prueba, y todavía no sé decirte por qué.”',
         choices: [
           { text: '“Una de cada cincuenta es bastante raro, y el director general ya se lo dijo a la junta. ¿Podemos lanzar el jueves con una nota de problemas conocidos y corregirlo la semana siguiente?”', feedback: 'Regatear el error antes de entenderlo le enseña que las malas noticias se discuten. La próxima vez quizá tarde más en traerlas.' },
-          { text: '“¿Por qué me entero de esto hasta ahora? Tuvimos semanas para detectarlo.”', feedback: 'La frustración es humana, pero la culpa cae sobre quien tuvo el valor de decirlo. Así aprenden los equipos a esconder problemas.' },
-          { text: '“Está bien. Ponlo en un documento y lo reviso esta noche.”', feedback: 'Tomarlo en serio está bien, pero pasar directo al papeleo desaprovecha la oportunidad de entender lo que ve mientras la tienes enfrente.' },
-          { text: '“Gracias por avisarme ahora y no el jueves. Explícamelo: ¿qué sabes, qué no sabes todavía y qué necesitarías para sentirte segura?”', feedback: 'Le agradeciste el momento oportuno y luego hiciste preguntas que separan los hechos de lo desconocido. Eso te da lo que necesitas para una conversación honesta con el director general.' },
+          { text: '“¿Por qué me entero de esto hasta ahora? Tuvimos semanas de pruebas, y yo le prometí esta fecha al director general en persona.”', feedback: 'La frustración es humana, pero la culpa cae sobre quien tuvo el valor de decirlo. Así aprenden los equipos a esconder problemas.' },
+          { text: '“Gracias por el aviso, es importante. Pon todo en un documento esta noche, y lo reviso a primera hora mañana antes de hablar con el director general.”', feedback: 'Casi. Agradecido y serio, pero pasar directo al papeleo desaprovecha la oportunidad de entender lo que está viendo mientras la tienes enfrente.' },
+          { text: '“Gracias por avisarme ahora. Explícame qué sabes, qué no sabes todavía y qué necesitarías para sentirte segura.”', feedback: 'Le agradeciste el momento oportuno y luego hiciste preguntas que separan los hechos de lo desconocido. Eso te da lo que necesitas para una conversación honesta con el director general.' },
         ],
       },
       'w13-bottleneck': {
@@ -183,10 +183,10 @@ const week: CurriculumWeek = {
         person: 'Hana, directora de operaciones de préstamos',
         quote: '“Sinceramente, los expedientes que llegan de préstamos son la razón por la que nuestros cierres se siguen retrasando. La mitad llegan incompletos.”',
         choices: [
-          { text: '“Eso no es lo que muestran nuestros números. Nuestro tiempo de respuesta es el mejor de todo el año.”', feedback: 'Contraatacar con datos en el momento convierte un problema compartido en una pelea de territorios. Las dos partes podrían tener razón, y no lo sabrán discutiendo frente a tu jefe.' },
-          { text: '“Vale la pena entenderlo. ¿Me puedes mostrar un par de expedientes recientes que llegaron incompletos? Quiero ver qué falta antes de decidir qué corregir.”', feedback: 'La curiosidad frente a líderes de alto nivel muestra seguridad, no debilidad. Pedir casos específicos convierte una queja en algo que pueden resolver en conjunto.' },
-          { text: 'No decir nada en la reunión y luego escribirle a tu jefe para explicar tu versión.', feedback: 'Rodear la conversación deja la crítica sin respuesta en la sala y escala el conflicto en silencio. Escucha primero a Hana directamente.' },
-          { text: '“Me parece justo. Lo reviso con mi equipo y te aviso.”', feedback: 'Tranquilo y abierto, pero vago. Sin preguntar qué está viendo, podrías corregir lo equivocado y ella podría no sentirse escuchada.' },
+          { text: '“Eso no es exactamente lo que muestran nuestros números. Nuestro tiempo de respuesta es el mejor del año, así que quisiera ver los datos antes de buscar culpables.”', feedback: 'Suena razonable, pero contraatacar con datos en el momento convierte un problema compartido en una pelea de territorios. Ambos podrían tener razón, y no lo sabrán debatiendo frente a tu jefe.' },
+          { text: '“Vale la pena entenderlo. ¿Me puedes mostrar un par de expedientes recientes que llegaron incompletos?”', feedback: 'La curiosidad frente a líderes de alto nivel muestra seguridad, no debilidad. Pedir casos específicos convierte una queja en algo que pueden resolver en conjunto.' },
+          { text: 'Mantener la cortesía en la reunión y luego escribirle a tu jefe una nota breve y objetiva con tu versión, para que tenga el panorama completo.', feedback: 'Sereno, pero rodear la conversación deja la crítica sin respuesta en la sala y escala el conflicto sin decirlo. Escucha primero a Hana directamente.' },
+          { text: '“Me parece justo, y gracias por mencionarlo. Lo reviso con mi equipo esta semana y te traigo un plan para nuestra próxima reunión.”', feedback: 'Casi. Tranquilo, abierto y responsable, pero sin preguntar qué está viendo, podrías corregir lo equivocado y ella podría no sentirse escuchada.' },
         ],
       },
       'w13-stopped-bringing': {
@@ -195,9 +195,9 @@ const week: CurriculumWeek = {
         person: 'Ivo, gerente de tienda',
         quote: '“¿Sinceramente? Cada vez que te traigo un problema, lo conviertes en un proyecto con fecha límite. Así que empecé a resolver las cosas por mi cuenta.”',
         choices: [
-          { text: '“Pero ese es mi trabajo. Si veo un problema, necesito un plan.”', feedback: 'Explicar por qué lo haces le da la razón. Te está diciendo cómo se siente tu ayuda del otro lado.' },
-          { text: '“Bueno, de ahora en adelante solo mándame actualizaciones y no te asigno nada.”', feedback: 'Estás dispuesto a cambiar, pero te fuiste al otro extremo antes de entender qué necesita. Pregunta primero.' },
-          { text: '“Eso es difícil de oír, y útil. Cuando me traes algo, ¿qué te ayudaría de verdad? ¿Alguien con quien pensar, una mano, o solo que yo esté al tanto?”', feedback: 'Recibiste una crítica sobre tu propio patrón y preguntaste qué necesita en lugar de adivinar. Así es como vuelven las alertas tempranas.' },
+          { text: '“Pero ese es mi trabajo. Si veo un problema, necesito un plan, y los plazos son la forma de asegurarnos de que nada se nos escape.”', feedback: 'Explicar por qué lo haces le da la razón. Te está diciendo cómo se siente tu ayuda del otro lado.' },
+          { text: '“Es justo, y lo siento. De ahora en adelante, solo mándame actualizaciones cuando surja algo, y te prometo que no te voy a asignar nada.”', feedback: 'Casi. Lo asumiste, pero te fuiste al otro extremo e hiciste una promesa antes de entender qué necesita. Pregunta primero.' },
+          { text: '“Eso es difícil de oír, y útil. Cuando me traes algo, ¿qué te ayudaría? ¿Alguien con quien pensar, una mano o solo un aviso?”', feedback: 'Recibiste una crítica sobre tu propio patrón y preguntaste qué necesita en lugar de adivinar. Así es como vuelven las alertas tempranas.' },
           { text: '“Lo entiendo, pero no puedes ocultarme problemas. Así no funciona esto, y nos deja mal a los dos con la dirección.”', feedback: 'Fijar una expectativa es justo, pero empezar por ahí mientras él nombra tu punto ciego hace que contarte las cosas sea todavía más arriesgado.' },
         ],
       },
@@ -209,8 +209,8 @@ const week: CurriculumWeek = {
         choices: [
           { text: '“No, no del todo. Estoy aquí ahora y quiero escucharlo. Cuéntame cómo fue esta noche.”', feedback: 'No la corregiste ni defendiste a la administración. Dejaste que su enojo existiera e invitaste la historia que había debajo, que es lo que el duelo suele necesitar primero.' },
           { text: '“Entiendo que estés molesta, pero eso no es justo. Llamé a la unidad dos veces anoche, y he estado en cada reunión de personal este mes peleando por más ayuda.”', feedback: 'Corregir los hechos es tentador cuando sientes que te acusan, pero vuelve el momento sobre ti. Los hechos pueden esperar. Su duelo no.' },
-          { text: '“Lo siento mucho. Por favor comunícate con el programa de asistencia al empleado. Aquí tienes el número.”', feedback: 'Los recursos de apoyo importan y hay que ofrecerlos, pero entregar un número primero puede sentirse como deshacerte de ella. Escucha y luego ofrécelo.' },
-          { text: '“Hagamos una sesión de análisis en equipo la próxima semana, cuando todos hayan descansado.”', feedback: 'Un análisis es valioso más adelante, pero agendarlo ahora le dice que este no es el momento para ser escuchada. Vino a ti esta noche.' },
+          { text: '“Lo siento muchísimo. Esta noche suena devastadora. Por favor comunícate con el programa de asistencia al empleado, existe justo para esto. Aquí tienes el número.”', feedback: 'Casi. Tu cuidado es real y el recurso importa, pero entregar un número primero puede sentirse como pasarla a otro lado. Escucha y luego ofrécelo.' },
+          { text: '“Todos dieron todo esta noche, y estoy muy orgulloso de ustedes. Ve a casa a descansar, y hagamos una sesión de análisis en equipo la próxima semana.”', feedback: 'Es amable, y un análisis es valioso más adelante, pero mandarla a casa le dice que este no es el momento de ser escuchada. Vino a ti esta noche.' },
         ],
       },
       'w13-town-hall-truth': {
@@ -220,9 +220,9 @@ const week: CurriculumWeek = {
         quote: '“La encuesta dice que la gente no se siente segura para estar en desacuerdo. Yo te digo por qué. Cuando alguien te contradice en una revisión, te vuelves frío, y todos lo notan.”',
         choices: [
           { text: '“No creo que eso sea exacto. Pido opiniones contrarias en cada revisión, y he cambiado muchas decisiones por eso. Pero agradezco que compartas tu perspectiva.”', feedback: 'Una refutación cortés en público les muestra a cuarenta personas exactamente qué pasa cuando no están de acuerdo contigo. Le da la razón.' },
-          { text: '“Hablemos de eso aparte para seguir con los resultados de la encuesta.”', feedback: 'Está hablando de los resultados de la encuesta. Pasar a otra cosa indica que criticarte está fuera de los límites, que es justo el problema que nombró.' },
-          { text: '“Vaya. ¿Así se sienten todos? ¿Levantamos la mano?”', feedback: 'Una votación pública expone a todos y convierte su valentía en un espectáculo. Pocos levantarán la mano, y aprenderás menos.' },
-          { text: '“Gracias. Eso requirió valor, y no voy a discutirlo. Este mes haré sesiones pequeñas para escuchar, y volveré aquí a contarles lo que escuché y lo que voy a cambiar.”', feedback: 'Le agradeciste, resististe la tentación de defenderte y le diste a la gente formas más seguras de decir más. Informar en público muestra que la escucha llevó a algo.' },
+          { text: '“De verdad agradezco que lo menciones, y quiero darle el tiempo que merece. Hablemos de eso aparte al terminar para seguir con los resultados de la encuesta.”', feedback: 'El tono es respetuoso, pero está hablando de los resultados de la encuesta. Pasar a otra cosa indica que criticarte está fuera de los límites, que es justo el problema que nombró.' },
+          { text: '“Vaya, gracias por ser tan honesto. ¿Así se sienten todos? Levanten la mano rápidamente para que sepa qué tan extendido está esto.”', feedback: 'Agradecido, pero una votación pública expone a todos y convierte su valentía en un espectáculo. Pocos levantarán la mano, y aprenderás menos.' },
+          { text: '“Gracias. Eso requirió valor, y no voy a discutirlo. Este mes haré sesiones pequeñas para escuchar, y volveré aquí a contarles.”', feedback: 'Le agradeciste, resististe la tentación de defenderte y le diste a la gente formas más seguras de decir más. Informar en público muestra que la escucha llevó a algo.' },
         ],
       },
     },
@@ -255,9 +255,9 @@ const week: CurriculumWeek = {
         quote: '« Je peux vous dire quelque chose d’un peu gênant ? En réunion d’équipe, vous avez tendance à finir les phrases des gens. Je ne pense pas que vous le remarquiez, mais certains d’entre nous ont arrêté d’essayer d’expliquer les choses. »',
         choices: [
           { text: '« Vraiment ? Je crois que j’essaie juste de faire avancer les choses. On a si peu de temps dans ces réunions, et je veux être sûr qu’on couvre tout l’ordre du jour. »', feedback: 'Expliquer votre intention transforme son courage en débat. Elle est venue vous parler de l’impact, et c’est ce que vous devez entendre en premier.' },
-          { text: '« Merci. Je vais y travailler. »', feedback: 'Aimable et rapide, mais vous avez refermé la porte au moment où elle s’ouvrait. Une question curieuse montrerait que vous voulez avoir le tableau complet.' },
-          { text: '« Merci de me le dire. Ça n’a pas dû être facile. Vous pensez à une réunion récente où c’est arrivé, pour que je puisse me le représenter ? »', feedback: 'Vous l’avez remerciée, avez reconnu le courage que cela demandait et avez demandé un exemple au lieu de vous défendre. C’est ainsi qu’elle vous dira aussi la prochaine chose difficile.' },
-          { text: '« Qui d’autre pense ça ? J’aimerais leur parler directement. »', feedback: 'Demander des noms la met dans une position délicate et peut donner l’impression que vous vérifiez sa version. Restez sur ce qu’elle a vu.' },
+          { text: '« Merci, j’apprécie vraiment que vous me le disiez. Je vais y travailler, dès notre prochaine réunion. »', feedback: 'Presque. Aimable et engagé, mais vous avez refermé la porte au moment où elle s’ouvrait. Une question curieuse montrerait que vous voulez avoir toute l’image.' },
+          { text: '« Merci. Ça n’a pas dû être facile. Vous pensez à une réunion récente où c’est arrivé, pour que je me le représente ? »', feedback: 'Vous l’avez remerciée, avez reconnu le courage qu’il fallait et avez demandé un exemple au lieu de vous défendre. C’est ainsi qu’elle vous dira aussi la prochaine chose difficile.' },
+          { text: '« Je suis vraiment content que vous en parliez, et je veux bien faire les choses. Qui d’autre ressent ça ? J’aimerais parler à chacun directement cette semaine. »', feedback: 'Vous voulez corriger le tir, mais demander des noms la met dans une position délicate et peut donner l’impression que vous vérifiez sa version. Restez sur ce qu’elle a vu.' },
         ],
       },
       'w13-skip-level': {
@@ -266,10 +266,10 @@ const week: CurriculumWeek = {
         person: 'Emeka, opérateur de ligne',
         quote: '« On donne des idées à nos superviseurs tout le temps. Elles ne vont nulle part. Franchement, on a l’impression que personne là-haut ne se soucie de ce que pense l’équipe de nuit. »',
         choices: [
-          { text: '« Merci de le dire aussi clairement. Donnez-moi un exemple d’idée qui n’est allée nulle part, pour que je comprenne ce qui lui est arrivé. Je prends des notes, et je reviens vers ce groupe dans deux semaines avec ce que j’ai trouvé. »', feedback: 'Vous avez demandé des détails et vous êtes engagé sur une date. Vous avez écouté sans blâmer ni défendre vos superviseurs, et c’est ce qui vous vaudra une deuxième rencontre.' },
-          { text: '« Je vous entends, mais vos superviseurs travaillent dur, et ils font remonter bien plus que vous ne le pensez. »', feedback: 'Défendre vos managers à ce moment-là dit au groupe que la séance n’est pas vraiment faite pour écouter. Vous pourrez connaître toute l’histoire plus tard.' },
-          { text: '« Ce n’est pas normal. Quel superviseur ? Je lui parle demain. »', feedback: 'Agir vite semble bienveillant, mais chercher un coupable devant le groupe met les gens en difficulté et peut abîmer la confiance de vos superviseurs envers vous.' },
-          { text: '« C’est juste. Installons une boîte à idées près de la salle de pause, et je lirai moi-même chaque fiche le vendredi pour que rien ne soit filtré en route. »', feedback: 'Un nouveau canal peut aider, mais sauter à une solution court-circuite l’écoute. Comprenez pourquoi les idées bloquent avant de créer un chemin qui contourne vos superviseurs.' },
+          { text: '« Merci de le dire clairement. Parlez-moi d’une idée qui n’est allée nulle part. Je prends des notes, et je reviens vers ce groupe dans deux semaines. »', feedback: 'Vous avez demandé des détails et vous êtes engagé sur une date. Vous avez écouté sans blâmer ni défendre vos superviseurs, et c’est ce qui vous vaudra une deuxième rencontre.' },
+          { text: '« Je vous entends, mais vos superviseurs travaillent dur, et honnêtement ils font remonter bien plus que vous ne le pensez. Accordons-leur un peu de crédit. »', feedback: 'Défendre vos managers à ce moment-là dit au groupe que la séance n’est pas vraiment faite pour écouter. Vous pourrez connaître toute l’histoire plus tard.' },
+          { text: '« Ce n’est pas normal, et je suis de votre côté. Quel superviseur ? Je lui parle dès demain matin, et je vous promets qu’aucun de vous ne sera cité. »', feedback: 'Cela semble protecteur, mais chercher un coupable devant le groupe met les gens en difficulté, promet un anonymat que la salle ne peut pas garantir et peut abîmer la confiance de vos superviseurs.' },
+          { text: '« C’est juste. Installons une boîte à idées près de la salle de pause, et je lirai moi-même chaque fiche le vendredi pour que rien ne soit filtré en route. »', feedback: 'Presque. Un nouveau canal peut aider, mais sauter à une solution court-circuite l’écoute. Comprenez pourquoi les idées bloquent avant de créer un chemin qui contourne vos superviseurs.' },
         ],
       },
       'w13-not-ready': {
@@ -279,9 +279,9 @@ const week: CurriculumWeek = {
         quote: '« Je ne pense pas qu’on devrait livrer jeudi. On constate encore des pertes de données sur environ un compte de test sur cinquante, et je ne peux pas encore vous dire pourquoi. »',
         choices: [
           { text: '« Un sur cinquante, c’est plutôt rare, et le PDG l’a déjà annoncé au conseil. On peut livrer jeudi avec une note sur les problèmes connus et corriger la semaine suivante ? »', feedback: 'Marchander le bug avant de le comprendre lui apprend que les mauvaises nouvelles se discutent. La prochaine fois, elle attendra peut-être plus longtemps pour en parler.' },
-          { text: '« Pourquoi je l’apprends seulement maintenant ? On avait des semaines pour le voir. »', feedback: 'La frustration est humaine, mais le reproche tombe sur la personne qui a eu le courage d’en parler. C’est ainsi que les équipes apprennent à cacher les problèmes.' },
-          { text: '« D’accord. Mettez ça dans un document et je le lis ce soir. »', feedback: 'Le prendre au sérieux est bien, mais passer directement à l’écrit vous fait manquer l’occasion de comprendre ce qu’elle voit pendant qu’elle est en face de vous.' },
-          { text: '« Merci de le signaler maintenant, et pas jeudi. Expliquez-moi : qu’est-ce que vous savez, qu’est-ce que vous ne savez pas encore, et de quoi auriez-vous besoin pour être confiante ? »', feedback: 'Vous l’avez remerciée pour le bon timing, puis avez posé des questions qui séparent les faits des inconnues. Vous avez ainsi ce qu’il faut pour une conversation honnête avec le PDG.' },
+          { text: '« Pourquoi je l’apprends seulement maintenant ? On a eu des semaines de tests, et j’ai promis cette date au PDG en personne. »', feedback: 'La frustration est humaine, mais le reproche tombe sur la personne qui a eu le courage d’en parler. C’est ainsi que les équipes apprennent à cacher les problèmes.' },
+          { text: '« Merci de me prévenir, c’est important. Mettez tout dans un document ce soir, et je le lis demain à la première heure avant de parler au PDG. »', feedback: 'Presque. Reconnaissant et sérieux, mais passer directement à l’écrit vous fait manquer l’occasion de comprendre ce qu’elle constate pendant qu’elle est devant vous.' },
+          { text: '« Merci de le signaler maintenant. Expliquez-moi ce que vous savez, ce que vous ignorez encore et ce qu’il vous faudrait pour être confiante. »', feedback: 'Vous l’avez remerciée pour le bon timing, puis avez posé des questions qui séparent les faits des inconnues. Vous avez ainsi ce qu’il faut pour une conversation honnête avec le PDG.' },
         ],
       },
       'w13-bottleneck': {
@@ -290,10 +290,10 @@ const week: CurriculumWeek = {
         person: 'Hana, directrice des opérations de crédit',
         quote: '« Honnêtement, les dossiers de prêt qui viennent de votre service sont la raison pour laquelle nos signatures prennent toujours du retard. La moitié arrivent incomplets. »',
         choices: [
-          { text: '« Ce n’est pas ce que montrent nos chiffres. Notre délai de traitement est le meilleur de l’année. »', feedback: 'Opposer des chiffres sur le moment transforme un problème commun en guerre de territoire. Vous pourriez avoir raison l’un comme l’autre, et vous ne le saurez pas en débattant devant votre supérieur.' },
-          { text: '« Ça vaut la peine de comprendre. Pouvez-vous me montrer deux ou trois dossiers récents arrivés incomplets ? J’aimerais voir ce qui manque avant de décider quoi corriger. »', feedback: 'La curiosité devant des dirigeants montre de l’assurance, pas de la faiblesse. Demander des cas précis transforme une plainte en un problème que vous pouvez résoudre ensemble.' },
-          { text: 'Ne rien dire en réunion, puis écrire à votre supérieur ensuite pour donner votre version.', feedback: 'Contourner la conversation laisse la critique sans réponse dans la salle et fait monter le conflit en silence. Écoutez d’abord Hana directement.' },
-          { text: '« D’accord. Je regarde ça avec mon équipe et je reviens vers vous. »', feedback: 'Calme et ouvert, mais vague. Sans lui demander ce qu’elle constate, vous risquez de corriger le mauvais problème, et elle risque de ne pas se sentir entendue.' },
+          { text: '« Ce n’est pas tout à fait ce que montrent nos chiffres. Notre délai de traitement est le meilleur de l’année, alors j’aimerais voir les données avant de chercher un coupable. »', feedback: 'Cela semble raisonnable, mais opposer des chiffres sur le moment transforme un problème commun en guerre de territoire. Chacun a peut-être raison, et ce n’est pas en débattant devant votre supérieur que vous le saurez.' },
+          { text: '« Ça vaut la peine de comprendre. Pouvez-vous me montrer deux ou trois dossiers récents arrivés incomplets ? »', feedback: 'La curiosité devant des dirigeants montre de l’assurance, pas de la faiblesse. Demander des cas précis transforme une plainte en un problème que vous pouvez résoudre ensemble.' },
+          { text: 'Rester courtois en réunion, puis écrire ensuite à votre supérieur un court message factuel avec votre version, pour qu’il ait une vision complète.', feedback: 'C’est posé, mais contourner la conversation laisse la critique sans réponse dans la salle et fait monter le conflit en silence. Écoutez d’abord Hana directement.' },
+          { text: '« C’est juste, et merci de le soulever. Je regarde ça avec mon équipe cette semaine et je reviens vers vous avec un plan d’ici notre prochaine réunion. »', feedback: 'Presque. Calme, ouvert et responsable, mais sans lui demander ce qu’elle constate, vous risquez de corriger la mauvaise chose, et elle risque de ne pas se sentir entendue.' },
         ],
       },
       'w13-stopped-bringing': {
@@ -302,9 +302,9 @@ const week: CurriculumWeek = {
         person: 'Ivo, directeur de magasin',
         quote: '« Honnêtement ? Chaque fois que je vous apporte un problème, vous en faites un projet avec une échéance. Alors j’ai commencé à régler les choses tout seul. »',
         choices: [
-          { text: '« Mais c’est mon travail. Si je vois un problème, il me faut un plan. »', feedback: 'Expliquer pourquoi vous le faites lui donne raison. Il vous dit comment votre aide est vécue de l’autre côté.' },
-          { text: '« D’accord, à partir de maintenant, envoyez-moi juste des nouvelles et je ne vous confierai rien. »', feedback: 'Vous êtes prêt à changer, mais vous êtes passé à l’autre extrême avant de comprendre ce dont il a besoin. Demandez d’abord.' },
-          { text: '« C’est dur à entendre, et utile. Quand vous m’apportez quelque chose, qu’est-ce qui vous aiderait vraiment ? Quelqu’un avec qui réfléchir, un coup de main, ou juste que je sois au courant ? »', feedback: 'Vous avez accueilli un retour sur votre propre façon de faire et demandé ce dont il a besoin au lieu de deviner. C’est ainsi que les alertes précoces reviennent.' },
+          { text: '« Mais c’est mon travail. Si je vois un problème, il me faut un plan, et les échéances sont ce qui nous garantit que rien ne passe entre les mailles. »', feedback: 'Expliquer pourquoi vous le faites lui donne raison. Il vous dit comment votre aide est vécue de l’autre côté.' },
+          { text: '« C’est juste, et je suis désolé. Désormais, envoyez-moi simplement des nouvelles quand quelque chose arrive, et je vous promets de ne rien vous confier. »', feedback: 'Presque. Vous l’avez assumé, mais vous êtes passé à l’autre extrême et avez fait une promesse avant de comprendre ce dont il a besoin. Demandez d’abord.' },
+          { text: '« C’est dur à entendre, et utile. Quand vous m’apportez quelque chose, qu’est-ce qui vous aiderait ? Un avis, un coup de main, ou juste être prévenu ? »', feedback: 'Vous avez accueilli un retour sur votre propre façon de faire et demandé ce dont il a besoin au lieu de deviner. C’est ainsi que les alertes précoces reviennent.' },
           { text: '« Je comprends, mais vous ne pouvez pas me cacher les problèmes. Ce n’est pas comme ça que ça marche, et ça nous met tous les deux en difficulté face à la direction. »', feedback: 'Poser une attente est légitime, mais commencer par là pendant qu’il nomme votre angle mort rend le fait de vous parler encore plus risqué.' },
         ],
       },
@@ -315,9 +315,9 @@ const week: CurriculumWeek = {
         quote: '« L’administration ne se montre que quand les chiffres sont mauvais. Vous savez au moins comment s’est passée cette nuit pour nous ? »',
         choices: [
           { text: '« Non, pas vraiment. Je suis là maintenant, et je veux l’entendre. Racontez-moi cette nuit. »', feedback: 'Vous ne l’avez pas corrigée et n’avez pas défendu l’administration. Vous avez laissé sa colère exister et invité l’histoire qui se trouvait dessous, ce dont le deuil a souvent besoin en premier.' },
-          { text: '« Je comprends que vous soyez bouleversée, mais ce n’est pas juste. J’ai appelé le service deux fois cette nuit, et j’ai assisté à chaque réunion sur les effectifs ce mois-ci pour obtenir plus de renfort. »', feedback: 'Rétablir les faits est tentant quand on se sent accusé, mais cela recentre le moment sur vous. Les faits peuvent attendre. Son deuil, non.' },
-          { text: '« Je suis vraiment désolé. N’hésitez pas à contacter le programme d’aide aux employés. Voici le numéro. »', feedback: 'Les ressources de soutien comptent et doivent être proposées, mais tendre un numéro d’abord peut ressembler à une façon de passer le relais. Écoutez, puis proposez-le.' },
-          { text: '« Faisons un débriefing d’équipe la semaine prochaine, quand tout le monde sera reposé. »', feedback: 'Un débriefing est précieux plus tard, mais le programmer maintenant lui dit que ce n’est pas le moment d’être entendue. Elle est venue vous voir ce soir.' },
+          { text: '« Je comprends que vous soyez bouleversée, mais ce n’est pas juste. J’ai appelé le service deux fois cette nuit, et j’ai assisté à chaque réunion sur les effectifs ce mois-ci pour obtenir des renforts. »', feedback: 'Rétablir les faits est tentant quand on se sent accusé, mais cela recentre le moment sur vous. Les faits peuvent attendre. Son deuil, non.' },
+          { text: '« Je suis vraiment désolé. Cette nuit a dû être terrible. N’hésitez pas à contacter le programme d’aide aux employés, il existe justement pour ça. Voici le numéro. »', feedback: 'Presque. Votre bienveillance est réelle et la ressource compte, mais tendre un numéro d’abord peut ressembler à un renvoi ailleurs. Écoutez, puis proposez-le.' },
+          { text: '« Vous avez tous tout donné cette nuit, et je suis très fier de vous. Rentrez vous reposer, et faisons un débriefing d’équipe la semaine prochaine, une fois reposés. »', feedback: 'C’est bienveillant, et un débriefing est précieux plus tard, mais la renvoyer chez elle lui dit que ce n’est pas le moment d’être entendue. Elle est venue vous voir ce soir.' },
         ],
       },
       'w13-town-hall-truth': {
@@ -327,9 +327,9 @@ const week: CurriculumWeek = {
         quote: '« L’enquête dit que les gens ne se sentent pas en sécurité pour exprimer un désaccord. Je vais vous dire pourquoi. Quand quelqu’un vous contredit en revue, vous devenez froid, et tout le monde le remarque. »',
         choices: [
           { text: '« Je ne pense pas que ce soit exact. Je demande des avis contraires à chaque revue, et j’ai changé beaucoup de décisions grâce à ça. Mais merci de partager votre point de vue. »', feedback: 'Une réfutation polie en public montre à quarante personnes exactement ce qui se passe quand elles ne sont pas d’accord avec vous. Cela lui donne raison.' },
-          { text: '« Reparlons-en en aparté pour rester sur les résultats de l’enquête. »', feedback: 'Il parle justement des résultats de l’enquête. Passer à autre chose signale que vous critiquer est hors limites, ce qui est précisément le problème qu’il a nommé.' },
-          { text: '« Eh bien. C’est ce que tout le monde ressent ? Levez la main ? »', feedback: 'Un vote public met tout le monde sur la sellette et transforme son courage en spectacle. Peu lèveront la main, et vous apprendrez moins.' },
-          { text: '« Merci. Il fallait du courage, et je ne vais pas le contester. Je vais organiser de petites séances d’écoute ce mois-ci, et je reviendrai ici vous dire ce que j’ai entendu et ce que je change. »', feedback: 'Vous l’avez remercié, avez résisté à l’envie de vous défendre et avez offert aux gens des moyens plus sûrs d’en dire plus. Rendre compte en public montre que l’écoute a mené quelque part.' },
+          { text: '« J’apprécie vraiment que vous le souleviez, et je veux y consacrer le temps qu’il faut. Reparlons-en en aparté après, pour rester sur les résultats de l’enquête. »', feedback: 'Le ton est respectueux, mais il parle justement des résultats de l’enquête. Passer à autre chose signale que vous critiquer est hors limites, ce qui est précisément le problème qu’il a nommé.' },
+          { text: '« Eh bien, merci pour votre franchise. C’est ce que tout le monde ressent ? Levez rapidement la main, que je voie à quel point c’est répandu. »', feedback: 'C’est reconnaissant, mais un vote public met tout le monde sur la sellette et transforme son courage en spectacle. Peu lèveront la main, et vous en apprendrez moins.' },
+          { text: '« Merci. Il fallait du courage, et je ne vais pas le contester. J’organiserai de petites séances d’écoute ce mois-ci, et je reviendrai ici vous en rendre compte. »', feedback: 'Vous l’avez remercié, avez résisté à l’envie de vous défendre et avez offert aux gens des moyens plus sûrs d’en dire plus. Rendre compte en public montre que l’écoute a mené quelque part.' },
         ],
       },
     },
