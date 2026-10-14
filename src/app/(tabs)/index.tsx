@@ -1,62 +1,41 @@
-import { Feather } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
-import { router } from "expo-router";
-import React, { useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import {
-  Card,
-  Chip,
-  Eyebrow,
-  IconBubble,
-  ProgressBar,
-  Screen,
-  Title,
-} from "../../components/ui";
-import { useContent } from "../../data/localized";
-import { useT } from "../../i18n";
-import {
-  ActivityKind,
-  isWeekend,
-  journeyDay,
-  levelFor,
-  useAppState,
-} from "../../state/AppState";
-import { colors, fonts, gradients, radius } from "../../theme";
+import { Feather } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
+import { router } from 'expo-router';
+import React, { useState } from 'react';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Card, Chip, Eyebrow, IconBubble, ProgressBar, Screen, Title } from '../../components/ui';
+import { useContent } from '../../data/localized';
+import { useT } from '../../i18n';
+import { ActivityKind, isWeekend, journeyDay, journeyWeek, levelFor, useAppState } from '../../state/AppState';
+import { colors, fonts, gradients, radius } from '../../theme';
 
 function greeting() {
   const h = new Date().getHours();
-  return h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : "Good evening";
+  return h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
 }
 
 export default function Home() {
   const { progress, logPulse } = useAppState();
   const { t, locale } = useT();
-  const {
-    PULSE,
-    areaById,
-    dailyPicks,
-    scenarioQueue,
-    weekScenarios,
-    levelTitle,
-  } = useContent();
+  const { PULSE, LESSONS, areaById, dailyPicks, scenarioQueue, weekScenarios, levelTitle } = useContent();
   const [tipHidden, setTipHidden] = useState(false);
   const day = journeyDay(progress);
   const { scenario: daily, tip, week } = dailyPicks(day);
   // Once today's scenario is answered, offer the next one in the curriculum they haven't tried.
   // When every scenario is done, the top card becomes the day's leader tip instead.
   const answered = (id: string) => !!progress.completed[`scenario:${id}`];
-  const scenario = answered(daily.id)
-    ? (scenarioQueue(day).find((x) => !answered(x.id)) ?? null)
-    : daily;
+  const scenario = answered(daily.id) ? (scenarioQueue(day).find((x) => !answered(x.id)) ?? null) : daily;
   const scenarioHref = `/scenario/${(scenario ?? daily).id}` as const;
   // Weekends have no new lesson: offer this week's missed scenarios, or rest.
   const weekend = isWeekend();
   const missed = weekScenarios(day).filter((x) => !answered(x.id));
+  // This week's micro lesson; after the last week, the first one not yet finished.
+  const lessonDone = (id: string) => !!progress.completed[`lesson:${id}`];
+  const thisWeek = journeyWeek(progress);
+  const lesson = LESSONS.find((l) => l.week === thisWeek) ?? (thisWeek > 52 ? LESSONS.find((l) => !lessonDone(l.id)) : undefined);
   const level = levelFor(progress.xp);
   const done = progress.today.done;
-  const todayPulse = progress.pulse.find(
-    (p) => p.date === progress.today.date,
-  )?.value;
+  const todayPulse = progress.pulse.find((p) => p.date === progress.today.date)?.value;
 
   const plan: {
     kind: ActivityKind;
@@ -66,32 +45,32 @@ export default function Home() {
     go: () => void;
   }[] = [
     {
-      kind: "scenario",
-      title: t("Scenario of the Day"),
-      sub: t("Choose how you would respond"),
+      kind: 'scenario',
+      title: t('Scenario of the Day'),
+      sub: t('Choose how you would respond'),
       xp: 30,
       go: () => router.push(scenarioHref),
     },
     {
-      kind: "pulse",
-      title: t("Energy Check In"),
-      sub: t("How are you showing up today?"),
+      kind: 'pulse',
+      title: t('Energy Check In'),
+      sub: t('How are you showing up today?'),
       xp: 10,
       go: () => {},
     },
     {
-      kind: "reflection",
-      title: t("Leader Reflection"),
-      sub: t("Two minutes of honest thinking"),
+      kind: 'reflection',
+      title: t('Leader Reflection'),
+      sub: t('Two minutes of honest thinking'),
       xp: 25,
-      go: () => router.push("/reflect"),
+      go: () => router.push('/reflect'),
     },
     {
-      kind: "roleplay",
-      title: t("Practice Rep"),
-      sub: t("Rehearse a real conversation with AI"),
+      kind: 'roleplay',
+      title: t('Practice Rep'),
+      sub: t('Rehearse a real conversation with AI'),
       xp: 60,
-      go: () => router.push("/practice"),
+      go: () => router.push('/practice'),
     },
   ];
   const doneCount = plan.filter((p) => done.includes(p.kind)).length;
@@ -103,9 +82,9 @@ export default function Home() {
         <View style={{ flex: 1 }}>
           <Eyebrow>
             {new Date().toLocaleDateString(locale, {
-              weekday: "short",
-              month: "short",
-              day: "numeric",
+              weekday: 'short',
+              month: 'short',
+              day: 'numeric',
             })}
           </Eyebrow>
           <Title style={{ marginTop: 6 }}>
@@ -114,17 +93,11 @@ export default function Home() {
         </View>
       </View>
       {weekend ? (
-        <Text style={[s.weekText, s.weekRow]}>
-          {t("Weekend · New lessons arrive Monday")}
-        </Text>
+        <Text style={[s.weekText, s.weekRow]}>{t('Weekend · New lessons arrive Monday')}</Text>
       ) : week ? (
-        <Pressable
-          onPress={() => router.push(`/area/${week.area}`)}
-          style={s.weekRow}
-        >
+        <Pressable onPress={() => router.push(`/area/${week.area}`)} style={s.weekRow}>
           <Text style={s.weekText} numberOfLines={1}>
-            {t("Week {week}, Day {day}", { week: week.number, day: week.day })}{" "}
-            · <Text style={{ color: colors.primary }}>{week.theme}</Text>
+            {t('Week {week}, Day {day}', { week: week.number, day: week.day })} · <Text style={{ color: colors.primary }}>{week.theme}</Text>
           </Text>
         </Pressable>
       ) : null}
@@ -132,67 +105,35 @@ export default function Home() {
       <View style={s.statusRow}>
         <View style={[s.statusPill, { backgroundColor: colors.amberSoft }]}>
           <Text style={s.statusEmoji}>🔥</Text>
-          <Text style={[s.statusText, { color: "#B26B00" }]}>
-            {t("{n} days", { n: progress.streak })}
-          </Text>
+          <Text style={[s.statusText, { color: '#B26B00' }]}>{t('{n} days', { n: progress.streak })}</Text>
         </View>
-        <Pressable
-          onPress={() => router.push("/progress")}
-          style={[
-            s.statusPill,
-            { backgroundColor: colors.primarySoft, flex: 1 },
-          ]}
-        >
+        <Pressable onPress={() => router.push('/progress')} style={[s.statusPill, { backgroundColor: colors.primarySoft, flex: 1 }]}>
           <Feather name="award" size={15} color={colors.primary} />
           <View style={{ flex: 1, gap: 4 }}>
-            <Text
-              style={[s.statusText, { color: colors.primary }]}
-              numberOfLines={1}
-            >
-              {t("Lv {n}", { n: level.level })} · {levelTitle(level.level)}
+            <Text style={[s.statusText, { color: colors.primary }]} numberOfLines={1}>
+              {t('Lv {n}', { n: level.level })} · {levelTitle(level.level)}
             </Text>
             <ProgressBar pct={level.pct} height={4} track="#C9D6EA" />
           </View>
         </Pressable>
       </View>
 
-      <LinearGradient
-        colors={gradients.hero}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={s.hero}
-      >
+      <LinearGradient colors={gradients.hero} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.hero}>
         {weekend ? (
           <>
             <View style={s.heroTag}>
-              <Text style={s.heroTagText}>{t("Weekend").toUpperCase()}</Text>
+              <Text style={s.heroTagText}>{t('Weekend').toUpperCase()}</Text>
             </View>
-            <Text style={s.heroQuote}>
-              {t("Rest up. Great leaders recharge too.")}
-            </Text>
+            <Text style={s.heroQuote}>{t('Rest up. Great leaders recharge too.')}</Text>
             <Text style={s.heroPerson}>
               {missed.length === 1
-                ? t(
-                    "You have 1 scenario from this week to catch up on, if you like.",
-                  )
+                ? t('You have 1 scenario from this week to catch up on, if you like.')
                 : missed.length
-                  ? t(
-                      "You have {n} scenarios from this week to catch up on, if you like.",
-                      { n: missed.length },
-                    )
-                  : t("You finished every lesson this week. Nicely done.")}
+                  ? t('You have {n} scenarios from this week to catch up on, if you like.', { n: missed.length })
+                  : t('You finished every lesson this week. Nicely done.')}
             </Text>
-            <Pressable
-              style={s.heroBtn}
-              onPress={() =>
-                router.push(
-                  missed.length ? `/scenario/${missed[0].id}` : "/coach",
-                )
-              }
-            >
-              <Text style={s.heroBtnText}>
-                {missed.length ? t("Catch up") : t("Ask Coach Ari")}
-              </Text>
+            <Pressable style={s.heroBtn} onPress={() => router.push(missed.length ? `/scenario/${missed[0].id}` : '/coach')}>
+              <Text style={s.heroBtnText}>{missed.length ? t('Catch up') : t('Ask Coach Ari')}</Text>
               <Feather name="chevron-right" size={20} color={colors.primary} />
             </Pressable>
           </>
@@ -200,57 +141,62 @@ export default function Home() {
           <>
             <View style={s.heroTag}>
               <Text style={s.heroTagText}>
-                {(scenario === daily
-                  ? t("Scenario of the Day")
-                  : t("Your next scenario")
-                ).toUpperCase()}{" "}
-                · {areaById(scenario.area).title.toUpperCase()}
+                {(scenario === daily ? t('Scenario of the Day') : t('Your next scenario')).toUpperCase()} · {areaById(scenario.area).title.toUpperCase()}
               </Text>
             </View>
             <Text style={s.heroQuote}>{scenario.quote}</Text>
             <Text style={s.heroPerson}>{scenario.person}</Text>
-            <Pressable
-              style={s.heroBtn}
-              onPress={() => router.push(scenarioHref)}
-            >
-              <Text style={s.heroBtnText}>{t("How do you respond?")}</Text>
+            <Pressable style={s.heroBtn} onPress={() => router.push(scenarioHref)}>
+              <Text style={s.heroBtnText}>{t('How do you respond?')}</Text>
               <Feather name="chevron-right" size={20} color={colors.primary} />
             </Pressable>
           </>
         ) : (
           <>
             <View style={s.heroTag}>
-              <Text style={s.heroTagText}>{t("Leader tip").toUpperCase()}</Text>
+              <Text style={s.heroTagText}>{t('Leader tip').toUpperCase()}</Text>
             </View>
             <Text style={s.heroQuote}>{tip}</Text>
-            <Text style={s.heroPerson}>
-              {t("You’ve answered every scenario. New ones are on the way.")}
-            </Text>
-            <Pressable style={s.heroBtn} onPress={() => router.push("/coach")}>
-              <Text style={s.heroBtnText}>{t("Ask Coach Ari")}</Text>
+            <Text style={s.heroPerson}>{t('You’ve answered every scenario. New ones are on the way.')}</Text>
+            <Pressable style={s.heroBtn} onPress={() => router.push('/coach')}>
+              <Text style={s.heroBtnText}>{t('Ask Coach Ari')}</Text>
               <Feather name="chevron-right" size={20} color={colors.primary} />
             </Pressable>
           </>
         )}
       </LinearGradient>
 
+      {lesson ? (
+        <Card style={[s.lesson, { marginTop: 18 }]} onPress={() => router.push(`/lesson/${lesson.id}`)}>
+          <View style={[s.lessonIcon, lessonDone(lesson.id) && { backgroundColor: colors.successSoft }]}>
+            <Feather name={lessonDone(lesson.id) ? 'check' : 'book-open'} size={22} color={lessonDone(lesson.id) ? colors.success : colors.teal} />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Eyebrow color={colors.teal}>
+              {t('This week’s micro lesson')} · {t('{n} min', { n: lesson.minutes })}
+            </Eyebrow>
+            <Text style={s.cardTitle} numberOfLines={2}>
+              {lesson.title}
+            </Text>
+            <Text style={s.helperTight}>
+              {lessonDone(lesson.id) ? t('Completed. Nice work.') : (progress.lessonPos[lesson.id] ?? 0) > 0 ? t('Pick up where you left off') : t('Swipe through in a few minutes')}
+            </Text>
+          </View>
+          <Feather name="chevron-right" size={20} color={colors.faint} />
+        </Card>
+      ) : null}
+
       {!weekend ? (
         <Card style={{ marginTop: 18 }}>
           <View style={s.planHead}>
-            <Eyebrow>{t("Today’s plan")}</Eyebrow>
+            <Eyebrow>{t('Today’s plan')}</Eyebrow>
             <Chip
-              label={t("{done} of {total} done", {
+              label={t('{done} of {total} done', {
                 done: doneCount,
                 total: plan.length,
               })}
-              color={
-                doneCount === plan.length ? colors.success : colors.primary
-              }
-              soft={
-                doneCount === plan.length
-                  ? colors.successSoft
-                  : colors.primarySoft
-              }
+              color={doneCount === plan.length ? colors.success : colors.primary}
+              soft={doneCount === plan.length ? colors.successSoft : colors.primarySoft}
             />
           </View>
           {plan.map((p, i) => {
@@ -259,15 +205,7 @@ export default function Home() {
             return (
               <Pressable key={p.kind} onPress={p.go} style={s.planRow}>
                 <View style={s.planRail}>
-                  <View
-                    style={[s.dot, isDone && s.dotDone, isNext && s.dotNext]}
-                  >
-                    {isDone ? (
-                      <Feather name="check" size={14} color="#fff" />
-                    ) : isNext ? (
-                      <View style={s.dotInner} />
-                    ) : null}
-                  </View>
+                  <View style={[s.dot, isDone && s.dotDone, isNext && s.dotNext]}>{isDone ? <Feather name="check" size={14} color="#fff" /> : isNext ? <View style={s.dotInner} /> : null}</View>
                   {i < plan.length - 1 ? <View style={s.rail} /> : null}
                 </View>
                 <View style={{ flex: 1, paddingBottom: 16 }}>
@@ -276,7 +214,7 @@ export default function Home() {
                       s.planTitle,
                       isDone && {
                         color: colors.muted,
-                        textDecorationLine: "line-through",
+                        textDecorationLine: 'line-through',
                       },
                     ]}
                   >
@@ -284,9 +222,7 @@ export default function Home() {
                   </Text>
                   <Text style={s.planSub}>{p.sub}</Text>
                 </View>
-                <Text style={[s.planXp, isDone && { color: colors.faint }]}>
-                  +{p.xp} XP
-                </Text>
+                <Text style={[s.planXp, isDone && { color: colors.faint }]}>+{p.xp} XP</Text>
               </Pressable>
             );
           })}
@@ -294,53 +230,28 @@ export default function Home() {
       ) : null}
 
       <Card style={{ marginTop: 18 }}>
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
-          <IconBubble
-            icon="battery-charging"
-            color={colors.teal}
-            soft={colors.tealSoft}
-            size={36}
-          />
-          <Text style={s.cardTitle}>{t("How is your energy today?")}</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+          <IconBubble icon="battery-charging" color={colors.teal} soft={colors.tealSoft} size={36} />
+          <Text style={s.cardTitle}>{t('How is your energy today?')}</Text>
         </View>
-        <Text style={s.helper}>
-          {t(
-            "Leaders who name their state lead more intentionally. Only you see this.",
-          )}
-        </Text>
+        <Text style={s.helper}>{t('Leaders who name their state lead more intentionally. Only you see this.')}</Text>
         <View style={s.pulseRow}>
           {PULSE.map((p, i) => (
-            <Pressable
-              key={p.label}
-              onPress={() => logPulse(i)}
-              style={[s.pulseBtn, todayPulse === i && s.pulseOn]}
-            >
+            <Pressable key={p.label} onPress={() => logPulse(i)} style={[s.pulseBtn, todayPulse === i && s.pulseOn]}>
               <Text style={{ fontSize: 26 }}>{p.emoji}</Text>
-              <Text
-                style={[
-                  s.pulseLabel,
-                  todayPulse === i && { color: colors.primary },
-                ]}
-              >
-                {p.label}
-              </Text>
+              <Text style={[s.pulseLabel, todayPulse === i && { color: colors.primary }]}>{p.label}</Text>
             </Pressable>
           ))}
         </View>
       </Card>
 
-      <Card
-        style={[s.coach, { marginTop: 18 }]}
-        onPress={() => router.push("/coach")}
-      >
+      <Card style={[s.coach, { marginTop: 18 }]} onPress={() => router.push('/coach')}>
         <LinearGradient colors={gradients.brand} style={s.coachIcon}>
           <Feather name="message-circle" size={22} color="#fff" />
         </LinearGradient>
         <View style={{ flex: 1 }}>
-          <Text style={s.cardTitle}>{t("Ask Coach Ari")}</Text>
-          <Text style={s.helperTight}>
-            {t("Plan a hard conversation in 2 minutes")}
-          </Text>
+          <Text style={s.cardTitle}>{t('Ask Coach Ari')}</Text>
+          <Text style={s.helperTight}>{t('Plan a hard conversation in 2 minutes')}</Text>
         </View>
         <Feather name="chevron-right" size={20} color={colors.faint} />
       </Card>
@@ -351,7 +262,7 @@ export default function Home() {
             <Feather name="zap" size={18} color={colors.coral} />
           </View>
           <View style={{ flex: 1 }}>
-            <Eyebrow color={colors.coral}>{t("Leader tip")}</Eyebrow>
+            <Eyebrow color={colors.coral}>{t('Leader tip')}</Eyebrow>
             <Text style={s.tipText}>{tip}</Text>
           </View>
           <Pressable onPress={() => setTipHidden(true)} hitSlop={10}>
@@ -360,57 +271,43 @@ export default function Home() {
         </View>
       ) : null}
 
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={{ marginTop: 18, marginHorizontal: -20 }}
-        contentContainerStyle={{ paddingHorizontal: 20, gap: 12 }}
-      >
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginTop: 18, marginHorizontal: -20 }} contentContainerStyle={{ paddingHorizontal: 20, gap: 12 }}>
         {[
           {
-            icon: "check-square",
-            t: t("Quizzes"),
-            s: t("Test your instincts"),
+            icon: 'check-square',
+            t: t('Quizzes'),
+            s: t('Test your instincts'),
             c: colors.teal,
             soft: colors.tealSoft,
-            go: "/explore",
+            go: '/explore',
           },
           {
-            icon: "git-branch",
-            t: t("Scenarios"),
-            s: t("Pick the best move"),
+            icon: 'git-branch',
+            t: t('Scenarios'),
+            s: t('Pick the best move'),
             c: colors.coral,
             soft: colors.coralSoft,
             go: scenarioHref,
           },
           {
-            icon: "mic",
-            t: t("Role Play"),
-            s: t("Rehearse with AI"),
+            icon: 'mic',
+            t: t('Role Play'),
+            s: t('Rehearse with AI'),
             c: colors.violet,
             soft: colors.violetSoft,
-            go: "/practice",
+            go: '/practice',
           },
           {
-            icon: "feather",
-            t: t("Reflect"),
-            s: t("Write today"),
+            icon: 'feather',
+            t: t('Reflect'),
+            s: t('Write today'),
             c: colors.blue,
             soft: colors.blueSoft,
-            go: "/reflect",
+            go: '/reflect',
           },
         ].map((x) => (
-          <Card
-            key={x.t}
-            style={s.tile}
-            onPress={() => router.push(x.go as never)}
-          >
-            <IconBubble
-              icon={x.icon as never}
-              color={x.c}
-              soft={x.soft}
-              size={42}
-            />
+          <Card key={x.t} style={s.tile} onPress={() => router.push(x.go as never)}>
+            <IconBubble icon={x.icon as never} color={x.c} soft={x.soft} size={42} />
             <Text style={s.tileTitle}>{x.t}</Text>
             <Text style={s.tileSub}>{x.s}</Text>
           </Card>
@@ -421,13 +318,13 @@ export default function Home() {
 }
 
 const s = StyleSheet.create({
-  header: { flexDirection: "row", alignItems: "flex-end", marginTop: 12 },
+  header: { flexDirection: 'row', alignItems: 'flex-end', marginTop: 12 },
   weekRow: { marginTop: 8 },
   weekText: { fontFamily: fonts.semibold, fontSize: 14, color: colors.muted },
-  statusRow: { flexDirection: "row", gap: 10, marginTop: 16, marginBottom: 18 },
+  statusRow: { flexDirection: 'row', gap: 10, marginTop: 16, marginBottom: 18 },
   statusPill: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 8,
     paddingHorizontal: 14,
     paddingVertical: 10,
@@ -435,9 +332,9 @@ const s = StyleSheet.create({
   },
   statusEmoji: { fontSize: 15 },
   statusText: { fontFamily: fonts.semibold, fontSize: 13 },
-  hero: { borderRadius: radius.xl, padding: 24, alignItems: "center" },
+  hero: { borderRadius: radius.xl, padding: 24, alignItems: 'center' },
   heroTag: {
-    backgroundColor: "rgba(255,255,255,0.16)",
+    backgroundColor: 'rgba(255,255,255,0.16)',
     paddingHorizontal: 14,
     paddingVertical: 7,
     borderRadius: radius.pill,
@@ -446,27 +343,27 @@ const s = StyleSheet.create({
     fontFamily: fonts.bold,
     fontSize: 11,
     letterSpacing: 1.4,
-    color: "#fff",
+    color: '#fff',
   },
   heroQuote: {
     fontFamily: fonts.display,
     fontSize: 23,
     lineHeight: 31,
-    color: "#fff",
-    textAlign: "center",
+    color: '#fff',
+    textAlign: 'center',
     marginTop: 18,
   },
   heroPerson: {
     fontFamily: fonts.medium,
     fontSize: 13,
-    color: "rgba(255,255,255,0.8)",
+    color: 'rgba(255,255,255,0.8)',
     marginTop: 10,
   },
   heroBtn: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 6,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     paddingVertical: 14,
     paddingHorizontal: 26,
     borderRadius: radius.pill,
@@ -474,22 +371,22 @@ const s = StyleSheet.create({
   },
   heroBtnText: { fontFamily: fonts.bold, fontSize: 16, color: colors.primary },
   planHead: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 16,
   },
-  planRow: { flexDirection: "row", gap: 14 },
-  planRail: { alignItems: "center", width: 26 },
+  planRow: { flexDirection: 'row', gap: 14 },
+  planRail: { alignItems: 'center', width: 26 },
   dot: {
     width: 26,
     height: 26,
     borderRadius: 13,
     borderWidth: 2,
     borderColor: colors.line,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff",
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
   },
   dotDone: { backgroundColor: colors.success, borderColor: colors.success },
   dotNext: { borderColor: colors.primary },
@@ -528,19 +425,19 @@ const s = StyleSheet.create({
     marginTop: 2,
   },
   pulseRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: 14,
     gap: 6,
   },
   pulseBtn: {
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
     paddingVertical: 10,
     borderRadius: radius.md,
     backgroundColor: colors.bg,
     borderWidth: 2,
-    borderColor: "transparent",
+    borderColor: 'transparent',
   },
   pulseOn: { borderColor: colors.primary, backgroundColor: colors.primarySoft },
   pulseLabel: {
@@ -549,30 +446,32 @@ const s = StyleSheet.create({
     color: colors.muted,
     marginTop: 4,
   },
-  coach: { flexDirection: "row", alignItems: "center", gap: 14 },
+  lesson: { flexDirection: 'row', alignItems: 'center', gap: 14 },
+  lessonIcon: { width: 48, height: 48, borderRadius: 15, backgroundColor: colors.tealSoft, alignItems: 'center', justifyContent: 'center' },
+  coach: { flexDirection: 'row', alignItems: 'center', gap: 14 },
   coachIcon: {
     width: 48,
     height: 48,
     borderRadius: 15,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   tip: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 12,
     backgroundColor: colors.coralSoft,
     borderRadius: radius.lg,
     padding: 18,
     marginTop: 18,
-    alignItems: "flex-start",
+    alignItems: 'flex-start',
   },
   tipIcon: {
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   tipText: {
     fontFamily: fonts.medium,

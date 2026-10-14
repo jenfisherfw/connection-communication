@@ -1,9 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { AREAS, AreaId, BADGES, LEVELS } from '../data/content';
+import { LESSONS } from '../data/lessons';
+import { LESSON_BADGES, LESSON_BADGE_RULES } from '../data/lessons/badges';
 import { Lang, deviceLang } from '../i18n/lang';
 
-export type ActivityKind = 'quiz' | 'scenario' | 'roleplay' | 'reflection' | 'pulse' | 'coach' | 'builder';
+export type ActivityKind = 'quiz' | 'scenario' | 'roleplay' | 'reflection' | 'pulse' | 'coach' | 'builder' | 'lesson';
 
 export type TeamSize = 'none' | '1-5' | '6-15' | '16-50' | '50+';
 
@@ -34,6 +36,8 @@ export interface Progress {
   pulse: { date: string; value: number }[];
   today: { date: string; done: ActivityKind[] };
   weekly: { weekStart: string; count: number; goal: number };
+  /** The slide each micro lesson was left on, so it can resume. */
+  lessonPos: Record<string, number>;
 }
 
 const STORAGE_KEY = 'rapport.progress.v1';
@@ -69,6 +73,7 @@ export const freshProgress = (): Progress => ({
   pulse: [],
   today: { date: todayKey(), done: [] },
   weekly: { weekStart: weekStartKey(), count: 0, goal: 5 },
+  lessonPos: {},
 });
 
 const DAY = 86400000;
@@ -95,6 +100,12 @@ export function journeyDay(p: Pick<Progress, 'startDate'>, today = todayKey()) {
   return isWeekend(today) ? Math.max(0, n - 1) : n;
 }
 
+/** The curriculum week this person is on (1 based). Micro lesson N unlocks in week N. */
+export const journeyWeek = (p: Pick<Progress, 'startDate'>, today = todayKey()) => Math.floor(journeyDay(p, today) / 5) + 1;
+
+/** Every badge, including the micro lesson badges, in display order. */
+export const ALL_BADGES = [...BADGES, ...LESSON_BADGES];
+
 export function levelFor(xp: number) {
   let current = LEVELS[0];
   for (const l of LEVELS) if (xp >= l.xp) current = l;
@@ -119,7 +130,14 @@ function computeBadges(p: Progress): string[] {
   if ((p.areaXp.oneonones ?? 0) >= 100) earned.add('connector');
   if (AREAS.every((a) => (p.areaXp[a.id] ?? 0) > 0)) earned.add('well-rounded');
   if (levelFor(p.xp).level >= 5) earned.add('level-5');
-  return BADGES.map((b) => b.id).filter((id) => earned.has(id));
+  const lessonsDone = new Set(Object.keys(p.completed).filter((k) => k.startsWith('lesson:')).map((k) => k.slice(7)));
+  for (const rule of LESSON_BADGE_RULES) {
+    const pool = LESSONS.filter((l) => !rule.focus || l.focus === rule.focus);
+    const need = rule.count === 'all' ? pool.length : rule.count;
+    // A badge only counts once enough lessons exist to earn it honestly.
+    if (pool.length >= need && need > 0 && pool.filter((l) => lessonsDone.has(l.id)).length >= need) earned.add(rule.id);
+  }
+  return ALL_BADGES.map((b) => b.id).filter((id) => earned.has(id));
 }
 
 export interface AwardInput {
@@ -144,6 +162,7 @@ interface Ctx {
   addReflection: (prompt: string, text: string, area: AreaId) => AwardResult;
   logPulse: (value: number) => AwardResult;
   updateProfile: (patch: Partial<Pick<Progress, 'onboarded' | 'language' | 'name' | 'role' | 'teamSize' | 'focusAreas' | 'reminder'>>) => void;
+  setLessonPos: (lessonId: string, slide: number) => void;
   replaceProgress: (next: Progress) => void;
   reset: () => void;
 }
@@ -240,6 +259,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   );
 
   const updateProfile = useCallback<Ctx['updateProfile']>((patch) => setProgress((p) => ({ ...p, ...patch })), []);
+  const setLessonPos = useCallback((lessonId: string, slide: number) => setProgress((p) => ({ ...p, lessonPos: { ...p.lessonPos, [lessonId]: slide } })), []);
   const replaceProgress = useCallback((next: Progress) => setProgress(rollDay({ ...freshProgress(), ...next })), []);
 
   // Keep everything except the person's profile, so they are not sent back through onboarding.
@@ -249,8 +269,8 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   );
 
   const value = useMemo(
-    () => ({ progress, ready, award, addReflection, logPulse, updateProfile, replaceProgress, reset }),
-    [progress, ready, award, addReflection, logPulse, updateProfile, replaceProgress, reset],
+    () => ({ progress, ready, award, addReflection, logPulse, updateProfile, setLessonPos, replaceProgress, reset }),
+    [progress, ready, award, addReflection, logPulse, updateProfile, setLessonPos, replaceProgress, reset],
   );
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;
 }

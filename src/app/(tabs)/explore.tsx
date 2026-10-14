@@ -11,6 +11,7 @@ import { colors, fonts, radius } from '../../theme';
 
 const CATEGORIES = [
   { icon: 'message-circle', label: 'Ask\nCoach', color: colors.primary, soft: colors.primarySoft, go: '/coach' },
+  { icon: 'book-open', label: 'Micro\nLessons', color: colors.teal, soft: colors.tealSoft, go: '/lessons' },
   { icon: 'check-square', label: 'Quizzes', color: colors.teal, soft: colors.tealSoft, go: `/quiz/${QUIZZES[0].id}` },
   { icon: 'git-branch', label: 'Scenarios', color: colors.coral, soft: colors.coralSoft, go: `/scenario/${SCENARIOS[0].id}` },
   { icon: 'mic', label: 'Role\nPlay', color: colors.violet, soft: colors.violetSoft, go: '/practice' },
