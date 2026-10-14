@@ -14,7 +14,7 @@ const week: CurriculumWeek = {
       quote: '"Before tomorrow, walk me through how you’re planning to go into this."',
       xp: 30,
       choices: [
-        { text: '"I’ve been writing down every incident I can find from the past year, so if he pushes back, I’ll have the proof ready."', score: 1, feedback: 'A long list of evidence turns the talk into a trial, and he’ll defend every item. Pick one or two clear examples and their impact.' },
+        { text: '"I’m still collecting. Which incidents from the past year do you think will hold up best if he pushes back? I want the proof ready."', score: 1, feedback: 'Asking HR to help pick the strongest evidence turns the talk into a trial, and he’ll defend every item. Pick one or two clear examples and their impact instead.' },
         { text: '"He’s been here twelve years and the kitchen runs on him, so I want to keep it light. I’ll catch him after service, mention it casually over a drink, and remind him how much we value him."', score: 1, feedback: 'Protecting a valued relationship is a kind impulse, but a casual mention after service lets him miss the point. Respect him enough to be clear.' },
         { text: '"Two examples, the impact on the new cooks, the outcome I want for him and the team, and a question to hear his side. Morning, before prep, somewhere private."', score: 3, feedback: 'You planned what matters: a few facts, their impact, a goal that includes him, and room for his view. Good preparation sets up a conversation, not a verdict.' },
         { text: '"I’ve written out exactly what I’ll say, and how I’ll answer every reaction he might have."', score: 2, feedback: 'Preparing is right, but a full script makes you rigid and less likely to really listen. Plan your opening and your goal, then stay flexible.' },
@@ -44,7 +44,7 @@ const week: CurriculumWeek = {
       quote: '"I stay until seven every night for these kids, and this is what I get?"',
       xp: 30,
       choices: [
-        { text: '"Let’s try to keep emotions out of this. It’s just feedback, not a judgment of you as a teacher."', score: 1, feedback: 'Asking her to set feelings aside usually makes them bigger. Emotion is information, not an obstacle.' },
+        { text: '"Let’s set the emotions aside for a moment. What’s actually causing the delays with the grading?"', score: 1, feedback: 'A fair question at the wrong moment. Jumping to problem solving while she is upset asks her to set feelings aside, which usually makes them bigger. Acknowledge first.' },
         { text: '"Oh, please don’t be upset. You’re one of our best teachers, and parents complain about everything. Forget I brought it up. I’ll handle the parents myself and tell them you’re catching up."', score: 1, feedback: 'Caring, but dropping the topic and taking it over means the problem stays and she never gets to solve it. Kindness includes staying with the hard part.' },
         { text: '"I can see this is hard. Let’s stop here for now and pick it up another time."', score: 2, feedback: 'Pausing can be right, but "another time" with no date often becomes never. Offer a break and a specific time to come back.' },
         { text: '"I know how much you give, and that’s real. Take a minute if you need it. I still want to work this out with you, now or first thing tomorrow."', score: 3, feedback: 'You acknowledged her effort, gave her room, and kept the topic alive with a choice of when. Handling emotion means making space for it without walking away from the issue.' },
@@ -59,10 +59,10 @@ const week: CurriculumWeek = {
       quote: '"Honestly, everybody misses deadlines here. Why is this suddenly about me?"',
       xp: 30,
       choices: [
-        { text: '"This isn’t about anyone else. Let’s focus on you."', score: 2, feedback: 'You stayed on topic, but brushing off her point makes her feel unheard and more defensive. Acknowledge it, then come back.' },
+        { text: '"Fair, and I’ll look at the team pattern separately. Right now let’s stay on your two deadlines. Here’s the plan I’d like you to follow."', score: 2, feedback: 'You acknowledged her point and stayed on topic, which is most of it. But handing her your plan skips what got in the way, so the fix may miss the real cause.' },
         { text: '"You may be right, and I’ll look at that separately. Right now I want to stay on your two deadlines, because I can help with those. What got in the way?"', score: 3, feedback: 'You took her point seriously without letting it replace the conversation. Staying with it means acknowledging, then returning, as many times as needed.' },
         { text: '"That’s a fair point, and I appreciate you raising it. It sounds like a team problem more than a you problem. Let’s take it to Monday’s team meeting instead and drop your deadlines from today’s agenda."', score: 1, feedback: 'It sounds open minded, but you let a valid side point replace the real conversation. Her deadlines still need a plan, and only she can make it with you.' },
-        { text: 'Walk her through the team’s deadline report to show you hold every designer to the same standard.', score: 1, feedback: 'Comparing her to colleagues pulls you into a debate about others and away from what she can change. Keep the conversation on her work and the support she needs.' },
+        { text: '"Fair question. How do you think your deadlines compare with the rest of the team’s? Let’s pull up the report and look at everyone together."', score: 1, feedback: 'It sounds transparent, but comparing her to colleagues pulls you into a debate about others and away from what she can change. Keep the conversation on her work and the support she needs.' },
       ],
     },
     {
@@ -74,7 +74,7 @@ const week: CurriculumWeek = {
       quote: '"Got it. I’ll do better, I promise."',
       xp: 30,
       choices: [
-        { text: '"Great, I’m glad we’re on the same page. Thanks for hearing me out."', score: 1, feedback: 'Ending on a good feeling is tempting, but "better" means something different to each of you. Without specifics, the same problem will come back.' },
+        { text: '"Great, I’m glad we’re on the same page. How are you feeling about everything we covered? Thanks for really hearing me out."', score: 1, feedback: 'Checking on his feelings is kind, but "better" still means something different to each of you. Without specific steps, the same problem will come back.' },
         { text: '"I appreciate that. To make it easy, I’ll build you a checklist tonight, set reminders for every count, and review each one myself before it’s submitted, so you don’t have to stress."', score: 1, feedback: 'Generous, but you took ownership of his fix and signaled that you don’t trust him to solve it. Let him design the plan, with your support.' },
         { text: '"Good. I’ll email you a summary of what we discussed and what I expect, by end of day."', score: 2, feedback: 'A written record helps, but these are your expectations, not his commitments. Ask him to name the steps so he owns them.' },
         { text: '"I believe you. What does better look like on Thursday’s count, and what do you need from me? Let’s write it down and check in Friday."', score: 3, feedback: 'You turned a promise into steps he named, offered support, and set a check in. Next steps work when the other person owns them and you both know when you’ll look again.' },
@@ -107,7 +107,7 @@ const week: CurriculumWeek = {
         { text: '"I completely understand, and I’m so sorry you felt that way. I don’t think we need HR, though. Can we grab coffee, just the two of us, and clear the air before this gets bigger?"', score: 1, feedback: 'It sounds warm, but "sorry you felt that way" isn’t ownership, and steering her away from HR overrides a reasonable request. Repair starts by respecting what she asked for.' },
         { text: 'Agree to HR joining, and plan to apologize at that meeting so the apology is on the record.', score: 2, feedback: 'Agreeing to HR is right, but waiting days to apologize leaves the hurt sitting. A short, direct apology now shows you mean it.' },
         { text: '"Of course. I’ll set it up with HR. What I said yesterday was unfair, and I’m sorry. When we meet, I’ll own that first, then we can return to turnarounds."', score: 3, feedback: 'You agreed without arguing, apologized for your specific words, and kept the original issue on the table. Repair means owning your part fully, then coming back to the work together.' },
-        { text: 'Give her some space and let the turnaround issue rest for a few weeks until things cool down.', score: 1, feedback: 'Backing off may feel respectful, but silence reads as not caring, and the real issue stays unsolved. Repair needs a prompt, direct step.' },
+        { text: '"Before I loop in HR, what exactly upset you most about yesterday? I’d like to understand before this goes any further."', score: 1, feedback: 'It sounds curious, but it makes her justify a reasonable request and delays both the apology and what she asked for. Repair starts with honoring her request and owning your words.' },
       ],
     },
   ],
@@ -147,7 +147,7 @@ const week: CurriculumWeek = {
         person: 'Amadou, socio de negocio de RR. HH.',
         quote: '“Antes de mañana, cuéntame cómo piensas encarar esto.”',
         choices: [
-          { text: '“Estoy anotando cada incidente que encuentro del último año, así, si se defiende, tendré las pruebas listas.”', feedback: 'Una lista larga de pruebas convierte la conversación en un juicio, y él defenderá cada punto. Elige uno o dos ejemplos claros y su impacto.' },
+          { text: '“Todavía estoy reuniendo información. ¿Qué incidentes del último año crees que se sostienen mejor si él se resiste? Quiero tener las pruebas listas.”', feedback: 'Pedirle a Recursos Humanos que elija las pruebas más fuertes convierte la conversación en un juicio, y él va a defender cada punto. Elige uno o dos ejemplos claros y su impacto.' },
           { text: '“Lleva doce años aquí y la cocina depende de él, así que quiero que sea algo ligero. Lo busco después del servicio, se lo menciono de pasada tomando algo y le recuerdo cuánto lo valoramos.”', feedback: 'Proteger una relación valiosa es un impulso amable, pero una mención casual después del servicio le permite no captar el punto. Respétalo lo suficiente para ser claro.' },
           { text: '“Dos ejemplos, el impacto en los cocineros nuevos, el resultado que quiero para él y el equipo, y una pregunta para escuchar su versión. En la mañana, antes de la preparación, en privado.”', feedback: 'Planeaste lo importante: pocos hechos, su impacto, un objetivo que lo incluye y espacio para su opinión. Una buena preparación abre una conversación, no dicta un veredicto.' },
           { text: '“Escribí exactamente lo que voy a decir y cómo voy a responder a cada reacción que pueda tener.”', feedback: 'Prepararte es correcto, pero un guion completo te vuelve rígido y te hace escuchar menos. Planea tu apertura y tu objetivo, y luego mantente flexible.' },
@@ -171,7 +171,7 @@ const week: CurriculumWeek = {
         person: 'Itzel, maestra de cuarto grado',
         quote: '“Me quedo hasta las siete todas las noches por estos niños, ¿y esto es lo que recibo?”',
         choices: [
-          { text: '“Tratemos de dejar las emociones fuera de esto. Es solo retroalimentación, no un juicio sobre ti como maestra.”', feedback: 'Pedirle que deje de lado lo que siente suele hacerlo más grande. La emoción es información, no un obstáculo.' },
+          { text: '“Dejemos las emociones a un lado un momento. ¿Qué está causando en realidad los retrasos con las calificaciones?”', feedback: 'Una pregunta justa en el momento equivocado. Saltar a resolver mientras ella está alterada le pide dejar de lado lo que siente, y eso suele hacerlo más grande. Primero reconoce.' },
           { text: '“Ay, por favor no te pongas mal. Eres de nuestras mejores maestras, y los padres se quejan de todo. Olvida que lo mencioné. Yo me encargo de los padres y les digo que ya te estás poniendo al día.”', feedback: 'Es afectuoso, pero soltar el tema y hacerte cargo tú significa que el problema sigue y ella nunca llega a resolverlo. La amabilidad incluye quedarse con la parte difícil.' },
           { text: '“Veo que esto es difícil. Dejémoslo aquí por ahora y lo retomamos en otro momento.”', feedback: 'Hacer una pausa puede ser correcto, pero “otro momento” sin fecha muchas veces se convierte en nunca. Ofrece una pausa y una hora concreta para retomarlo.' },
           { text: '“Sé cuánto das, y eso es real. Tómate un minuto si lo necesitas. Igual quiero resolver esto contigo, ahora o mañana a primera hora.”', feedback: 'Reconociste su esfuerzo, le diste espacio y mantuviste vivo el tema dándole a elegir cuándo. Manejar la emoción es hacerle lugar sin abandonar el asunto.' },
@@ -183,10 +183,10 @@ const week: CurriculumWeek = {
         person: 'Keren, diseñadora sénior',
         quote: '“La verdad, aquí todo el mundo se atrasa con las entregas. ¿Por qué de repente esto es sobre mí?”',
         choices: [
-          { text: '“Esto no se trata de nadie más. Concentrémonos en ti.”', feedback: 'Te mantuviste en el tema, pero descartar su punto la hace sentir ignorada y más a la defensiva. Reconócelo y luego vuelve.' },
+          { text: '“Es justo, y voy a revisar el patrón del equipo por separado. Ahora quedémonos en tus dos entregas. Este es el plan que quiero que sigas.”', feedback: 'Reconociste su punto y te mantuviste en el tema, que es casi todo. Pero darle tu plan se salta qué se interpuso, así que la solución puede no atacar la causa real.' },
           { text: '“Puede que tengas razón, y lo voy a revisar por separado. Ahora quiero quedarme en tus dos entregas, porque con eso te puedo ayudar. ¿Qué se interpuso?”', feedback: 'Tomaste en serio su punto sin dejar que reemplazara la conversación. Sostener la conversación es reconocer y volver, tantas veces como haga falta.' },
           { text: '“Es un punto justo, y te agradezco que lo menciones. Suena más a un problema del equipo que tuyo. Llevémoslo a la reunión del lunes y quitemos tus entregas de la agenda de hoy.”', feedback: 'Suena abierto, pero dejaste que un punto secundario válido reemplazara la conversación real. Sus entregas siguen necesitando un plan, y solo ella puede hacerlo contigo.' },
-          { text: 'Mostrarle el informe de entregas del equipo para demostrar que mides a todos con la misma vara.', feedback: 'Compararla con sus colegas te lleva a un debate sobre otros y te aleja de lo que ella puede cambiar. Mantén la conversación en su trabajo y en el apoyo que necesita.' },
+          { text: '“Buena pregunta. ¿Cómo crees que se comparan tus entregas con las del resto del equipo? Abramos el informe y revisemos a todos juntos.”', feedback: 'Suena transparente, pero compararla con sus colegas te mete en un debate sobre otros y te aleja de lo que ella puede cambiar. Mantén la conversación en su trabajo y el apoyo que necesita.' },
         ],
       },
       'w34-next-steps': {
@@ -195,7 +195,7 @@ const week: CurriculumWeek = {
         person: 'Leopold, subgerente de tienda',
         quote: '“Entendido. Lo haré mejor, te lo prometo.”',
         choices: [
-          { text: '“Genial, me alegra que estemos en la misma página. Gracias por escucharme.”', feedback: 'Terminar con una buena sensación es tentador, pero “mejor” significa algo distinto para cada uno. Sin detalles, el mismo problema va a volver.' },
+          { text: '“Qué bien, me alegra que estemos de acuerdo. ¿Cómo te sientes con todo lo que hablamos? Gracias por escucharme de verdad.”', feedback: 'Preguntar cómo se siente es amable, pero “mejorar” sigue significando algo distinto para cada uno. Sin pasos concretos, el mismo problema va a volver.' },
           { text: '“Te lo agradezco. Para hacértelo fácil, esta noche te armo una lista de verificación, te pongo recordatorios para cada conteo y reviso cada uno yo antes de enviarlo, así no te estresas.”', feedback: 'Generoso, pero te apropiaste de su solución y le mostraste que no confías en que la resuelva. Deja que él diseñe el plan, con tu apoyo.' },
           { text: '“Bien. Antes de que termine el día te mando por correo un resumen de lo que hablamos y de lo que espero.”', feedback: 'Un registro escrito ayuda, pero son tus expectativas, no sus compromisos. Pídele que nombre los pasos para que sean suyos.' },
           { text: '“Te creo. ¿Cómo se ve mejor en el conteo del jueves, y qué necesitas de mí? Escribámoslo y lo revisamos el viernes.”', feedback: 'Convertiste una promesa en pasos que él nombró, ofreciste apoyo y fijaste un seguimiento. Los próximos pasos funcionan cuando la otra persona se apropia de ellos y ambos saben cuándo volverán a revisarlos.' },
@@ -222,7 +222,7 @@ const week: CurriculumWeek = {
           { text: '“Lo entiendo totalmente, y siento mucho que te hayas sentido así. Pero no creo que haga falta RR. HH. ¿Tomamos un café, solo nosotros dos, y aclaramos las cosas antes de que esto crezca?”', feedback: 'Suena cálido, pero “siento que te hayas sentido así” no es hacerse cargo, y alejarla de RR. HH. pasa por encima de una petición razonable. La reparación empieza por respetar lo que pidió.' },
           { text: 'Aceptar que RR. HH. participe y planear disculparte en esa reunión, para que la disculpa quede registrada.', feedback: 'Aceptar a RR. HH. es correcto, pero esperar días para disculparte deja la herida abierta. Una disculpa breve y directa ahora muestra que va en serio.' },
           { text: '“Por supuesto. Lo coordino con RR. HH. Lo que dije ayer fue injusto, y lo siento. Cuando nos reunamos, empiezo reconociéndolo y luego volvemos a las rotaciones.”', feedback: 'Aceptaste sin discutir, te disculpaste por tus palabras concretas y mantuviste el tema original sobre la mesa. Reparar es asumir tu parte por completo y luego volver juntos al trabajo.' },
-          { text: 'Darle espacio y dejar el tema de las rotaciones en pausa unas semanas hasta que se calmen las cosas.', feedback: 'Retroceder puede sentirse respetuoso, pero el silencio se lee como desinterés, y el problema real sigue sin resolverse. Reparar requiere un paso directo y pronto.' },
+          { text: '“Antes de involucrar a Recursos Humanos, ¿qué fue exactamente lo que más te molestó de ayer? Quiero entenderlo antes de que esto vaya más lejos.”', feedback: 'Suena curioso, pero la obliga a justificar una petición razonable y retrasa tanto la disculpa como lo que pidió. Reparar empieza por respetar su petición y asumir tus palabras.' },
         ],
       },
     },
@@ -254,7 +254,7 @@ const week: CurriculumWeek = {
         person: 'Amadou, partenaire RH',
         quote: '« Avant demain, expliquez-moi comment vous comptez aborder les choses. »',
         choices: [
-          { text: '« Je note tous les incidents que je trouve depuis un an, comme ça, s’il conteste, j’aurai les preuves sous la main. »', feedback: 'Une longue liste de preuves transforme l’échange en procès, et il défendra chaque point. Choisissez un ou deux exemples clairs et leur impact.' },
+          { text: '« Je rassemble encore des éléments. Quels incidents de l’année passée tiendront le mieux, selon vous, s’il conteste ? Je veux avoir les preuves prêtes. »', feedback: 'Demander aux RH de choisir les preuves les plus solides transforme l’échange en procès, et il défendra chaque point. Choisissez plutôt un ou deux exemples clairs et leur impact.' },
           { text: '« Il est là depuis douze ans et la cuisine tourne grâce à lui, alors je veux rester léger. Je le vois après le service, j’en parle en passant autour d’un verre, et je lui rappelle combien on tient à lui. »', feedback: 'Protéger une relation précieuse part d’une bonne intention, mais une remarque en passant après le service lui permet de ne pas saisir le message. Respectez-le assez pour être clair.' },
           { text: '« Deux exemples, l’impact sur les nouveaux commis, le résultat que je veux pour lui et l’équipe, et une question pour entendre sa version. Le matin, avant la mise en place, en privé. »', feedback: 'Vous avez préparé l’essentiel : quelques faits, leur impact, un objectif qui l’inclut et de la place pour son point de vue. Une bonne préparation ouvre une conversation, pas un verdict.' },
           { text: '« J’ai écrit exactement ce que je vais dire, et comment je répondrai à chacune de ses réactions possibles. »', feedback: 'Se préparer est juste, mais un script complet vous rend rigide et vous fait moins écouter. Préparez votre ouverture et votre objectif, puis restez souple.' },
@@ -278,7 +278,7 @@ const week: CurriculumWeek = {
         person: 'Itzel, enseignante de CM1',
         quote: '« Je reste jusqu’à sept heures tous les soirs pour ces enfants, et voilà ce que je reçois ? »',
         choices: [
-          { text: '« Essayons de laisser les émotions de côté. Ce n’est qu’un retour, pas un jugement sur vous en tant qu’enseignante. »', feedback: 'Lui demander de mettre ses émotions de côté les fait souvent grandir. L’émotion est une information, pas un obstacle.' },
+          { text: '« Mettons les émotions de côté un instant. Qu’est-ce qui cause vraiment ces retards de correction ? »', feedback: 'Une question juste au mauvais moment. Passer à la résolution alors qu’elle est bouleversée lui demande de mettre ses émotions de côté, ce qui les amplifie souvent. Reconnaissez d’abord.' },
           { text: '« Oh, je vous en prie, ne vous mettez pas dans cet état. Vous êtes l’une de nos meilleures enseignantes, et les parents se plaignent de tout. Oubliez ce que j’ai dit. Je m’occupe des parents et je leur dis que vous rattrapez le retard. »', feedback: 'C’est bienveillant, mais abandonner le sujet et le prendre en charge vous-même signifie que le problème reste et qu’elle ne peut jamais le résoudre. La bienveillance inclut de rester sur la partie difficile.' },
           { text: '« Je vois que c’est difficile. Arrêtons-nous là pour l’instant, on reprendra une autre fois. »', feedback: 'Faire une pause peut être juste, mais « une autre fois » sans date devient souvent jamais. Proposez une pause et un moment précis pour reprendre.' },
           { text: '« Je sais tout ce que vous donnez, et c’est réel. Prenez une minute si besoin. Je veux quand même trouver une solution avec vous, maintenant ou demain à la première heure. »', feedback: 'Vous avez reconnu ses efforts, laissé de l’espace et gardé le sujet ouvert en lui laissant choisir le moment. Gérer l’émotion, c’est lui faire de la place sans abandonner le sujet.' },
@@ -290,10 +290,10 @@ const week: CurriculumWeek = {
         person: 'Keren, designer senior',
         quote: '« Franchement, tout le monde rate des échéances ici. Pourquoi c’est tout à coup sur moi ? »',
         choices: [
-          { text: '« Il ne s’agit de personne d’autre. Concentrons-nous sur vous. »', feedback: 'Vous êtes resté sur le sujet, mais balayer son argument la fait se sentir ignorée et plus sur la défensive. Reconnaissez-le, puis revenez au sujet.' },
+          { text: '« C’est juste, et j’examinerai la tendance de l’équipe à part. Pour l’instant, restons sur vos deux échéances. Voici le plan que je vous demande de suivre. »', feedback: 'Vous avez reconnu son point et êtes resté sur le sujet, c’est presque tout. Mais lui imposer votre plan saute ce qui a bloqué, et la solution risque de manquer la vraie cause.' },
           { text: '« Vous avez peut-être raison, et je vais regarder ça à part. Là, je veux rester sur vos deux échéances, parce que là-dessus je peux vous aider. Qu’est-ce qui a bloqué ? »', feedback: 'Vous avez pris son argument au sérieux sans le laisser remplacer la conversation. Tenir la conversation, c’est reconnaître puis revenir, autant de fois que nécessaire.' },
           { text: '« C’est un argument juste, et merci de le soulever. On dirait un problème d’équipe plus qu’un problème personnel. Parlons-en à la réunion de lundi, et retirons vos échéances de l’ordre du jour d’aujourd’hui. »', feedback: 'Cela paraît ouvert, mais vous avez laissé un point secondaire valable remplacer la vraie conversation. Ses échéances ont toujours besoin d’un plan, et elle seule peut le construire avec vous.' },
-          { text: 'Lui montrer le rapport des échéances de l’équipe pour prouver que vous appliquez la même exigence à tous les designers.', feedback: 'La comparer à ses collègues vous entraîne dans un débat sur les autres et loin de ce qu’elle peut changer. Gardez la conversation sur son travail et le soutien dont elle a besoin.' },
+          { text: '« Bonne question. Comment pensez-vous que vos échéances se comparent à celles du reste de l’équipe ? Ouvrons le rapport et regardons tout le monde ensemble. »', feedback: 'Cela paraît transparent, mais la comparer à ses collègues vous entraîne dans un débat sur les autres, loin de ce qu’elle peut changer. Gardez l’échange sur son travail et le soutien dont elle a besoin.' },
         ],
       },
       'w34-next-steps': {
@@ -302,7 +302,7 @@ const week: CurriculumWeek = {
         person: 'Leopold, directeur adjoint du magasin',
         quote: '« Compris. Je ferai mieux, promis. »',
         choices: [
-          { text: '« Super, je suis content qu’on soit sur la même longueur d’onde. Merci de m’avoir écouté. »', feedback: 'Finir sur une bonne impression est tentant, mais « mieux » ne veut pas dire la même chose pour vous deux. Sans précisions, le même problème reviendra.' },
+          { text: '« Parfait, je suis content qu’on soit d’accord. Comment vous sentez-vous par rapport à tout ce qu’on a abordé ? Merci de m’avoir vraiment écouté. »', feedback: 'Prendre de ses nouvelles est gentil, mais « faire mieux » veut toujours dire autre chose pour chacun. Sans étapes concrètes, le même problème reviendra.' },
           { text: '« Merci. Pour vous faciliter la vie, je vous prépare une liste de contrôle ce soir, je mets des rappels pour chaque inventaire et je vérifie chacun moi-même avant l’envoi, comme ça vous n’avez pas à stresser. »', feedback: 'Généreux, mais vous vous êtes approprié sa solution et vous lui montrez que vous ne lui faites pas confiance pour la trouver. Laissez-le construire le plan, avec votre soutien.' },
           { text: '« Bien. Je vous envoie d’ici ce soir un résumé de ce qu’on s’est dit et de ce que j’attends. »', feedback: 'Une trace écrite aide, mais ce sont vos attentes, pas ses engagements. Demandez-lui de nommer les étapes pour qu’il se les approprie.' },
           { text: '« Je vous crois. À quoi ressemble mieux pour l’inventaire de jeudi, et de quoi avez-vous besoin de ma part ? Écrivons-le et faisons le point vendredi. »', feedback: 'Vous avez transformé une promesse en étapes qu’il a lui-même nommées, offert votre soutien et fixé un point. Les prochaines étapes fonctionnent quand l’autre se les approprie et que vous savez tous deux quand vous ferez le point.' },
@@ -329,7 +329,7 @@ const week: CurriculumWeek = {
           { text: '« Je comprends tout à fait, et je suis vraiment désolé que vous l’ayez ressenti ainsi. Mais je ne pense pas qu’on ait besoin des RH. On prend un café, juste tous les deux, pour mettre les choses à plat avant que ça prenne de l’ampleur ? »', feedback: 'Cela paraît chaleureux, mais « désolé que vous l’ayez ressenti ainsi » n’est pas assumer, et l’écarter des RH passe outre une demande raisonnable. Réparer commence par respecter ce qu’elle a demandé.' },
           { text: 'Accepter que les RH participent, et prévoir de vous excuser pendant cette réunion pour que les excuses soient consignées.', feedback: 'Accepter les RH est juste, mais attendre plusieurs jours pour vous excuser laisse la blessure ouverte. Des excuses courtes et directes maintenant montrent que vous êtes sincère.' },
           { text: '« Bien sûr. J’organise ça avec les RH. Ce que j’ai dit hier était injuste, et je suis désolé. Quand on se verra, je commencerai par le reconnaître, puis on reviendra aux rotations. »', feedback: 'Vous avez accepté sans discuter, présenté des excuses pour vos mots précis et gardé le sujet initial sur la table. Réparer, c’est assumer pleinement sa part, puis revenir ensemble au travail.' },
-          { text: 'Lui laisser de l’espace et mettre le sujet des rotations en pause quelques semaines, le temps que les choses se calment.', feedback: 'Prendre du recul peut sembler respectueux, mais le silence se lit comme de l’indifférence, et le vrai problème reste entier. Réparer demande un geste direct et rapide.' },
+          { text: '« Avant d’impliquer les RH, qu’est-ce qui vous a le plus blessée hier, exactement ? J’aimerais comprendre avant que ça aille plus loin. »', feedback: 'Cela paraît curieux, mais cela l’oblige à justifier une demande raisonnable et retarde à la fois les excuses et ce qu’elle a demandé. Réparer commence par respecter sa demande et assumer vos mots.' },
         ],
       },
     },
