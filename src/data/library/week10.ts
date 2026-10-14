@@ -14,9 +14,9 @@ const week: CurriculumWeek = {
       quote: '"Quick question: is everyone expected to answer messages at night? I don’t want to look lazy."',
       xp: 30,
       choices: [
-        { text: '"Good question, and no, you don’t have to answer at night. Just mute your notifications after six and nobody will mind."', score: 2, feedback: 'Close. Your answer was clear, but it stayed private. If everyone around her, including you, still posts at night, muting will not make logging off feel safe.' },
+        { text: '"No, nights aren’t expected, and I’ll tell the whole team that at Monday’s standup so it’s clear for everyone."', score: 2, feedback: 'Close. Saying it publicly is right, but you skipped the thing people watch most: if you keep sending late messages yourself, the announcement will not stick.' },
         { text: '"No, nights aren’t expected. I’ll say so to the whole team, and I’ll stop sending late messages myself."', score: 3, feedback: 'You answered clearly, made the norm public, and changed your own behavior. New hires learn culture from what leaders do, not what they say.' },
-        { text: '"Totally fair to ask, and you’re definitely not lazy! Some of us just like working late, but we’re a flexible team, so reply whenever feels right to you."', score: 1, feedback: 'Reassuring, but flexibility without a stated norm means the most visible behavior quietly becomes the expectation.' },
+        { text: '"Totally fair to ask, and you’re not lazy at all. What hours feel right for you? We’re a flexible team, so set whatever rhythm works."', score: 1, feedback: 'Kind and curious, but it hands a two week hire the job of guessing the norm. Without a stated expectation, the late night posts still win.' },
         { text: '"Honestly, being responsive is how people get noticed here early on, but don’t burn out. Just reply when you can and watch for the urgent ones."', score: 1, feedback: 'Even with the kind add-on, you just made late night availability the real job requirement.' },
       ],
     },
@@ -30,8 +30,8 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"Come on, he really saved us last night. If he hadn’t stayed, we’d have lost the whole morning’s production."', score: 1, feedback: 'Defending the praise misses his point: what you celebrate tells everyone what the job really is.' },
-        { text: '"You’re right, and I’m sorry it came across that way. I’ll give you a proper shout-out at the next shift meeting for a full year without downtime."', score: 2, feedback: 'Close. Recognizing him is good, but one shout-out does not change what the team sees you reward week after week, and you still do not know what his work involves.' },
-        { text: '"Hey, your work absolutely matters, and everyone here knows how reliable you are. Honestly, a quiet line is the best compliment you could get."', score: 1, feedback: 'Warm, but private reassurance is easy to say and easy to dismiss. Prevention stays invisible if you only praise it in the hallway.' },
+        { text: '"Fair point, and I’ve been rewarding rescues. Starting next shift meeting, I’ll call out prevention work like yours in front of everyone."', score: 2, feedback: 'Close. You named the pattern and committed to change it, but you skipped learning what his prevention work actually involves, so the praise risks sounding generic.' },
+        { text: '"Your work absolutely matters, and everyone here knows how reliable you are. What kind of recognition would feel meaningful to you?"', score: 1, feedback: 'Kind, but it turns his point into a personal request. He is describing what you reward in front of everyone, and that is yours to change.' },
         { text: '"Fair point. Walk me through what you do on line three. I want to start recognizing prevention in front of everyone."', score: 3, feedback: 'You owned the blind spot and asked to understand the work you want to celebrate. Rewarding prevention, not only rescue, shapes the culture you want.' },
       ],
     },
@@ -46,7 +46,7 @@ const week: CurriculumWeek = {
       choices: [
         { text: '"Thank you for flagging it early. Let’s fix it together, then look at what in our process let it slip."', score: 3, feedback: 'You rewarded the speaking up, solved the problem, and pointed to the system rather than the person. That is how people keep bringing mistakes to you early.' },
         { text: '"How did this even happen? We talked about double checking the blocks last month. You really need to be more careful with these."', score: 1, feedback: 'A sharp reaction teaches the whole desk that owning up gets you scolded, so the next mistake may surface too late to fix.' },
-        { text: '"Thanks for telling me. I’ll call the wedding planner and sort out the rooms myself, so you can get back to the desk and not stress about it."', score: 2, feedback: 'Close. You thanked her, but taking it over skips fixing it with her and looking at what in the process let it slip, so the lesson is lost.' },
+        { text: '"Thank you for flagging it early. Let’s call the wedding planner together and fix the rooms before lunch."', score: 2, feedback: 'Close. You thanked her and fixed it with her, but stopped there. Without a look at what in the process let it slip, the same gap will catch someone else.' },
         { text: '"Oh, don’t be so hard on yourself, these things happen to everyone. It’s fixable, so let’s quietly move the bookings and put it behind us."', score: 1, feedback: 'Comforting, but quietly moving on skips the lesson, and the same gap in the process will catch someone else.' },
       ],
     },
@@ -60,7 +60,7 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"I’m so sorry, that sounds isolating. I’ll make sure you get an invite every Thursday, and we can set up a video link so you can join from home."', score: 1, feedback: 'Caring, but an invite to a night out by video does not fix the real problem: decisions are happening in places he cannot reach.' },
-        { text: '"It’s really just social, so I wouldn’t read too much into it. Nothing official gets decided there, and anything important still goes through me."', score: 1, feedback: 'If plans change by Friday, something is being decided. Dismissing his experience protects the habit, not the team.' },
+        { text: '"It’s mostly social, honestly. What do you think is actually getting decided there? I’d want specifics before I change how people spend Thursdays."', score: 1, feedback: 'It sounds curious, but it makes him prove an exclusion he just described. Plans changing by Friday is the evidence, and fixing where decisions land is your job.' },
         { text: '"Thanks for telling me. From now on, anything discussed informally goes to our team channel before it’s final."', score: 3, feedback: 'You took the exclusion seriously and fixed the system, not just his invite. Inclusive cultures make sure decisions happen where everyone can take part.' },
         { text: '"I hear you, and that’s not okay. I’ll fill you in myself whenever something changes, so you’re never the last to find out again."', score: 2, feedback: 'Close. You took it seriously, but it makes you the bridge and leaves the habit in place. Change where decisions get made.' },
       ],
@@ -115,9 +115,9 @@ const week: CurriculumWeek = {
         person: 'Isla, desarrolladora junior',
         quote: '“Una pregunta rápida: ¿se espera que todos respondan mensajes en la noche? No quiero parecer floja.”',
         choices: [
-          { text: '“Buena pregunta, y no, no tienes que responder de noche. Solo silencia las notificaciones después de las seis y a nadie le va a molestar.”', feedback: 'Casi. Tu respuesta fue clara, pero se quedó en privado. Si todos a su alrededor, incluido tú, siguen escribiendo de noche, silenciar no hará que desconectarse se sienta seguro.' },
+          { text: '“No, no se espera que respondas de noche, y se lo voy a decir a todo el equipo en la reunión del lunes para que quede claro.”', feedback: 'Casi. Decirlo en público es correcto, pero te saltaste lo que la gente más observa: si tú sigues mandando mensajes tarde, el anuncio no va a durar.' },
           { text: '“No, no se espera que respondas de noche. Se lo voy a decir a todo el equipo, y yo también voy a dejar de mandar mensajes tarde.”', feedback: 'Respondiste con claridad, hiciste pública la norma y cambiaste tu propio comportamiento. Las personas nuevas aprenden la cultura de lo que hacen sus líderes, no de lo que dicen.' },
-          { text: '“Es totalmente válido preguntar, y para nada eres floja. A algunos nos gusta trabajar tarde, pero somos un equipo flexible, así que responde cuando te parezca bien.”', feedback: 'Tranquiliza, pero la flexibilidad sin una norma clara hace que el comportamiento más visible se convierta, sin decirlo, en la expectativa.' },
+          { text: '“Es totalmente válido preguntar, y para nada eres floja. ¿Qué horario te funciona a ti? Somos un equipo flexible, así que elige el ritmo que te sirva.”', feedback: 'Amable y con curiosidad, pero le pasa a alguien con dos semanas la tarea de adivinar la norma. Sin una expectativa clara, los mensajes nocturnos siguen mandando.' },
           { text: '“La verdad, responder rápido es como la gente se hace notar aquí al principio, pero no te agotes. Responde cuando puedas y atenta a lo urgente.”', feedback: 'Aun con el comentario amable, acabas de convertir la disponibilidad nocturna en el verdadero requisito del puesto.' },
         ],
       },
@@ -128,8 +128,8 @@ const week: CurriculumWeek = {
         quote: '“Mi línea no se ha detenido en un año. Parece que aquí solo te notan cuando algo se rompe.”',
         choices: [
           { text: '“Vamos, él de verdad nos salvó anoche. Si no se hubiera quedado, habríamos perdido toda la producción de la mañana.”', feedback: 'Defender el reconocimiento no capta su punto: lo que celebras le dice a todos en qué consiste realmente el trabajo.' },
-          { text: '“Tienes razón, y perdón si se sintió así. En la próxima reunión de turno te voy a dar un buen reconocimiento por un año entero sin paros en tu línea.”', feedback: 'Casi. Es bueno reconocerlo, pero un reconocimiento aislado no cambia lo que el equipo ve que premias semana tras semana, y sigues sin saber en qué consiste su trabajo.' },
-          { text: '“Oye, tu trabajo importa muchísimo, y aquí todos saben lo confiable que eres. La verdad, una línea tranquila es el mejor cumplido que puedes recibir.”', feedback: 'Es cálido, pero tranquilizarlo en privado es fácil de decir y fácil de ignorar. La prevención sigue siendo invisible si solo la elogias en el pasillo.' },
+          { text: '“Es justo, y he estado premiando los rescates. Desde la próxima reunión de turno voy a reconocer frente a todos el trabajo de prevención como el tuyo.”', feedback: 'Casi. Nombraste el patrón y te comprometiste a cambiarlo, pero no averiguaste en qué consiste su trabajo de prevención, así que el reconocimiento puede sonar genérico.' },
+          { text: '“Tu trabajo importa muchísimo, y aquí todos saben lo confiable que eres. ¿Qué tipo de reconocimiento sería significativo para ti?”', feedback: 'Es amable, pero convierte su punto en una petición personal. Él describe lo que premias frente a todos, y cambiar eso te toca a ti.' },
           { text: '“Es justo. Explícame lo que haces en la línea tres. Quiero empezar a reconocer la prevención frente a todos.”', feedback: 'Reconociste tu punto ciego y pediste entender el trabajo que quieres celebrar. Premiar la prevención, y no solo el rescate, da forma a la cultura que quieres.' },
         ],
       },
@@ -141,7 +141,7 @@ const week: CurriculumWeek = {
         choices: [
           { text: '“Gracias por avisarme a tiempo. Lo resolvemos juntas, y luego vemos qué del proceso permitió que se escapara.”', feedback: 'Premiaste que hablara, resolviste el problema y señalaste el sistema en lugar de la persona. Así la gente sigue trayéndote los errores a tiempo.' },
           { text: '“¿Cómo pasó esto? Hablamos de revisar dos veces los bloques el mes pasado. De verdad tienes que tener más cuidado con esto.”', feedback: 'Una reacción dura le enseña a toda la recepción que admitir un error trae regaños, y el próximo error podría aparecer cuando ya sea tarde para arreglarlo.' },
-          { text: '“Gracias por decírmelo. Yo llamo a la organizadora de la boda y arreglo las habitaciones, para que vuelvas a la recepción y no te estreses con esto.”', feedback: 'Casi. Le agradeciste, pero tomar el control se salta resolverlo con ella y revisar qué del proceso permitió el error, así que se pierde la lección.' },
+          { text: '“Gracias por avisarme a tiempo. Llamemos juntas a la organizadora de la boda y arreglemos las habitaciones antes del almuerzo.”', feedback: 'Casi. Le agradeciste y lo resolviste con ella, pero te quedaste ahí. Sin revisar qué del proceso permitió el error, el mismo hueco atrapará a alguien más.' },
           { text: '“Ay, no seas tan dura contigo, esto le pasa a todo el mundo. Tiene arreglo, así que movamos las reservas sin hacer ruido y dejémoslo atrás.”', feedback: 'Reconforta, pero seguir adelante sin hacer ruido se salta la lección, y el mismo hueco en el proceso atrapará a alguien más.' },
         ],
       },
@@ -152,7 +152,7 @@ const week: CurriculumWeek = {
         quote: '“Para el viernes el plan ya es otro, y me entero por un hilo de Slack. Siento que estoy afuera.”',
         choices: [
           { text: '“Lo siento mucho, eso suena aislante. Me aseguraré de que te inviten cada jueves, y podemos poner una videollamada para que te unas desde casa.”', feedback: 'Es considerado, pero unirse por video a una salida no resuelve el problema real: las decisiones se toman en lugares a los que él no llega.' },
-          { text: '“De verdad es solo algo social, yo no le daría tanta importancia. Ahí no se decide nada oficial, y todo lo importante sigue pasando por mí.”', feedback: 'Si los planes cambian para el viernes, algo se está decidiendo. Descartar su experiencia protege el hábito, no al equipo.' },
+          { text: '“La verdad es algo más que nada social. ¿Qué crees que se está decidiendo ahí realmente? Necesitaría detalles antes de cambiar cómo pasa la gente sus jueves.”', feedback: 'Suena curioso, pero lo obliga a probar una exclusión que acaba de describir. Que los planes cambien para el viernes es la prueba, y arreglar dónde se decide te toca a ti.' },
           { text: '“Gracias por decírmelo. De ahora en adelante, todo lo que se hable de manera informal pasa por el canal del equipo antes de ser definitivo.”', feedback: 'Tomaste en serio la exclusión y arreglaste el sistema, no solo su invitación. Las culturas inclusivas se aseguran de que las decisiones ocurran donde todos pueden participar.' },
           { text: '“Te entiendo, y eso no está bien. Yo mismo te pondré al día cada vez que algo cambie, para que nunca vuelvas a ser el último en enterarte.”', feedback: 'Casi. Lo tomaste en serio, pero te conviertes en el puente y el hábito queda intacto. Cambia el lugar donde se toman las decisiones.' },
         ],
@@ -196,9 +196,9 @@ const week: CurriculumWeek = {
         person: 'Isla, développeuse junior',
         quote: '« Petite question : est-ce qu’on est censé répondre aux messages le soir ? Je ne veux pas avoir l’air paresseuse. »',
         choices: [
-          { text: '« Bonne question, et non, vous n’avez pas à répondre le soir. Coupez simplement vos notifications après dix-huit heures, personne ne vous en voudra. »', feedback: 'Presque. Votre réponse était claire, mais elle est restée privée. Si tout le monde autour d’elle, vous compris, continue d’écrire le soir, couper les notifications ne rendra pas la déconnexion sereine.' },
+          { text: '« Non, on n’attend pas de réponse le soir, et je le dirai à toute l’équipe au point de lundi pour que ce soit clair pour tous. »', feedback: 'Presque. Le dire publiquement est juste, mais vous avez oublié ce que les gens observent le plus : si vous continuez d’envoyer des messages tard, l’annonce ne tiendra pas.' },
           { text: '« Non, on n’attend pas de réponse le soir. Je vais le dire à toute l’équipe, et je vais moi-même arrêter d’envoyer des messages tardifs. »', feedback: 'Vous avez répondu clairement, rendu la norme publique et changé votre propre comportement. Les nouveaux apprennent la culture à travers ce que font les responsables, pas ce qu’ils disent.' },
-          { text: '« C’est tout à fait légitime de demander, et vous n’êtes pas du tout paresseuse ! Certains aiment travailler tard, mais nous sommes une équipe flexible, alors répondez quand bon vous semble. »', feedback: 'C’est rassurant, mais une flexibilité sans norme explicite fait du comportement le plus visible l’attente implicite.' },
+          { text: '« C’est tout à fait légitime de demander, et vous n’êtes pas du tout paresseuse. Quels horaires vous conviennent ? Nous sommes une équipe flexible, choisissez votre rythme. »', feedback: 'Bienveillant et curieux, mais cela laisse à une recrue de deux semaines le soin de deviner la norme. Sans attente explicite, les messages du soir continuent de faire loi.' },
           { text: '« Honnêtement, être réactif, c’est comme ça qu’on se fait remarquer ici au début, mais ne vous épuisez pas. Répondez quand vous pouvez et surveillez l’urgent. »', feedback: 'Même avec cette note bienveillante, vous venez de faire de la disponibilité le soir la vraie exigence du poste.' },
         ],
       },
@@ -209,8 +209,8 @@ const week: CurriculumWeek = {
         quote: '« Ma ligne ne s’est pas arrêtée depuis un an. On dirait qu’ici, on ne vous remarque que quand quelque chose casse. »',
         choices: [
           { text: '« Allons, il nous a vraiment sauvés hier soir. S’il n’était pas resté, on aurait perdu toute la production du matin. »', feedback: 'Défendre ces remerciements passe à côté de son propos : ce que vous célébrez dit à tous en quoi consiste vraiment le travail.' },
-          { text: '« Vous avez raison, et je suis désolé si c’est passé comme ça. À la prochaine réunion d’équipe, je vous mettrai vraiment à l’honneur pour une année entière sans arrêt de ligne. »', feedback: 'Presque. C’est bien de le reconnaître, mais un seul coup de projecteur ne change pas ce que l’équipe vous voit récompenser semaine après semaine, et vous ne savez toujours pas en quoi consiste son travail.' },
-          { text: '« Votre travail compte énormément, et tout le monde ici sait à quel point vous êtes fiable. Honnêtement, une ligne silencieuse, c’est le plus beau des compliments. »', feedback: 'C’est chaleureux, mais rassurer en privé est facile à dire et facile à balayer. La prévention reste invisible si vous ne la saluez que dans le couloir.' },
+          { text: '« C’est juste, et j’ai surtout récompensé les sauvetages. Dès la prochaine réunion d’équipe, je saluerai devant tous le travail de prévention comme le vôtre. »', feedback: 'Presque. Vous avez nommé le schéma et promis de le changer, mais sans apprendre en quoi consiste son travail de prévention, l’hommage risque de sonner creux.' },
+          { text: '« Votre travail compte énormément, et tout le monde ici sait à quel point vous êtes fiable. Quelle forme de reconnaissance aurait du sens pour vous ? »', feedback: 'C’est aimable, mais cela transforme son propos en demande personnelle. Il décrit ce que vous récompensez devant tout le monde, et c’est à vous de le changer.' },
           { text: '« C’est juste. Expliquez-moi ce que vous faites sur la ligne trois. Je veux commencer à valoriser la prévention devant tout le monde. »', feedback: 'Vous avez reconnu votre angle mort et demandé à comprendre le travail que vous voulez célébrer. Récompenser la prévention, et pas seulement le sauvetage, façonne la culture que vous voulez.' },
         ],
       },
@@ -222,7 +222,7 @@ const week: CurriculumWeek = {
         choices: [
           { text: '« Merci de me le signaler tôt. Réglons-le ensemble, puis regardons ce qui, dans notre processus, a laissé passer l’erreur. »', feedback: 'Vous avez valorisé le fait qu’elle parle, résolu le problème et pointé le système plutôt que la personne. C’est ainsi que les gens continuent de vous signaler leurs erreurs tôt.' },
           { text: '« Comment c’est possible ? On a parlé de revérifier les blocs le mois dernier. Il faut vraiment faire plus attention avec ça. »', feedback: 'Une réaction sèche apprend à toute l’équipe qu’avouer une erreur attire des reproches, et la prochaine pourrait apparaître trop tard pour être corrigée.' },
-          { text: '« Merci de me le dire. J’appelle moi-même l’organisatrice du mariage et je règle les chambres, comme ça vous retournez à l’accueil sans vous stresser. »', feedback: 'Presque. Vous l’avez remerciée, mais reprendre le dossier évite de le régler avec elle et d’examiner ce qui, dans le processus, a laissé passer l’erreur. La leçon se perd.' },
+          { text: '« Merci de me le signaler tôt. Appelons ensemble l’organisatrice du mariage et réglons les chambres avant midi. »', feedback: 'Presque. Vous l’avez remerciée et avez réglé le problème avec elle, mais vous vous êtes arrêté là. Sans examiner ce qui, dans le processus, a laissé passer l’erreur, la même faille piégera quelqu’un d’autre.' },
           { text: '« Oh, ne soyez pas si dure avec vous-même, ça arrive à tout le monde. C’est réparable, alors déplaçons discrètement les réservations et n’en parlons plus. »', feedback: 'C’est réconfortant, mais passer discrètement à autre chose saute la leçon, et la même faille dans le processus piégera quelqu’un d’autre.' },
         ],
       },
@@ -233,7 +233,7 @@ const week: CurriculumWeek = {
         quote: '« Le vendredi, le plan a changé et je l’apprends dans un fil Slack. J’ai l’impression d’être à l’écart. »',
         choices: [
           { text: '« Je suis vraiment désolé, ça doit être isolant. Je vais m’assurer qu’on vous invite chaque jeudi, et on peut prévoir une visio pour que vous participiez de chez vous. »', feedback: 'C’est attentionné, mais rejoindre une sortie en visio ne règle pas le vrai problème : les décisions se prennent là où il ne peut pas être.' },
-          { text: '« C’est vraiment juste un moment convivial, je n’y accorderais pas trop d’importance. Rien d’officiel ne s’y décide, et tout ce qui compte passe encore par moi. »', feedback: 'Si les plans changent le vendredi, quelque chose se décide. Balayer son vécu protège l’habitude, pas l’équipe.' },
+          { text: '« C’est surtout convivial, honnêtement. Qu’est-ce qui s’y décide vraiment, selon vous ? J’aurais besoin de précisions avant de changer les jeudis de chacun. »', feedback: 'Cela semble curieux, mais cela l’oblige à prouver une exclusion qu’il vient de décrire. Des plans qui changent le vendredi, c’est la preuve, et c’est à vous de changer l’endroit où l’on décide.' },
           { text: '« Merci de me le dire. Désormais, tout ce qui est discuté de façon informelle passe par le canal de l’équipe avant d’être définitif. »', feedback: 'Vous avez pris l’exclusion au sérieux et corrigé le système, pas seulement son invitation. Une culture inclusive veille à ce que les décisions se prennent là où chacun peut participer.' },
           { text: '« Je vous entends, et ce n’est pas normal. Je vous tiendrai moi-même au courant à chaque changement, pour que vous ne soyez plus jamais le dernier informé. »', feedback: 'Presque. Vous l’avez pris au sérieux, mais cela fait de vous le pont et laisse l’habitude en place. Changez l’endroit où les décisions se prennent.' },
         ],
