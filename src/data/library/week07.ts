@@ -14,10 +14,10 @@ const week: CurriculumWeek = {
       quote: '"Fine. Since apparently I\'m the only one who can do anything around here."',
       xp: 30,
       choices: [
-        { text: '"Sofia, I get that it\'s busy, but I need you to keep that tone off the floor, especially in front of customers. We can talk later if you want."', score: 1, feedback: 'Calm on the surface, but correcting her in public mid rush adds heat and embarrassment, and the real pressure goes unaddressed.' },
+        { text: '"Sofia, what’s going on with you today? I need everyone pulling together right now, so talk to me. What’s really bothering you?"', score: 1, feedback: 'Caring in intent, but asking her to explain herself in front of a customer mid rush puts her on the spot. That question belongs in a private talk after the rush.' },
         { text: '"Thanks for jumping in. It\'s a lot right now. Let\'s grab five minutes after the rush."', score: 3, feedback: 'You stayed calm, kept the floor running, and set up a private talk for when you can both actually listen.' },
         { text: 'Let it slide. She\'s clearly overwhelmed, so the kindest thing is to give her grace today and not bring it up again.', score: 1, feedback: 'Graceful in the moment, but the frustration behind the comment will show up again, louder.' },
-        { text: '"I know you\'re stretched thin. Here, I\'ll take the fitting rooms myself so you can stay on the register."', score: 2, feedback: 'Close: generous and it eases the moment. But it skips the conversation about why she feels alone on the floor.' },
+        { text: '"Thanks for jumping in, it’s a lot right now. Here, I’ll take the fitting rooms myself so you can stay on the register."', score: 2, feedback: 'Close: calm, appreciative, and it eases the moment. But you never set up the private talk, so the reason she feels alone on the floor goes unaddressed.' },
       ],
     },
     {
@@ -29,7 +29,7 @@ const week: CurriculumWeek = {
       quote: '"He gets every Saturday off and I\'m stuck covering. It\'s not fair, and I\'m done."',
       xp: 30,
       choices: [
-        { text: '"I really trust you both to sort this out like adults. Why don\'t you sit down together after service and bring me a schedule you both like?"', score: 1, feedback: 'It sounds empowering, but stepping away leaves a fairness problem with the people who have the least power to fix it.' },
+        { text: '"I trust you both to sort this out like adults. What would a fair split look like if you two sat down after service? Bring me a schedule you both like."', score: 1, feedback: 'It sounds empowering, and the question is a good one, but asking them to settle it alone leaves a fairness problem with the people who have the least power to fix it.' },
         { text: 'Tell him, "You\'re right, that\'s not fair," and swap the schedule so Tomas gets next Saturday off.', score: 1, feedback: 'Validating and fast, but a quick fix for whoever complains first teaches the team that the loudest voice wins.' },
         { text: '"That does sound unfair. Let me pull the last three months of schedules and see how weekends have actually been split."', score: 2, feedback: 'Close: you took him seriously and went to the facts. But hearing only one side risks a decision the other cook sees as unfair too.' },
         { text: '"That sounds frustrating. I\'ll talk with each of you, then we\'ll agree on a fair rotation together."', score: 3, feedback: 'You acknowledged the feeling, heard both sides, and moved the fight from people to a shared rule. That is how conflicts stay solved.' },
@@ -46,7 +46,7 @@ const week: CurriculumWeek = {
       choices: [
         { text: '"Say more. What worries you most about the timeline?"', score: 3, feedback: 'Curiosity turns a challenge into information. You showed the whole team that disagreement is welcome and useful.' },
         { text: '"I really appreciate the passion, Uma, and I want to hear all of it. Let\'s take it offline right after this call so we can keep the meeting on track."', score: 1, feedback: 'Respectful in tone, but moving it offline teaches everyone that dissent does not belong in the room.' },
-        { text: '"I hear you, and honestly I share some of that worry. Leadership already approved the plan, though, so let\'s focus on what we can control."', score: 1, feedback: 'Empathetic, but pointing to authority ends the debate without answering the risk, and the bugs will still arrive.' },
+        { text: '"I hear you, and honestly I share some of that worry. Leadership already approved the plan, though. How can we make it work with what we have?"', score: 1, feedback: 'Empathetic, and it asks a question, but the question is leading: it treats the timeline as fixed and skips the risk she raised. The bugs will still arrive.' },
         { text: '"That\'s a fair concern. Let\'s look at cutting scope so nobody burns out."', score: 2, feedback: 'Close: responsive and protective of the team. But deciding on the spot skips understanding what she sees and what the rest of the team thinks.' },
       ],
     },
@@ -59,10 +59,10 @@ const week: CurriculumWeek = {
       quote: '"Look, every supervisor tells me their request is urgent."',
       xp: 30,
       choices: [
-        { text: '"I get it, and I don\'t want to make your life harder. I\'ll just ask the plant director to help us both sort out priorities, so it\'s not all on you."', score: 1, feedback: 'Framed as a favor, but escalating before you understand his constraints turns a peer into an opponent.' },
+        { text: '"I get it, and I don’t want to make your life harder. What if we asked the plant director to set priorities for both of us, so it’s not all on you?"', score: 1, feedback: 'Framed as a favor and a question, but it is really an escalation. Going over his head before you understand his constraints turns a peer into an opponent.' },
         { text: '"Totally understand, you\'ve got a tough job. No worries, I\'ll wait my turn."', score: 1, feedback: 'Gracious, but backing off keeps the peace today while your line stays down and your frustration keeps growing.' },
         { text: '"I bet. How do you decide what goes first? I want to flag things in a way that helps you."', score: 3, feedback: 'Asking about his pressures first lowers defenses and gives you a shared way to prioritize instead of a tug of war.' },
-        { text: '"Mine really is urgent, though. We\'re losing two hours every shift because of that conveyor."', score: 2, feedback: 'Close: concrete impact helps. But without understanding his system, you are still one more loud request.' },
+        { text: '"I bet. We’re losing two hours a shift on that conveyor, and I want to flag it in a way that works for you. I’ll send you the numbers."', score: 2, feedback: 'Close: concrete impact and a cooperative tone. But you still do not know how he decides, so your numbers may land in a system that ignores them. Ask first.' },
       ],
     },
     {
@@ -76,7 +76,7 @@ const week: CurriculumWeek = {
       choices: [
         { text: '"I want to hear this, but please lower your voice. We\'re right outside patient rooms."', score: 2, feedback: 'Close: the location matters and you said you want to hear it. But leading with a correction can sound like you care more about the noise than the problem.' },
         { text: '"You\'re right to push on this. Let\'s step into the office so I can hear all of it."', score: 3, feedback: 'You validated the concern, moved calmly to a private space, and lowered the temperature without dismissing her.' },
-        { text: '"I completely understand, and believe me, I feel it too. Every unit is short staffed right now and everyone is stretched, so you\'re definitely not alone."', score: 1, feedback: 'Sympathetic, but it sounds like a brush off and tells her the third ask will go the way of the first two.' },
+        { text: '"I completely understand, and believe me, I feel it too. Every unit is short right now. Which shifts are the worst? Email me the dates and I’ll add them to the file."', score: 1, feedback: 'It sounds attentive, but asking for one more email, in a hallway outside patient rooms, after she said nobody reads them, tells her the third ask will go like the first two.' },
         { text: 'Say "I hear you, Wendy, and I promise I\'ll look into it today," and keep walking to your meeting.', score: 1, feedback: 'A promise on the move rarely lands. Walking away from someone at a boiling point usually guarantees a bigger blowup later.' },
       ],
     },
@@ -90,7 +90,7 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"I\'m so sorry, Yara. Nobody should have to deal with that. I\'ll have a quiet word with him today, and we can keep this just between us so it doesn\'t get awkward."', score: 1, feedback: 'Caring and well meant, but you cannot promise secrecy, and handling it informally can leave Yara unprotected if it continues.' },
-        { text: '"That\'s not okay. He probably doesn\'t realize how it lands, though. Would you feel comfortable telling him directly first? I\'ll back you up."', score: 1, feedback: 'Supportive in tone, but it downplays the behavior and shifts the burden onto Yara. Concerns like this go to HR.' },
+        { text: '"That’s not okay. He probably doesn’t realize how it lands, though. How would you feel about telling him directly first? I’ll back you up."', score: 1, feedback: 'Supportive in tone, but the question downplays the behavior and shifts the burden onto Yara. Concerns like this go to HR.' },
         { text: 'Offer to bring them both into your office this afternoon so you can help them talk it out calmly and clear the air.', score: 1, feedback: 'Peacemaking, but a face to face meeting can pressure Yara and may bypass your company\'s process for concerns like this.' },
         { text: '"Thank you for telling me. I want it to stop too. I\'m bringing in HR so it\'s handled properly, and I\'ll keep you posted."', score: 3, feedback: 'You took her seriously, were honest that this cannot stay secret, and followed policy. That protects her and the whole team.' },
       ],
@@ -131,10 +131,10 @@ const week: CurriculumWeek = {
         person: 'Sofia, asociada de ventas',
         quote: '“Bueno. Como al parecer soy la única que hace algo aquí.”',
         choices: [
-          { text: '“Sofia, entiendo que hay mucho movimiento, pero necesito que no uses ese tono en el piso, sobre todo frente a los clientes. Si quieres, hablamos después.”', feedback: 'Tranquilo en la superficie, pero corregirla en público en plena hora pico agrega tensión y vergüenza, y la presión real queda sin atender.' },
+          { text: '“Sofia, ¿qué te pasa hoy? Necesito que todos estemos unidos ahora mismo, así que háblame. ¿Qué es lo que realmente te molesta?”', feedback: 'La intención es buena, pero pedirle que se explique frente a una clienta en plena hora pico la pone en evidencia. Esa pregunta es para una charla privada después del movimiento.' },
           { text: '“Gracias por ayudar. Esto está pesado ahora. Hablemos cinco minutos cuando baje el movimiento.”', feedback: 'Mantuviste la calma, el piso siguió funcionando y abriste un espacio privado para cuando ambas personas puedan escuchar de verdad.' },
           { text: 'Dejarlo pasar. Está claramente abrumada, así que lo más amable es darle un respiro hoy y no volver a mencionarlo.', feedback: 'Comprensivo en el momento, pero la frustración detrás del comentario volverá a aparecer, y más fuerte.' },
-          { text: '“Sé que estás al límite. Mira, yo cubro los probadores para que tú te quedes en la caja.”', feedback: 'Casi: es generoso y alivia el momento. Pero evita la conversación sobre por qué se siente sola en el piso.' },
+          { text: '“Gracias por ayudar, esto está pesado ahora. Mira, yo cubro los probadores para que tú te quedes en la caja.”', feedback: 'Casi: tranquilo, agradecido y alivia el momento. Pero nunca propones la charla privada, así que la razón por la que se siente sola en el piso queda sin tratar.' },
         ],
       },
       'w07-weekend-shifts': {
@@ -143,7 +143,7 @@ const week: CurriculumWeek = {
         person: 'Tomas, cocinero de línea',
         quote: '“Él tiene todos los sábados libres y yo siempre lo cubro. No es justo, y ya me cansé.”',
         choices: [
-          { text: '“Confío en que ustedes dos lo resuelvan como adultos. ¿Por qué no se sientan juntos después del servicio y me traen un horario que les guste a ambos?”', feedback: 'Suena a dar autonomía, pero hacerte a un lado deja un problema de equidad en manos de quienes tienen menos poder para resolverlo.' },
+          { text: '“Confío en que ustedes dos lo resuelvan como adultos. ¿Cómo sería un reparto justo si se sientan juntos después del servicio? Tráiganme un horario que les guste a los dos.”', feedback: 'Suena a dar autonomía, y la pregunta es buena, pero pedirles que lo resuelvan solos deja un problema de justicia en manos de quienes menos poder tienen para arreglarlo.' },
           { text: 'Decirle: “Tienes razón, no es justo”, y cambiar el horario para que Tomas tenga libre el próximo sábado.', feedback: 'Valida y es rápido, pero una solución para quien se queja primero le enseña al equipo que gana la voz más fuerte.' },
           { text: '“Sí suena injusto. Déjame sacar los horarios de los últimos tres meses y ver cómo se han repartido de verdad los fines de semana.”', feedback: 'Casi: lo tomaste en serio y fuiste a los datos. Pero escuchar solo una parte arriesga una decisión que el otro cocinero también vea como injusta.' },
           { text: '“Suena frustrante. Voy a hablar con cada uno, y luego acordamos juntos una rotación justa.”', feedback: 'Reconociste lo que siente, escuchaste a ambas partes y llevaste la pelea de las personas a una regla compartida. Así los conflictos se quedan resueltos.' },
@@ -157,7 +157,7 @@ const week: CurriculumWeek = {
         choices: [
           { text: '“Cuéntame más. ¿Qué es lo que más te preocupa del calendario?”', feedback: 'La curiosidad convierte un desafío en información. Le mostraste a todo el equipo que el desacuerdo es bienvenido y útil.' },
           { text: '“De verdad aprecio la pasión, Uma, y quiero escucharlo todo. Hablémoslo aparte justo después de esta llamada para mantener la reunión en curso.”', feedback: 'El tono es respetuoso, pero llevarlo aparte le enseña a todos que el desacuerdo no tiene lugar en la sala.' },
-          { text: '“Te entiendo, y sinceramente comparto parte de esa preocupación. Pero la dirección ya aprobó el plan, así que enfoquémonos en lo que sí podemos controlar.”', feedback: 'Empático, pero recurrir a la autoridad termina el debate sin responder al riesgo, y los errores van a llegar igual.' },
+          { text: '“Te entiendo, y sinceramente comparto parte de esa preocupación. Pero la dirección ya aprobó el plan. ¿Cómo podemos hacerlo funcionar con lo que tenemos?”', feedback: 'Empático, y hace una pregunta, pero es capciosa: da el calendario por fijo y se salta el riesgo que ella planteó. Los errores van a llegar igual.' },
           { text: '“Es una preocupación válida. Veamos cómo reducir el alcance para que nadie se queme.”', feedback: 'Casi: receptivo y protector con el equipo. Pero decidir en el momento se salta entender lo que ella ve y lo que piensa el resto del equipo.' },
         ],
       },
@@ -167,10 +167,10 @@ const week: CurriculumWeek = {
         person: 'Victor, gerente de mantenimiento',
         quote: '“Mira, todos los supervisores me dicen que su solicitud es urgente.”',
         choices: [
-          { text: '“Te entiendo, y no quiero complicarte la vida. Solo le voy a pedir al director de planta que nos ayude a ordenar prioridades a los dos, para que no todo recaiga en ti.”', feedback: 'Se presenta como un favor, pero escalar antes de entender sus limitaciones convierte a un colega en un adversario.' },
+          { text: '“Te entiendo, y no quiero complicarte la vida. ¿Qué tal si le pedimos al director de planta que fije las prioridades de los dos, para que no todo caiga en ti?”', feedback: 'Presentado como un favor y como pregunta, pero en realidad es escalar. Pasar por encima de él antes de entender sus limitaciones convierte a un colega en adversario.' },
           { text: '“Lo entiendo totalmente, tienes un trabajo difícil. No te preocupes, espero mi turno.”', feedback: 'Amable, pero retroceder mantiene la paz hoy mientras tu línea sigue detenida y tu frustración sigue creciendo.' },
           { text: '“Me imagino. ¿Cómo decides qué va primero? Quiero marcar las cosas de una forma que te ayude.”', feedback: 'Preguntar primero por sus presiones baja las defensas y les da una forma compartida de priorizar en lugar de un jaloneo.' },
-          { text: '“Pero la mía sí es urgente. Estamos perdiendo dos horas por turno por esa banda transportadora.”', feedback: 'Casi: el impacto concreto ayuda. Pero sin entender su sistema sigues siendo una solicitud ruidosa más.' },
+          { text: '“Me imagino. Estamos perdiendo dos horas por turno con esa banda, y quiero marcarlo de una forma que te sirva. Te mando las cifras.”', feedback: 'Casi: impacto concreto y tono cooperativo. Pero sigues sin saber cómo decide, así que tus cifras pueden caer en un sistema que las ignora. Pregunta primero.' },
         ],
       },
       'w07-hallway-voices': {
@@ -181,7 +181,7 @@ const week: CurriculumWeek = {
         choices: [
           { text: '“Quiero escucharte, pero por favor baja la voz. Estamos justo afuera de los cuartos de pacientes.”', feedback: 'Casi: el lugar importa y dijiste que quieres escucharla. Pero empezar con una corrección puede sonar a que te importa más el ruido que el problema.' },
           { text: '“Tienes razón en insistir. Pasemos a la oficina para poder escucharlo todo.”', feedback: 'Validaste su preocupación, te moviste con calma a un espacio privado y bajaste la temperatura sin restarle importancia.' },
-          { text: '“Te entiendo totalmente, y créeme, yo también lo siento. A todas las unidades les falta personal y todo el mundo está al límite, así que no estás sola en esto.”', feedback: 'Comprensivo, pero suena a evasiva y le dice que la tercera solicitud va a correr la misma suerte que las dos primeras.' },
+          { text: '“Te entiendo totalmente, y créeme, yo también lo siento. A todas las unidades les falta gente. ¿Qué turnos son los peores? Mándame las fechas por correo y las agrego al expediente.”', feedback: 'Suena atento, pero pedirle un correo más, en un pasillo frente a cuartos de pacientes, después de que dijo que nadie los lee, le dice que la tercera petición correrá la suerte de las dos primeras.' },
           { text: 'Decir “Te escucho, Wendy, y te prometo que hoy lo reviso” y seguir caminando a tu reunión.', feedback: 'Una promesa al pasar rara vez convence. Alejarte de alguien que está a punto de estallar casi siempre garantiza una explosión mayor después.' },
         ],
       },
@@ -192,7 +192,7 @@ const week: CurriculumWeek = {
         quote: '“No quiero meter a nadie en problemas. Solo quiero que pare.”',
         choices: [
           { text: '“Lo siento mucho, Yara. Nadie debería pasar por eso. Hoy hablo discretamente con él, y esto queda solo entre nosotros para que no se vuelva incómodo.”', feedback: 'Cariñoso y bien intencionado, pero no puedes prometer confidencialidad, y manejarlo de forma informal puede dejar a Yara sin protección si continúa.' },
-          { text: '“Eso no está bien. Aunque seguro no se da cuenta de cómo cae. ¿Te sentirías cómoda diciéndoselo tú primero? Yo te respaldo.”', feedback: 'El tono es de apoyo, pero minimiza el comportamiento y le pasa la carga a Yara. Estas situaciones van a Recursos Humanos.' },
+          { text: '“Eso no está bien. Aunque seguro no se da cuenta de cómo cae. ¿Cómo te sentirías si se lo dices tú primero? Yo te respaldo.”', feedback: 'El tono es de apoyo, pero la pregunta minimiza la conducta y le pasa la carga a Yara. Estas situaciones van a Recursos Humanos.' },
           { text: 'Ofrecer reunir a los dos en tu oficina esta tarde para ayudarlos a hablarlo con calma y aclarar las cosas.', feedback: 'Busca la paz, pero una reunión cara a cara puede presionar a Yara y saltarse el proceso de tu empresa para este tipo de situaciones.' },
           { text: '“Gracias por contármelo. Yo también quiero que pare. Voy a involucrar a Recursos Humanos para que se maneje bien, y te mantengo al tanto.”', feedback: 'La tomaste en serio, fuiste honesto sobre que esto no puede quedar en secreto y seguiste la política. Eso la protege a ella y a todo el equipo.' },
         ],
@@ -225,10 +225,10 @@ const week: CurriculumWeek = {
         person: 'Sofia, conseillère de vente',
         quote: '« D’accord. Puisque visiblement je suis la seule à faire quelque chose ici. »',
         choices: [
-          { text: '« Sofia, je comprends que c’est le rush, mais j’ai besoin que ce ton reste hors de la boutique, surtout devant les clients. On en reparle plus tard si vous voulez. »', feedback: 'Calme en apparence, mais la reprendre en public en plein rush ajoute de la tension et de la gêne, et la vraie pression reste sans réponse.' },
+          { text: '« Sofia, qu’est-ce qui se passe aujourd’hui ? J’ai besoin que tout le monde se serre les coudes, alors parlez-moi. Qu’est-ce qui vous dérange vraiment ? »', feedback: 'Bien intentionné, mais lui demander de s’expliquer devant une cliente en plein rush la met sur la sellette. Cette question a sa place dans un échange privé après le rush.' },
           { text: '« Merci de prendre le relais. C’est intense en ce moment. Prenons cinq minutes après le rush. »', feedback: 'Vous êtes resté calme, la boutique a continué de tourner et vous avez prévu un échange en privé, quand vous pourrez vraiment vous écouter.' },
           { text: 'Laisser passer. Elle est visiblement débordée, alors le plus gentil est de lui accorder de l’indulgence aujourd’hui et de ne plus en parler.', feedback: 'Indulgent sur le moment, mais la frustration derrière la remarque reviendra, plus fort.' },
-          { text: '« Je sais que vous êtes débordée. Tenez, je prends les cabines moi-même pour que vous restiez en caisse. »', feedback: 'Presque : c’est généreux et cela apaise le moment. Mais cela évite la conversation sur la raison pour laquelle elle se sent seule en boutique.' },
+          { text: '« Merci de prendre le relais, c’est intense en ce moment. Tenez, je prends les cabines moi-même pour que vous restiez en caisse. »', feedback: 'Presque : calme, reconnaissant, et cela apaise le moment. Mais vous ne proposez jamais l’échange en privé, donc la raison pour laquelle elle se sent seule reste sans réponse.' },
         ],
       },
       'w07-weekend-shifts': {
@@ -237,7 +237,7 @@ const week: CurriculumWeek = {
         person: 'Tomas, cuisinier',
         quote: '« Il a tous ses samedis et c’est toujours moi qui le remplace. Ce n’est pas juste, et j’en ai assez. »',
         choices: [
-          { text: '« Je vous fais confiance à tous les deux pour régler ça en adultes. Pourquoi ne pas vous asseoir ensemble après le service et me proposer un planning qui vous convient ? »', feedback: 'Cela semble responsabilisant, mais vous retirer laisse un problème d’équité à ceux qui ont le moins de pouvoir pour le régler.' },
+          { text: '« Je vous fais confiance à tous les deux pour régler ça en adultes. À quoi ressemblerait un partage équitable si vous en parliez après le service ? Apportez-moi un planning qui vous convient. »', feedback: 'Cela paraît responsabilisant, et la question est bonne, mais leur demander de régler ça seuls laisse un problème d’équité aux personnes qui ont le moins de pouvoir pour le résoudre.' },
           { text: 'Lui dire : « Vous avez raison, ce n’est pas juste », et modifier le planning pour que Tomas ait le samedi suivant.', feedback: 'Rassurant et rapide, mais une solution pour celui qui se plaint en premier apprend à l’équipe que c’est la voix la plus forte qui gagne.' },
           { text: '« Ça paraît injuste, en effet. Je vais sortir les plannings des trois derniers mois et regarder comment les week-ends ont vraiment été répartis. »', feedback: 'Presque : vous l’avez pris au sérieux et êtes allé aux faits. Mais n’entendre qu’une version risque d’aboutir à une décision que l’autre cuisinier jugera injuste lui aussi.' },
           { text: '« Ça a l’air frustrant. Je vais parler avec chacun de vous, puis nous conviendrons ensemble d’une rotation équitable. »', feedback: 'Vous avez reconnu le ressenti, entendu les deux parties et déplacé le conflit des personnes vers une règle commune. C’est ainsi qu’un conflit reste réglé.' },
@@ -251,7 +251,7 @@ const week: CurriculumWeek = {
         choices: [
           { text: '« Dites-m’en plus. Qu’est-ce qui vous inquiète le plus dans ce calendrier ? »', feedback: 'La curiosité transforme une contestation en information. Vous avez montré à toute l’équipe que le désaccord est bienvenu et utile.' },
           { text: '« J’apprécie vraiment votre engagement, Uma, et je veux tout entendre. Parlons-en juste après cet appel pour que la réunion reste sur les rails. »', feedback: 'Le ton est respectueux, mais repousser la discussion apprend à tous que le désaccord n’a pas sa place dans la salle.' },
-          { text: '« Je vous entends, et honnêtement je partage une partie de cette inquiétude. Mais la direction a déjà validé le plan, alors concentrons-nous sur ce qu’on peut maîtriser. »', feedback: 'Empathique, mais invoquer l’autorité met fin au débat sans répondre au risque, et les bugs arriveront quand même.' },
+          { text: '« Je vous entends, et honnêtement je partage une partie de cette inquiétude. Mais la direction a déjà validé le plan. Comment pouvons-nous le faire fonctionner avec ce que nous avons ? »', feedback: 'Empathique, et cela pose une question, mais elle est orientée : elle tient le calendrier pour acquis et esquive le risque qu’elle a soulevé. Les bugs arriveront quand même.' },
           { text: '« C’est une inquiétude légitime. Voyons comment réduire le périmètre pour que personne ne s’épuise. »', feedback: 'Presque : réactif et protecteur envers l’équipe. Mais décider sur-le-champ fait l’impasse sur ce qu’elle voit et sur l’avis du reste de l’équipe.' },
         ],
       },
@@ -261,10 +261,10 @@ const week: CurriculumWeek = {
         person: 'Victor, responsable maintenance',
         quote: '« Écoutez, tous les superviseurs me disent que leur demande est urgente. »',
         choices: [
-          { text: '« Je comprends, et je ne veux pas vous compliquer la vie. Je vais juste demander au directeur d’usine de nous aider tous les deux à fixer les priorités, pour que tout ne repose pas sur vous. »', feedback: 'Présenté comme un service, mais escalader avant de comprendre ses contraintes transforme un pair en adversaire.' },
+          { text: '« Je comprends, et je ne veux pas vous compliquer la vie. Et si on demandait au directeur d’usine de fixer les priorités pour nous deux, pour que tout ne repose pas sur vous ? »', feedback: 'Présenté comme un service et sous forme de question, mais c’est en réalité une escalade. Passer au-dessus de lui avant de comprendre ses contraintes transforme un pair en adversaire.' },
           { text: '« Je comprends tout à fait, vous avez un poste difficile. Pas de souci, j’attendrai mon tour. »', feedback: 'Courtois, mais reculer préserve la paix aujourd’hui pendant que votre ligne reste à l’arrêt et que votre frustration grandit.' },
           { text: '« J’imagine. Comment décidez-vous de ce qui passe en premier ? Je veux signaler les choses d’une façon qui vous aide. »', feedback: 'Vous intéresser d’abord à ses contraintes fait tomber les défenses et vous donne une façon commune de prioriser, au lieu d’un bras de fer.' },
-          { text: '« Mais la mienne est vraiment urgente. On perd deux heures par poste à cause de ce convoyeur. »', feedback: 'Presque : l’impact concret aide. Mais sans comprendre son fonctionnement, vous restez une demande bruyante de plus.' },
+          { text: '« J’imagine. On perd deux heures par poste avec ce convoyeur, et je veux le signaler d’une façon qui vous convienne. Je vous envoie les chiffres. »', feedback: 'Presque : un impact concret et un ton coopératif. Mais vous ne savez toujours pas comment il décide, donc vos chiffres risquent d’atterrir dans un système qui les ignore. Demandez d’abord.' },
         ],
       },
       'w07-hallway-voices': {
@@ -275,7 +275,7 @@ const week: CurriculumWeek = {
         choices: [
           { text: '« Je veux l’entendre, mais baissez la voix, s’il vous plaît. Nous sommes juste devant les chambres des patients. »', feedback: 'Presque : le lieu compte et vous avez dit vouloir l’entendre. Mais commencer par une remarque peut donner l’impression que le bruit vous importe plus que le problème.' },
           { text: '« Vous avez raison d’insister. Allons dans le bureau pour que j’entende tout. »', feedback: 'Vous avez reconnu sa préoccupation, rejoint calmement un espace privé et fait baisser la température sans la minimiser.' },
-          { text: '« Je comprends tout à fait, et croyez-moi, je le ressens aussi. Tous les services manquent de personnel et tout le monde est à bout, vous n’êtes vraiment pas seule. »', feedback: 'Compatissant, mais cela sonne comme une esquive et lui laisse entendre que sa troisième demande connaîtra le même sort que les deux premières.' },
+          { text: '« Je comprends tout à fait, et croyez-moi, je le ressens aussi. Tous les services manquent de monde. Quelles nuits sont les pires ? Envoyez-moi les dates par e-mail et je les ajoute au dossier. »', feedback: 'Cela paraît attentif, mais demander un e-mail de plus, dans un couloir devant les chambres, après qu’elle a dit que personne ne les lit, lui annonce que la troisième demande finira comme les deux premières.' },
           { text: 'Dire « Je vous entends, Wendy, et je vous promets de regarder ça aujourd’hui » et continuer vers votre réunion.', feedback: 'Une promesse en passant convainc rarement. S’éloigner de quelqu’un qui est à bout garantit presque toujours une explosion plus forte plus tard.' },
         ],
       },
@@ -286,7 +286,7 @@ const week: CurriculumWeek = {
         quote: '« Je ne veux causer d’ennuis à personne. Je veux juste que ça s’arrête. »',
         choices: [
           { text: '« Je suis vraiment désolé, Yara. Personne ne devrait subir ça. Je lui en touche un mot discrètement aujourd’hui, et ça restera entre nous pour éviter tout malaise. »', feedback: 'Bienveillant et bien intentionné, mais vous ne pouvez pas promettre le secret, et une gestion informelle peut laisser Yara sans protection si cela continue.' },
-          { text: '« Ce n’est pas acceptable. Mais il ne se rend sûrement pas compte de l’effet. Seriez-vous à l’aise de lui en parler directement d’abord ? Je vous soutiendrai. »', feedback: 'Le ton est soutenant, mais cela minimise le comportement et fait peser la charge sur Yara. Ce type de situation relève des RH.' },
+          { text: '« Ce n’est pas acceptable. Mais il ne se rend sûrement pas compte de l’effet. Que diriez-vous de lui en parler directement d’abord ? Je vous soutiendrai. »', feedback: 'Le ton est bienveillant, mais la question minimise le comportement et fait porter la charge à Yara. Ce genre de situation relève des RH.' },
           { text: 'Proposer de les réunir tous les deux dans votre bureau cet après-midi pour les aider à en parler calmement et à apaiser les choses.', feedback: 'Conciliant, mais une confrontation directe peut mettre Yara sous pression et contourner la procédure de votre entreprise pour ce type de situation.' },
           { text: '« Merci de m’en avoir parlé. Je veux aussi que ça s’arrête. J’implique les RH pour que ce soit bien traité, et je vous tiendrai informée. »', feedback: 'Vous l’avez prise au sérieux, avez été honnête sur le fait que cela ne peut pas rester secret et avez suivi la politique de l’entreprise. Cela la protège, elle et toute l’équipe.' },
         ],

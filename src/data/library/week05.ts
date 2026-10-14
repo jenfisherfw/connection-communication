@@ -16,7 +16,7 @@ const week: CurriculumWeek = {
       choices: [
         { text: '"Chloe, you’re a rock star! Honestly, I don’t know what this kitchen would do without you. Keep doing what you’re doing, okay?"', score: 1, feedback: 'Warm and sincere, but generic. Praise that never says what you saw or why it mattered fades fast and does not tell her what to keep doing.' },
         { text: '"I noticed. Tickets ran four minutes faster at the rush, and nobody hunted for shallots. That was you. Thank you."', score: 3, feedback: 'You named what she did, the impact it had, and thanked her. Specific recognition tells people exactly what to keep doing.' },
-        { text: '"They worked really well! You clearly have a gift for systems. Would you be up for doing the same thing for the walk-in and dry storage next week?"', score: 1, feedback: 'The compliment is real, but jumping straight to the next ask can make good work feel like it just earns more work. Pause on the win first.' },
+        { text: '"They worked really well! What made you rebuild the whole system on your own weekend? And how would you feel about doing the walk-in next?"', score: 1, feedback: 'Curious and friendly, but she asked whether anyone noticed, and you answered with questions and a new ask. Tell her what her work did before you ask about anything else.' },
         { text: '"They did, and the whole line felt it. I’m going to call you out at pre-shift today so everyone knows who to thank."', score: 2, feedback: 'Close: sharing it with the team is a good instinct. But she still does not know what specifically landed. Tell her the impact first, then share it.' },
       ],
     },
@@ -29,8 +29,8 @@ const week: CurriculumWeek = {
       quote: '"That’s the job, I guess. Nobody notices IT unless something breaks."',
       xp: 30,
       choices: [
-        { text: '"Honestly, that’s the best kind of week for IT. If nobody noticed, it means you did it perfectly, and that’s a compliment."', score: 1, feedback: 'Kindly meant, but it agrees that prevention should stay invisible. Your job is to make it visible.' },
-        { text: '"You’re right, and that’s not okay. Thank you for those late nights. Lunch is on me this week."', score: 2, feedback: 'Close: you thanked him and named the late nights. But you skipped what he prevented, and nobody beyond you will know it happened.' },
+        { text: '"Honestly, that’s the best kind of week for IT. What would make you feel more seen? Tell me, and I’ll see what I can do."', score: 1, feedback: 'Caring, but it hands him the job of designing his own recognition. He already told you what is missing: someone who notices the prevention and says so.' },
+        { text: '"I noticed. Testing ran clean because you patched every laptop over two late nights. Thank you, and lunch is on me this week."', score: 2, feedback: 'Close: you named the work and the outcome. But the thanks stops with you, and the principals who enjoyed the smooth week still will not know why.' },
         { text: 'Send a warm thank you email to the whole district office celebrating "everyone who made testing week such a success," with a special nod to the IT team.', score: 1, feedback: 'Generous in spirit, but group thanks spreads the credit so thin that the person who did the late night work disappears inside it.' },
         { text: '"I noticed. Testing ran clean because you patched every laptop. I’m telling the principals why their week was so smooth."', score: 3, feedback: 'You named the invisible work and connected it to the outcome others enjoyed. Prevention deserves recognition just as much as heroics.' },
       ],
@@ -46,7 +46,7 @@ const week: CurriculumWeek = {
       choices: [
         { text: '"Fair enough. How would you like it recognized? I could put it in writing to you and our director instead."', score: 3, feedback: 'You respected her preference and still made the work visible to the people who matter for her growth. Recognition works best in the form the person values.' },
         { text: '"Of course, I completely understand, and the last thing I want is to make you uncomfortable. I won’t mention it anywhere. Just know that I saw it."', score: 1, feedback: 'Kind and respectful, but dropping recognition entirely means her catch goes unseen by anyone who shapes her career.' },
-        { text: '"You deserve it, though! It’ll only take a minute, I promise."', score: 1, feedback: 'Pushing public praise on someone who asked you not to turns a reward into something stressful. Ask, then adapt.' },
+        { text: '"You deserve it, though! What’s the worst that could happen in a two minute shout out? I promise I’ll keep it short."', score: 1, feedback: 'A leading question is still pressure. Pushing public praise on someone who asked you not to turns a reward into something stressful. Ask, then adapt.' },
         { text: '"Got it, no spotlight. I’ll just say at the meeting that the team caught an important issue this week, without naming anyone."', score: 2, feedback: 'Close: you lowered the spotlight as she asked. But now her contribution is anonymous. Ask what kind of recognition would feel good to her instead.' },
       ],
     },
@@ -90,7 +90,7 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"They will. I’m writing up what your shift saved during the outage, with numbers, for the next review. You’ll read it first."', score: 3, feedback: 'You were honest about the miss without letting it erase the effort. Carrying specific stories upward is one of the most valuable things a manager does.' },
-        { text: '"Honestly? They mostly see the number, and I can’t change that. But I see you, and I want you to know what your shift did that week meant a lot to me."', score: 1, feedback: 'Heartfelt, but it leaves her feeling her effort stopped at you. You have more influence over what leadership sees than this suggests.' },
+        { text: '"Honestly? They mostly see the number. What do you think would get their attention? I’m open to any ideas for how we tell your shift’s story."', score: 1, feedback: 'Open and humble, but it hands her the job of getting leadership to notice. You are the one with access to that room, so carry the story up yourself.' },
         { text: '"I hear you. Right now leadership is focused on the miss, so let’s keep our heads down until the numbers recover. Then I’ll make the case for your shift."', score: 1, feedback: 'It sounds strategic, but waiting for good numbers teaches the team that effort only counts when results cooperate. Hard quarters are when recognition matters most.' },
         { text: '"I know exactly what you did, running the floor by hand for three days, and I’m really grateful. Thank you."', score: 2, feedback: 'Close: sincere and specific. But she asked whether leadership knows. Make her work visible beyond you.' },
       ],
@@ -105,7 +105,7 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"Honestly, Jun is one of the best people I’ve ever managed. Everyone on my team relies on him, and I’d put my own reputation behind this promotion."', score: 1, feedback: 'Passionate and loyal, but enthusiasm without evidence is easy to discount in a room full of advocates. Calibration rewards specifics.' },
-        { text: 'Stay quiet for now, then set up time with Jun after the meeting to plan how to make his work more visible before next cycle.', score: 1, feedback: 'Supportive in the long run, but silence in calibration usually means another year of invisible work. This is the moment your advocacy counts.' },
+        { text: '"Fair question. What kind of evidence would you need to see? I can pull his examples together and send them around after we wrap up."', score: 1, feedback: 'It sounds open and collaborative, but it moves your evidence out of the room where the decision is being made. Calibration is the moment to bring the specifics, not to ask what they want.' },
         { text: '"Fair, a lot of it was behind the scenes. His audience research won us the retail account, and four teams now use his reporting template."', score: 3, feedback: 'You gave concrete outcomes others can check. Making quiet work visible at decision points is recognition with real stakes.' },
         { text: '"Totally fair question. He’s been incredibly consistent all year, never missed a single deadline, and clients trust him."', score: 2, feedback: 'Close: you answered the doubt calmly. But reliability can read as meeting expectations. Connect his work to outcomes the room cares about.' },
       ],
@@ -148,7 +148,7 @@ const week: CurriculumWeek = {
         choices: [
           { text: '“Chloe, ¡eres una estrella! De verdad no sé qué haría esta cocina sin ti. Sigue haciendo lo que haces, ¿sí?”', feedback: 'Cálido y sincero, pero genérico. Un elogio que no dice qué viste ni por qué importó se olvida rápido y no le dice qué seguir haciendo.' },
           { text: '“Lo noté. En la hora pico los platos salieron cuatro minutos más rápido y nadie buscó los chalotes. Fuiste tú. Gracias.”', feedback: 'Nombraste lo que hizo, el impacto que tuvo y le diste las gracias. El reconocimiento específico le dice a la gente exactamente qué seguir haciendo.' },
-          { text: '“¡Funcionaron muy bien! Se nota que tienes talento para los sistemas. ¿Te animarías a hacer lo mismo con la cámara fría y el almacén seco la próxima semana?”', feedback: 'El elogio es real, pero pasar directo al siguiente pedido puede hacer que el buen trabajo parezca que solo trae más trabajo. Detente primero en el logro.' },
+          { text: '“¡Funcionaron muy bien! ¿Qué te hizo rehacer todo el sistema en tu propio fin de semana? ¿Y cómo te sentirías si haces lo mismo con la cámara fría?”', feedback: 'Curioso y amable, pero ella preguntó si alguien lo notó, y respondiste con preguntas y un nuevo pedido. Dile qué logró su trabajo antes de preguntar cualquier otra cosa.' },
           { text: '“Sí, y toda la línea lo sintió. Hoy te voy a mencionar en la junta antes del turno para que todos sepan a quién agradecerle.”', feedback: 'Casi: compartirlo con el equipo es un buen instinto. Pero ella todavía no sabe qué funcionó exactamente. Dile primero el impacto y luego compártelo.' },
         ],
       },
@@ -158,8 +158,8 @@ const week: CurriculumWeek = {
         person: 'Diego, especialista de soporte de TI',
         quote: '“Es el trabajo, supongo. Nadie se fija en TI a menos que algo se rompa.”',
         choices: [
-          { text: '“Sinceramente, esa es la mejor semana posible para TI. Si nadie lo notó, es porque lo hiciste perfecto, y eso es un cumplido.”', feedback: 'Bien intencionado, pero le da la razón en que la prevención debe seguir siendo invisible. Tu trabajo es hacerla visible.' },
-          { text: '“Tienes razón, y eso no está bien. Gracias por esas noches largas. Esta semana te invito a comer.”', feedback: 'Casi: le diste las gracias y mencionaste las noches largas. Pero omitiste lo que evitó, y nadie más que tú sabrá que pasó.' },
+          { text: '“Sinceramente, esa es la mejor semana posible para TI. ¿Qué te haría sentir más visto? Dímelo y veré qué puedo hacer.”', feedback: 'Con cariño, pero le pasa a él la tarea de diseñar su propio reconocimiento. Ya te dijo lo que falta: alguien que note la prevención y lo diga.' },
+          { text: '“Lo noté. Los exámenes salieron sin fallas porque actualizaste cada laptop en dos noches largas. Gracias, y esta semana te invito a comer.”', feedback: 'Casi: nombraste el trabajo y el resultado. Pero el agradecimiento se queda contigo, y los directores que disfrutaron la semana tranquila seguirán sin saber por qué.' },
           { text: 'Enviar un cálido correo de agradecimiento a toda la oficina del distrito celebrando a “todas las personas que hicieron de la semana de exámenes todo un éxito”, con una mención especial al equipo de TI.', feedback: 'Generoso en intención, pero un agradecimiento grupal reparte tanto el crédito que la persona que trabajó de noche desaparece en él.' },
           { text: '“Lo noté. Los exámenes salieron sin fallas porque actualizaste cada laptop. Les voy a contar a los directores por qué su semana fue tan tranquila.”', feedback: 'Nombraste el trabajo invisible y lo conectaste con el resultado que otros disfrutaron. La prevención merece tanto reconocimiento como las hazañas.' },
         ],
@@ -172,7 +172,7 @@ const week: CurriculumWeek = {
         choices: [
           { text: '“Me parece justo. ¿Cómo te gustaría que se reconociera? Podría ponerlo por escrito para ti y para nuestra directora.”', feedback: 'Respetaste su preferencia y aun así hiciste visible su trabajo ante las personas que importan para su crecimiento. El reconocimiento funciona mejor en la forma que la persona valora.' },
           { text: '“Claro, lo entiendo totalmente, y lo último que quiero es incomodarte. No lo voy a mencionar en ningún lado. Solo quiero que sepas que lo vi.”', feedback: 'Amable y respetuoso, pero eliminar el reconocimiento por completo significa que nadie que influye en su carrera verá lo que detectó.' },
-          { text: '“¡Pero te lo mereces! Solo será un minuto, te lo prometo.”', feedback: 'Imponer un elogio público a alguien que te pidió no hacerlo convierte una recompensa en algo estresante. Pregunta y luego adáptate.' },
+          { text: '“¡Pero te lo mereces! ¿Qué es lo peor que puede pasar en un reconocimiento de dos minutos? Te prometo que seré breve.”', feedback: 'Una pregunta capciosa sigue siendo presión. Imponer un elogio público a alguien que te pidió no hacerlo convierte una recompensa en algo estresante. Pregunta y luego adáptate.' },
           { text: '“Entendido, sin reflectores. En la reunión solo diré que el equipo detectó un problema importante esta semana, sin nombrar a nadie.”', feedback: 'Casi: bajaste los reflectores como pidió. Pero ahora su aporte es anónimo. Pregúntale qué tipo de reconocimiento le haría sentir bien.' },
         ],
       },
@@ -207,7 +207,7 @@ const week: CurriculumWeek = {
         quote: '“¿Alguien arriba sabe siquiera lo que logramos esa semana? ¿O solo ven el número?”',
         choices: [
           { text: '“Lo van a saber. Estoy escribiendo lo que tu turno salvó durante la falla, con cifras, para la próxima revisión. Tú lo lees primero.”', feedback: 'Fuiste honesto sobre el resultado sin dejar que borrara el esfuerzo. Llevar historias específicas hacia arriba es una de las cosas más valiosas que hace un gerente.' },
-          { text: '“¿Sinceramente? Casi solo ven la cifra, y eso no lo puedo cambiar. Pero yo te veo, y quiero que sepas que lo que hizo tu turno esa semana significó mucho para mí.”', feedback: 'Sentido, pero la deja sintiendo que su esfuerzo se quedó contigo. Tienes más influencia sobre lo que ve la dirección de lo que esto sugiere.' },
+          { text: '“¿Sinceramente? Casi solo ven la cifra. ¿Qué crees que les llamaría la atención? Estoy abierto a cualquier idea para contar la historia de tu turno.”', feedback: 'Abierto y humilde, pero le pasa a ella la tarea de lograr que la dirección lo note. Tú eres quien tiene acceso a esa sala, así que lleva la historia hacia arriba.' },
           { text: '“Te entiendo. Ahora la dirección está enfocada en el resultado, así que mantengamos un perfil bajo hasta que se recuperen las cifras. Después defiendo a tu turno.”', feedback: 'Suena estratégico, pero esperar buenas cifras le enseña al equipo que el esfuerzo solo cuenta cuando los resultados acompañan. Los trimestres difíciles son cuando más importa reconocer.' },
           { text: '“Sé exactamente lo que hiciste, sostener el almacén a mano durante tres días, y te lo agradezco de verdad. Gracias.”', feedback: 'Casi: sincero y específico. Pero ella preguntó si la dirección lo sabe. Haz visible su trabajo más allá de ti.' },
         ],
@@ -219,7 +219,7 @@ const week: CurriculumWeek = {
         quote: 'Un colega líder dice: “Jun parece sólido, pero la verdad no he visto su impacto.”',
         choices: [
           { text: '“Sinceramente, Jun es de las mejores personas que he dirigido. Todo mi equipo se apoya en él, y pondría mi propia reputación detrás de este ascenso.”', feedback: 'Apasionado y leal, pero el entusiasmo sin evidencia es fácil de descartar en una sala llena de defensores. La calibración premia lo específico.' },
-          { text: 'Quedarte callado por ahora y luego reunirte con Jun para planear cómo hacer más visible su trabajo antes del próximo ciclo.', feedback: 'Es un apoyo a largo plazo, pero el silencio en la calibración suele significar otro año de trabajo invisible. Este es el momento en que tu defensa cuenta.' },
+          { text: '“Buena pregunta. ¿Qué tipo de evidencia necesitarías ver? Puedo reunir sus ejemplos y compartirlos cuando terminemos.”', feedback: 'Suena abierto y colaborativo, pero saca tu evidencia de la sala donde se toma la decisión. La calibración es el momento de traer lo específico, no de preguntar qué quieren ver.' },
           { text: '“Es justo, mucho fue tras bambalinas. Su investigación de audiencia nos ganó la cuenta minorista, y cuatro equipos usan hoy su plantilla de reportes.”', feedback: 'Diste resultados concretos que otros pueden verificar. Hacer visible el trabajo silencioso en los momentos de decisión es reconocimiento con consecuencias reales.' },
           { text: '“Es una pregunta muy válida. Ha sido increíblemente constante todo el año, nunca faltó a una sola fecha límite, y los clientes confían en él.”', feedback: 'Casi: respondiste la duda con calma. Pero la confiabilidad puede leerse como cumplir expectativas. Conecta su trabajo con resultados que le importan a la sala.' },
         ],
@@ -254,7 +254,7 @@ const week: CurriculumWeek = {
         choices: [
           { text: '« Chloe, vous êtes une star ! Franchement, je ne sais pas ce que cette cuisine ferait sans vous. Continuez comme ça, d’accord ? »', feedback: 'Chaleureux et sincère, mais générique. Un compliment qui ne dit pas ce que vous avez vu ni pourquoi cela comptait s’oublie vite et ne lui dit pas quoi continuer.' },
           { text: '« Je l’ai remarqué. Les bons sont sortis quatre minutes plus vite au coup de feu, et personne n’a cherché les échalotes. C’est grâce à vous. Merci. »', feedback: 'Vous avez nommé ce qu’elle a fait, l’impact que cela a eu, et vous l’avez remerciée. Une reconnaissance précise dit exactement quoi continuer à faire.' },
-          { text: '« Elles ont très bien marché ! Vous avez clairement un don pour l’organisation. Seriez-vous partante pour faire la même chose avec la chambre froide et la réserve sèche la semaine prochaine ? »', feedback: 'Le compliment est réel, mais enchaîner directement sur la demande suivante peut donner l’impression qu’un bon travail n’apporte que plus de travail. Savourez d’abord la réussite.' },
+          { text: '« Elles ont très bien marché ! Qu’est-ce qui vous a poussée à refaire tout le système pendant votre week-end ? Et que diriez-vous de faire la chambre froide ensuite ? »', feedback: 'Curieux et sympathique, mais elle demandait si quelqu’un l’avait remarqué, et vous avez répondu par des questions et une nouvelle demande. Dites-lui ce que son travail a permis avant de demander quoi que ce soit.' },
           { text: '« Oui, et toute la brigade l’a senti. Je vais le dire au briefing d’avant service aujourd’hui pour que chacun sache qui remercier. »', feedback: 'Presque : le partager avec l’équipe est un bon réflexe. Mais elle ne sait toujours pas ce qui a précisément marché. Dites-lui d’abord l’impact, puis partagez-le.' },
         ],
       },
@@ -264,8 +264,8 @@ const week: CurriculumWeek = {
         person: 'Diego, technicien de support informatique',
         quote: '« C’est le métier, j’imagine. Personne ne pense à l’informatique sauf quand quelque chose tombe en panne. »',
         choices: [
-          { text: '« Franchement, c’est la meilleure semaine possible pour l’informatique. Si personne n’a rien remarqué, c’est que vous avez tout fait parfaitement, et c’est un compliment. »', feedback: 'Bien intentionné, mais cela confirme que la prévention doit rester invisible. Votre rôle est justement de la rendre visible.' },
-          { text: '« Vous avez raison, et ce n’est pas normal. Merci pour ces longues soirées. Le déjeuner est pour moi cette semaine. »', feedback: 'Presque : vous l’avez remercié et avez cité les soirées. Mais vous avez omis ce qu’il a évité, et personne d’autre que vous ne saura ce qui s’est passé.' },
+          { text: '« Franchement, c’est la meilleure semaine possible pour l’informatique. Qu’est-ce qui vous aiderait à vous sentir plus reconnu ? Dites-le-moi et je verrai ce que je peux faire. »', feedback: 'Bienveillant, mais cela lui confie la tâche de concevoir sa propre reconnaissance. Il vous a déjà dit ce qui manque : quelqu’un qui remarque la prévention et le dit.' },
+          { text: '« Je l’ai remarqué. Les examens se sont déroulés sans accroc parce que vous avez mis à jour chaque ordinateur en deux longues soirées. Merci, et le déjeuner est pour moi cette semaine. »', feedback: 'Presque : vous avez nommé le travail et le résultat. Mais le merci s’arrête à vous, et les chefs d’établissement qui ont profité d’une semaine fluide ne sauront toujours pas pourquoi.' },
           { text: 'Envoyer un chaleureux e-mail de remerciement à tout le rectorat pour saluer « toutes les personnes qui ont fait de la semaine d’examens une telle réussite », avec un clin d’œil spécial à l’équipe informatique.', feedback: 'Généreux dans l’esprit, mais un remerciement collectif dilue tellement le mérite que la personne qui a travaillé tard le soir y disparaît.' },
           { text: '« Je l’ai remarqué. Les examens se sont déroulés sans accroc parce que vous avez mis à jour chaque ordinateur. Je vais expliquer aux chefs d’établissement pourquoi leur semaine a été si fluide. »', feedback: 'Vous avez nommé le travail invisible et l’avez relié au résultat dont d’autres ont profité. La prévention mérite autant de reconnaissance que les exploits.' },
         ],
@@ -278,7 +278,7 @@ const week: CurriculumWeek = {
         choices: [
           { text: '« C’est légitime. Comment aimeriez-vous que ce soit reconnu ? Je pourrais plutôt l’écrire, à vous et à notre directrice. »', feedback: 'Vous avez respecté sa préférence tout en rendant son travail visible auprès des personnes qui comptent pour son évolution. La reconnaissance fonctionne mieux sous la forme que la personne apprécie.' },
           { text: '« Bien sûr, je comprends tout à fait, et la dernière chose que je veux, c’est vous mettre mal à l’aise. Je n’en parlerai nulle part. Sachez simplement que je l’ai vu. »', feedback: 'Gentil et respectueux, mais renoncer à toute reconnaissance signifie que personne parmi ceux qui comptent pour sa carrière ne verra ce qu’elle a repéré.' },
-          { text: '« Mais vous le méritez ! Ça ne prendra qu’une minute, promis. »', feedback: 'Imposer des éloges publics à quelqu’un qui vous a demandé le contraire transforme une récompense en source de stress. Demandez, puis adaptez-vous.' },
+          { text: '« Mais vous le méritez ! Qu’est-ce qui pourrait mal se passer en deux minutes de félicitations ? Je vous promets de faire court. »', feedback: 'Une question orientée reste une pression. Imposer des éloges publics à quelqu’un qui vous a demandé le contraire transforme une récompense en source de stress. Demandez, puis adaptez-vous.' },
           { text: '« Compris, pas de projecteurs. Je dirai juste en réunion que l’équipe a repéré un problème important cette semaine, sans nommer personne. »', feedback: 'Presque : vous avez baissé les projecteurs comme elle le demandait. Mais sa contribution devient anonyme. Demandez-lui plutôt quelle reconnaissance lui ferait plaisir.' },
         ],
       },
@@ -313,7 +313,7 @@ const week: CurriculumWeek = {
         quote: '« Est-ce que quelqu’un là-haut sait seulement ce qu’on a accompli cette semaine-là ? Ou ils ne voient que le chiffre ? »',
         choices: [
           { text: '« Ils le sauront. Je rédige ce que votre équipe a sauvé pendant la panne, chiffres à l’appui, pour la prochaine revue. Vous le lirez en premier. »', feedback: 'Vous avez été honnête sur l’échec sans le laisser effacer l’effort. Faire remonter des histoires précises est l’une des choses les plus précieuses qu’un manager puisse faire.' },
-          { text: '« Franchement ? Ils voient surtout le chiffre, et je n’y peux rien. Mais moi, je vous vois, et je veux que vous sachiez que ce que votre équipe a fait cette semaine-là compte beaucoup pour moi. »', feedback: 'Sincère, mais elle repart avec l’impression que son effort s’arrête à vous. Vous avez plus d’influence sur ce que voit la direction que cela ne le laisse entendre.' },
+          { text: '« Franchement ? Ils voient surtout le chiffre. Qu’est-ce qui, selon vous, attirerait leur attention ? Je suis ouvert à toute idée pour raconter ce qu’a fait votre équipe. »', feedback: 'Ouvert et humble, mais cela lui confie la tâche d’attirer l’attention de la direction. C’est vous qui avez accès à cette salle, alors portez l’histoire vous-même.' },
           { text: '« Je vous entends. La direction est focalisée sur l’échec en ce moment, alors faisons profil bas jusqu’à ce que les chiffres remontent. Ensuite, je défendrai votre équipe. »', feedback: 'Cela paraît stratégique, mais attendre de bons chiffres apprend à l’équipe que l’effort ne compte que si les résultats suivent. C’est dans les trimestres difficiles que la reconnaissance compte le plus.' },
           { text: '« Je sais exactement ce que vous avez fait, faire tourner l’entrepôt à la main pendant trois jours, et je vous en suis très reconnaissant. Merci. »', feedback: 'Presque : sincère et précis. Mais elle a demandé si la direction le sait. Rendez son travail visible au-delà de vous.' },
         ],
@@ -325,7 +325,7 @@ const week: CurriculumWeek = {
         quote: 'Un manager pair déclare : « Jun a l’air solide, mais je n’ai pas vraiment vu son impact. »',
         choices: [
           { text: '« Franchement, Jun est l’une des meilleures personnes que j’aie jamais managées. Toute mon équipe compte sur lui, et je mettrais ma propre réputation en jeu pour cette promotion. »', feedback: 'Passionné et loyal, mais l’enthousiasme sans preuves est facile à écarter dans une salle pleine de défenseurs. La calibration récompense le concret.' },
-          { text: 'Rester silencieux pour l’instant, puis prévoir un moment avec Jun après la réunion pour rendre son travail plus visible avant le prochain cycle.', feedback: 'Un soutien à long terme, mais le silence en calibration signifie souvent une année de plus de travail invisible. C’est maintenant que votre plaidoyer compte.' },
+          { text: '« Bonne question. Quel type de preuves vous faudrait-il ? Je peux rassembler ses exemples et les faire circuler après la réunion. »', feedback: 'Cela paraît ouvert et collaboratif, mais cela sort vos preuves de la salle où la décision se prend. La calibration est le moment d’apporter du concret, pas de demander ce qu’ils veulent voir.' },
           { text: '« C’est juste, beaucoup s’est fait en coulisses. Son étude d’audience nous a fait gagner le compte retail, et quatre équipes utilisent son modèle de reporting. »', feedback: 'Vous avez donné des résultats concrets que d’autres peuvent vérifier. Rendre visible le travail discret aux moments de décision, c’est une reconnaissance aux enjeux réels.' },
           { text: '« C’est une question tout à fait légitime. Il a été incroyablement régulier toute l’année, n’a jamais manqué une seule échéance, et les clients lui font confiance. »', feedback: 'Presque : vous avez répondu au doute avec calme. Mais la fiabilité peut se lire comme le simple respect des attentes. Reliez son travail à des résultats qui comptent pour la salle.' },
         ],

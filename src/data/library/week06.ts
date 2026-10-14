@@ -15,9 +15,9 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"Sure, walk me through it. I love seeing how much progress you’re making, and it helps me answer questions from my boss."', score: 1, feedback: 'Encouraging and polite, but it locks in the pattern. Status can live in a dashboard; this time is for what a dashboard cannot show.' },
-        { text: '"Great numbers, thanks. Let’s skip status from now on, so we can talk about you instead."', score: 2, feedback: 'Close: right instinct to clear status out. But an abrupt switch can feel like a test. Explain the why and let her choose what to bring.' },
+        { text: '"Great numbers, thanks. I can read those in the dashboard, so from now on let’s skip status and talk about you."', score: 2, feedback: 'Close: you cleared status out and explained why. But "talk about you" still leaves you steering. Hand her the agenda with a real question.' },
         { text: '"I can read those in the dashboard, so let’s make this time yours. What’s on your mind this week?"', score: 3, feedback: 'You moved status out of the way and handed her the agenda with a real question. A 1:1 is their meeting, not a report to you.' },
-        { text: '"Perfect, you’re clearly on top of things. Since we have extra time, let me fill you in on the priorities coming down from leadership so you’re ahead of them."', score: 1, feedback: 'It sounds generous, but filling the time with your updates makes the 1:1 one more meeting about your agenda.' },
+        { text: '"Perfect, you’re clearly on top of things. Since we have extra time, how do you think your team will take the new priorities from leadership? Let me walk you through them."', score: 1, feedback: 'It sounds generous and even asks her view, but the question is about your agenda. Filling the time with your updates makes the 1:1 one more meeting about you.' },
       ],
     },
     {
@@ -29,10 +29,10 @@ const week: CurriculumWeek = {
       quote: '"No worries, I know you’re slammed. We can just skip it this month."',
       xp: 30,
       choices: [
-        { text: '"I don’t want to skip it. I’ve moved this three times, and that’s on me. 7 tomorrow, before crews arrive? I’ll protect it."', score: 3, feedback: 'You owned the pattern and made a specific, protected commitment. How you treat the 1:1 tells people how much you value them.' },
-        { text: '"Thanks for being so understanding, Leo, it really helps on a week like this. Let’s catch up properly once things calm down, and the coffee’s on me."', score: 1, feedback: 'Grateful and friendly, but on a construction schedule things rarely calm down. "When things calm down" usually means never.' },
+        { text: '"I don’t want to skip it. I’ve moved this three times, and that’s on me. We’re meeting at 7 tomorrow, before crews arrive, and I’ll protect it."', score: 3, feedback: 'You owned the pattern, made the call, and set a specific, protected time. How you treat the 1:1 tells people how much you value them.' },
+        { text: '"Thanks for being so understanding, Leo. What does the rest of your month look like? Let’s find a time once things calm down, and the coffee’s on me."', score: 1, feedback: 'Friendly, and it sounds flexible, but asking about his calendar dodges the decision you need to make. On a construction schedule, "once things calm down" usually means never.' },
         { text: '"You’re the best. Honestly, you’re one of the foremen I worry about least. Just text me anytime something urgent comes up, day or night."', score: 1, feedback: 'A real compliment, but it limits your connection to emergencies. The value of a 1:1 is in what is not urgent yet.' },
-        { text: '"I’d rather not skip. Let’s grab ten minutes at the site trailer later today instead."', score: 2, feedback: 'Close: you refused to skip. But squeezing it into ten minutes can signal it is low priority. Acknowledge the pattern and set protected time.' },
+        { text: '"I don’t want to skip it. I’ve moved this three times, and that’s on me. Let’s grab ten minutes at the site trailer later today."', score: 2, feedback: 'Close: you owned the pattern and refused to skip. But squeezing it into ten minutes between emergencies still signals it is low priority. Set protected time.' },
       ],
     },
     {
@@ -76,7 +76,7 @@ const week: CurriculumWeek = {
       choices: [
         { text: '"Of course. You can tell me anything, and I promise it won’t leave this room. You’re safe with me. What’s going on?"', score: 1, feedback: 'Deeply reassuring, but promising secrecy before you know the issue can leave you breaking that promise later. Concerns like this usually require bringing in HR.' },
         { text: '"I’m so sorry you’re dealing with that. Tell me who it is, and I’ll have a quiet word with them today so you don’t have to make it a big formal thing."', score: 1, feedback: 'Protective, but handling it informally can make things worse and skip the steps that protect her. Bring in HR.' },
-        { text: '"I’m glad you came to me. I can’t promise secrecy, because if you’re being mistreated I need HR to protect you. I’ll tell you each step. What’s happening?"', score: 3, feedback: 'You were honest about confidentiality before she shared, and you put her safety first by following policy. Clarity builds trust in hard moments.' },
+        { text: '"I’m glad you came to me. I can’t promise secrecy, because if someone is mistreating you, HR has to help protect you. I’ll stay with you through every step."', score: 3, feedback: 'You held the line on confidentiality before she shared, followed policy, and made clear she will not be handed off. Clarity builds trust in hard moments.' },
         { text: '"I want to be honest that I can’t promise that, because concerns like this have to go to HR. It might be easiest to go straight to them, and I can give you their number."', score: 2, feedback: 'Close: honest about confidentiality and the HR path. But sending her away can feel like rejection. Stay with her, listen, and go to HR together.' },
       ],
     },
@@ -117,9 +117,9 @@ const week: CurriculumWeek = {
         quote: '“Bueno, los tiempos de espera bajaron, las escalaciones están estables y terminé el horario. ¿Quieres los detalles?”',
         choices: [
           { text: '“Claro, cuéntame. Me encanta ver cuánto estás avanzando, y me ayuda a responder las preguntas de mi jefa.”', feedback: 'Alentador y amable, pero consolida el patrón. El estatus puede vivir en un tablero; este tiempo es para lo que un tablero no muestra.' },
-          { text: '“Buenas cifras, gracias. De ahora en adelante saltemos el estatus para poder hablar de ti.”', feedback: 'Casi: buen instinto de quitar el estatus. Pero un cambio brusco puede sentirse como una prueba. Explica el porqué y déjala elegir qué traer.' },
+          { text: '“Buenas cifras, gracias. Eso lo puedo leer en el tablero, así que de ahora en adelante saltemos el estatus y hablemos de ti.”', feedback: 'Casi: quitaste el estatus y explicaste por qué. Pero “hablemos de ti” todavía te deja a ti al mando. Dale la agenda con una pregunta real.' },
           { text: '“Eso lo puedo leer en el tablero, así que hagamos que este tiempo sea tuyo. ¿Qué tienes en mente esta semana?”', feedback: 'Quitaste el estatus del camino y le diste la agenda con una pregunta real. Un 1:1 es su reunión, no un reporte para ti.' },
-          { text: '“Perfecto, se nota que tienes todo bajo control. Como nos sobra tiempo, déjame ponerte al día sobre las prioridades que vienen de la dirección para que te adelantes.”', feedback: 'Suena generoso, pero llenar el tiempo con tus novedades convierte el 1:1 en otra reunión sobre tu agenda.' },
+          { text: '“Perfecto, se nota que tienes todo bajo control. Como nos sobra tiempo, ¿cómo crees que tu equipo tomará las nuevas prioridades de la dirección? Déjame explicártelas.”', feedback: 'Suena generoso y hasta pide su opinión, pero la pregunta es sobre tu agenda. Llenar el tiempo con tus novedades convierte la 1:1 en otra reunión sobre ti.' },
         ],
       },
       'w06-third-reschedule': {
@@ -128,10 +128,10 @@ const week: CurriculumWeek = {
         person: 'Leo, capataz eléctrico',
         quote: '“No te preocupes, sé que estás a tope. Podemos saltarla este mes.”',
         choices: [
-          { text: '“No quiero saltarla. La he movido tres veces, y es mi responsabilidad. ¿Mañana a las 7, antes de que lleguen las cuadrillas? La voy a proteger.”', feedback: 'Asumiste el patrón e hiciste un compromiso específico y protegido. Cómo tratas el 1:1 le dice a la gente cuánto la valoras.' },
-          { text: '“Gracias por ser tan comprensivo, Leo, de verdad ayuda en una semana así. Pongámonos al día con calma cuando las cosas se tranquilicen, y el café va por mi cuenta.”', feedback: 'Agradecido y amistoso, pero en una obra las cosas rara vez se tranquilizan. “Cuando se calmen las cosas” suele significar nunca.' },
+          { text: '“No quiero saltarla. La he movido tres veces, y es mi responsabilidad. Nos vemos mañana a las 7, antes de las cuadrillas, y la protejo.”', feedback: 'Reconociste el patrón, tomaste la decisión y fijaste un horario específico y protegido. Cómo tratas la 1:1 le dice a la gente cuánto la valoras.' },
+          { text: '“Gracias por ser tan comprensivo, Leo. ¿Cómo se ve el resto de tu mes? Busquemos un horario cuando las cosas se calmen, y el café corre por mi cuenta.”', feedback: 'Amistoso y suena flexible, pero preguntar por su agenda esquiva la decisión que te toca tomar. En una obra, “cuando las cosas se calmen” casi siempre significa nunca.' },
           { text: '“Eres el mejor. Sinceramente, eres de los capataces que menos me preocupan. Mándame un mensaje cuando surja algo urgente, de día o de noche.”', feedback: 'Un elogio real, pero limita tu conexión a las emergencias. El valor de un 1:1 está en lo que todavía no es urgente.' },
-          { text: '“Prefiero no saltarla. Mejor tomemos diez minutos en la oficina de obra más tarde hoy.”', feedback: 'Casi: te negaste a saltarla. Pero meterla en diez minutos puede indicar que es poco prioritaria. Reconoce el patrón y fija un tiempo protegido.' },
+          { text: '“No quiero saltarla. La he movido tres veces, y es mi responsabilidad. Tomemos diez minutos en la oficina de obra más tarde hoy.”', feedback: 'Casi: reconociste el patrón y te negaste a saltarla. Pero meterla en diez minutos entre emergencias sigue diciendo que es poco prioritaria. Fija un tiempo protegido.' },
         ],
       },
       'w06-something-at-home': {
@@ -166,7 +166,7 @@ const week: CurriculumWeek = {
         choices: [
           { text: '“Claro. Me puedes contar lo que sea, y te prometo que no saldrá de aquí. Conmigo estás segura. ¿Qué está pasando?”', feedback: 'Muy tranquilizador, pero prometer secreto antes de saber el problema puede obligarte a romper esa promesa después. Situaciones así suelen requerir involucrar a RR. HH.' },
           { text: '“Siento mucho que estés pasando por eso. Dime quién es y hoy mismo hablo discretamente con esa persona, para que no tengas que hacerlo algo formal.”', feedback: 'Protector, pero manejarlo de manera informal puede empeorar las cosas y saltarse los pasos que la protegen. Involucra a RR. HH.' },
-          { text: '“Me alegra que vinieras conmigo. No puedo prometer secreto, porque si te están tratando mal necesito a RR. HH. para protegerte. Te contaré cada paso. ¿Qué pasa?”', feedback: 'Fuiste honesto sobre la confidencialidad antes de que hablara y pusiste su seguridad primero siguiendo la política. La claridad genera confianza en los momentos difíciles.' },
+          { text: '“Me alegra que vinieras conmigo. No puedo prometer secreto, porque si alguien te está tratando mal, RR. HH. tiene que ayudar a protegerte. Voy a acompañarte en cada paso.”', feedback: 'Marcaste el límite de la confidencialidad antes de que contara más, seguiste la política y dejaste claro que no la vas a dejar sola. La claridad genera confianza en los momentos difíciles.' },
           { text: '“Quiero ser honesto: no te lo puedo prometer, porque estas situaciones tienen que ir a RR. HH. Quizá lo más fácil sea ir directo con ellos, y te puedo dar su número.”', feedback: 'Casi: honesto sobre la confidencialidad y el camino de RR. HH. Pero mandarla a otro lado puede sentirse como rechazo. Quédate con ella, escucha y vayan juntos a RR. HH.' },
         ],
       },
@@ -199,9 +199,9 @@ const week: CurriculumWeek = {
         quote: '« Alors, les temps d’attente ont baissé, les escalades sont stables et j’ai terminé le planning. Vous voulez les détails ? »',
         choices: [
           { text: '« Bien sûr, racontez-moi. J’adore voir vos progrès, et ça m’aide à répondre aux questions de ma responsable. »', feedback: 'Encourageant et poli, mais cela installe le schéma. Le suivi peut vivre dans un tableau de bord ; ce temps est pour ce qu’un tableau de bord ne montre pas.' },
-          { text: '« Beaux chiffres, merci. Désormais, sautons le suivi pour pouvoir parler de vous. »', feedback: 'Presque : bon réflexe d’écarter le suivi. Mais un changement brusque peut ressembler à un test. Expliquez pourquoi et laissez-la choisir ce qu’elle apporte.' },
+          { text: '« Beaux chiffres, merci. Je peux lire ça dans le tableau de bord, alors désormais sautons le suivi et parlons de vous. »', feedback: 'Presque : vous avez écarté le suivi et expliqué pourquoi. Mais « parlons de vous » vous laisse encore aux commandes. Confiez-lui l’ordre du jour avec une vraie question.' },
           { text: '« Je peux lire ça dans le tableau de bord, alors faisons de ce temps le vôtre. Qu’avez-vous en tête cette semaine ? »', feedback: 'Vous avez écarté le suivi et lui avez confié l’ordre du jour avec une vraie question. Un 1:1 est sa réunion, pas un compte rendu pour vous.' },
-          { text: '« Parfait, vous maîtrisez clairement le sujet. Puisqu’il nous reste du temps, laissez-moi vous présenter les priorités qui viennent de la direction pour que vous ayez une longueur d’avance. »', feedback: 'Cela paraît généreux, mais remplir le temps avec vos informations fait du 1:1 une réunion de plus sur votre ordre du jour.' },
+          { text: '« Parfait, vous maîtrisez clairement le sujet. Puisqu’il nous reste du temps, comment pensez-vous que votre équipe accueillera les nouvelles priorités de la direction ? Je vous les présente. »', feedback: 'Cela paraît généreux et sollicite même son avis, mais la question porte sur votre ordre du jour. Remplir ce temps avec vos nouvelles fait du 1:1 une réunion de plus centrée sur vous.' },
         ],
       },
       'w06-third-reschedule': {
@@ -210,10 +210,10 @@ const week: CurriculumWeek = {
         person: 'Leo, chef de chantier électricité',
         quote: '« Pas de souci, je sais que vous êtes débordé. On peut simplement le sauter ce mois-ci. »',
         choices: [
-          { text: '« Je ne veux pas l’annuler. Je l’ai déplacé trois fois, et c’est de ma faute. Demain à 7 h, avant l’arrivée des équipes ? Je le protégerai. »', feedback: 'Vous avez assumé le schéma et pris un engagement précis et protégé. La façon dont vous traitez le 1:1 dit aux gens combien vous les valorisez.' },
-          { text: '« Merci d’être aussi compréhensif, Leo, ça aide vraiment une semaine comme celle-ci. Faisons un vrai point quand les choses se calmeront, et le café est pour moi. »', feedback: 'Reconnaissant et sympathique, mais sur un chantier les choses se calment rarement. « Quand ça se calmera » veut souvent dire jamais.' },
+          { text: '« Je ne veux pas l’annuler. Je l’ai déplacé trois fois, et c’est de ma faute. On se voit demain à 7 h, avant l’arrivée des équipes, et je le protège. »', feedback: 'Vous avez reconnu la répétition, tranché, et fixé un créneau précis et protégé. La façon dont vous traitez le 1:1 dit aux gens combien vous les valorisez.' },
+          { text: '« Merci d’être aussi compréhensif, Leo. À quoi ressemble la suite de votre mois ? Trouvons un moment quand ça se calmera, et le café est pour moi. »', feedback: 'Sympathique, et cela paraît souple, mais demander son agenda esquive la décision que vous devez prendre. Sur un chantier, « quand ça se calmera » veut souvent dire jamais.' },
           { text: '« Vous êtes le meilleur. Honnêtement, vous faites partie des chefs d’équipe pour qui je m’inquiète le moins. Envoyez-moi un texto dès qu’il y a une urgence, jour et nuit. »', feedback: 'Un vrai compliment, mais cela limite votre lien aux urgences. La valeur d’un 1:1 est dans ce qui n’est pas encore urgent.' },
-          { text: '« Je préfère ne pas l’annuler. Prenons plutôt dix minutes au bungalow de chantier plus tard aujourd’hui. »', feedback: 'Presque : vous avez refusé d’annuler. Mais le caser en dix minutes peut signaler qu’il est peu prioritaire. Reconnaissez le schéma et fixez un temps protégé.' },
+          { text: '« Je ne veux pas l’annuler. Je l’ai déplacé trois fois, et c’est de ma faute. Prenons dix minutes au bungalow de chantier plus tard aujourd’hui. »', feedback: 'Presque : vous avez reconnu la répétition et refusé d’annuler. Mais le caser en dix minutes entre deux urgences dit encore qu’il passe après. Fixez un temps protégé.' },
         ],
       },
       'w06-something-at-home': {
@@ -248,7 +248,7 @@ const week: CurriculumWeek = {
         choices: [
           { text: '« Bien sûr. Vous pouvez tout me dire, et je vous promets que ça ne sortira pas d’ici. Vous êtes en sécurité avec moi. Que se passe-t-il ? »', feedback: 'Très rassurant, mais promettre le secret avant de connaître le problème peut vous obliger à rompre cette promesse ensuite. Ce type de situation exige généralement de faire appel aux RH.' },
           { text: '« Je suis vraiment désolé que vous viviez ça. Dites-moi de qui il s’agit, et je lui en parle discrètement aujourd’hui, pour que vous n’ayez pas à en faire une démarche officielle. »', feedback: 'Protecteur, mais régler cela de façon informelle peut aggraver la situation et contourner les étapes qui la protègent. Faites appel aux RH.' },
-          { text: '« Je suis content que vous veniez me voir. Je ne peux pas promettre le secret, car si on vous maltraite, j’ai besoin des RH pour vous protéger. Je vous tiendrai informée. Que se passe-t-il ? »', feedback: 'Vous avez été honnête sur la confidentialité avant qu’elle ne parle, et vous avez fait passer sa sécurité en premier en suivant la politique. La clarté crée la confiance dans les moments difficiles.' },
+          { text: '« Je suis content que vous veniez me voir. Je ne peux pas promettre le secret, car si quelqu’un vous maltraite, les RH doivent vous protéger. Je resterai avec vous à chaque étape. »', feedback: 'Vous avez posé la limite de la confidentialité avant qu’elle ne parle, suivi la procédure et montré qu’elle ne sera pas renvoyée ailleurs. La clarté crée la confiance dans les moments difficiles.' },
           { text: '« Je veux être honnête : je ne peux pas vous le promettre, car ce genre de situation doit passer par les RH. Le plus simple serait peut-être d’aller les voir directement, et je peux vous donner leur numéro. »', feedback: 'Presque : honnête sur la confidentialité et la voie des RH. Mais la renvoyer ailleurs peut ressembler à un rejet. Restez avec elle, écoutez, et allez voir les RH ensemble.' },
         ],
       },
