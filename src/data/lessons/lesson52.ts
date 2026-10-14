@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-52',
   week: 52,
   focus: 'communication',
-  minutes: 3,
+  minutes: 4,
   title: 'Your leadership story: look back, look ahead',
   subtitle: 'Celebrate a year of growth and choose what comes next',
   slides: [

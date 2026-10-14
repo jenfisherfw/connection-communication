@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-35',
   week: 35,
   focus: 'change',
-  minutes: 3,
+  minutes: 4,
   title: 'Listening sessions during change',
   subtitle: 'Create space to hear what people really think',
   slides: [

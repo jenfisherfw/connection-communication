@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-31',
   week: 31,
   focus: 'communication',
-  minutes: 3,
+  minutes: 4,
   title: 'Building a feedback culture on your team',
   subtitle: 'Make feedback normal, frequent, and two way',
   slides: [

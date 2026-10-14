@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-05',
   week: 5,
   focus: 'communication',
-  minutes: 3,
+  minutes: 4,
   title: 'Specific recognition beats generic praise',
   subtitle: 'Say what they did and why it mattered',
   slides: [

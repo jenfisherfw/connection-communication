@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-51',
   week: 51,
   focus: 'communication',
-  minutes: 3,
+  minutes: 4,
   title: 'Teams that lead themselves',
   subtitle: 'Clear decision rights, shared context, and safe mistakes',
   slides: [

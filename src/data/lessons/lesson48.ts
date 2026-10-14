@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-48',
   week: 48,
   focus: 'change',
-  minutes: 3,
+  minutes: 4,
   title: 'After the change: review, celebrate, embed',
   subtitle: 'Close the chapter well so the new way lasts',
   slides: [

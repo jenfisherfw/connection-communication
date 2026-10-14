@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-33',
   week: 33,
   focus: 'communication',
-  minutes: 3,
+  minutes: 4,
   title: 'Trust across teams and silos',
   subtitle: 'Build working relationships before you need them',
   slides: [

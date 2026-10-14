@@ -45,9 +45,9 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"That worry makes sense. You already walk residents through vent settings every week. What support would make this doable? And passing is okay too."', score: 3, feedback: 'You grounded his confidence in real evidence, offered support, and left the choice with him. A stretch works when people feel backed, not pushed.' },
-        { text: '"Don’t sell yourself short! You know vents better than anyone in this building, the physicians respect you, and I’ll be right there cheering you on. You’re going to be great at this."', score: 1, feedback: 'Cheerful, but it brushes past his fear. Reassurance without evidence rarely changes how someone feels.' },
+        { text: '"Don’t sell yourself short! You know vents better than anyone here, and the physicians respect you. What’s the worst that could really happen? I’ll be right there cheering you on."', score: 1, feedback: 'Cheerful, but "what’s the worst that could happen" brushes past the fear he just named. Reassurance without evidence rarely changes how someone feels.' },
         { text: '"No problem. I’ll ask someone else."', score: 1, feedback: 'Respecting a no matters, but taking the first hesitation as final can cost someone a growth moment. Explore the fear before you close the door.' },
-        { text: '"This would look great at your next review, and it’s the kind of visibility that gets people promoted. I really think you should take it."', score: 2, feedback: 'Pointing to the upside helps, but pressure can turn a stretch into a burden. Ask what would make it feel possible.' },
+        { text: '"That worry makes sense. You already walk residents through vent settings every week, and I’ll be with you at the first physician meeting. I think you’re ready."', score: 2, feedback: 'Evidence and support, exactly right. The miss: "I think you’re ready" quietly removes his option to pass. A stretch works when people feel backed, not pushed.' },
       ],
     },
     {
@@ -60,9 +60,9 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"Ha, not for a while, I hope!"', score: 1, feedback: 'A joke can feel like a door closing. She took a risk naming her ambition, and laughing it off tells her to keep it quiet next time.' },
-        { text: '"Not weird at all, I love that. Keep doing exactly what you’re doing, stay visible with the GM, and I’m confident it’ll happen for you."', score: 2, feedback: 'Supportive, but vague. Ambition grows with specifics: which parts of the role she wants to learn, and where she’ll get practice.' },
+        { text: '"Not weird at all, I love that. Starting next month, take over the weekly forecast with me as backup. It’s the best training for this job."', score: 2, feedback: 'You turned ambition into real practice, which is the right move. The miss: you picked the piece for her. Ask which parts of the job she actually wants to learn.' },
         { text: '"Not weird at all. Which parts of my job interest you most? Pick one, like the weekly forecast, and take it over next month with me as backup."', score: 3, feedback: 'You welcomed her ambition and turned it into real practice. Growing people sometimes means handing them pieces of your own job.' },
-        { text: '"Not weird, and I appreciate the honesty. I’d hate to see you spread too thin, though, so let’s focus on mastering your current role first and talk about the bigger picture next year."', score: 1, feedback: 'It sounds sensible, but it can read as a brush off. People grow fastest when they can see the path, not just the gate.' },
+        { text: '"Not weird, and I appreciate the honesty. I’d hate to see you spread too thin, though. What would mastering your current role look like first? Let’s talk about the bigger picture next year."', score: 1, feedback: 'It sounds like coaching, but the question steers her away from what she just named. People grow fastest when they can see the path, not just the gate.' },
       ],
     },
     {
@@ -89,10 +89,10 @@ const week: CurriculumWeek = {
       quote: '"I did everything you told me to do. So what was it, really?"',
       xp: 30,
       choices: [
-        { text: '"I know, and I’m really sorry. It was incredibly close, and honestly it was a panel decision, so I can’t speak for everyone. Please know how much I value everything you bring to this branch."', score: 1, feedback: 'Vague answers protect you, not her. Without real reasons she can’t grow, and she may decide the process was unfair.' },
-        { text: '"That stings, and you deserve a straight answer. The panel wanted more experience coaching others, and that’s on me, because I never gave you that chance. Can we build it together?"', score: 3, feedback: 'You acknowledged the sting, gave a real reason, owned your part, and offered a path. An honest 1:1 after a no can be the biggest growth moment of someone’s year.' },
+        { text: '"I know, and I’m really sorry. It was incredibly close, and it was a panel decision. Before we get into reasons, how are you feeling about all of this right now?"', score: 1, feedback: 'Checking on her feelings sounds caring, but she asked a direct question and this sidesteps it. Without real reasons she cannot grow, and she may decide the process was unfair.' },
+        { text: '"That stings, and you deserve a straight answer. The panel wanted more experience coaching others, and that’s on me, because I never gave you that chance. Let’s build it together, starting this month."', score: 3, feedback: 'You acknowledged the sting, gave a real reason, owned your part, and committed to a path. She asked for a straight answer, and a straight answer is the respect she needs.' },
         { text: '"I know it hurts. Between us, you’re next in line for the next opening, and I’ll make sure of it."', score: 1, feedback: 'A promise you can’t guarantee feels kind now and breaks trust later if the next opening goes another way.' },
-        { text: '"The panel wanted more coaching experience. I’ve already put together a development plan to close that gap, so let’s walk through it now and get you ready for the next one."', score: 2, feedback: 'Clear and practical, but it skips past her disappointment and your own part. Acknowledge the sting first, then plan together.' },
+        { text: '"I know this stings. The panel wanted more coaching experience. I’ve already put together a development plan to close that gap, so let’s walk through it now and get you ready for the next one."', score: 2, feedback: 'You acknowledged the sting and gave a real reason and a plan. The miss: you left out your own part. Owning that you never gave her the chance is what rebuilds trust.' },
       ],
     },
     {
@@ -105,7 +105,7 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"The floor is different, I get it. Your team still says they want that time. Could you try fifteen minutes at shift change with two people this month, then tell me what you learn?"', score: 3, feedback: 'You took his reality seriously, kept the team’s voice in the room, and coached him to experiment. Leaders grow other leaders by helping them adapt a practice, not by mandating it.' },
-        { text: '"Fair enough, and honestly you know your team far better than any survey does. I trust your read on this. Let’s keep an eye on the comments next cycle and see whether anything changes on its own."', score: 1, feedback: 'Deferring feels respectful, but it ignores what his own people asked for. Your job is to coach him through the gap, not around it.' },
+        { text: '"Fair enough, you know your team far better than any survey does. How do you usually check in with people on the floor? Let’s keep an eye on the comments next cycle and see what changes."', score: 1, feedback: 'A curious question, but it lets him off the hook and ignores what his own people asked for. Your job is to coach him through the gap, not around it.' },
         { text: '"Every manager here does weekly 1:1s, and your team is asking for them. I’ll send you a template and a sample agenda, and I’d like them on the calendar by Monday."', score: 2, feedback: 'Clear expectations help, but a mandate without exploring his concerns tends to produce check the box meetings. Ask what gets in the way first.' },
         { text: '"If those comments don’t improve, it’ll show up in your review."', score: 1, feedback: 'A threat may get meetings scheduled, but it models the opposite of a good 1:1. Coach the behavior instead of pressuring it.' },
       ],
@@ -172,9 +172,9 @@ const week: CurriculumWeek = {
         quote: '“Me halaga, pero no creo estar listo. ¿Y si me bloqueo frente a los médicos?”',
         choices: [
           { text: '“Esa preocupación tiene sentido. Ya guías a los residentes con los parámetros del ventilador cada semana. ¿Qué apoyo lo haría posible? Y decir que no también está bien.”', feedback: 'Basaste su confianza en evidencia real, ofreciste apoyo y dejaste la decisión en sus manos. Un reto funciona cuando la persona se siente respaldada, no empujada.' },
-          { text: '“¡No te subestimes! Sabes de ventiladores más que nadie en este edificio, los médicos te respetan y yo estaré ahí apoyándote. Lo vas a hacer increíble.”', feedback: 'Es alegre, pero pasa por encima de su miedo. Tranquilizar sin evidencia casi nunca cambia cómo se siente alguien.' },
+          { text: '“¡No te subestimes! Sabes de ventiladores más que nadie aquí y los médicos te respetan. ¿Qué es lo peor que podría pasar? Yo voy a estar ahí apoyándote.”', feedback: 'Animado, pero “qué es lo peor que podría pasar” pasa por encima del miedo que acaba de nombrar. Tranquilizar sin evidencia rara vez cambia cómo se siente alguien.' },
           { text: '“No hay problema. Se lo pido a alguien más.”', feedback: 'Respetar un no importa, pero tomar la primera duda como definitiva puede quitarle a alguien una oportunidad de crecer. Explora el miedo antes de cerrar la puerta.' },
-          { text: '“Esto se vería muy bien en tu próxima evaluación, y es el tipo de visibilidad que hace que la gente ascienda. De verdad creo que deberías aceptarlo.”', feedback: 'Señalar el beneficio ayuda, pero la presión puede convertir un reto en una carga. Pregunta qué haría que se sintiera posible.' },
+          { text: '“Esa preocupación tiene sentido. Ya explicas los ajustes de ventilación a los residentes cada semana, y yo estaré contigo en la primera reunión con médicos. Creo que estás listo.”', feedback: 'Evidencia y apoyo, justo lo indicado. Lo que falta: “creo que estás listo” le quita en silencio la opción de decir que no. Un reto funciona cuando la persona se siente respaldada, no empujada.' },
         ],
       },
       'w17-wants-your-job': {
@@ -184,9 +184,9 @@ const week: CurriculumWeek = {
         quote: '“¿Puedo ser muy honesta? A largo plazo, quiero tu puesto. ¿Es raro decirlo?”',
         choices: [
           { text: '“¡Ja, espero que no pronto!”', feedback: 'Una broma puede sentirse como una puerta que se cierra. Ella se arriesgó al nombrar su ambición, y reírte le dice que la próxima vez se la guarde.' },
-          { text: '“Para nada raro, me encanta. Sigue haciendo exactamente lo que haces, mantente visible con el gerente general, y estoy seguro de que se va a dar.”', feedback: 'Es un apoyo, pero vago. La ambición crece con detalles: qué partes del puesto quiere aprender y dónde va a practicar.' },
+          { text: '“Para nada raro, me encanta. Desde el próximo mes, encárgate del pronóstico semanal conmigo como respaldo. Es el mejor entrenamiento para este puesto.”', feedback: 'Convertiste la ambición en práctica real, y ese es el paso correcto. Lo que falta: elegiste la pieza por ella. Pregúntale qué partes del puesto quiere aprender de verdad.' },
           { text: '“Para nada raro. ¿Qué partes de mi trabajo te interesan más? Elige una, como el pronóstico semanal, y encárgate de ella el próximo mes conmigo de respaldo.”', feedback: 'Recibiste su ambición con gusto y la convertiste en práctica real. Hacer crecer a la gente a veces significa entregarle partes de tu propio trabajo.' },
-          { text: '“No es raro, y agradezco tu honestidad. Pero no me gustaría verte con demasiado encima, así que enfoquémonos primero en dominar tu puesto actual y hablemos del panorama grande el próximo año.”', feedback: 'Suena sensato, pero puede leerse como una forma de quitártela de encima. La gente crece más rápido cuando ve el camino, no solo la puerta.' },
+          { text: '“No es raro, y te agradezco la honestidad. Pero no quisiera verte con demasiadas cosas. ¿Cómo se vería dominar primero tu puesto actual? Hablemos del panorama más amplio el próximo año.”', feedback: 'Suena a coaching, pero la pregunta la aleja de lo que acaba de decir. La gente crece más rápido cuando ve el camino, no solo la puerta.' },
         ],
       },
       'w17-recruiter-call': {
@@ -207,10 +207,10 @@ const week: CurriculumWeek = {
         person: 'Fiona, oficial de crédito',
         quote: '“Hice todo lo que me dijiste que hiciera. Entonces, ¿qué fue, de verdad?”',
         choices: [
-          { text: '“Lo sé, y lo siento mucho. Estuvo increíblemente reñido, y la verdad fue una decisión del panel, así que no puedo hablar por todos. Quiero que sepas cuánto valoro todo lo que aportas a esta sucursal.”', feedback: 'Las respuestas vagas te protegen a ti, no a ella. Sin razones reales no puede crecer, y quizá concluya que el proceso fue injusto.' },
-          { text: '“Eso duele, y mereces una respuesta directa. El panel quería más experiencia guiando a otros, y eso es mi responsabilidad, porque nunca te di esa oportunidad. ¿La construimos juntos?”', feedback: 'Reconociste el golpe, diste una razón real, asumiste tu parte y ofreciste un camino. Una 1:1 honesta después de un no puede ser el mayor momento de crecimiento del año para alguien.' },
+          { text: '“Lo sé, y lo siento mucho. Estuvo increíblemente reñido, y fue una decisión del panel. Antes de entrar en razones, ¿cómo te sientes con todo esto ahora mismo?”', feedback: 'Preguntar cómo se siente suena atento, pero ella hizo una pregunta directa y esto la esquiva. Sin razones reales no puede crecer, y puede concluir que el proceso fue injusto.' },
+          { text: '“Eso duele, y mereces una respuesta directa. El panel quería más experiencia guiando a otros, y eso es mi responsabilidad, porque nunca te di esa oportunidad. Construyámosla juntos, desde este mes.”', feedback: 'Reconociste el golpe, diste una razón real, asumiste tu parte y te comprometiste con un camino. Ella pidió una respuesta directa, y una respuesta directa es el respeto que necesita.' },
           { text: '“Sé que duele. Entre nosotros, eres la siguiente en la fila para la próxima vacante, y me voy a asegurar de eso.”', feedback: 'Una promesa que no puedes garantizar se siente amable ahora y rompe la confianza después si la próxima vacante se va hacia otro lado.' },
-          { text: '“El panel quería más experiencia guiando a otros. Ya preparé un plan de desarrollo para cerrar esa brecha, así que revisémoslo ahora y prepárate para la próxima.”', feedback: 'Claro y práctico, pero pasa por alto su decepción y tu propia parte. Reconoce primero el golpe y luego armen el plan en conjunto.' },
+          { text: '“Sé que esto duele. El panel quería más experiencia guiando a otros. Ya preparé un plan de desarrollo para cerrar esa brecha, así que revisémoslo ahora y prepárate para la próxima.”', feedback: 'Reconociste el golpe y diste una razón real y un plan. Lo que falta: dejaste fuera tu propia parte. Admitir que nunca le diste esa oportunidad es lo que reconstruye la confianza.' },
         ],
       },
       'w17-manager-skips': {
@@ -220,7 +220,7 @@ const week: CurriculumWeek = {
         quote: '“Mi gente está en el piso todo el día. Las 1:1 son cosa de oficina. Saben dónde encontrarme si me necesitan.”',
         choices: [
           { text: '“La planta es distinta, lo entiendo. Aun así, tu equipo dice que quiere ese tiempo. ¿Podrías probar quince minutos en el cambio de turno con dos personas este mes y luego contarme qué aprendiste?”', feedback: 'Tomaste en serio su realidad, mantuviste presente la voz del equipo y lo animaste a experimentar. Los líderes hacen crecer a otros líderes ayudándoles a adaptar una práctica, no imponiéndola.' },
-          { text: '“Me parece justo, y la verdad conoces a tu equipo mucho mejor que cualquier encuesta. Confío en tu criterio. Estemos atentos a los comentarios del próximo ciclo y veamos si algo cambia por sí solo.”', feedback: 'Ceder se siente respetuoso, pero ignora lo que su propia gente pidió. Tu trabajo es acompañarlo a cerrar la brecha, no rodearla.' },
+          { text: '“Me parece justo, conoces a tu equipo mucho mejor que cualquier encuesta. ¿Cómo sueles conversar con la gente en la planta? Estemos atentos a los comentarios del próximo ciclo y veamos qué cambia.”', feedback: 'Una pregunta curiosa, pero lo deja libre de responsabilidad e ignora lo que su propia gente pidió. Tu trabajo es acompañarlo a cerrar la brecha, no rodearla.' },
           { text: '“Todos los gerentes aquí hacen 1:1 semanales, y tu equipo los está pidiendo. Te enviaré una plantilla y una agenda de ejemplo, y me gustaría verlos en el calendario para el lunes.”', feedback: 'Las expectativas claras ayudan, pero una orden sin explorar sus inquietudes suele producir reuniones para cumplir. Primero pregunta qué se lo impide.' },
           { text: '“Si esos comentarios no mejoran, se va a notar en tu evaluación.”', feedback: 'Una amenaza puede llenar el calendario de reuniones, pero modela lo contrario de una buena 1:1. Acompaña el cambio en lugar de presionarlo.' },
         ],
@@ -279,9 +279,9 @@ const week: CurriculumWeek = {
         quote: '« Je suis flatté, mais je ne me sens pas prêt. Et si je me fige devant les médecins ? »',
         choices: [
           { text: '« Cette inquiétude se comprend. Vous expliquez déjà les réglages des respirateurs aux internes chaque semaine. Quel soutien rendrait ça faisable ? Et refuser reste possible. »', feedback: 'Vous avez ancré sa confiance dans des faits réels, offert du soutien et lui avez laissé le choix. Un défi fonctionne quand on se sent soutenu, pas poussé.' },
-          { text: '« Ne vous sous-estimez pas ! Vous connaissez les respirateurs mieux que quiconque ici, les médecins vous respectent, et je serai là pour vous encourager. Vous allez être excellent. »', feedback: 'C’est enjoué, mais cela balaie sa peur. Rassurer sans preuves change rarement ce que ressent quelqu’un.' },
+          { text: '« Ne vous sous-estimez pas ! Vous connaissez les respirateurs mieux que quiconque ici, et les médecins vous respectent. Que peut-il arriver de pire, vraiment ? Je serai là pour vous soutenir. »', feedback: 'Enthousiaste, mais « que peut-il arriver de pire » balaie la peur qu’il vient de nommer. Rassurer sans preuves change rarement ce que l’on ressent.' },
           { text: '« Pas de problème. Je vais demander à quelqu’un d’autre. »', feedback: 'Respecter un refus compte, mais prendre la première hésitation pour définitive peut priver quelqu’un d’une occasion de grandir. Explorez la peur avant de fermer la porte.' },
-          { text: '« Ça ferait très bien lors de votre prochaine évaluation, et c’est le genre de visibilité qui mène à une promotion. Je pense vraiment que vous devriez accepter. »', feedback: 'Montrer les bénéfices aide, mais la pression peut transformer un défi en fardeau. Demandez ce qui le rendrait possible.' },
+          { text: '« Cette inquiétude est compréhensible. Vous expliquez déjà les réglages aux internes chaque semaine, et je serai avec vous à la première réunion avec les médecins. Je pense que vous êtes prêt. »', feedback: 'Des preuves et du soutien, exactement ce qu’il faut. Ce qui manque : « je pense que vous êtes prêt » lui retire discrètement la possibilité de refuser. Un défi fonctionne quand on se sent soutenu, pas poussé.' },
         ],
       },
       'w17-wants-your-job': {
@@ -291,9 +291,9 @@ const week: CurriculumWeek = {
         quote: '« Je peux être vraiment honnête ? À long terme, je veux votre poste. C’est bizarre de le dire ? »',
         choices: [
           { text: '« Ha, pas tout de suite, j’espère ! »', feedback: 'Une plaisanterie peut ressembler à une porte qui se ferme. Elle a pris un risque en nommant son ambition, et en rire lui dit de la garder pour elle la prochaine fois.' },
-          { text: '« Pas du tout bizarre, j’adore. Continuez exactement comme ça, restez visible auprès du directeur général, et je suis sûr que ça arrivera. »', feedback: 'Encourageant, mais flou. L’ambition grandit avec du concret : quelles parties du poste elle veut apprendre, et où elle pourra s’exercer.' },
+          { text: '« Pas bizarre du tout, j’adore. Dès le mois prochain, prenez en charge les prévisions hebdomadaires avec moi en appui. C’est la meilleure formation pour ce poste. »', feedback: 'Vous avez transformé l’ambition en pratique réelle, c’est la bonne démarche. Ce qui manque : vous avez choisi pour elle. Demandez-lui quelles parties du poste elle veut vraiment apprendre.' },
           { text: '« Pas bizarre du tout. Quelles parties de mon poste vous intéressent le plus ? Choisissez-en une, comme les prévisions hebdomadaires, et prenez-la en main le mois prochain, avec moi en appui. »', feedback: 'Vous avez accueilli son ambition et l’avez transformée en vraie pratique. Faire grandir les gens, c’est parfois leur confier des morceaux de votre propre poste.' },
-          { text: '« Ce n’est pas bizarre, et j’apprécie votre franchise. Mais je ne voudrais pas que vous vous dispersiez, alors concentrons-nous d’abord sur la maîtrise de votre poste actuel et parlons de la suite l’an prochain. »', feedback: 'Cela paraît raisonnable, mais peut sonner comme une façon de l’écarter. On grandit plus vite quand on voit le chemin, pas seulement la barrière.' },
+          { text: '« Pas bizarre du tout, et j’apprécie votre franchise. Je ne voudrais pas que vous vous dispersiez, cependant. À quoi ressemblerait d’abord la maîtrise de votre poste actuel ? Parlons de la suite l’an prochain. »', feedback: 'Cela ressemble à du coaching, mais la question l’éloigne de ce qu’elle vient de dire. On progresse plus vite quand on voit le chemin, pas seulement la barrière.' },
         ],
       },
       'w17-recruiter-call': {
@@ -314,10 +314,10 @@ const week: CurriculumWeek = {
         person: 'Fiona, chargée de prêts',
         quote: '« J’ai fait tout ce que vous m’avez dit de faire. Alors, qu’est-ce qui a manqué, vraiment ? »',
         choices: [
-          { text: '« Je sais, et je suis vraiment désolé. C’était extrêmement serré, et honnêtement c’était une décision du jury, donc je ne peux pas parler pour tout le monde. Sachez à quel point j’apprécie tout ce que vous apportez à cette agence. »', feedback: 'Les réponses floues vous protègent, vous, pas elle. Sans vraies raisons, elle ne peut pas progresser, et elle risque de conclure que le processus était injuste.' },
-          { text: '« C’est dur, et vous méritez une réponse franche. Le jury voulait plus d’expérience d’accompagnement des autres, et j’y suis pour quelque chose, car je ne vous ai jamais donné cette occasion. On la construit ensemble ? »', feedback: 'Vous avez reconnu la déception, donné une vraie raison, assumé votre part et proposé un chemin. Un tête-à-tête honnête après un refus peut être le plus grand moment de progression de l’année pour quelqu’un.' },
+          { text: '« Je sais, et je suis vraiment désolé. C’était extrêmement serré, et c’était une décision du jury. Avant de parler des raisons, comment vous sentez-vous par rapport à tout ça ? »', feedback: 'Demander comment elle se sent paraît attentionné, mais elle a posé une question directe et vous l’esquivez. Sans vraies raisons, elle ne peut pas progresser, et elle peut conclure que le processus était injuste.' },
+          { text: '« C’est dur, et vous méritez une réponse franche. Le jury voulait plus d’expérience d’accompagnement des autres, et j’y suis pour quelque chose, car je ne vous ai jamais donné cette occasion. Construisons-la ensemble, dès ce mois-ci. »', feedback: 'Vous avez reconnu la déception, donné une vraie raison, assumé votre part et pris un engagement concret. Elle demandait une réponse franche, et c’est cette franchise qui la respecte.' },
           { text: '« Je sais que ça fait mal. Entre nous, vous êtes la prochaine sur la liste pour le prochain poste, et j’y veillerai. »', feedback: 'Une promesse que vous ne pouvez pas garantir semble bienveillante aujourd’hui et brise la confiance plus tard si le prochain poste revient à quelqu’un d’autre.' },
-          { text: '« Le jury voulait plus d’expérience d’accompagnement. J’ai déjà préparé un plan de développement pour combler cet écart, alors parcourons-le maintenant pour vous préparer à la prochaine occasion. »', feedback: 'Clair et concret, mais cela passe à côté de sa déception et de votre propre part. Reconnaissez d’abord le coup, puis construisez le plan ensemble.' },
+          { text: '« Je sais que c’est dur. Le jury voulait plus d’expérience d’accompagnement. J’ai déjà préparé un plan de développement pour combler cet écart, alors parcourons-le maintenant pour vous préparer à la prochaine occasion. »', feedback: 'Vous avez reconnu la déception, donné une vraie raison et un plan. Ce qui manque : votre propre part. Reconnaître que vous ne lui avez jamais donné cette occasion, c’est ce qui rétablit la confiance.' },
         ],
       },
       'w17-manager-skips': {
@@ -327,7 +327,7 @@ const week: CurriculumWeek = {
         quote: '« Mes gars sont dans l’atelier toute la journée. Les 1:1, c’est un truc de bureau. Ils savent où me trouver s’ils ont besoin de moi. »',
         choices: [
           { text: '« L’atelier, c’est différent, je comprends. Votre équipe dit quand même vouloir ce temps. Pourriez-vous essayer quinze minutes à la relève avec deux personnes ce mois-ci, puis me dire ce que vous en retirez ? »', feedback: 'Vous avez pris sa réalité au sérieux, gardé la voix de l’équipe dans la conversation et l’avez encouragé à expérimenter. On fait grandir d’autres managers en les aidant à adapter une pratique, pas en l’imposant.' },
-          { text: '« C’est juste, et honnêtement vous connaissez votre équipe bien mieux qu’une enquête. Je fais confiance à votre lecture. Surveillons les commentaires au prochain cycle et voyons si les choses évoluent d’elles-mêmes. »', feedback: 'S’effacer semble respectueux, mais cela ignore ce que ses propres équipes ont demandé. Votre rôle est de l’accompagner pour combler l’écart, pas de le contourner.' },
+          { text: '« C’est juste, vous connaissez votre équipe bien mieux qu’une enquête. Comment faites-vous d’habitude le point avec les gens de l’atelier ? Surveillons les commentaires au prochain cycle et voyons ce qui change. »', feedback: 'Une question curieuse, mais elle le dédouane et ignore ce que ses propres équipes ont demandé. Votre rôle est de l’aider à combler l’écart, pas de le contourner.' },
           { text: '« Tous les managers ici font des tête-à-tête hebdomadaires, et votre équipe les demande. Je vous envoie un modèle et un exemple d’ordre du jour, et j’aimerais les voir au calendrier d’ici lundi. »', feedback: 'Des attentes claires aident, mais une consigne sans explorer ses réticences produit souvent des réunions pour cocher une case. Demandez d’abord ce qui l’en empêche.' },
           { text: '« Si ces commentaires ne s’améliorent pas, cela se verra dans votre évaluation. »', feedback: 'Une menace peut remplir l’agenda, mais elle incarne l’inverse d’un bon 1:1. Accompagnez le changement au lieu de le forcer.' },
         ],

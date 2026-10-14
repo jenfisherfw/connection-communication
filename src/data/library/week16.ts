@@ -14,10 +14,10 @@ const week: CurriculumWeek = {
       quote: '"Thanks for the gift card, really. Honestly, what I’d love is a shot at running the holiday floor plan."',
       xp: 30,
       choices: [
-        { text: '"I love that you’re thinking about it, and you’d be great. Let’s see how the next couple of months go, get through inventory, and then we can sit down and revisit it properly."', score: 1, feedback: 'A vague maybe tells her the recognition she actually wants is out of reach. If growth is what she values, a real next step is the thank you.' },
+        { text: '"I love that you’re thinking about it, and you’d be great. What would you change about last year’s plan? Let’s get through inventory first, then sit down and revisit it properly."', score: 1, feedback: 'A curious question feels engaged, but "after inventory" is still a vague maybe. If growth is what she values, a real next step is the thank you.' },
         { text: '"Of course! You earned way more than a gift card. I’ll push for a bigger bonus for you next quarter, I promise."', score: 1, feedback: 'You heard "reward" when she said "opportunity." More of the wrong recognition will not land any better.' },
         { text: '"That’s really useful to hear. Let’s sit down this week and map out what leading the holiday plan would take, and what you’d need from me."', score: 3, feedback: 'You treated her answer as the real recognition request and turned it into a concrete next step. For many people, a stretch opportunity says "I trust you" more than any gift.' },
-        { text: '"I love that. I’ll mention it to the district manager this week and put in a strong word for you."', score: 2, feedback: 'Advocating upward helps, but it hands off something you can act on yourself. Start with what is in your control.' },
+        { text: '"I love that, and you’ve earned a shot. I’ll map out what leading the holiday plan would take and send it to you this week."', score: 2, feedback: 'Concrete and quick, which is right. The miss: you map it alone. Building the plan with her, including what she needs from you, is part of the recognition.' },
       ],
     },
     {
@@ -30,8 +30,8 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"Fair point, thank you. Let me try now: the way you calmed Tuesday’s billing escalation kept a twelve year customer with us. That’s what I want to name more."', score: 3, feedback: 'You accepted the feedback and demonstrated the fix on the spot. Specific praise keeps its value; blanket praise slowly loses it.' },
-        { text: '"Thank you for telling me, I really mean that. I just want people to feel appreciated, though, especially on hard weeks. Isn’t it better to err on the side of too much encouragement?"', score: 1, feedback: 'Your intent is good, but he is telling you the impact. When everything is amazing, nothing is, and the best work goes unseen.' },
-        { text: '"Got it, thanks. I’ll dial it back and save the praise for the really big wins."', score: 2, feedback: 'Less volume helps, but the real fix is specificity, not scarcity. Small wins still deserve recognition when you name exactly what was good.' },
+        { text: '"Thank you for telling me, I really mean that. I just want people to feel appreciated, though, especially on hard weeks. What’s the harm in erring on the side of too much encouragement?"', score: 1, feedback: 'A leading question invites him to back down. Your intent is good, but he is telling you the impact: when everything is amazing, nothing is, and the best work goes unseen.' },
+        { text: '"Fair point, thank you. I’ll name exactly what was good from now on, starting with Friday’s team update."', score: 2, feedback: 'Right fix: specificity. The miss: you push it to later. Showing him a specific example right now proves you heard him.' },
         { text: '"Ha, I guess I’m just an enthusiastic person. You’ll get used to it."', score: 1, feedback: 'Laughing it off misses a rare gift: a team member telling you how your recognition actually lands. Patterns like this are hard to see from the inside.' },
       ],
     },
@@ -44,7 +44,7 @@ const week: CurriculumWeek = {
       quote: '"Are you planning to thank my crew yourself? Last time that happened, they asked me why I hadn’t said anything."',
       xp: 30,
       choices: [
-        { text: '"Don’t worry, I’ll make sure they know this was your leadership. I’ll call you out by name first thing and tell them how lucky they are to have you running that line."', score: 1, feedback: 'Adding her name to your speech still puts you in her place. The issue is who leads the moment, not whether she gets a mention.' },
+        { text: '"Don’t worry, I’ll make sure they know this was your leadership. How would you like me to introduce you before I thank them? I’ll tell them how lucky they are to have you running that line."', score: 1, feedback: 'Asking how to credit her sounds generous, but you are still the one leading the moment. The issue is who stands in front of her crew, not whether she gets a mention.' },
         { text: '"Maybe it’s better if I just skip it, then."', score: 1, feedback: 'Senior recognition matters to a crew. Dropping it entirely loses something valuable when the fix is simply to coordinate.' },
         { text: '"Fair enough. You thank them yourself, and I’ll stay out of it so it’s clearly yours."', score: 2, feedback: 'It protects her role, but the crew misses hearing that the plant leadership noticed. You can support her without stepping in front of her.' },
         { text: '"Good catch. You lead it, and I’ll join to add what this record means for the plant. What should I say, and what should I leave to you?"', score: 3, feedback: 'You strengthened her standing with her crew while still adding your weight. When you lead managers, recognize their teams through them, not around them.' },
@@ -59,10 +59,10 @@ const week: CurriculumWeek = {
       quote: '"Saw the all hands. Support gets mentioned when things break, never when we help something ship."',
       xp: 30,
       choices: [
-        { text: '"I hear you, and honestly, I agree. That all hands was out of my hands, unfortunately. The CEO’s office wrote the script. If it were up to me, support would have been first on that list."', score: 1, feedback: 'True, maybe, but it leaves him with nothing. You can still recognize his team even if you did not run the meeting.' },
+        { text: '"I hear you, and honestly, I agree. The CEO’s office wrote that script, not me. What do you think would get support noticed next time? Send me your ideas and I’ll pass them along."', score: 1, feedback: 'Asking for his ideas sounds collaborative, but it hands the problem back to him. You can recognize his team now, even if you did not run the meeting.' },
         { text: '"You’re right, and that’s on me too. Your triage caught the bugs that would have hit customers first. I’m telling your director and the CEO today, with specifics."', score: 3, feedback: 'You owned your part, named the specific contribution, and made it visible to the people who shape his team’s future. Recognition across teams builds the partnerships you will need next time.' },
         { text: 'Post a warm thank you in the company channel to "all our amazing partners across the company who helped make this launch happen."', score: 1, feedback: 'A generic group thanks repeats the problem. Support stays invisible inside "partners."' },
-        { text: '"I’m so sorry. Your team was amazing on this launch, and I couldn’t have shipped it without you. Thank you, truly."', score: 2, feedback: 'Sincere, but private and general. He asked about visibility, so make his team’s specific work visible to the people who missed it.' },
+        { text: '"I’m so sorry. Your triage caught the bugs before customers did, and I couldn’t have shipped without you. Thank you, truly."', score: 2, feedback: 'Specific and sincere, which matters. The miss: it stays private. He asked about visibility, so tell the people who missed it.' },
       ],
     },
     {
@@ -75,9 +75,9 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"You’re right, pizza isn’t the point. What you did Saturday saved lives, and I want to say that properly. What would actually help this week?"', score: 3, feedback: 'You named the real contribution and asked what would make a difference. After a crisis, recognition that brings relief means more than any perk.' },
-        { text: '"I completely understand, and I hear how tired everyone is. The food’s already ordered, so let’s keep it short and casual, and anyone who needs to rest can just grab a plate and go."', score: 1, feedback: 'Holding the plan makes the thank you about you, not them. Exhausted teams notice when recognition ignores what they told you.' },
+        { text: '"I completely understand, and I hear how tired everyone is. The food’s already ordered, though, so what if we keep it short and casual, and anyone who needs rest grabs a plate and goes?"', score: 1, feedback: 'Holding the plan makes the thank you about you, not them. Exhausted teams notice when recognition ignores what they told you.' },
         { text: 'Cancel the lunch and say nothing more.', score: 1, feedback: 'Pulling the gesture without a replacement can feel like the thanks was withdrawn. The effort still needs to be named.' },
-        { text: '"Totally fair. I’ll make sure everyone gets an extra paid hour on their next check."', score: 2, feedback: 'A tangible gesture, and maybe welcome, but you guessed again instead of asking. Check what relief your team actually needs, and stay within policy.' },
+        { text: '"Totally fair, pizza isn’t the point. What you did Saturday saved lives. I’ll make sure everyone gets an extra paid hour on their next check."', score: 2, feedback: 'You named the real contribution, which is right. The miss: you guessed at the relief instead of asking, and pay changes need to stay within policy.' },
       ],
     },
     {
@@ -92,7 +92,7 @@ const week: CurriculumWeek = {
         { text: '"That tracks, honestly. Those three are my strongest performers, and they carry most of the hardest projects. I’d be more worried if the data looked any different."', score: 1, feedback: 'Maybe, but this assumes the pattern reflects performance rather than your attention. It may simply show who you work with most.' },
         { text: '"Good to know. I’ll start rotating recognition so everyone on the team gets a turn each month."', score: 2, feedback: 'Spreading it out helps, but rotating by turn can feel hollow. The deeper fix is learning to see the work you are currently missing.' },
         { text: '"I didn’t, and I’m glad you showed me. Those are the three I meet with most, so I may be praising proximity. Can you help me see whose work I’m missing?"', score: 3, feedback: 'You got curious about your own blind spot and asked for help to fix it. Recognition patterns often reveal where your attention goes, not where the good work is.' },
-        { text: '"Is this a formal concern? I didn’t think shout outs were tracked like that."', score: 1, feedback: 'Getting defensive about the data misses what it is showing you. Your HR partner is offering a mirror, not a complaint.' },
+        { text: '"Is this a formal concern? Which people raised it, and how exactly is the platform tracking who I recognize?"', score: 1, feedback: 'Questions about the data and who raised it are defensive, and they miss what it shows. Your HR partner is offering a mirror, not a complaint.' },
       ],
     },
     {
@@ -105,9 +105,9 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: 'Present the impact yourself with a polished story, and close by thanking "my incredible team, who worked nights and weekends to make this happen."', score: 1, feedback: 'Polished, but the board remembers you and a faceless team. A senior audience is exactly where specific names do the most good.' },
-        { text: 'Ask Florence to thank the team personally after the meeting, since a note from the executive director will mean more to them than one from you.', score: 1, feedback: 'Recognition passed along secondhand loses most of its weight, and the board never learns who did the work.' },
+        { text: 'Ask Florence, "How would you like us to recognize the team? A note from you would mean more than one from me," and keep the five minutes on impact.', score: 1, feedback: 'Asking her how to thank them sounds deferential, but recognition passed along secondhand loses weight, and the board never learns who did the work.' },
         { text: 'Spend most of the five minutes telling the story of each team member’s contribution, so every person who worked on the grant is named in front of the board.', score: 2, feedback: 'Generous, but the board asked for impact and may tune out. Weave a few names and contributions into the impact story instead.' },
-        { text: '"Will do. I’ll build the impact story around the two people who drove it, a sentence each. Could one of them present the part they led?"', score: 3, feedback: 'You kept it about impact and tied it to specific people, and you offered a teammate visibility with senior leaders. Fitting recognition sometimes means handing someone the microphone.' },
+        { text: '"Will do. I’ll build the impact story around the two people who drove it, a sentence each, and I’ll invite one of them to present the part they led."', score: 3, feedback: 'You kept it about impact, tied it to specific people, and gave a teammate visibility with senior leaders. Fitting recognition sometimes means handing someone the microphone.' },
       ],
     },
   ],
@@ -147,10 +147,10 @@ const week: CurriculumWeek = {
         person: 'Zainab, subgerente de tienda',
         quote: '“Gracias por la tarjeta, de verdad. Sinceramente, lo que me encantaría es una oportunidad de dirigir el plan de piso para las fiestas.”',
         choices: [
-          { text: '“Me encanta que lo estés pensando, y lo harías muy bien. Veamos cómo van los próximos dos meses, pasemos el inventario, y luego nos sentamos a revisarlo con calma.”', feedback: 'Un “tal vez” vago le dice que el reconocimiento que de verdad quiere está fuera de su alcance. Si lo que valora es crecer, un siguiente paso real es el agradecimiento.' },
+          { text: '“Me encanta que lo estés pensando, y lo harías genial. ¿Qué cambiarías del plan del año pasado? Terminemos primero el inventario y luego nos sentamos a revisarlo con calma.”', feedback: 'Una pregunta curiosa se siente interesada, pero “después del inventario” sigue siendo un quizá. Si lo que ella valora es crecer, un paso concreto es el verdadero agradecimiento.' },
           { text: '“¡Claro! Te ganaste mucho más que una tarjeta de regalo. Voy a pelear por un bono más grande para ti el próximo trimestre, te lo prometo.”', feedback: 'Escuchaste “premio” cuando ella dijo “oportunidad”. Más del reconocimiento equivocado no va a funcionar mejor.' },
           { text: '“Me sirve mucho saberlo. Sentémonos esta semana a ver qué implicaría que lideres el plan de temporada y qué necesitarías de mí.”', feedback: 'Tomaste su respuesta como la verdadera petición de reconocimiento y la convertiste en un siguiente paso concreto. Para muchas personas, un reto nuevo dice “confío en ti” más que cualquier regalo.' },
-          { text: '“Me encanta. Se lo mencionaré al gerente de distrito esta semana y hablaré muy bien de ti.”', feedback: 'Abogar hacia arriba ayuda, pero delega algo sobre lo que tú mismo puedes actuar. Empieza por lo que está en tus manos.' },
+          { text: '“Me encanta, y te has ganado la oportunidad. Voy a armar lo que implicaría liderar el plan de temporada y te lo envío esta semana.”', feedback: 'Concreto y rápido, y eso está bien. Lo que falta: lo armas tú solo. Construir el plan con ella, incluido lo que necesita de ti, es parte del reconocimiento.' },
         ],
       },
       'w16-everything-amazing': {
@@ -160,8 +160,8 @@ const week: CurriculumWeek = {
         quote: '“No te ofendas, pero a todo le dices increíble. Ya no sé cuándo algo realmente lo fue.”',
         choices: [
           { text: '“Buen punto, gracias. Déjame intentarlo ahora: la forma en que calmaste la escalación de facturación del martes nos mantuvo un cliente de doce años. Eso es lo que quiero nombrar más.”', feedback: 'Aceptaste la retroalimentación y mostraste la solución en el momento. El elogio específico conserva su valor; el elogio general lo va perdiendo poco a poco.' },
-          { text: '“Gracias por decírmelo, de verdad. Pero solo quiero que la gente se sienta valorada, sobre todo en semanas difíciles. ¿No es mejor pecar de dar demasiado ánimo?”', feedback: 'Tu intención es buena, pero él te está diciendo el impacto. Cuando todo es increíble, nada lo es, y el mejor trabajo pasa desapercibido.' },
-          { text: '“Entendido, gracias. Le bajaré el tono y guardaré los elogios para los logros realmente grandes.”', feedback: 'Bajar el volumen ayuda, pero la verdadera solución es la precisión, no la escasez. Los logros pequeños también merecen reconocimiento cuando nombras exactamente qué estuvo bien.' },
+          { text: '“Gracias por decírmelo, de verdad. Solo quiero que la gente se sienta valorada, sobre todo en semanas difíciles. ¿Qué tiene de malo pecar de dar demasiado ánimo?”', feedback: 'Una pregunta que ya trae la respuesta lo invita a retroceder. Tu intención es buena, pero él te habla del impacto: cuando todo es increíble, nada lo es, y el mejor trabajo pasa desapercibido.' },
+          { text: '“Buen punto, gracias. Desde ahora voy a nombrar exactamente qué estuvo bien, empezando por la actualización del viernes.”', feedback: 'La solución correcta es ser específico. Lo que falta: lo dejas para después. Darle un ejemplo concreto ahora mismo demuestra que lo escuchaste.' },
           { text: '“Ja, supongo que soy una persona entusiasta. Ya te acostumbrarás.”', feedback: 'Tomarlo a broma desperdicia un regalo poco común: alguien del equipo diciéndote cómo cae realmente tu reconocimiento. Estos patrones son difíciles de ver desde dentro.' },
         ],
       },
@@ -171,7 +171,7 @@ const week: CurriculumWeek = {
         person: 'Beatriz, supervisora de producción',
         quote: '“¿Piensas agradecerle tú mismo a mi cuadrilla? La última vez que pasó eso, me preguntaron por qué yo no había dicho nada.”',
         choices: [
-          { text: '“No te preocupes, me aseguraré de que sepan que esto fue gracias a tu liderazgo. Te nombraré al principio y les diré la suerte que tienen de que tú dirijas esa línea.”', feedback: 'Agregar su nombre a tu discurso igual te pone en su lugar. El tema es quién lidera el momento, no si ella recibe una mención.' },
+          { text: '“No te preocupes, me aseguraré de que sepan que fue tu liderazgo. ¿Cómo quieres que te presente antes de agradecerles? Les diré la suerte que tienen de que tú dirijas esa línea.”', feedback: 'Preguntar cómo darle crédito suena generoso, pero sigues siendo tú quien encabeza el momento. El punto es quién se para frente a su equipo, no si la mencionan.' },
           { text: '“Entonces quizá sea mejor que no lo haga.”', feedback: 'El reconocimiento de la dirección importa para una cuadrilla. Eliminarlo por completo pierde algo valioso cuando la solución es simplemente coordinarse.' },
           { text: '“Me parece bien. Agradéceles tú, y yo me mantengo al margen para que quede claro que es tuyo.”', feedback: 'Protege su rol, pero la cuadrilla no escucha que la dirección de la planta lo notó. Puedes apoyarla sin ponerte delante de ella.' },
           { text: '“Bien visto. Tú lo lideras, y yo me sumo para decir lo que este récord significa para la planta. ¿Qué debería decir yo y qué te dejo a ti?”', feedback: 'Reforzaste su posición ante su cuadrilla y sumaste tu peso. Cuando lideras a otros gerentes, reconoce a sus equipos a través de ellos, no pasando por encima.' },
@@ -183,10 +183,10 @@ const week: CurriculumWeek = {
         person: 'Cormac, líder de soporte al cliente',
         quote: '“Vi la reunión general. A soporte lo mencionan cuando algo se rompe, nunca cuando ayudamos a que algo salga.”',
         choices: [
-          { text: '“Te entiendo, y sinceramente estoy de acuerdo. Esa reunión general estaba fuera de mi control, por desgracia. La oficina del CEO escribió el guion. Si dependiera de mí, soporte habría sido el primero de la lista.”', feedback: 'Quizá sea cierto, pero lo deja sin nada. Aún puedes reconocer a su equipo aunque no hayas dirigido la reunión.' },
+          { text: '“Te entiendo y, sinceramente, estoy de acuerdo. Ese guion lo escribió la oficina del CEO, no yo. ¿Qué crees que haría que se note a soporte la próxima vez? Mándame tus ideas y las hago llegar.”', feedback: 'Pedirle ideas suena colaborativo, pero le devuelve el problema. Puedes reconocer a su equipo ahora, aunque no hayas dirigido la reunión.' },
           { text: '“Tienes razón, y también es mi responsabilidad. Tu equipo detectó los errores que habrían afectado primero a los clientes. Hoy se lo cuento a tu director y al CEO, con detalles.”', feedback: 'Asumiste tu parte, nombraste la contribución específica y la hiciste visible para quienes influyen en el futuro de su equipo. El reconocimiento entre equipos construye las alianzas que vas a necesitar la próxima vez.' },
           { text: 'Publicar un cálido agradecimiento en el canal de la empresa a “todos nuestros increíbles socios de toda la empresa que hicieron posible este lanzamiento”.', feedback: 'Un agradecimiento grupal genérico repite el problema. Soporte sigue invisible dentro de “socios”.' },
-          { text: '“Lo siento mucho. Tu equipo estuvo increíble en este lanzamiento, y no lo habría logrado sin ustedes. Gracias, de verdad.”', feedback: 'Sincero, pero privado y general. Él preguntó por visibilidad, así que haz visible el trabajo específico de su equipo ante quienes no lo vieron.' },
+          { text: '“Lo siento mucho. Tu triaje atrapó los errores antes que los clientes, y no habría podido lanzarlo sin ustedes. Gracias, de verdad.”', feedback: 'Específico y sincero, y eso importa. Lo que falta: queda en privado. Él preguntó por visibilidad, así que cuéntaselo a quienes no lo vieron.' },
         ],
       },
       'w16-no-more-pizza': {
@@ -196,9 +196,9 @@ const week: CurriculumWeek = {
         quote: '“Por favor, otra fiesta de pizza no. Estamos agotados, no con hambre.”',
         choices: [
           { text: '“Tienes razón, la pizza no es el punto. Lo que hicieron el sábado salvó vidas, y quiero decirlo como se debe. ¿Qué les ayudaría de verdad esta semana?”', feedback: 'Nombraste la contribución real y preguntaste qué marcaría la diferencia. Después de una crisis, el reconocimiento que trae alivio vale más que cualquier beneficio.' },
-          { text: '“Lo entiendo por completo, y veo lo cansados que están todos. La comida ya está pedida, así que hagámoslo corto e informal, y quien necesite descansar puede tomar un plato e irse.”', feedback: 'Mantener el plan hace que el agradecimiento sea sobre ti, no sobre ellos. Los equipos agotados notan cuando el reconocimiento ignora lo que te dijeron.' },
+          { text: '“Lo entiendo por completo, y veo lo cansados que están todos. Pero la comida ya está pedida, así que ¿qué tal si lo hacemos breve e informal, y quien necesite descansar toma un plato y se va?”', feedback: 'Mantener el plan hace que el agradecimiento sea sobre ti, no sobre ellos. Los equipos agotados notan cuando el reconocimiento ignora lo que te dijeron.' },
           { text: 'Cancelar el almuerzo y no decir nada más.', feedback: 'Retirar el gesto sin reemplazarlo puede sentirse como si el agradecimiento se hubiera retirado. El esfuerzo todavía necesita ser nombrado.' },
-          { text: '“Totalmente justo. Me aseguraré de que todos reciban una hora pagada extra en su próximo cheque.”', feedback: 'Un gesto tangible y quizá bienvenido, pero volviste a adivinar en vez de preguntar. Averigua qué alivio necesita realmente tu equipo y mantente dentro de la política.' },
+          { text: '“Totalmente justo, la pizza no es lo importante. Lo que hicieron el sábado salvó vidas. Me aseguraré de que todos reciban una hora pagada extra en su próximo pago.”', feedback: 'Nombraste la contribución real, y eso está bien. Lo que falta: adivinaste el alivio en vez de preguntar, y los cambios de pago deben respetar la política.' },
         ],
       },
       'w16-same-three': {
@@ -210,7 +210,7 @@ const week: CurriculumWeek = {
           { text: '“Tiene sentido, la verdad. Esos tres son mis mejores elementos, y llevan la mayoría de los proyectos más difíciles. Me preocuparía más si los datos se vieran diferentes.”', feedback: 'Puede ser, pero supones que el patrón refleja el desempeño y no tu atención. Quizá solo muestra con quién trabajas más.' },
           { text: '“Bueno saberlo. Empezaré a rotar el reconocimiento para que todos en el equipo tengan su turno cada mes.”', feedback: 'Repartirlo ayuda, pero rotar por turnos puede sentirse vacío. La solución de fondo es aprender a ver el trabajo que hoy no estás viendo.' },
           { text: '“No lo sabía, y me alegra que me lo muestres. Son los tres con quienes más me reúno, así que quizá estoy elogiando la cercanía. ¿Me ayudas a ver qué trabajo me estoy perdiendo?”', feedback: 'Sentiste curiosidad por tu propio punto ciego y pediste ayuda para corregirlo. Los patrones de reconocimiento suelen revelar a dónde va tu atención, no dónde está el buen trabajo.' },
-          { text: '“¿Es una queja formal? No sabía que los reconocimientos se revisaban así.”', feedback: 'Ponerte a la defensiva por los datos te impide ver lo que muestran. Tu socio de recursos humanos te ofrece un espejo, no una queja.' },
+          { text: '“¿Es una queja formal? ¿Quién lo planteó y cómo exactamente registra la plataforma a quién reconozco?”', feedback: 'Preguntar por los datos y por quién lo planteó es ponerte a la defensiva, y te impide ver lo que muestran. Tu socio de recursos humanos te ofrece un espejo, no una queja.' },
         ],
       },
       'w16-board-five-minutes': {
@@ -220,9 +220,9 @@ const week: CurriculumWeek = {
         quote: '“La junta quiere oír sobre la subvención. Tienes cinco minutos, así que céntrate en el impacto.”',
         choices: [
           { text: 'Presentar tú mismo el impacto con una historia pulida y cerrar agradeciendo a “mi increíble equipo, que trabajó noches y fines de semana para lograrlo”.', feedback: 'Pulido, pero la junta te recordará a ti y a un equipo sin rostro. Una audiencia sénior es justo donde los nombres específicos hacen más bien.' },
-          { text: 'Pedirle a Florence que agradezca personalmente al equipo después de la reunión, ya que una nota de la directora ejecutiva significará más para ellos que una tuya.', feedback: 'El reconocimiento de segunda mano pierde casi todo su peso, y la junta nunca sabe quién hizo el trabajo.' },
+          { text: 'Preguntarle a Florence: “¿Cómo te gustaría que reconociéramos al equipo? Una nota tuya significaría más que una mía”, y dedicar los cinco minutos al impacto.', feedback: 'Preguntarle cómo agradecerles suena respetuoso, pero el reconocimiento de segunda mano pierde peso, y la junta nunca sabe quién hizo el trabajo.' },
           { text: 'Dedicar la mayor parte de los cinco minutos a contar el aporte de cada integrante del equipo, para que cada persona que trabajó en la subvención sea nombrada ante la junta.', feedback: 'Generoso, pero la junta pidió impacto y puede desconectarse. Mejor integra algunos nombres y aportes en la historia del impacto.' },
-          { text: '“Claro. Construiré la historia del impacto en torno a las dos personas que lo impulsaron, una frase cada una. ¿Podría una de ellas presentar la parte que lideró?”', feedback: 'Te centraste en el impacto, lo uniste a personas concretas y le ofreciste a alguien del equipo visibilidad ante el liderazgo. A veces el reconocimiento a la medida es pasarle el micrófono a alguien.' },
+          { text: '“Hecho. Armaré la historia de impacto en torno a las dos personas que lo impulsaron, una frase cada una, e invitaré a una de ellas a presentar la parte que lideró.”', feedback: 'Mantuviste el foco en el impacto, lo uniste a personas concretas y le diste a alguien del equipo visibilidad ante la alta dirección. A veces reconocer bien es pasarle el micrófono a alguien.' },
         ],
       },
     },
@@ -254,10 +254,10 @@ const week: CurriculumWeek = {
         person: 'Zainab, directrice adjointe de magasin',
         quote: '« Merci pour la carte cadeau, vraiment. Honnêtement, ce qui me plairait, c’est de piloter l’aménagement du magasin pour les fêtes. »',
         choices: [
-          { text: '« J’adore que vous y pensiez, et vous seriez très bien. Voyons comment se passent les deux prochains mois, passons l’inventaire, et ensuite on prendra le temps d’en reparler sérieusement. »', feedback: 'Un « peut-être » flou lui dit que la reconnaissance qu’elle souhaite vraiment est hors de portée. Si c’est la progression qu’elle valorise, une vraie prochaine étape est le remerciement.' },
+          { text: '« J’adore que vous y pensiez, et vous seriez excellente. Que changeriez-vous au plan de l’an dernier ? Terminons d’abord l’inventaire, puis on s’assoit pour en reparler sérieusement. »', feedback: 'Une question curieuse semble impliquée, mais « après l’inventaire » reste un peut-être. Si c’est l’évolution qu’elle valorise, une vraie prochaine étape est le meilleur merci.' },
           { text: '« Bien sûr ! Vous méritez bien plus qu’une carte cadeau. Je vais me battre pour une prime plus importante pour vous le trimestre prochain, c’est promis. »', feedback: 'Vous avez entendu « récompense » quand elle a dit « opportunité ». Davantage de la mauvaise reconnaissance ne fonctionnera pas mieux.' },
           { text: '« C’est très utile à savoir. Voyons-nous cette semaine pour définir ce que demanderait le pilotage du plan des fêtes, et ce dont vous auriez besoin de moi. »', feedback: 'Vous avez pris sa réponse comme la vraie demande de reconnaissance et l’avez transformée en étape concrète. Pour beaucoup, un nouveau défi dit « je vous fais confiance » mieux que n’importe quel cadeau.' },
-          { text: '« J’adore. J’en parlerai au directeur régional cette semaine et je dirai beaucoup de bien de vous. »', feedback: 'Plaider sa cause plus haut aide, mais vous déléguez quelque chose sur lequel vous pouvez agir vous-même. Commencez par ce qui est entre vos mains.' },
+          { text: '« J’adore, et vous avez mérité votre chance. Je prépare ce que demanderait la conduite du plan des fêtes et je vous l’envoie cette semaine. »', feedback: 'Concret et rapide, c’est bien. Ce qui manque : vous le préparez seul. Construire le plan avec elle, y compris ce dont elle a besoin de vous, fait partie de la reconnaissance.' },
         ],
       },
       'w16-everything-amazing': {
@@ -267,8 +267,8 @@ const week: CurriculumWeek = {
         quote: '« Sans vouloir vous vexer, vous dites que tout est génial. Je ne sais plus quand quelque chose l’était vraiment. »',
         choices: [
           { text: '« Juste, merci. J’essaie tout de suite : votre façon d’apaiser l’escalade de facturation de mardi nous a gardé un client de douze ans. C’est ça que je veux nommer davantage. »', feedback: 'Vous avez accepté le retour et montré la solution sur-le-champ. La reconnaissance précise garde sa valeur ; la reconnaissance générale la perd peu à peu.' },
-          { text: '« Merci de me le dire, sincèrement. Mais je veux juste que les gens se sentent appréciés, surtout pendant les semaines difficiles. Ne vaut-il pas mieux pécher par excès d’encouragement ? »', feedback: 'Votre intention est bonne, mais il vous parle de l’effet produit. Quand tout est génial, plus rien ne l’est, et le meilleur travail passe inaperçu.' },
-          { text: '« Compris, merci. Je vais lever le pied et garder les compliments pour les très grandes réussites. »', feedback: 'Réduire le volume aide, mais la vraie solution est la précision, pas la rareté. Les petites réussites méritent aussi d’être reconnues quand vous nommez exactement ce qui était bien.' },
+          { text: '« Merci de me le dire, sincèrement. Je veux juste que les gens se sentent appréciés, surtout les semaines difficiles. Quel mal y a-t-il à pécher par excès d’encouragement ? »', feedback: 'Une question orientée l’invite à reculer. Votre intention est bonne, mais il vous parle de l’impact : quand tout est formidable, plus rien ne l’est, et le meilleur travail passe inaperçu.' },
+          { text: '« Bonne remarque, merci. Désormais je dirai précisément ce qui était bien, à commencer par le point d’équipe de vendredi. »', feedback: 'La bonne solution, c’est la précision. Ce qui manque : vous la remettez à plus tard. Donner un exemple précis tout de suite prouve que vous l’avez entendu.' },
           { text: '« Ha, je suis quelqu’un d’enthousiaste, je suppose. Vous allez vous y habituer. »', feedback: 'En rire fait passer à côté d’un cadeau rare : un membre de l’équipe qui vous dit comment votre reconnaissance est vraiment reçue. Ce genre de schéma est difficile à voir de l’intérieur.' },
         ],
       },
@@ -278,7 +278,7 @@ const week: CurriculumWeek = {
         person: 'Beatriz, superviseuse de production',
         quote: '« Vous comptez remercier mon équipe vous-même ? La dernière fois que c’est arrivé, ils m’ont demandé pourquoi je n’avais rien dit. »',
         choices: [
-          { text: '« Ne vous inquiétez pas, je ferai en sorte qu’ils sachent que c’est grâce à votre leadership. Je vous citerai dès le début et je leur dirai la chance qu’ils ont de vous avoir à la tête de cette ligne. »', feedback: 'Ajouter son nom à votre discours vous met quand même à sa place. La question est de savoir qui porte le moment, pas si elle est citée.' },
+          { text: '« Ne vous inquiétez pas, ils sauront que c’est grâce à vous. Comment voulez-vous que je vous présente avant de les remercier ? Je leur dirai la chance qu’ils ont de vous avoir à la tête de cette ligne. »', feedback: 'Demander comment la citer paraît généreux, mais c’est toujours vous qui menez le moment. La question est de savoir qui se tient devant son équipe, pas si elle est mentionnée.' },
           { text: '« Alors il vaut peut-être mieux que je m’abstienne. »', feedback: 'La reconnaissance de la direction compte pour une équipe. Y renoncer complètement fait perdre quelque chose de précieux, alors qu’il suffit de se coordonner.' },
           { text: '« D’accord. Remerciez-les vous-même, et je reste en retrait pour que ce soit clairement votre moment. »', feedback: 'Cela protège son rôle, mais l’équipe n’entend pas que la direction de l’usine a remarqué. Vous pouvez la soutenir sans passer devant elle.' },
           { text: '« Bien vu. C’est vous qui menez, et je me joins à vous pour dire ce que ce record représente pour l’usine. Qu’est-ce que je dis, et qu’est-ce que je vous laisse ? »', feedback: 'Vous avez renforcé sa position auprès de son équipe tout en apportant votre poids. Quand vous dirigez des managers, reconnaissez leurs équipes à travers eux, pas en les contournant.' },
@@ -290,10 +290,10 @@ const week: CurriculumWeek = {
         person: 'Cormac, responsable du support client',
         quote: '« J’ai vu la réunion générale. Le support est cité quand quelque chose casse, jamais quand nous aidons à livrer. »',
         choices: [
-          { text: '« Je vous entends, et honnêtement, je suis d’accord. Cette réunion générale ne dépendait pas de moi, malheureusement. Le bureau du PDG a écrit le texte. Si ça ne tenait qu’à moi, le support aurait été en tête de liste. »', feedback: 'C’est peut-être vrai, mais cela ne lui laisse rien. Vous pouvez reconnaître son équipe même si vous n’avez pas animé la réunion.' },
+          { text: '« Je vous entends, et honnêtement, je suis d’accord. C’est le bureau du PDG qui a écrit le texte, pas moi. Qu’est-ce qui ferait remarquer le support la prochaine fois ? Envoyez-moi vos idées, je les transmettrai. »', feedback: 'Lui demander ses idées paraît collaboratif, mais lui renvoie le problème. Vous pouvez reconnaître son équipe maintenant, même si vous n’animiez pas la réunion.' },
           { text: '« Vous avez raison, et j’y ai ma part. Votre tri a repéré les bugs qui auraient touché les clients en premier. J’en parle aujourd’hui à votre directeur et au PDG, avec des exemples précis. »', feedback: 'Vous avez assumé votre part, nommé la contribution précise et l’avez rendue visible aux personnes qui pèsent sur l’avenir de son équipe. La reconnaissance entre équipes construit les partenariats dont vous aurez besoin la prochaine fois.' },
           { text: 'Publier un chaleureux merci dans le canal de l’entreprise à « tous nos formidables partenaires dans l’entreprise qui ont rendu ce lancement possible ».', feedback: 'Un remerciement collectif générique reproduit le problème. Le support reste invisible derrière le mot « partenaires ».' },
-          { text: '« Je suis vraiment désolé. Votre équipe a été formidable sur ce lancement, et je n’aurais pas pu livrer sans vous. Merci, sincèrement. »', feedback: 'Sincère, mais privé et général. Il parlait de visibilité, alors rendez le travail précis de son équipe visible à ceux qui ne l’ont pas vu.' },
+          { text: '« Je suis vraiment désolé. Votre tri a repéré les bugs avant les clients, et je n’aurais pas pu livrer sans vous. Merci, sincèrement. »', feedback: 'Précis et sincère, cela compte. Ce qui manque : cela reste privé. Il parlait de visibilité, alors dites-le à ceux qui ne l’ont pas vu.' },
         ],
       },
       'w16-no-more-pizza': {
@@ -303,9 +303,9 @@ const week: CurriculumWeek = {
         quote: '« Par pitié, pas encore une pizza. Nous sommes épuisés, pas affamés. »',
         choices: [
           { text: '« Vous avez raison, la pizza n’est pas le sujet. Ce que vous avez fait samedi a sauvé des vies, et je veux le dire comme il se doit. Qu’est-ce qui vous aiderait vraiment cette semaine ? »', feedback: 'Vous avez nommé la vraie contribution et demandé ce qui ferait une différence. Après une crise, une reconnaissance qui apporte du répit compte plus que n’importe quel avantage.' },
-          { text: '« Je comprends tout à fait, et je vois à quel point tout le monde est fatigué. La nourriture est déjà commandée, alors faisons court et décontracté, et ceux qui ont besoin de se reposer peuvent prendre une assiette et partir. »', feedback: 'Maintenir le plan fait du remerciement une affaire qui vous concerne, pas eux. Une équipe épuisée remarque quand la reconnaissance ignore ce qu’elle a dit.' },
+          { text: '« Je comprends tout à fait, et je vois à quel point tout le monde est fatigué. Mais le repas est commandé, alors que diriez-vous de faire court et simple, et ceux qui ont besoin de repos prennent une part et partent ? »', feedback: 'Maintenir le plan fait du remerciement une affaire qui vous concerne, pas eux. Une équipe épuisée remarque quand la reconnaissance ignore ce qu’elle a dit.' },
           { text: 'Annuler le déjeuner sans rien dire de plus.', feedback: 'Retirer le geste sans le remplacer peut donner l’impression que le merci a été repris. L’effort doit toujours être nommé.' },
-          { text: '« C’est tout à fait juste. Je veillerai à ce que chacun ait une heure payée en plus sur sa prochaine fiche de paie. »', feedback: 'Un geste concret, peut-être bienvenu, mais vous avez encore deviné au lieu de demander. Vérifiez quel répit votre équipe attend vraiment, et restez dans le cadre des règles.' },
+          { text: '« Tout à fait juste, la pizza n’est pas le sujet. Ce que vous avez fait samedi a sauvé des vies. Je ferai en sorte que chacun ait une heure payée en plus sur sa prochaine paie. »', feedback: 'Vous avez nommé la vraie contribution, c’est juste. Ce qui manque : vous avez deviné le soulagement au lieu de demander, et toute prime doit respecter la politique.' },
         ],
       },
       'w16-same-three': {
@@ -317,7 +317,7 @@ const week: CurriculumWeek = {
           { text: '« Ça se tient, honnêtement. Ces trois-là sont mes meilleurs éléments, et ils portent la plupart des projets les plus difficiles. Je serais plus inquiet si les données étaient différentes. »', feedback: 'Peut-être, mais vous supposez que le schéma reflète la performance plutôt que votre attention. Il montre peut-être seulement avec qui vous travaillez le plus.' },
           { text: '« Bon à savoir. Je vais faire tourner la reconnaissance pour que chacun dans l’équipe ait son tour chaque mois. »', feedback: 'Répartir aide, mais un tour de rôle peut sonner creux. La vraie solution est d’apprendre à voir le travail qui vous échappe aujourd’hui.' },
           { text: '« Non, et je suis content que vous me le montriez. Ce sont les trois que je vois le plus, donc je valorise peut-être la proximité. Vous m’aidez à voir quel travail m’échappe ? »', feedback: 'Vous vous êtes intéressé à votre propre angle mort et avez demandé de l’aide pour le corriger. Les schémas de reconnaissance révèlent souvent où va votre attention, pas où se trouve le bon travail.' },
-          { text: '« C’est une plainte officielle ? Je ne savais pas que ces messages étaient suivis comme ça. »', feedback: 'Se braquer sur les données empêche de voir ce qu’elles montrent. Votre partenaire RH vous tend un miroir, pas une plainte.' },
+          { text: '« Est-ce une plainte officielle ? Qui l’a soulevée, et comment exactement la plateforme suit-elle qui je reconnais ? »', feedback: 'Questionner les données et chercher qui a soulevé le sujet, c’est se braquer et ne pas voir ce qu’elles montrent. Votre partenaire RH vous tend un miroir, pas une plainte.' },
         ],
       },
       'w16-board-five-minutes': {
@@ -327,9 +327,9 @@ const week: CurriculumWeek = {
         quote: '« Le conseil veut entendre parler de la subvention. Vous avez cinq minutes, alors concentrez-vous sur l’impact. »',
         choices: [
           { text: 'Présenter vous-même l’impact avec un récit soigné, et conclure en remerciant « mon équipe incroyable, qui a travaillé soirs et week-ends pour y arriver ».', feedback: 'Soigné, mais le conseil se souviendra de vous et d’une équipe sans visage. Un public de dirigeants est justement l’endroit où des noms précis font le plus de bien.' },
-          { text: 'Demander à Florence de remercier personnellement l’équipe après la réunion, puisqu’un mot de la directrice générale comptera plus pour eux que le vôtre.', feedback: 'Une reconnaissance transmise de seconde main perd presque tout son poids, et le conseil ne saura jamais qui a fait le travail.' },
+          { text: 'Demander à Florence : « Comment aimeriez-vous que l’on reconnaisse l’équipe ? Un mot de vous compterait plus qu’un mot de moi », et garder les cinq minutes pour l’impact.', feedback: 'Lui demander comment les remercier paraît respectueux, mais une reconnaissance de seconde main perd de son poids, et le conseil ne sait jamais qui a fait le travail.' },
           { text: 'Consacrer l’essentiel des cinq minutes à raconter la contribution de chaque membre de l’équipe, pour que chaque personne ayant travaillé sur la subvention soit nommée devant le conseil.', feedback: 'Généreux, mais le conseil a demandé l’impact et risque de décrocher. Intégrez plutôt quelques noms et contributions dans le récit de l’impact.' },
-          { text: '« Entendu. Je construirai le récit de l’impact autour des deux personnes qui l’ont porté, une phrase chacune. L’une d’elles pourrait-elle présenter la partie qu’elle a menée ? »', feedback: 'Vous êtes resté sur l’impact en le reliant à des personnes précises, et vous avez offert à une collègue de la visibilité auprès des dirigeants. Une reconnaissance adaptée, c’est parfois tendre le micro à quelqu’un.' },
+          { text: '« Entendu. Je construirai le récit de l’impact autour des deux personnes qui l’ont porté, une phrase chacune, et j’inviterai l’une d’elles à présenter la partie qu’elle a menée. »', feedback: 'Vous êtes resté sur l’impact, l’avez relié à des personnes précises et avez donné de la visibilité à un membre de l’équipe auprès de la direction. Bien reconnaître, c’est parfois tendre le micro.' },
         ],
       },
     },

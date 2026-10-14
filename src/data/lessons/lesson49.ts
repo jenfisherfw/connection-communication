@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-49',
   week: 49,
   focus: 'change',
-  minutes: 3,
+  minutes: 4,
   title: 'Making change stick: from project to habit',
   subtitle: 'Keep the new way alive after the project ends',
   slides: [

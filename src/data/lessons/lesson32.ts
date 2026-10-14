@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-32',
   week: 32,
   focus: 'communication',
-  minutes: 3,
+  minutes: 4,
   title: 'Close the loop: you said, we did',
   subtitle: 'Show people what happened to their input',
   slides: [

@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-30',
   week: 30,
   focus: 'communication',
-  minutes: 3,
+  minutes: 4,
   title: 'Calm under pressure: pause, breathe, frame',
   subtitle: 'Steady yourself first so your words steady the room',
   slides: [

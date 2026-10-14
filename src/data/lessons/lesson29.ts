@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-29',
   week: 29,
   focus: 'communication',
-  minutes: 3,
+  minutes: 4,
   title: 'Rituals that make values real',
   subtitle: 'Turn the words on the wall into habits your team can see',
   slides: [

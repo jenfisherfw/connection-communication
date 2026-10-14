@@ -245,7 +245,7 @@ function SlideView({ slide, picked, onPick, minutes, focus }: { slide: Slide; pi
     case 'takeaway':
       return (
         <View style={s.card}>
-          <Eyebrow color={colors.teal}>{t('Remember')}</Eyebrow>
+          {slide.title.trim().toLowerCase() !== t('Remember').toLowerCase() ? <Eyebrow color={colors.teal}>{t('Remember')}</Eyebrow> : null}
           <Text style={s.title}>{slide.title}</Text>
           {slide.bullets.map((b) => (
             <View key={b} style={s.takeRow}>

@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-02',
   week: 2,
   focus: 'communication',
-  minutes: 3,
+  minutes: 4,
   title: 'Three levels of listening',
   subtitle: 'To respond, to understand, and to what is unsaid',
   slides: [

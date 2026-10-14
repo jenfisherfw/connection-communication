@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-07',
   week: 7,
   focus: 'change',
-  minutes: 3,
+  minutes: 4,
   title: 'Lead with why',
   subtitle: 'Telling the change story people can repeat',
   slides: [

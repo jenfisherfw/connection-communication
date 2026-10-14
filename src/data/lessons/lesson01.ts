@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-01',
   week: 1,
   focus: 'communication',
-  minutes: 3,
+  minutes: 4,
   title: 'Feedback that lands',
   subtitle: 'Situation, behavior, impact, then a question',
   slides: [

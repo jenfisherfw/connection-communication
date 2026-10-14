@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-03',
   week: 3,
   focus: 'communication',
-  minutes: 3,
+  minutes: 4,
   title: 'How trust is built',
   subtitle: 'Reliability, candor, and care, repeated',
   slides: [

@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-50',
   week: 50,
   focus: 'communication',
-  minutes: 3,
+  minutes: 4,
   title: 'Grow the next leaders through conversation',
   subtitle: 'Ask, stretch, and debrief so others learn to lead',
   slides: [

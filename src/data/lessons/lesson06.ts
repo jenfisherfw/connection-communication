@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-06',
   week: 6,
   focus: 'change',
-  minutes: 3,
+  minutes: 4,
   title: 'What resistance is protecting',
   subtitle: 'Why people push back on change, and how to listen for it',
   slides: [

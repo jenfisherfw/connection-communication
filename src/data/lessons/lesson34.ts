@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-34',
   week: 34,
   focus: 'change',
-  minutes: 3,
+  minutes: 4,
   title: 'Change fatigue: prioritize, pause, protect',
   subtitle: 'Help your team carry change without burning out',
   slides: [

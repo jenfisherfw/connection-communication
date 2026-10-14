@@ -4,7 +4,7 @@ const lesson: MicroLesson = {
   id: 'lesson-04',
   week: 4,
   focus: 'communication',
-  minutes: 3,
+  minutes: 4,
   title: 'Purpose, decision, owner',
   subtitle: 'What every meeting needs to be worth the time',
   slides: [
