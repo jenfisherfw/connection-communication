@@ -8,6 +8,7 @@ import frContent from './i18n/fr';
 import { WEEKS } from './library';
 import { LESSONS, MicroLesson, Slide } from './lessons';
 import { LESSON_BADGES, LESSON_BADGE_TEXT } from './lessons/badges';
+import { TOOLS } from './toolkit';
 
 /**
  * Translated text for the content library, keyed by the same ids as content.ts. Only text
@@ -119,7 +120,12 @@ function localize(lang: Lang) {
   });
   const badgeText = lang === 'en' ? {} : LESSON_BADGE_TEXT[lang];
   const BADGES = [...core.BADGES, ...LESSON_BADGES.map((b) => ({ ...b, ...badgeText[b.id] }))];
-  return { ...core, BADGES, SCENARIOS, reflections, tips, schedule, LESSONS: lessons };
+  // Toolkit: a translation is used only when it matches the English section for section.
+  const tools = TOOLS.map((tool) => {
+    const tr = lang === 'en' ? undefined : tool[lang];
+    return tr && tr.title && tr.sections.length === tool.sections.length ? { ...tool, title: tr.title, summary: tr.summary || tool.summary, sections: tr.sections } : tool;
+  });
+  return { ...core, BADGES, SCENARIOS, reflections, tips, schedule, LESSONS: lessons, TOOLS: tools };
 }
 
 const LEVEL_UP: Record<Lang, string> = { en: 'Level up: mixed practice', es: 'Sube de nivel: práctica mixta', fr: 'Niveau supérieur : pratique mixte' };

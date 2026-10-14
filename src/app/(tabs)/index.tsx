@@ -297,6 +297,7 @@ export default function Home() {
             soft: colors.violetSoft,
             go: '/practice',
           },
+          { icon: 'tool', t: t('Toolkit'), s: t('Templates and planners'), c: colors.plum, soft: colors.plumSoft, go: '/toolkit' },
           {
             icon: 'feather',
             t: t('Reflect'),

@@ -5,12 +5,14 @@ import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-
 import { Card, Chip, Eyebrow, IconBubble, ProgressBar, Screen, SectionHeader, Title } from '../../components/ui';
 import { QUIZZES, SCENARIOS } from '../../data/content';
 import { useContent } from '../../data/localized';
+import { categoryOf } from '../../data/toolkit/categories';
 import { useT } from '../../i18n';
 import { useAppState } from '../../state/AppState';
 import { colors, fonts, radius } from '../../theme';
 
 const CATEGORIES = [
   { icon: 'message-circle', label: 'Ask\nCoach', color: colors.primary, soft: colors.primarySoft, go: '/coach' },
+  { icon: 'tool', label: 'Leader\nToolkit', color: colors.plum, soft: colors.plumSoft, go: '/toolkit' },
   { icon: 'book-open', label: 'Micro\nLessons', color: colors.teal, soft: colors.tealSoft, go: '/lessons' },
   { icon: 'check-square', label: 'Quizzes', color: colors.teal, soft: colors.tealSoft, go: `/quiz/${QUIZZES[0].id}` },
   { icon: 'git-branch', label: 'Scenarios', color: colors.coral, soft: colors.coralSoft, go: `/scenario/${SCENARIOS[0].id}` },
@@ -22,7 +24,7 @@ const CATEGORIES = [
 export default function Explore() {
   const { progress } = useAppState();
   const { t } = useT();
-  const { AREAS, CONVERSATION_STARTERS, QUIZZES: quizzes, SCENARIOS: scenarios, ROLEPLAYS: roleplays, areaById } = useContent();
+  const { AREAS, CONVERSATION_STARTERS, QUIZZES: quizzes, SCENARIOS: scenarios, ROLEPLAYS: roleplays, TOOLS, areaById } = useContent();
   const [q, setQ] = useState('');
 
   const results = useMemo(() => {
@@ -101,6 +103,22 @@ export default function Explore() {
         </View>
       </Card>
 
+      <SectionHeader title={t('Leader toolkit')} action={t('See all')} onAction={() => router.push('/toolkit')} />
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginHorizontal: -20 }} contentContainerStyle={{ paddingHorizontal: 20, gap: 12 }}>
+        {TOOLS.slice(0, 6).map((tool) => {
+          const c = categoryOf(tool.category);
+          return (
+            <Card key={tool.id} style={s.toolCard} onPress={() => router.push(`/tool/${tool.id}`)}>
+              <IconBubble icon={tool.icon as never} color={c.color} soft={c.soft} size={40} />
+              <Text style={s.toolTitle} numberOfLines={2}>
+                {tool.title}
+              </Text>
+              <Text style={s.toolMeta}>{t('{n} min', { n: tool.minutes })}</Text>
+            </Card>
+          );
+        })}
+      </ScrollView>
+
       <SectionHeader title={t('Explore by skill')} />
       {AREAS.map((a) => {
         const pts = progress.areaXp[a.id] ?? 0;
@@ -131,6 +149,9 @@ export default function Explore() {
 }
 
 const s = StyleSheet.create({
+  toolCard: { width: 150, padding: 14, gap: 8 },
+  toolTitle: { fontFamily: fonts.semibold, fontSize: 14, lineHeight: 19, color: colors.ink },
+  toolMeta: { fontFamily: fonts.medium, fontSize: 12, color: colors.muted },
   sub: { fontFamily: fonts.body, fontSize: 16, color: colors.muted, marginTop: 4 },
   search: { flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#fff', borderRadius: radius.pill, paddingHorizontal: 18, height: 52, marginTop: 18, borderWidth: 1, borderColor: colors.line },
   searchInput: { flex: 1, fontFamily: fonts.body, fontSize: 16, color: colors.ink, outlineStyle: 'none' } as never,
