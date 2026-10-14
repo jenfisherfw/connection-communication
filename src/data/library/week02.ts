@@ -14,9 +14,9 @@ const week: CurriculumWeek = {
       quote: '"I don\'t even need anything. I just needed to say that call was brutal."',
       xp: 30,
       choices: [
-        { text: '"Next time, transfer them to a supervisor after five minutes. That\'s what the escalation path is for."', score: 1, feedback: 'Useful information, wrong moment. Jumping to fixes tells her you heard a problem, not a person.' },
+        { text: '"That sounds rough. What do you think set him off? Next time, transfer them to a supervisor after five minutes."', score: 1, feedback: 'Curious and useful, but it is the wrong moment. Analyzing the call and jumping to fixes tells her you heard a problem, not a person.' },
         { text: '"Oh, I totally get it. I had one just like that last week, a guy called me names for half an hour. Honestly, you just have to let it roll off."', score: 1, feedback: 'Sharing your own story feels like empathy, but it moves the spotlight to you and ends with advice, just when she needed to be heard.' },
-        { text: '"Twenty minutes of that is exhausting. I\'m glad you came over. Want to take five before your next call?"', score: 3, feedback: 'You reflected what she went through and offered a small, concrete kindness, without turning it into a lesson.' },
+        { text: '"Twenty minutes of that is exhausting. I’m glad you came over. Take five before your next call, I’ll cover your queue."', score: 3, feedback: 'You reflected what she went through and offered a small, concrete kindness, without turning it into a lesson or one more thing to answer.' },
         { text: '"That sounds awful. You handled it, though."', score: 2, feedback: 'Supportive, but it closes the moment quickly. A little more space, or a short break, shows you really heard her.' },
       ],
     },
@@ -32,7 +32,7 @@ const week: CurriculumWeek = {
         { text: '"It\'s mostly final. Before I say more, what\'s on your mind about it?"', score: 3, feedback: 'You answered honestly and got curious. Simple questions asked with tension often carry a bigger concern, like losing lab prep time.' },
         { text: '"It\'s final. The board approved it last week, so there\'s no changing it now, and honestly we spent months getting it right."', score: 1, feedback: 'Accurate, but defending the decision shuts down whatever he was about to raise.' },
         { text: '"Good question! I think it’s still a draft, so don’t worry too much. If anything about it bothers you, I’ll make sure it gets changed."', score: 1, feedback: 'Reassuring and generous, but guessing creates false hope, and promising a change you may not control skips what he actually needs.' },
-        { text: '"It\'s final. Send me an email if you have concerns."', score: 2, feedback: 'Clear, and it leaves a door open, but pushing it to email misses the chance to hear the concern while he is ready to share it.' },
+        { text: '"It\'s final. What concerns do you have? Put them in an email and I\'ll read them tonight."', score: 2, feedback: 'Close: clear, and you asked. But pushing the answer to email misses the chance to hear the concern while he is ready to share it.' },
       ],
     },
     {
@@ -59,8 +59,8 @@ const week: CurriculumWeek = {
       quote: '"Looks like you\'re slammed. We can pick this up another time."',
       xp: 30,
       choices: [
-        { text: '"No, no, I’m listening, I promise. Keep going, I’m just clearing one quick thing."', score: 1, feedback: 'He already noticed. Denying it while your eyes keep drifting tells him the conversation is not a priority.' },
-        { text: '"You’re right, I was distracted. Closing everything now. You were saying the pipeline handoff keeps breaking?"', score: 3, feedback: 'Owning it, removing the distraction, and recapping what you did catch rebuilds attention and trust in one move.' },
+        { text: '"No, no, I’m listening, I promise. What were you saying about the handoff? I’m just clearing one quick thing."', score: 1, feedback: 'He already noticed. Asking him to repeat himself while your eyes keep drifting tells him the conversation is not a priority.' },
+        { text: '"You’re right, I was distracted. Closing everything now. You were saying the pipeline handoff keeps breaking. Go on."', score: 3, feedback: 'Owning it, removing the distraction, and recapping what you did catch rebuilds attention and trust in one move.' },
         { text: '"That’s really thoughtful of you, thanks. Let’s move it to Thursday so you get my full attention instead of half of it. I’ll block the time now."', score: 1, feedback: 'Considerate on the surface, but he was offering an out to be polite. Taking it tells him his topic can wait, and he may not raise it again.' },
         { text: '"Sorry about that. Go ahead, I’m all yours."', score: 2, feedback: 'A good apology, but without visibly closing the distraction and recapping, he may not trust that you are fully back.' },
       ],
@@ -77,7 +77,7 @@ const week: CurriculumWeek = {
         { text: '"That tone isn\'t helpful. Let\'s keep this professional."', score: 1, feedback: 'Policing tone in front of the team shuts him down and misses the real message about workload.' },
         { text: 'Say "Let\'s take this offline," then move to the next agenda item.', score: 2, feedback: 'Taking it out of the room can be sensible, but moving on without acknowledging him feels like a brush off. Name what you heard first.' },
         { text: '"Sounds like you’re worried another crunch will burn out the team. Fair. Let’s see what the new date really takes before I say yes."', score: 3, feedback: 'You listened past the sarcasm to the concern underneath, named it, and showed it would shape the decision.' },
-        { text: '"I hear you, Kenji, and I know it’s been a brutal few months. I promise I’ll push back hard, and nobody pulls another all nighter, whatever it takes."', score: 1, feedback: 'Warm, but promising outcomes you may not control sets up a broken promise. Understand what the change would take before you commit to anything.' },
+        { text: '"I hear you, Kenji. What would make this deadline feel doable? I promise I’ll push back hard, and nobody pulls another all nighter."', score: 1, feedback: 'Warm and open, but promising outcomes you may not control sets up a broken promise. Understand what the change would take before you commit to anything.' },
       ],
     },
     {
@@ -90,7 +90,7 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"Thank you for telling me. I can’t keep it just between us, because HR needs to handle this, and I’ll be with you. What would help right now?"', score: 3, feedback: 'You listened, were honest about confidentiality, followed policy by involving HR, and kept her needs at the center.' },
-        { text: '"Of course, I completely understand, and I’m so sorry this is happening. It stays between us, and I’ll quietly have a word with him myself so you don’t have to."', score: 1, feedback: 'Deeply caring, but promising secrecy and handling it alone can break policy and leave Lucia unprotected. This needs HR.' },
+        { text: '"Of course, I completely understand, and I’m so sorry. What would you like me to say to him? It stays between us, and I’ll quietly handle it myself."', score: 1, feedback: 'Deeply caring, and asking what she wants sounds respectful, but promising secrecy and handling it alone can break policy and leave Lucia unprotected. This needs HR.' },
         { text: '"I\'m sure he doesn\'t mean anything by it. Some people just joke around."', score: 1, feedback: 'Minimizing what she shared tells her it was a mistake to speak up. Listen first, and treat it seriously.' },
         { text: '"That\'s not okay. Let me look into it and get back to you."', score: 2, feedback: 'You took it seriously, but be clear that HR will be involved and ask what she needs now, so nothing is left vague.' },
       ],
@@ -131,9 +131,9 @@ const week: CurriculumWeek = {
         person: 'Grace, agente de atención al cliente',
         quote: '“Ni siquiera necesito nada. Solo tenía que decir que esa llamada fue terrible.”',
         choices: [
-          { text: '“La próxima vez, transfiérelo a un supervisor a los cinco minutos. Para eso está el proceso de escalamiento.”', feedback: 'Información útil, momento equivocado. Saltar a las soluciones le dice que escuchaste un problema, no a una persona.' },
+          { text: '“Suena duro. ¿Qué crees que lo puso así? La próxima vez, transfiérelo a un supervisor a los cinco minutos.”', feedback: 'Curioso y útil, pero es el momento equivocado. Analizar la llamada y saltar a soluciones le dice que escuchaste un problema, no a una persona.' },
           { text: '“Ay, te entiendo totalmente. La semana pasada tuve una igual, un señor me insultó media hora. La verdad, hay que dejar que te resbale.”', feedback: 'Contar tu propia historia parece empatía, pero pone el foco en ti y termina en consejo, justo cuando ella necesitaba ser escuchada.' },
-          { text: '“Veinte minutos de eso agotan a cualquiera. Me alegra que vinieras. ¿Quieres tomarte cinco minutos antes de la próxima llamada?”', feedback: 'Reflejaste lo que vivió y ofreciste una amabilidad pequeña y concreta, sin convertirlo en una lección.' },
+          { text: '“Veinte minutos de eso agotan a cualquiera. Me alegra que vinieras. Tómate cinco minutos antes de la próxima llamada, yo cubro tu fila.”', feedback: 'Reflejaste lo que vivió y ofreciste una amabilidad pequeña y concreta, sin convertirlo en una lección ni en una pregunta más que responder.' },
           { text: '“Qué horrible. Pero lo manejaste bien.”', feedback: 'Es un apoyo, pero cierra el momento rápido. Un poco más de espacio, o una pausa corta, muestra que de verdad la escuchaste.' },
         ],
       },
@@ -146,7 +146,7 @@ const week: CurriculumWeek = {
           { text: '“Está casi definitivo. Antes de decir más, ¿qué te preocupa de él?”', feedback: 'Respondiste con honestidad y mostraste curiosidad. Las preguntas simples hechas con tensión suelen traer una preocupación mayor, como perder tiempo de preparación del laboratorio.' },
           { text: '“Es definitivo. La junta lo aprobó la semana pasada, así que ya no se puede cambiar, y sinceramente pasamos meses afinándolo.”', feedback: 'Es correcto, pero defender la decisión cierra la puerta a lo que estaba por plantear.' },
           { text: '“¡Buena pregunta! Creo que todavía es un borrador, así que no te preocupes mucho. Si algo te molesta, me aseguraré de que lo cambien.”', feedback: 'Tranquilizador y generoso, pero adivinar crea falsas esperanzas, y prometer un cambio que quizá no controlas se salta lo que él realmente necesita.' },
-          { text: '“Es definitivo. Mándame un correo si tienes inquietudes.”', feedback: 'Claro y deja una puerta abierta, pero enviarlo al correo pierde la oportunidad de escuchar la inquietud cuando él está listo para compartirla.' },
+          { text: '“Es definitivo. ¿Qué inquietudes tienes? Mándamelas por correo y las leo esta noche.”', feedback: 'Casi: claro, y preguntaste. Pero mandar la respuesta al correo pierde la oportunidad de escuchar la inquietud cuando él está listo para compartirla.' },
         ],
       },
       'w02-third-time': {
@@ -167,8 +167,8 @@ const week: CurriculumWeek = {
         person: 'Jamal, ingeniero de datos',
         quote: '“Parece que estás a tope. Podemos retomarlo en otro momento.”',
         choices: [
-          { text: '“No, no, te escucho, te lo prometo. Sigue, solo estoy terminando una cosita.”', feedback: 'Él ya se dio cuenta. Negarlo mientras tus ojos siguen desviándose le dice que la conversación no es prioridad.' },
-          { text: '“Tienes razón, me distraje. Ya cierro todo. ¿Decías que la entrega del pipeline sigue fallando?”', feedback: 'Reconocerlo, quitar la distracción y resumir lo que sí captaste reconstruye la atención y la confianza en un solo paso.' },
+          { text: '“No, no, te escucho, te lo prometo. ¿Qué decías de la entrega? Solo estoy terminando una cosita.”', feedback: 'Él ya se dio cuenta. Pedirle que repita mientras tus ojos siguen desviándose le dice que la conversación no es prioridad.' },
+          { text: '“Tienes razón, me distraje. Ya cierro todo. Decías que la entrega del pipeline sigue fallando. Sigue.”', feedback: 'Reconocerlo, quitar la distracción y resumir lo que sí captaste reconstruye la atención y la confianza en un solo paso.' },
           { text: '“Qué considerado, gracias. Pasémoslo al jueves para que tengas toda mi atención y no la mitad. Ya bloqueo el tiempo.”', feedback: 'Considerado en apariencia, pero él ofrecía una salida por cortesía. Aceptarla le dice que su tema puede esperar, y quizá no lo vuelva a plantear.' },
           { text: '“Perdón por eso. Adelante, soy todo oídos.”', feedback: 'Una buena disculpa, pero sin cerrar visiblemente la distracción ni resumir, quizá no confíe en que ya estás presente del todo.' },
         ],
@@ -182,7 +182,7 @@ const week: CurriculumWeek = {
           { text: '“Ese tono no ayuda. Mantengamos esto profesional.”', feedback: 'Corregir el tono frente al equipo lo silencia y pierde el mensaje real sobre la carga de trabajo.' },
           { text: 'Decir “Hablemos de esto aparte” y pasar al siguiente punto de la agenda.', feedback: 'Sacarlo de la sala puede ser sensato, pero seguir sin reconocerlo se siente como un desaire. Nombra primero lo que escuchaste.' },
           { text: '“Parece que te preocupa que otro sprint de urgencia queme al equipo. Es justo. Veamos qué implica de verdad la nueva fecha antes de decir que sí.”', feedback: 'Escuchaste más allá del sarcasmo la preocupación de fondo, la nombraste y mostraste que influiría en la decisión.' },
-          { text: '“Te escucho, Kenji, y sé que han sido meses brutales. Te prometo que voy a pelear fuerte y que nadie va a trasnochar otra vez, cueste lo que cueste.”', feedback: 'Cálido, pero prometer resultados que quizá no controlas prepara una promesa rota. Entiende qué implicaría el cambio antes de comprometerte.' },
+          { text: '“Te escucho, Kenji. ¿Qué haría que este plazo se sienta posible? Te prometo que voy a presionar fuerte y nadie pasará otra noche en vela.”', feedback: 'Cálido y abierto, pero prometer resultados que quizá no controlas prepara una promesa rota. Entiende lo que implicaría el cambio antes de comprometerte con algo.' },
         ],
       },
       'w02-hard-disclosure': {
@@ -192,7 +192,7 @@ const week: CurriculumWeek = {
         quote: '“No quiero hacer un escándalo. ¿Puedes dejar esto solo entre nosotros?”',
         choices: [
           { text: '“Gracias por contármelo. No puedo dejarlo solo entre nosotros, porque Recursos Humanos tiene que manejarlo, y estaré contigo. ¿Qué te ayudaría ahora?”', feedback: 'Escuchaste, fuiste honesto sobre la confidencialidad, seguiste la política al involucrar a Recursos Humanos y mantuviste sus necesidades en el centro.' },
-          { text: '“Claro, lo entiendo completamente, y siento mucho que te esté pasando. Queda entre nosotros, y yo hablaré discretamente con él para que tú no tengas que hacerlo.”', feedback: 'Muy empático, pero prometer secreto y manejarlo solo puede incumplir la política y dejar a Lucia sin protección. Esto requiere a Recursos Humanos.' },
+          { text: '“Claro, lo entiendo totalmente, y lo siento mucho. ¿Qué quieres que le diga? Queda entre nosotros, y yo me encargo en silencio.”', feedback: 'Muy considerado, y preguntarle qué quiere suena respetuoso, pero prometer secreto y manejarlo solo puede romper la política y dejar a Lucia desprotegida. Esto necesita a Recursos Humanos.' },
           { text: '“Seguro que no lo dice con mala intención. Hay gente que solo bromea.”', feedback: 'Minimizar lo que compartió le dice que fue un error hablar. Escucha primero y tómalo en serio.' },
           { text: '“Eso no está bien. Déjame revisarlo y te aviso.”', feedback: 'Lo tomaste en serio, pero aclara que Recursos Humanos participará y pregunta qué necesita ahora, para que nada quede en el aire.' },
         ],
@@ -225,9 +225,9 @@ const week: CurriculumWeek = {
         person: 'Grace, conseillère service client',
         quote: '« Je n’ai même besoin de rien. Il fallait juste que je dise que cet appel était épouvantable. »',
         choices: [
-          { text: '« La prochaine fois, transférez-le à un superviseur au bout de cinq minutes. C’est à ça que sert la procédure d’escalade. »', feedback: 'Information utile, mauvais moment. Sauter aux solutions lui montre que vous avez entendu un problème, pas une personne.' },
+          { text: '« Ça a l’air dur. Qu’est-ce qui l’a mis dans cet état, à votre avis ? La prochaine fois, transférez-le à un superviseur au bout de cinq minutes. »', feedback: 'Curieux et utile, mais au mauvais moment. Analyser l’appel et passer aux solutions lui montre que vous avez entendu un problème, pas une personne.' },
           { text: '« Oh, je comprends tellement. J’en ai eu un pareil la semaine dernière, un monsieur m’a insulté pendant une demi-heure. Honnêtement, il faut laisser glisser. »', feedback: 'Raconter votre propre histoire ressemble à de l’empathie, mais cela met la lumière sur vous et finit en conseil, au moment où elle avait besoin d’être écoutée.' },
-          { text: '« Vingt minutes de ça, c’est épuisant. Je suis content que vous soyez venue. Vous voulez prendre cinq minutes avant le prochain appel ? »', feedback: 'Vous avez reflété ce qu’elle a vécu et offert une attention simple et concrète, sans en faire une leçon.' },
+          { text: '« Vingt minutes de ça, c’est épuisant. Je suis content que vous soyez venue. Prenez cinq minutes avant le prochain appel, je couvre votre file. »', feedback: 'Vous avez reflété ce qu’elle a vécu et offert une attention simple et concrète, sans en faire une leçon ni une question de plus à laquelle répondre.' },
           { text: '« C’est affreux. Mais vous avez bien géré. »', feedback: 'C’est bienveillant, mais cela referme vite le moment. Un peu plus d’espace, ou une courte pause, montre que vous l’avez vraiment entendue.' },
         ],
       },
@@ -240,7 +240,7 @@ const week: CurriculumWeek = {
           { text: '« Il est presque définitif. Avant d’en dire plus, qu’est-ce qui vous préoccupe ? »', feedback: 'Vous avez répondu honnêtement et montré de la curiosité. Les questions simples posées avec tension cachent souvent une inquiétude plus large, comme la perte du temps de préparation des TP.' },
           { text: '« Il est définitif. Le conseil l’a validé la semaine dernière, donc impossible de le changer, et honnêtement on a passé des mois à le mettre au point. »', feedback: 'C’est exact, mais défendre la décision coupe court à ce qu’il s’apprêtait à soulever.' },
           { text: '« Bonne question ! Je crois que c’est encore un brouillon, alors ne vous inquiétez pas trop. Si quelque chose vous gêne, je ferai en sorte que ce soit changé. »', feedback: 'Rassurant et généreux, mais deviner crée de faux espoirs, et promettre un changement que vous ne maîtrisez peut-être pas évite ce dont il a vraiment besoin.' },
-          { text: '« Il est définitif. Envoyez-moi un e-mail si vous avez des inquiétudes. »', feedback: 'Clair, et cela laisse une porte ouverte, mais renvoyer à l’e-mail fait manquer l’occasion d’entendre l’inquiétude quand il est prêt à la partager.' },
+          { text: '« Il est définitif. Quelles sont vos inquiétudes ? Envoyez-les-moi par e-mail et je les lirai ce soir. »', feedback: 'Presque : clair, et vous avez demandé. Mais renvoyer la réponse à un e-mail fait manquer l’occasion d’entendre l’inquiétude quand il est prêt à la partager.' },
         ],
       },
       'w02-third-time': {
@@ -261,8 +261,8 @@ const week: CurriculumWeek = {
         person: 'Jamal, ingénieur data',
         quote: '« On dirait que vous êtes débordé. On peut reprendre ça une autre fois. »',
         choices: [
-          { text: '« Non, non, je vous écoute, promis. Continuez, je règle juste un petit truc. »', feedback: 'Il l’a déjà remarqué. Le nier pendant que votre regard continue de dériver lui montre que la conversation n’est pas une priorité.' },
-          { text: '« Vous avez raison, j’étais distrait. Je ferme tout. Vous disiez que le transfert du pipeline casse encore ? »', feedback: 'Le reconnaître, supprimer la distraction et reprendre ce que vous aviez saisi rétablit l’attention et la confiance d’un seul geste.' },
+          { text: '« Non, non, je vous écoute, promis. Que disiez-vous sur le transfert ? Je règle juste un petit truc. »', feedback: 'Il l’a déjà remarqué. Lui demander de répéter pendant que votre regard continue de dériver lui montre que la conversation n’est pas une priorité.' },
+          { text: '« Vous avez raison, j’étais distrait. Je ferme tout. Vous disiez que le transfert du pipeline casse encore. Continuez. »', feedback: 'Le reconnaître, supprimer la distraction et reprendre ce que vous aviez saisi rétablit l’attention et la confiance d’un seul geste.' },
           { text: '« C’est très attentionné, merci. Décalons à jeudi pour que vous ayez toute mon attention et pas la moitié. Je bloque le créneau tout de suite. »', feedback: 'Attentionné en apparence, mais il offrait une porte de sortie par politesse. L’accepter lui dit que son sujet peut attendre, et il risque de ne plus en parler.' },
           { text: '« Désolé. Allez-y, je suis tout à vous. »', feedback: 'De bonnes excuses, mais sans fermer visiblement la distraction ni reformuler, il risque de douter que vous soyez vraiment de retour.' },
         ],
@@ -276,7 +276,7 @@ const week: CurriculumWeek = {
           { text: '« Ce ton n’aide pas. Restons professionnels. »', feedback: 'Reprendre le ton devant l’équipe le fait taire et passe à côté du vrai message sur la charge de travail.' },
           { text: 'Dire « On en reparle en aparté », puis passer au point suivant de l’ordre du jour.', feedback: 'Sortir le sujet de la salle peut être judicieux, mais enchaîner sans le reconnaître ressemble à une rebuffade. Nommez d’abord ce que vous avez entendu.' },
           { text: '« Vous semblez craindre qu’un nouveau rush épuise l’équipe. C’est juste. Voyons ce que la nouvelle date implique vraiment avant que je dise oui. »', feedback: 'Vous avez écouté au-delà du sarcasme l’inquiétude sous-jacente, vous l’avez nommée et avez montré qu’elle pèserait dans la décision.' },
-          { text: '« Je vous entends, Kenji, et je sais que ces derniers mois ont été durs. Je vous promets de me battre, et personne ne fera de nuit blanche, quoi qu’il arrive. »', feedback: 'Chaleureux, mais promettre des résultats que vous ne maîtrisez peut-être pas prépare une promesse non tenue. Comprenez ce qu’impliquerait le changement avant de vous engager.' },
+          { text: '« Je vous entends, Kenji. Qu’est-ce qui rendrait ce délai tenable ? Je vous promets de résister fermement, et plus personne ne passera de nuit blanche. »', feedback: 'Chaleureux et ouvert, mais promettre des résultats que vous ne maîtrisez peut-être pas prépare une promesse non tenue. Comprenez ce que le changement impliquerait avant de vous engager.' },
         ],
       },
       'w02-hard-disclosure': {
@@ -286,7 +286,7 @@ const week: CurriculumWeek = {
         quote: '« Je ne veux pas en faire toute une histoire. Vous pouvez garder ça entre nous ? »',
         choices: [
           { text: '« Merci de me l’avoir dit. Je ne peux pas garder cela entre nous, car les RH doivent s’en occuper, et je serai à vos côtés. Qu’est-ce qui vous aiderait maintenant ? »', feedback: 'Vous avez écouté, été honnête sur la confidentialité, suivi la politique en impliquant les RH et gardé ses besoins au centre.' },
-          { text: '« Bien sûr, je comprends tout à fait, et je suis vraiment désolé que cela vous arrive. Cela reste entre nous, et je lui parlerai discrètement moi-même pour que vous n’ayez pas à le faire. »', feedback: 'Très bienveillant, mais promettre le secret et gérer seul peut enfreindre la politique et laisser Lucia sans protection. Cela relève des RH.' },
+          { text: '« Bien sûr, je comprends tout à fait, et je suis vraiment désolé. Que voulez-vous que je lui dise ? Ça reste entre nous, et je m’en occupe discrètement. »', feedback: 'Très attentionné, et lui demander ce qu’elle veut semble respectueux, mais promettre le secret et gérer seul peut enfreindre la politique et laisser Lucia sans protection. Cela relève des RH.' },
           { text: '« Je suis sûr qu’il ne pense pas à mal. Certaines personnes aiment juste plaisanter. »', feedback: 'Minimiser ce qu’elle a partagé lui dit qu’elle a eu tort de parler. Écoutez d’abord, et prenez-le au sérieux.' },
           { text: '« Ce n’est pas acceptable. Laissez-moi regarder ça et je reviens vers vous. »', feedback: 'Vous l’avez pris au sérieux, mais précisez que les RH seront impliqués et demandez ce dont elle a besoin maintenant, pour que rien ne reste flou.' },
         ],

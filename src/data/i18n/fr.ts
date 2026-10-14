@@ -272,7 +272,7 @@ const fr: ContentTranslation = {
         { text: '« C’était dans le document de lancement, page deux, et nous l’avons vu à la première réunion. Je sais que c’est beaucoup à suivre, mais les revues n’ont jamais été optionnelles. »', feedback: 'Exact, et même poli, mais vous gagnez sur le fond et perdez la personne. La défensive s’accentue généralement quand on lui oppose davantage de preuves.' },
         { text: '« C’est juste de le soulever. Qu’est-ce qui vous en a empêchée ? Clarifions ensemble comment les revues fonctionnent désormais. »', feedback: 'Vous avez validé son ressenti sans abandonner l’exigence, cherché à comprendre la cause et avancé vers une solution commune.' },
         { text: '« Désolé, c’est ma faute, je n’ai pas été assez clair. Ne vous inquiétez pas pour celles que vous avez manquées. Je vais arranger ça avec les parties prenantes et on repart à zéro au prochain projet. »', feedback: 'Bienveillant, mais vous lui avez retiré tout le problème et rendu l’exigence implicitement optionnelle. Assumer votre part est bien ; la sauver de la sienne, non.' },
-        { text: '« Je vous entends, et je regrette que ce soit vécu comme injuste. Malgré tout, les revues doivent avoir lieu. »', feedback: 'Presque. Vous avez reconnu son ressenti, mais êtes revenu tout de suite à la règle sans demander ce qui l’en a empêchée, et c’est cette question qui crée l’adhésion.' },
+        { text: '« Je vous entends, et je regrette que ce soit vécu comme injuste. Comment s’assurer que les revues aient lieu désormais ? »', feedback: 'Presque. Vous avez reconnu son ressenti et posé une bonne question sur la suite, mais sans demander ce qui l’en a empêchée cette fois, et c’est cette question qui crée l’adhésion.' },
       ],
     },
     'peer-credit': {
@@ -307,7 +307,7 @@ const fr: ContentTranslation = {
       choices: [
         { text: '« Excellente question, et je comprends tout à fait l’inquiétude. Le poste de chacun est garanti, je vous le promets. C’est une belle opportunité pour nous tous, et je m’en réjouis. »', feedback: 'Chaleureux, mais une promesse globale sur ce que vous ne maîtrisez peut-être pas sonne comme de la communication, et si quelque chose change, votre parole est perdue.' },
         { text: '« Aucun licenciement n’est prévu dans ce changement. Je vous présente ce qui change, ce qui ne change pas, et quand vous en saurez plus. »', feedback: 'Une réponse directe, des limites claires et un suivi annoncé. C’est ainsi qu’on apaise une salle sans trop promettre.' },
-        { text: '« Je ne peux pas parler des effectifs dans ce cadre, mais les RH partageront plus de détails avec tout le monde le moment venu. »', feedback: 'Même si c’est vrai, un refus sec confirme la crainte. Partagez ce que vous pouvez et dites quand vous en saurez plus.' },
+        { text: '« C’est une inquiétude légitime. Avant de répondre, qu’est-ce que les gens ont entendu ? Je préfère traiter d’abord les vraies rumeurs. »', feedback: 'Curieux, mais répondre à une question directe par une autre question devant toute la salle passe pour une esquive, et la peur grandit pendant l’attente. Répondez d’abord, écoutez ensuite.' },
         { text: '« Bonne question. À ma connaissance, aucun licenciement n’est prévu. Je confirme les détails et je reviens vers tout le monde bientôt. »', feedback: 'Vous avez répondu directement, mais « bientôt » est vague et « à ma connaissance » invite au doute. Donnez une date précise et dites ce qui change et ce qui ne change pas.' },
       ],
     },
@@ -319,7 +319,7 @@ const fr: ContentTranslation = {
       choices: [
         { text: '« Je sais, croyez-moi. Honnêtement, ça vient d’en haut et c’est obligatoire, mais je résisterai là où je peux. »', feedback: 'Rejeter la responsabilité sur votre hiérarchie érode la confiance dans le changement et en vous en tant que manager.' },
         { text: '« C’est juste, ça fait beaucoup. Voici pourquoi celui-ci compte, ce que nous abandonnons pour faire de la place et comment nous vous accompagnerons. »', feedback: 'Vous avez reconnu la fatigue, expliqué le pourquoi et montré que vous retirez de la charge au lieu d’en ajouter seulement.' },
-        { text: '« Je vous entends tout à fait, et je sais que le changement est difficile. Restons positifs et donnons-lui une vraie chance. Je vous promets que ce sera le dernier grand changement avant longtemps. »', feedback: 'Bienveillant, mais demander de la positivité balaie une vraie inquiétude, et promettre que c’est le dernier changement est une promesse que vous ne pourrez sans doute pas tenir.' },
+        { text: '« Je vous entends tout à fait. Que faudrait-il pour que vous donniez vraiment sa chance à celui-ci ? Je vous promets que ce sera le dernier grand changement avant longtemps. »', feedback: 'Cela semble ouvert, mais la question fait porter à Dana la charge de l’adhésion, et promettre que c’est le dernier changement est une promesse que vous ne pourrez sans doute pas tenir.' },
         { text: '« C’est juste, Dana, et je vous entends. Prenons dix minutes après la réunion pour que je comprenne ce qui vous inquiète. »', feedback: 'Bon réflexe, mais toute la salle a entendu l’inquiétude. Répondez-y brièvement sur le moment aussi, puis faites le suivi.' },
       ],
     },
@@ -343,7 +343,7 @@ const fr: ContentTranslation = {
       choices: [
         { text: '« Merci, Lee, ça fait plaisir à entendre. Je suis content que chacun trouve que ça fonctionne bien, et ma porte reste ouverte si quelque chose se présente. »', feedback: 'Le silence est rarement un accord. Le prendre au pied de la lettre, même chaleureusement, c’est passer à côté de ce que les gens ne disent pas.' },
         { text: '« Merci, Lee. Je commence : je pourrais donner des priorités plus claires. Qu’est-ce qui vous faciliterait la semaine ? »', feedback: 'Commencer par votre propre axe d’amélioration permet aux autres d’être honnêtes sans risque.' },
-        { text: '« Allez, l’équipe, je sais que quelqu’un a une idée. Il n’y a pas de mauvaise réponse, alors écoutons au moins deux autres personnes avant de continuer. »', feedback: 'Une pression amicale reste une pression qui rend la prise de parole plus risquée. Les gens ont besoin de sécurité, pas d’un coup de pouce forcé.' },
+        { text: '« Allez, l’équipe, il n’y a pas de mauvaise réponse. Lee, qu’est-ce qui vous agace dans notre façon de travailler ? Puis écoutons deux autres personnes. »', feedback: 'Amical, et la question est ouverte, mais interpeller Lee par son nom devant tout le monde rend la prise de parole plus risquée. Les gens ont besoin de sécurité, pas d’un coup de pouce forcé.' },
         { text: '« D’accord. J’enverrai un court sondage anonyme après la réunion pour que chacun partage ses idées en privé. »', feedback: 'Un canal anonyme aide, mais seul, il saute le geste le plus fort : montrer vous-même l’exemple de la franchise dans la salle.' },
       ],
     },
@@ -356,7 +356,7 @@ const fr: ContentTranslation = {
         { text: 'Laisser le débat continuer quelques minutes, puisque les gens sont visiblement impliqués et que le logo compte aussi pour le lancement.', feedback: 'S’impliquer sur le mauvais sujet consume quand même la réunion. La décision pour laquelle vous êtes venus est bâclée ou passe à la trappe.' },
         { text: '« C’est important, alors gardons-le pour jeudi. Nous avons 10 minutes pour choisir la date de lancement. Où en sommes-nous ? »', feedback: 'Vous avez respecté le sujet, protégé l’objectif et recentré la salle sur la décision.' },
         { text: '« Bons points, mais nous sommes hors sujet. Revenons à la date de lancement, il ne reste que 10 minutes. »', feedback: 'Bon réflexe, mais préciser quand le sujet mis de côté sera traité évite que les gens se sentent ignorés.' },
-        { text: '« Riley, c’est visiblement important pour vous. Prévoyons une autre réunion pour le logo et la date de lancement, pour ne rien décider à la hâte. »', feedback: 'Attentionné, mais une autre réunion récompense la dérive et retarde la décision pour laquelle vous étiez là. Ramenez le groupe à cette décision tant qu’il est réuni.' },
+        { text: '« Riley, c’est visiblement important pour vous. À quoi ressemblerait une bonne décision sur le logo ? Posons-la, puis revenons à la date. »', feedback: 'Impliqué et curieux, mais une bonne question sur le sujet annexe éloigne encore la salle de la décision pour laquelle vous étiez là, à dix minutes de la fin.' },
       ],
     },
     'meeting-no-actions': {
@@ -365,7 +365,7 @@ const fr: ContentTranslation = {
       person: 'Sky, ingénieure',
       quote: '« On n’en a pas déjà parlé la semaine dernière ? »',
       choices: [
-        { text: '« Bien vu, Sky. Certains sont des problèmes difficiles, alors continuons d’en discuter jusqu’à les résoudre ensemble. »', feedback: 'Plus de discussion sans responsables produit le même résultat la semaine suivante.' },
+        { text: '« Bien vu, Sky. Qu’est-ce qui, selon vous, les rend si difficiles à clore ? Continuons d’en discuter jusqu’à les résoudre ensemble. »', feedback: 'Curieux et inclusif, mais diagnostiquer en réunion reste de la discussion sans responsables. La semaine prochaine ressemblera exactement à celle-ci.' },
         { text: '« Vous avez raison. Désormais, nous finissons avec des responsables et des dates, et j’envoie un compte rendu. Qui prend celui-ci ? »', feedback: 'Vous avez nommé le schéma et corrigé le système. Des responsables clairs et un récapitulatif écrit sont ce qui fait avancer le travail grâce aux réunions.' },
         { text: '« C’est juste. Passons cette réunion à quatre-vingt-dix minutes pour avoir enfin le temps de finir chaque sujet correctement, sans courir. »', feedback: 'Des réunions plus longues règlent rarement un manque de suivi.' },
         { text: '« Vous avez raison. Je verrai chacun de vous après pour désigner des responsables et faire avancer les choses. »', feedback: 'Des responsables, c’est la bonne solution, mais les désigner en privé empêche le groupe de voir les engagements communs. Rendez la responsabilité visible dans la salle.' },
@@ -415,7 +415,7 @@ const fr: ContentTranslation = {
       choices: [
         { text: 'Demander à tous d’allumer leur caméra aujourd’hui, en expliquant chaleureusement que cela aide l’équipe à se sentir proche et à mieux sentir l’ambiance.', feedback: 'Une raison aimable ne change pas l’effet : une règle générale peut gêner et ne traite pas la raison pour laquelle quelqu’un s’est tu.' },
         { text: 'Utiliser le chat ou un tour de table rapide pour que chacun contribue, puis échanger avec Casey en privé.', feedback: 'Vous avez facilité la participation de tous et fait un suivi en tête-à-tête, là où les gens sont plus enclins à dire ce qui se passe.' },
-        { text: 'Inviter chaleureusement Casey à prendre la parole en premier, par son nom, pour lui montrer que sa voix compte.', feedback: 'L’intention est bonne, mais mettre en lumière quelqu’un qui s’est retiré accentue souvent ce retrait.' },
+        { text: 'Demander chaleureusement à Casey en premier, par son nom : « Casey, qu’en pensez-vous ? », pour lui montrer que sa voix compte.', feedback: 'Une question ouverte et aimable, mais mettre en lumière quelqu’un qui s’est retiré accentue souvent ce retrait.' },
         { text: 'Ne rien faire ; le travail à distance est différent, et certains préfèrent simplement écouter.', feedback: 'L’isolement est un risque réel dans les équipes à distance. Le silence mérite de la curiosité.' },
       ],
     },

@@ -17,7 +17,7 @@ const week: CurriculumWeek = {
         { text: '"A few things. I\'ll share my plan at the next team meeting."', score: 1, feedback: 'Arriving with a plan before you have listened tells veterans their experience does not count. Trust starts with curiosity, not a roadmap.' },
         { text: '"Nothing, honestly! You all clearly know what you’re doing, and I don’t want to rock the boat. You have my word things will stay the way they are."', score: 1, feedback: 'It sounds reassuring, but it is a promise you probably cannot keep. Breaking it later costs more trust than being honest now.' },
         { text: '"Honestly, I don’t know yet. I want to listen first. What should I protect here, and what drives you up the wall?"', score: 3, feedback: 'You were honest about what you do not know and showed that his experience will shape your decisions. That is how trust starts.' },
-        { text: '"Let\'s get to know each other first. Tell me about yourself."', score: 2, feedback: 'Warm, but it sidesteps a fair question. Answer it directly, then get curious.' },
+        { text: '"Let\'s get to know each other first. What do you love about working here?"', score: 2, feedback: 'Warm and curious, but it sidesteps a fair question. Answer it directly, then get curious.' },
       ],
     },
     {
@@ -32,7 +32,7 @@ const week: CurriculumWeek = {
         { text: '"It didn\'t, and that\'s on me. I\'m sorry. I\'ll email the organizers today about a late spot and tell you by Thursday."', score: 3, feedback: 'A clean apology with no excuses, plus a specific next step and a date. Owning a miss well can build more trust than never missing at all.' },
         { text: '"Ugh, I\'m so sorry. It\'s been such a crazy month with the release and the hiring push, and a few things slipped through the cracks."', score: 2, feedback: 'The apology is real, but leading with how busy you were puts the focus on you. Own it plainly and say what you will do now.' },
         { text: '"Budget was tight this quarter anyway, so it might not have been approved."', score: 1, feedback: 'Even if it is true, it sounds like a cover story. People can tell, and it teaches them your promises are soft.' },
-        { text: '"I’m so sorry. Tell you what, there will be other conferences, and I’ll make sure you get first pick of any one you want next year."', score: 1, feedback: 'Generous, but moving on fast skips the part where you own the miss, and it swaps one promise for another. She will remember the broken one.' },
+        { text: '"I’m so sorry. What can I do to make it up to you? I’ll make sure you get first pick of any conference you want next year."', score: 1, feedback: 'Generous, but it skips owning the miss, hands her the job of naming a fix, and swaps one promise for another. She will remember the broken one.' },
       ],
     },
     {
@@ -44,7 +44,7 @@ const week: CurriculumWeek = {
       quote: '"The whole floor thinks the schedule mess was our fault. That\'s not great."',
       xp: 30,
       choices: [
-        { text: '"I’m really sorry you’re dealing with that. Rumors like this die down fast, so I wouldn’t give it any more air. I’ve got your back if anyone says anything."', score: 1, feedback: 'Supportive in tone, but letting your leads carry the blame for your mistake quietly spends their trust in you. They will notice you stayed silent.' },
+        { text: '"I’m really sorry you’re dealing with that. Who’s been saying it? I’ll have a quiet word with them, and it’ll die down fast. I’ve got your back."', score: 1, feedback: 'Protective in tone, but hunting down who started the rumor dodges the real fix. Letting your leads carry the blame for your mistake quietly spends their trust in you.' },
         { text: '"I\'ll set the record straight with anyone who asks."', score: 2, feedback: 'Better than silence, but a mistake that hit the whole crew deserves a clear, public correction, not a one by one fix.' },
         { text: 'Email the crew that "a scheduling error occurred" and has been fixed.', score: 1, feedback: 'Passive wording hides who made the error. People trust leaders who say "I," not "an error occurred."' },
         { text: '"That’s on me, and you won’t carry it. At today’s huddle I’ll say I built the schedule, missed the holiday, and how I’ll check it now."', score: 3, feedback: 'Owning the mistake publicly protects your leads and shows the crew you hold yourself to the same standard you hold them to.' },
@@ -62,7 +62,7 @@ const week: CurriculumWeek = {
         { text: '"I know how stressful rumors like this are, and I’d hate for you to lose sleep over it. Trust me, nothing is happening, and your job here is safe."', score: 1, feedback: 'It eases the moment kindly, but if the merger happens, every reassurance you have ever given becomes suspect. Never trade future trust for present comfort.' },
         { text: '"I can’t share everything before it’s final, and I won’t pretend otherwise. You’ll hear real news from me as early as I’m allowed."', score: 3, feedback: 'You were honest about the limits of what you can say without lying or leaking. People can trust a boundary they understand.' },
         { text: '"I\'m not able to discuss that."', score: 2, feedback: 'Honest, but it can land like a closed door and feed the rumor. Explain the boundary and what you will do once you can share.' },
-        { text: '"Between us? Maybe update your resume, just in case."', score: 1, feedback: 'Hinting breaks the confidence you agreed to keep and spreads fear about something that is not decided. It erodes trust in both directions.' },
+        { text: '"Between us? What have you heard so far? Maybe update your resume, just in case."', score: 1, feedback: 'Hinting breaks the confidence you agreed to keep and spreads fear about something that is not decided. It erodes trust in both directions.' },
       ],
     },
     {
@@ -77,7 +77,7 @@ const week: CurriculumWeek = {
         { text: '"Honestly? I think it\'s a terrible call, and I told them so. But it\'s out of my hands, so we\'re all stuck with it."', score: 1, feedback: 'Venting feels honest, but it tells the team you are powerless and leadership cannot be trusted. That leaves them nowhere to take their concerns.' },
         { text: '"Of course I agree. I know it’s hard, but I really believe it’s the right decision for all of us, and I’m proud of how leadership handled it."', score: 1, feedback: 'It sounds loyal and steady, but your team likely knows you pushed back. Pretending otherwise costs credibility you will need later.' },
         { text: '"I argued to keep it, and I lost. Here\'s why leadership chose this. I\'m committed to making it work. What worries you most?"', score: 3, feedback: 'Disagreeing openly and committing anyway shows integrity. Explaining the reasoning and inviting concerns keeps trust in you and in the decision.' },
-        { text: '"What I think doesn\'t really matter now. Let\'s focus on next steps."', score: 2, feedback: 'Moving forward is right, but dodging the question looks evasive. A short, honest answer earns more trust than a pivot.' },
+        { text: '"What I think matters less than what happens next. What do you need from me to make this work?"', score: 2, feedback: 'Close: moving forward and offering support are right, but dodging the question looks evasive. A short, honest answer earns more trust than a pivot.' },
       ],
     },
     {
@@ -148,7 +148,7 @@ const week: CurriculumWeek = {
           { text: '“Algunas cosas. Compartiré mi plan en la próxima reunión de equipo.”', feedback: 'Llegar con un plan antes de escuchar les dice a los veteranos que su experiencia no cuenta. La confianza empieza con curiosidad, no con una hoja de ruta.' },
           { text: '“¡Nada, de verdad! Está claro que saben lo que hacen y no quiero alborotar las cosas. Te doy mi palabra de que todo seguirá como está.”', feedback: 'Suena tranquilizador, pero probablemente es una promesa que no podrás cumplir. Romperla después cuesta más confianza que ser honesto ahora.' },
           { text: '“Sinceramente, todavía no lo sé. Primero quiero escuchar. ¿Qué debería proteger aquí y qué te saca de quicio?”', feedback: 'Fuiste honesto sobre lo que no sabes y mostraste que su experiencia guiará tus decisiones. Así empieza la confianza.' },
-          { text: '“Primero conozcámonos. Cuéntame de ti.”', feedback: 'Es cálido, pero esquiva una pregunta justa. Respóndela directamente y luego muestra curiosidad.' },
+          { text: '“Primero conozcámonos. ¿Qué es lo que más te gusta de trabajar aquí?”', feedback: 'Cálido y curioso, pero esquiva una pregunta justa. Respóndela directamente y luego muestra curiosidad.' },
         ],
       },
       'w03-dropped-ball': {
@@ -160,7 +160,7 @@ const week: CurriculumWeek = {
           { text: '“No, y es mi culpa. Lo siento. Hoy les escribo a los organizadores para ver si hay un lugar tardío y te aviso el jueves.”', feedback: 'Una disculpa limpia, sin excusas, con un siguiente paso concreto y una fecha. Asumir bien un error puede generar más confianza que no fallar nunca.' },
           { text: '“Uf, lo siento mucho. Ha sido un mes de locos con el lanzamiento y las contrataciones, y se me escaparon algunas cosas.”', feedback: 'La disculpa es sincera, pero empezar por lo ocupado que estabas pone el foco en ti. Asúmelo sin rodeos y di qué harás ahora.' },
           { text: '“De todos modos el presupuesto estaba ajustado este trimestre, así que quizá no la habrían aprobado.”', feedback: 'Aunque sea cierto, suena a pretexto. La gente lo nota, y aprende que tus promesas no son firmes.' },
-          { text: '“Lo siento mucho. Mira, habrá otras conferencias, y me aseguraré de que el próximo año elijas primero la que quieras.”', feedback: 'Generoso, pero avanzar tan rápido se salta la parte en que asumes el error, y cambia una promesa por otra. Ella recordará la que no cumpliste.' },
+          { text: '“Lo siento muchísimo. ¿Qué puedo hacer para compensarte? Me aseguraré de que elijas primero cualquier conferencia que quieras el próximo año.”', feedback: 'Generoso, pero te saltas asumir el error, le pasas a ella la tarea de proponer una solución y cambias una promesa por otra. Ella recordará la que rompiste.' },
         ],
       },
       'w03-schedule-mistake': {
@@ -169,7 +169,7 @@ const week: CurriculumWeek = {
         person: 'Quinn, líder de turno',
         quote: '“Todo el piso cree que el lío del horario fue culpa nuestra. No está nada bien.”',
         choices: [
-          { text: '“Siento mucho que estén pasando por eso. Estos rumores se apagan rápido, así que yo no les daría más aire. Si alguien dice algo, cuentan conmigo.”', feedback: 'El tono es de apoyo, pero dejar que tus líderes carguen con la culpa de tu error gasta en silencio su confianza en ti. Notarán que callaste.' },
+          { text: '“Siento mucho que estés pasando por eso. ¿Quién lo anda diciendo? Hablaré en privado con esas personas y se calmará rápido. Te respaldo.”', feedback: 'Protector en el tono, pero buscar quién empezó el rumor evita la solución real. Dejar que tus líderes carguen con la culpa de tu error gasta, sin ruido, su confianza en ti.' },
           { text: '“Le aclararé lo que pasó a quien me pregunte.”', feedback: 'Es mejor que el silencio, pero un error que afectó a todo el equipo merece una corrección clara y pública, no una aclaración de uno en uno.' },
           { text: 'Enviar un correo al equipo diciendo que “ocurrió un error en el horario” y que ya se corrigió.', feedback: 'La voz pasiva oculta quién cometió el error. La gente confía en líderes que dicen “yo”, no “ocurrió un error”.' },
           { text: '“Es mi responsabilidad, y no la vas a cargar tú. En la reunión de hoy diré que yo hice el horario, que olvidé el feriado y cómo lo revisaré ahora.”', feedback: 'Asumir el error en público protege a tus líderes y le muestra al equipo que te exiges lo mismo que les exiges a ellos.' },
@@ -184,7 +184,7 @@ const week: CurriculumWeek = {
           { text: '“Sé lo estresantes que son estos rumores, y no quiero que pierdas el sueño por esto. Confía en mí, no está pasando nada y tu trabajo aquí está seguro.”', feedback: 'Alivia el momento con cariño, pero si la fusión ocurre, cada palabra tranquilizadora que hayas dicho se vuelve sospechosa. Nunca cambies la confianza futura por la comodidad presente.' },
           { text: '“No puedo compartir todo antes de que sea definitivo, y no voy a fingir lo contrario. Sabrás las noticias reales por mí en cuanto me lo permitan.”', feedback: 'Fuiste honesto sobre los límites de lo que puedes decir sin mentir ni filtrar información. La gente puede confiar en un límite que entiende.' },
           { text: '“No puedo hablar de eso.”', feedback: 'Es honesto, pero puede sentirse como una puerta cerrada y alimentar el rumor. Explica el límite y lo que harás cuando puedas compartir.' },
-          { text: '“¿Entre nosotros? Tal vez convenga actualizar tu currículum, por si acaso.”', feedback: 'Insinuarlo rompe la confidencialidad que aceptaste y siembra miedo sobre algo que no está decidido. Daña la confianza en ambas direcciones.' },
+          { text: '“¿Entre nosotros? ¿Qué has oído hasta ahora? Tal vez convenga actualizar tu currículum, por si acaso.”', feedback: 'Insinuarlo rompe la confidencialidad que aceptaste y siembra miedo sobre algo que no está decidido. Daña la confianza en ambas direcciones.' },
         ],
       },
       'w03-messenger': {
@@ -196,7 +196,7 @@ const week: CurriculumWeek = {
           { text: '“¿Sinceramente? Me parece una pésima decisión y se los dije. Pero no está en mis manos, así que no nos queda otra.”', feedback: 'Desahogarte se siente honesto, pero le dice al equipo que no tienes poder y que no se puede confiar en la dirección. Los deja sin a dónde llevar sus preocupaciones.' },
           { text: '“Claro que estoy de acuerdo. Sé que es difícil, pero de verdad creo que es la decisión correcta para todos, y me enorgullece cómo lo manejó la dirección.”', feedback: 'Suena leal y firme, pero tu equipo probablemente sabe que te opusiste. Fingir lo contrario te cuesta credibilidad que necesitarás después.' },
           { text: '“Defendí mantenerlo y perdí. Te explico por qué la dirección eligió esto. Estoy comprometido a que funcione. ¿Qué es lo que más te preocupa?”', feedback: 'Discrepar abiertamente y comprometerte de todos modos muestra integridad. Explicar el razonamiento e invitar a las preocupaciones mantiene la confianza en ti y en la decisión.' },
-          { text: '“Lo que yo piense ya no importa mucho. Enfoquémonos en los siguientes pasos.”', feedback: 'Avanzar es correcto, pero esquivar la pregunta parece evasivo. Una respuesta breve y honesta genera más confianza que un cambio de tema.' },
+          { text: '“Lo que yo piense importa menos que lo que sigue. ¿Qué necesitas de mí para que esto funcione?”', feedback: 'Casi: avanzar y ofrecer apoyo está bien, pero esquivar la pregunta se ve evasivo. Una respuesta corta y honesta genera más confianza que un cambio de tema.' },
         ],
       },
       'w03-in-confidence': {
@@ -253,7 +253,7 @@ const week: CurriculumWeek = {
           { text: '« Quelques petites choses. Je présenterai mon plan à la prochaine réunion d’équipe. »', feedback: 'Arriver avec un plan avant d’avoir écouté dit aux anciens que leur expérience ne compte pas. La confiance commence par la curiosité, pas par une feuille de route.' },
           { text: '« Rien, honnêtement ! Vous savez clairement ce que vous faites, et je ne veux rien bousculer. Vous avez ma parole que les choses resteront comme elles sont. »', feedback: 'C’est rassurant, mais c’est sans doute une promesse que vous ne pourrez pas tenir. La rompre plus tard coûtera plus de confiance que d’être honnête maintenant.' },
           { text: '« Honnêtement, je ne sais pas encore. Je veux d’abord écouter. Que dois-je préserver ici, et qu’est-ce qui vous rend fou ? »', feedback: 'Vous avez été honnête sur ce que vous ignorez et montré que son expérience guidera vos décisions. C’est ainsi que la confiance commence.' },
-          { text: '« Apprenons d’abord à nous connaître. Parlez-moi de vous. »', feedback: 'C’est chaleureux, mais cela esquive une question légitime. Répondez-y directement, puis montrez votre curiosité.' },
+          { text: '« Apprenons d’abord à nous connaître. Qu’est-ce que vous aimez dans votre travail ici ? »', feedback: 'Chaleureux et curieux, mais cela esquive une question légitime. Répondez-y directement, puis montrez de la curiosité.' },
         ],
       },
       'w03-dropped-ball': {
@@ -265,7 +265,7 @@ const week: CurriculumWeek = {
           { text: '« Non, et c’est ma faute. Je suis désolé. J’écris aux organisateurs aujourd’hui pour une inscription tardive et je vous réponds jeudi. »', feedback: 'Des excuses nettes, sans prétexte, avec une prochaine étape précise et une date. Bien assumer un oubli peut créer plus de confiance que de ne jamais faillir.' },
           { text: '« Ah, je suis vraiment désolé. Ce mois a été fou avec la mise en production et les recrutements, et quelques choses m’ont échappé. »', feedback: 'Les excuses sont sincères, mais commencer par votre charge de travail met l’accent sur vous. Assumez simplement et dites ce que vous allez faire.' },
           { text: '« De toute façon, le budget était serré ce trimestre, elle n’aurait peut-être pas été acceptée. »', feedback: 'Même si c’est vrai, cela ressemble à une excuse. Les gens le sentent, et ils apprennent que vos promesses sont fragiles.' },
-          { text: '« Je suis vraiment désolé. Écoutez, il y aura d’autres conférences, et je ferai en sorte que vous choisissiez en premier celle que vous voulez l’an prochain. »', feedback: 'Généreux, mais passer vite à autre chose évite d’assumer l’oubli, et remplace une promesse par une autre. Elle se souviendra de celle qui n’a pas été tenue.' },
+          { text: '« Je suis vraiment désolé. Que puis-je faire pour me rattraper ? Je ferai en sorte que vous choisissiez en premier la conférence de votre choix l’an prochain. »', feedback: 'Généreux, mais vous évitez d’assumer l’oubli, lui confiez le soin de trouver une solution et remplacez une promesse par une autre. Elle se souviendra de celle que vous n’avez pas tenue.' },
         ],
       },
       'w03-schedule-mistake': {
@@ -274,7 +274,7 @@ const week: CurriculumWeek = {
         person: 'Quinn, chef d’équipe',
         quote: '« Tout l’entrepôt pense que le cafouillage du planning vient de nous. Ce n’est pas génial. »',
         choices: [
-          { text: '« Je suis vraiment désolé que vous viviez ça. Ces rumeurs retombent vite, alors je ne les alimenterais pas. Je vous soutiens si quelqu’un dit quoi que ce soit. »', feedback: 'Le ton est solidaire, mais laisser vos chefs porter la faute de votre erreur use en silence leur confiance en vous. Ils remarqueront que vous vous êtes tu.' },
+          { text: '« Je suis vraiment désolé que vous viviez ça. Qui raconte ça ? J’en parlerai discrètement aux personnes concernées, et ça se calmera vite. Je vous soutiens. »', feedback: 'Protecteur dans le ton, mais chercher qui a lancé la rumeur esquive la vraie solution. Laisser vos chefs d’équipe porter la faute de votre erreur use, sans bruit, leur confiance en vous.' },
           { text: '« Je rétablirai les faits auprès de ceux qui me poseront la question. »', feedback: 'Mieux que le silence, mais une erreur qui a touché toute l’équipe mérite une correction claire et publique, pas au cas par cas.' },
           { text: 'Envoyer un e-mail à l’équipe indiquant qu’« une erreur de planification s’est produite » et qu’elle est corrigée.', feedback: 'La tournure passive cache qui a commis l’erreur. On fait confiance aux leaders qui disent « je », pas « une erreur s’est produite ».' },
           { text: '« C’est ma faute, et vous ne la porterez pas. Au point d’aujourd’hui, je dirai que j’ai fait le planning, oublié le jour férié, et comment je le vérifierai désormais. »', feedback: 'Assumer l’erreur publiquement protège vos chefs d’équipe et montre à tous que vous vous imposez les mêmes exigences qu’à eux.' },
@@ -289,7 +289,7 @@ const week: CurriculumWeek = {
           { text: '« Je sais à quel point ces rumeurs sont stressantes, et je ne voudrais pas que vous en perdiez le sommeil. Faites-moi confiance, il ne se passe rien, et votre poste est assuré. »', feedback: 'Cela apaise le moment avec gentillesse, mais si la fusion a lieu, chaque parole rassurante que vous avez donnée devient suspecte. N’échangez jamais la confiance future contre le confort présent.' },
           { text: '« Je ne peux pas tout partager avant que ce soit définitif, et je ne ferai pas semblant. Vous aurez les vraies nouvelles par moi dès que j’en aurai le droit. »', feedback: 'Vous avez été honnête sur les limites de ce que vous pouvez dire, sans mentir ni divulguer. On peut faire confiance à une limite que l’on comprend.' },
           { text: '« Je ne peux pas en parler. »', feedback: 'C’est honnête, mais cela peut sonner comme une porte fermée et alimenter la rumeur. Expliquez la limite et ce que vous ferez dès que vous pourrez parler.' },
-          { text: '« Entre nous ? Mettez peut-être votre CV à jour, au cas où. »', feedback: 'Laisser entendre trahit la confidentialité que vous avez acceptée et répand la peur sur quelque chose qui n’est pas décidé. La confiance s’abîme dans les deux sens.' },
+          { text: '« Entre nous ? Qu’avez-vous entendu jusqu’ici ? Mettez peut-être votre CV à jour, au cas où. »', feedback: 'Laisser entendre trahit la confidentialité que vous avez acceptée et répand la peur sur quelque chose qui n’est pas décidé. La confiance s’abîme dans les deux sens.' },
         ],
       },
       'w03-messenger': {
@@ -301,7 +301,7 @@ const week: CurriculumWeek = {
           { text: '« Franchement ? Je trouve que c’est une très mauvaise décision, et je l’ai dit. Mais ça ne dépend pas de moi, alors on doit faire avec. »', feedback: 'Vider son sac semble honnête, mais cela dit à l’équipe que vous êtes impuissant et qu’on ne peut pas faire confiance à la direction. Elle ne sait plus où porter ses inquiétudes.' },
           { text: '« Bien sûr que je suis d’accord. Je sais que c’est dur, mais je crois vraiment que c’est la bonne décision pour nous tous, et je suis fier de la façon dont la direction l’a gérée. »', feedback: 'Cela paraît loyal et stable, mais votre équipe sait sans doute que vous vous y êtes opposé. Faire semblant vous coûte une crédibilité dont vous aurez besoin plus tard.' },
           { text: '« J’ai plaidé pour le garder, et j’ai perdu. Voici pourquoi la direction a fait ce choix. Je m’engage à ce que ça fonctionne. Qu’est-ce qui vous inquiète le plus ? »', feedback: 'Exprimer son désaccord ouvertement puis s’engager malgré tout montre de l’intégrité. Expliquer le raisonnement et accueillir les inquiétudes préserve la confiance en vous et en la décision.' },
-          { text: '« Ce que j’en pense n’a plus vraiment d’importance. Concentrons-nous sur la suite. »', feedback: 'Avancer est la bonne direction, mais esquiver la question paraît fuyant. Une réponse courte et honnête inspire plus confiance qu’un changement de sujet.' },
+          { text: '« Ce que je pense compte moins que la suite. De quoi avez-vous besoin de ma part pour que ça marche ? »', feedback: 'Presque : avancer et offrir votre soutien, c’est bien, mais esquiver la question paraît évasif. Une réponse courte et honnête inspire plus confiance qu’une diversion.' },
         ],
       },
       'w03-in-confidence': {

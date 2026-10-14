@@ -389,7 +389,7 @@ export const SCENARIOS: Scenario[] = [
       { text: '"It was in the kickoff doc, page two, and we went over it in the first sync. I know it’s a lot to track, but the reviews were never optional."', score: 1, feedback: 'Accurate and even polite, but it wins the point and loses the person. Defensiveness usually grows when it is met with more evidence.' },
       { text: '"That’s fair to raise. What got in the way? Let’s get clear together on how reviews work from here."', score: 3, feedback: 'You validated her experience without dropping the standard, got curious about the cause, and moved toward a shared fix.' },
       { text: '"I’m sorry, that’s on me for not making it clearer. Don’t worry about the ones you missed. I’ll smooth it over with the stakeholders and we’ll start fresh next project."', score: 1, feedback: 'Kind, but you took the whole problem off her plate and quietly made the standard optional. Owning your part is good; rescuing her from hers is not.' },
-      { text: '"I hear you, and I’m sorry it feels unfair. Still, the reviews need to happen."', score: 2, feedback: 'Close. You acknowledged her feelings, but went straight back to the rule without asking what got in the way, and that question is what builds buy in.' },
+      { text: '"I hear you, and I’m sorry it feels unfair. How do we make sure the reviews happen from here on?"', score: 2, feedback: 'Close. You acknowledged her and asked a fair question about the future, but skipped what got in the way this time, and that question is what builds buy in.' },
     ],
   },
   {
@@ -433,7 +433,7 @@ export const SCENARIOS: Scenario[] = [
     choices: [
       { text: '"Great question, and I totally understand the worry. Everyone’s job is safe, I promise. This is a great opportunity for all of us, and I’m excited about it."', score: 1, feedback: 'Warm, but a blanket promise about things you may not control sounds like spin, and if anything changes later, your word is gone.' },
       { text: '"No layoffs are planned in this change. I’ll walk through what changes, what doesn’t, and when you’ll hear more."', score: 3, feedback: 'A direct answer, clear boundaries, and a path for follow up. That is how you calm a room without overpromising.' },
-      { text: '"I’m not able to discuss staffing in this forum, but HR will share more details with everyone when the time is right."', score: 1, feedback: 'Even if true, a flat refusal confirms the fear. Share what you can and say when you will know more.' },
+      { text: '"That’s a fair worry. Before I answer, what have people been hearing? I’d rather address the real rumors first."', score: 1, feedback: 'Curious, but meeting a direct question with a question in front of the whole room reads as dodging, and the fear grows while people wait. Answer first, then listen.' },
       { text: '"Good question. There are no layoffs planned that I know of. Let me confirm the details and get back to everyone soon."', score: 2, feedback: 'You answered directly, but "soon" is vague and "that I know of" invites doubt. Give a specific time and share what is and is not changing.' },
     ],
   },
@@ -448,7 +448,7 @@ export const SCENARIOS: Scenario[] = [
     choices: [
       { text: '"I know, believe me. Honestly, this one is coming from the top and it’s mandatory, but I’ll push back where I can."', score: 1, feedback: 'Blaming leadership above you erodes trust in the change and in you as a leader.' },
       { text: '"Fair, it’s been a lot. Here’s why this one matters, what we’re dropping to make room, and how we’ll support you."', score: 3, feedback: 'You validated the fatigue, gave the why, and showed you are removing load rather than only adding it.' },
-      { text: '"I totally hear you, and I know change is hard. Let’s try to stay positive and give it a real chance. I promise this will be the last big change for a while."', score: 1, feedback: 'Kind, but asking for positivity dismisses a real concern, and promising it is the last change is a promise you probably cannot keep.' },
+      { text: '"I totally hear you. What would it take for you to give this one a real chance? I promise it’s the last big change for a while."', score: 1, feedback: 'It sounds open, but the question puts the burden of buy in on Dana, and promising this is the last change is a promise you probably cannot keep.' },
       { text: '"That’s fair, Dana, and I hear you. Let’s grab ten minutes after the meeting so I can understand what’s worrying you."', score: 2, feedback: 'Good instinct to engage, but the whole room heard the concern. Address it briefly in the moment too, then follow up.' },
     ],
   },
@@ -478,7 +478,7 @@ export const SCENARIOS: Scenario[] = [
     choices: [
       { text: '"Thanks, Lee, that’s really good to hear. I’m glad everyone feels things are working well, and my door is always open if anything comes up."', score: 1, feedback: 'Silence is rarely agreement. Taking it at face value, however warmly, means you will miss what people are not saying.' },
       { text: '"Thanks, Lee. I’ll go first: I could give clearer priorities. What else would make your week easier?"', score: 3, feedback: 'Going first with your own improvement makes it safe for others to be honest.' },
-      { text: '"Come on, team, I know someone has an idea. No wrong answers here, so let’s hear from at least two more people before we move on."', score: 1, feedback: 'Friendly pressure still raises the risk of speaking up. People need safety, not a push.' },
+      { text: '"Come on, team, no wrong answers here. Lee, what’s one thing that bugs you about how we work? Then let’s hear from two more."', score: 1, feedback: 'Friendly, and the question is open, but calling on Lee by name in front of everyone raises the risk of speaking up. People need safety, not a push.' },
       { text: '"Okay. I’ll send a quick anonymous survey after this so everyone can share ideas privately."', score: 2, feedback: 'An anonymous channel helps, but on its own it skips the strongest move: modeling candor yourself in the room.' },
     ],
   },
@@ -494,7 +494,7 @@ export const SCENARIOS: Scenario[] = [
       { text: 'Let the debate run a few more minutes, since people are clearly engaged and the logo matters to the launch too.', score: 1, feedback: 'Engagement on the wrong topic still burns the meeting. The decision you came for gets rushed or skipped.' },
       { text: '"This matters, so let’s park it for Thursday. We have 10 minutes to pick the launch date. Where do we land?"', score: 3, feedback: 'You honored the topic, protected the purpose, and refocused the room on the decision.' },
       { text: '"Good points, but we’re off topic. Let’s get back to the launch date, since we only have 10 minutes left."', score: 2, feedback: 'Right instinct, but saying when the parked topic will be addressed keeps people from feeling dismissed.' },
-      { text: '"Riley, this is clearly important to you. Let’s set up a separate meeting for the logo and the launch date, so neither one gets rushed."', score: 1, feedback: 'Considerate, but another meeting rewards the drift and delays the decision you came for. Facilitate back to it while people are in the room.' },
+      { text: '"Riley, this clearly matters to you. What would a good logo decision look like? Let’s map that out, then come back to the date."', score: 1, feedback: 'Engaged and curious, but a thoughtful question about the side topic pulls the room further from the decision you came for, with ten minutes left.' },
     ],
   },
   {
@@ -506,7 +506,7 @@ export const SCENARIOS: Scenario[] = [
     quote: '"Didn\'t we talk about this last week too?"',
     xp: 30,
     choices: [
-      { text: '"Good catch, Sky. Some of these are just hard problems, so let’s keep talking them through until we get there together."', score: 1, feedback: 'More discussion without owners produces the same result next week.' },
+      { text: '"Good catch, Sky. What do you think makes these so hard to close? Let’s keep talking them through until we get there together."', score: 1, feedback: 'Curious and inclusive, but diagnosing in the room is still more discussion without owners. Next week will look exactly the same.' },
       { text: '"You’re right. From now on we end with owners and dates, and I’ll send a recap. Who takes this one?"', score: 3, feedback: 'You named the pattern and fixed the system. Clear owners and a written recap are what make meetings move work forward.' },
       { text: '"Fair point. Let’s extend this meeting to ninety minutes so we finally have room to finish each topic properly instead of rushing."', score: 1, feedback: 'Longer meetings rarely fix a lack of follow through.' },
       { text: '"You’re right. I’ll follow up with each of you after this to assign owners and make sure things move."', score: 2, feedback: 'Owners are the right fix, but assigning them privately means the group never sees shared commitments. Make accountability visible in the room.' },
@@ -568,7 +568,7 @@ export const SCENARIOS: Scenario[] = [
     choices: [
       { text: 'Ask everyone to turn cameras on today, explaining warmly that it helps the team feel connected and makes it easier to read the room.', score: 1, feedback: 'A friendly reason does not change the effect: a blanket rule can embarrass people and does not address why someone has gone quiet.' },
       { text: 'Use the chat or a quick round so everyone contributes, then check in with Casey privately.', score: 3, feedback: 'You made participation easier for everyone and followed up one on one, where people are more likely to share what is going on.' },
-      { text: 'Warmly invite Casey to share first, by name, so they know their voice matters to the group.', score: 1, feedback: 'Kind intent, but spotlighting someone who has withdrawn often deepens the withdrawal.' },
+      { text: 'Warmly ask Casey first, by name, "Casey, what do you think?" so they know their voice matters to the group.', score: 1, feedback: 'A kind, open question, but spotlighting someone who has withdrawn often deepens the withdrawal.' },
       { text: 'Leave it alone; remote work is different, and some people just prefer to listen.', score: 1, feedback: 'Isolation is a real risk on remote teams. Silence deserves curiosity.' },
     ],
   },

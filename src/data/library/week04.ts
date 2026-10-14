@@ -16,7 +16,7 @@ const week: CurriculumWeek = {
       choices: [
         { text: '"Good catch, and thank you. I\'ll review all nine this week myself and send everyone a list of what stays and what goes."', score: 2, feedback: 'Right instinct to act on her point, but you took the cleanup away from her. Invite the person who spotted the problem into the fix.' },
         { text: '"Good catch. Will you help me list each recurring meeting and what it\'s for? Then we decide together."', score: 3, feedback: 'You took her observation seriously and made the cleanup a shared project. Teams respect meetings more when they helped design them.' },
-        { text: '"You\'re right, that\'s a waste. Let\'s cancel the Tuesday huddle starting today, and I\'ll send a note so nobody shows up by mistake."', score: 1, feedback: 'Decisive and considerate about the logistics, but cutting a meeting without asking who relies on it can create gaps you will not see until something breaks.' },
+        { text: '"You\'re right, that\'s a waste. Which one would you cut, Monday or Tuesday? I\'ll cancel it today and send a note so nobody shows up."', score: 1, feedback: 'Decisive, and asking her feels inclusive, but a quick pick between two skips who relies on each meeting. Cutting without knowing the purpose creates gaps you will not see until something breaks.' },
         { text: '"Honestly, I\'d love to cut half of them, but my boss set some of these up and I\'d rather not stir anything up in my first month here."', score: 1, feedback: 'Protecting meetings for political reasons teaches the team that their time matters less than appearances. Start with the purpose of each one.' },
       ],
     },
@@ -30,7 +30,7 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: 'Message her privately after the meeting: "Your ideas really matter to this team, so please jump in louder next time. I\'d love to hear more from you."', score: 1, feedback: 'Warm and encouraging, but the problem is the meeting design, not her volume. Asking her to fight harder puts the burden on the person being left out.' },
-        { text: '"Great energy, everyone! Let\'s keep the momentum going, and I\'ll circle back to anything in the chat once we wrap up the main pitch."', score: 1, feedback: 'By the end, the moment for her idea has usually passed. Saving the chat for later tells remote people they are second in line.' },
+        { text: '"Great energy, everyone! Who else has thoughts before we wrap the main pitch? I\'ll circle back to anything in the chat at the end."', score: 1, feedback: 'An open invitation to the room still rewards whoever jumps in fastest. By the end, the moment for her idea has usually passed, and remote people learn they are second in line.' },
         { text: 'Read her chat message aloud to the room, credit her by name, and keep moving.', score: 2, feedback: 'Close: her idea gets in with her name on it. But she still has not been heard in her own voice, and nothing changes the pattern for the rest of the meeting.' },
         { text: '"Hold on, Ximena\'s been trying to get in. Ximena, go ahead. Next topic, remote folks first."', score: 3, feedback: 'You made space in the moment and fixed the pattern for the rest of the meeting. Fair hybrid meetings take deliberate facilitation.' },
       ],
@@ -45,7 +45,7 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"Glad you told me, and that needs to be in the room. Will you raise it at tomorrow\'s huddle? I\'ll make space."', score: 3, feedback: 'You valued his candor and moved it back to where decisions get made. Plans fail quietly when real concerns only live in hallways.' },
-        { text: '"I appreciate the honesty, but the team already committed, and reopening it now would shake everyone\'s confidence. Let\'s give the schedule a fair shot and adjust if we have to."', score: 1, feedback: 'It sounds measured, but it teaches him to stay quiet in meetings and complain afterward, and the risk he sees stays hidden until the pour.' },
+        { text: '"I appreciate the honesty, but what makes you so sure? The team already committed, and reopening it now would shake everyone\'s confidence. Let\'s give it a fair shot."', score: 1, feedback: 'It sounds measured, but the question puts him on trial, and it teaches him to stay quiet in meetings and complain afterward. The risk he sees stays hidden until the pour.' },
         { text: '"That\'s important. I\'ll take it to the project manager today and get it sorted before the pour, so it\'s off your plate."', score: 2, feedback: 'Close: the concern gets surfaced quickly. But you carried it for him, so the team learns that disagreement travels through side channels. Help him say it himself.' },
         { text: '"You\'re probably right. Let\'s just see what happens."', score: 1, feedback: 'Agreeing privately while the plan moves ahead sets the team up to fail and makes you part of the hallway problem.' },
       ],
@@ -59,7 +59,7 @@ const week: CurriculumWeek = {
       quote: '"I left my floor short for an hour to hear updates I could have read in five minutes."',
       xp: 30,
       choices: [
-        { text: '"I hear you, and I know how hard it is to leave the floor short. With 14 leads, though, hearing the same information at the same time keeps us aligned, so I\'d like to keep the hour."', score: 1, feedback: 'Caring in tone, but shared information does not require shared listening. Her time on the floor is worth protecting.' },
+        { text: '"I hear you. What would make the hour feel more worth it for you? With 14 leads, hearing the same information together keeps us aligned, so I\'d like to keep it."', score: 1, feedback: 'Caring in tone, but the question is a setup: you have already decided to keep the hour. Shared information does not require shared listening, and her floor time is worth protecting.' },
         { text: '"Fair. From now on, skip it whenever your floor is short, and I\'ll send you the notes right after."', score: 2, feedback: 'Close: you protected her floor. But the meeting itself is still an hour of read aloud updates for everyone else. Fix the design, not just her attendance.' },
         { text: '"You\'re right. Next week, updates go out in writing the day before, and we meet 20 minutes on decisions only. Tell me if it helps."', score: 3, feedback: 'You moved information into writing and saved live time for what needs discussion. Asking her to judge the change builds trust in the redesign.' },
         { text: '"Let\'s cancel it entirely and see if anyone notices. I bet we\'ll be fine without it, and people can just email me if something comes up."', score: 1, feedback: 'Cutting the meeting with no replacement leaves decisions and blockers with nowhere to go. Redesign before you remove.' },
@@ -118,7 +118,7 @@ const week: CurriculumWeek = {
         choices: [
           { text: '“Buena observación, y gracias. Esta semana reviso yo las nueve y le mando a todos una lista de cuáles se quedan y cuáles se van.”', feedback: 'Buen instinto de actuar sobre lo que dijo, pero le quitaste la limpieza de las manos. Invita a la solución a quien detectó el problema.' },
           { text: '“Buena observación. ¿Me ayudas a listar cada reunión recurrente y para qué sirve? Luego decidimos juntos.”', feedback: 'Tomaste en serio su observación e hiciste de la limpieza un proyecto compartido. Los equipos respetan más las reuniones que ayudaron a diseñar.' },
-          { text: '“Tienes razón, es una pérdida de tiempo. Cancelemos la reunión del martes desde hoy, y mando un aviso para que nadie llegue por error.”', feedback: 'Decidido y atento a la logística, pero eliminar una reunión sin preguntar quién depende de ella puede crear huecos que no verás hasta que algo falle.' },
+          { text: '“Tienes razón, es una pérdida de tiempo. ¿Cuál cortarías, la del lunes o la del martes? La cancelo hoy y aviso para que nadie se presente.”', feedback: 'Decidido, y preguntarle se siente incluyente, pero elegir rápido entre dos se salta quién depende de cada reunión. Cortar sin conocer el propósito crea huecos que no verás hasta que algo falle.' },
           { text: '“Sinceramente, me encantaría eliminar la mitad, pero mi jefe creó algunas y prefiero no agitar las aguas en mi primer mes.”', feedback: 'Proteger reuniones por razones políticas le enseña al equipo que su tiempo importa menos que las apariencias. Empieza por el propósito de cada una.' },
         ],
       },
@@ -129,7 +129,7 @@ const week: CurriculumWeek = {
         quote: '“Intentando entrar por tercera vez...”',
         choices: [
           { text: 'Escribirle en privado después de la reunión: “Tus ideas de verdad importan en este equipo, así que la próxima vez entra con más fuerza. Me encantaría escucharte más.”', feedback: 'Cálido y alentador, pero el problema es el diseño de la reunión, no su volumen. Pedirle que luche más pone la carga en la persona que está quedando fuera.' },
-          { text: '“¡Qué buena energía, equipo! Sigamos con este impulso y retomo lo del chat cuando terminemos la propuesta principal.”', feedback: 'Para el final, el momento de su idea normalmente ya pasó. Dejar el chat para después les dice a las personas remotas que van en segundo lugar.' },
+          { text: '“¡Qué buena energía, equipo! ¿Quién más tiene ideas antes de cerrar la propuesta principal? Al final retomo lo que haya en el chat.”', feedback: 'Una invitación abierta a la sala sigue premiando a quien interviene más rápido. Para el final, el momento de su idea normalmente ya pasó, y las personas remotas aprenden que van en segundo lugar.' },
           { text: 'Leer su mensaje del chat en voz alta a la sala, darle el crédito por nombre y seguir.', feedback: 'Casi: su idea entra con su nombre. Pero todavía no se escuchó su propia voz y nada cambia el patrón para el resto de la reunión.' },
           { text: '“Un momento, Ximena ha intentado entrar. Ximena, adelante. En el próximo tema, primero quienes están en remoto.”', feedback: 'Abriste espacio en el momento y corregiste el patrón para el resto de la reunión. Las reuniones híbridas justas requieren una facilitación deliberada.' },
         ],
@@ -141,7 +141,7 @@ const week: CurriculumWeek = {
         quote: '“Entre nos, ese calendario que acordaron allá adentro nunca va a funcionar.”',
         choices: [
           { text: '“Qué bueno que me lo dices, y eso tiene que estar en la sala. ¿Lo planteas en la reunión de mañana? Yo te abro espacio.”', feedback: 'Valoraste su franqueza y la llevaste de vuelta a donde se toman las decisiones. Los planes fracasan en silencio cuando las preocupaciones reales solo viven en los pasillos.' },
-          { text: '“Agradezco tu honestidad, pero el equipo ya se comprometió, y reabrirlo ahora afectaría la confianza de todos. Démosle una oportunidad justa al calendario y ajustamos si hace falta.”', feedback: 'Suena mesurado, pero le enseña a callar en las reuniones y quejarse después, y el riesgo que ve sigue oculto hasta el colado.' },
+          { text: '“Agradezco tu honestidad, pero ¿qué te hace estar tan seguro? El equipo ya se comprometió, y reabrirlo ahora afectaría la confianza de todos. Démosle una oportunidad justa.”', feedback: 'Suena mesurado, pero la pregunta lo pone a juicio y le enseña a callar en las reuniones y quejarse después. El riesgo que ve sigue oculto hasta el colado.' },
           { text: '“Eso es importante. Hoy se lo llevo a la gerente del proyecto y lo resolvemos antes del colado, para que tú no cargues con eso.”', feedback: 'Casi: la preocupación sale rápido a la luz. Pero la cargaste por él, y el equipo aprende que el desacuerdo viaja por canales paralelos. Ayúdalo a decirlo él mismo.' },
           { text: '“Probablemente tienes razón. Veamos qué pasa.”', feedback: 'Estar de acuerdo en privado mientras el plan avanza prepara al equipo para fallar y te vuelve parte del problema de pasillo.' },
         ],
@@ -152,7 +152,7 @@ const week: CurriculumWeek = {
         person: 'Zara, enfermera jefa de turno',
         quote: '“Dejé mi piso con menos personal durante una hora para escuchar actualizaciones que podría haber leído en cinco minutos.”',
         choices: [
-          { text: '“Te entiendo, y sé lo difícil que es dejar el piso con menos personal. Pero con 14 líderes, escuchar la misma información al mismo tiempo nos mantiene alineados, así que prefiero mantener la hora.”', feedback: 'Suena comprensivo, pero la información compartida no requiere escuchar juntos. Vale la pena proteger su tiempo en el piso.' },
+          { text: '“Te entiendo. ¿Qué haría que la hora valiera más la pena para ti? Con 14 líderes, escuchar la misma información juntos nos mantiene alineados, así que prefiero mantenerla.”', feedback: 'Suena comprensivo, pero la pregunta es una trampa: ya decidiste mantener la hora. La información compartida no requiere escuchar juntos, y vale la pena proteger su tiempo en el piso.' },
           { text: '“Es justo. De ahora en adelante, no vengas cuando tu piso esté corto de personal, y te mando las notas justo después.”', feedback: 'Casi: protegiste su piso. Pero la reunión sigue siendo una hora de actualizaciones leídas en voz alta para todos los demás. Arregla el diseño, no solo su asistencia.' },
           { text: '“Tienes razón. Desde la próxima semana, las actualizaciones van por escrito el día anterior y nos reunimos 20 minutos solo para decisiones. Dime si ayuda.”', feedback: 'Pasaste la información a escrito y guardaste el tiempo en vivo para lo que requiere conversación. Pedirle que evalúe el cambio genera confianza en el rediseño.' },
           { text: '“Cancelémosla por completo y veamos si alguien lo nota. Seguro estaremos bien sin ella, y si surge algo me pueden escribir.”', feedback: 'Eliminar la reunión sin reemplazo deja las decisiones y los bloqueos sin a dónde ir. Rediseña antes de eliminar.' },
@@ -200,7 +200,7 @@ const week: CurriculumWeek = {
         choices: [
           { text: '« Bien vu, et merci. Je passe moi-même les neuf en revue cette semaine et j’envoie à tous la liste de ce qu’on garde et de ce qu’on supprime. »', feedback: 'Bon réflexe d’agir sur sa remarque, mais vous lui avez retiré le chantier. Associez à la solution la personne qui a repéré le problème.' },
           { text: '« Bien vu. Vous m’aidez à lister chaque réunion récurrente et son objectif ? Ensuite, on décide ensemble. »', feedback: 'Vous avez pris son observation au sérieux et fait du ménage un projet commun. Les équipes respectent davantage les réunions qu’elles ont aidé à concevoir.' },
-          { text: '« Vous avez raison, c’est du temps perdu. Supprimons le point du mardi dès aujourd’hui, et j’envoie un message pour que personne ne vienne par erreur. »', feedback: 'Décidé et attentif à la logistique, mais supprimer une réunion sans demander qui en dépend peut créer des trous que vous ne verrez qu’une fois le problème arrivé.' },
+          { text: '« Vous avez raison, c’est du gaspillage. Laquelle supprimeriez-vous, lundi ou mardi ? Je l’annule aujourd’hui et j’envoie un mot pour que personne ne vienne. »', feedback: 'Décidé, et lui demander semble inclusif, mais trancher vite entre deux oublie qui dépend de chaque réunion. Supprimer sans connaître l’objectif crée des trous que vous ne verrez qu’une fois que quelque chose casse.' },
           { text: '« Honnêtement, j’adorerais en supprimer la moitié, mais mon patron en a créé certaines et je préfère ne pas faire de vagues pendant mon premier mois. »', feedback: 'Protéger des réunions pour des raisons politiques apprend à l’équipe que son temps compte moins que les apparences. Partez de l’objectif de chacune.' },
         ],
       },
@@ -211,7 +211,7 @@ const week: CurriculumWeek = {
         quote: '« J’essaie d’intervenir pour la troisième fois... »',
         choices: [
           { text: 'Lui écrire en privé après la réunion : « Vos idées comptent vraiment pour l’équipe, alors n’hésitez pas à parler plus fort la prochaine fois. J’aimerais vous entendre davantage. »', feedback: 'Chaleureux et encourageant, mais le problème vient de la conception de la réunion, pas de sa voix. Lui demander de se battre davantage fait peser l’effort sur la personne mise à l’écart.' },
-          { text: '« Super énergie, tout le monde ! Gardons cet élan, et je reviendrai sur les messages du chat une fois la proposition principale bouclée. »', feedback: 'À la fin, le bon moment pour son idée est souvent passé. Garder le chat pour plus tard dit aux personnes à distance qu’elles passent après.' },
+          { text: '« Super énergie, tout le monde ! Qui d’autre a des idées avant de boucler la proposition principale ? Je reviendrai sur le chat à la fin. »', feedback: 'Une invitation ouverte à la salle récompense encore ceux qui se lancent le plus vite. À la fin, le bon moment pour son idée est souvent passé, et les personnes à distance comprennent qu’elles passent après.' },
           { text: 'Lire son message du chat à voix haute, la citer par son nom et continuer.', feedback: 'Presque : son idée est entendue, avec son nom. Mais pas sa voix, et rien ne change le schéma pour le reste de la réunion.' },
           { text: '« Un instant, Ximena essaie d’intervenir. Ximena, allez-y. Au prochain sujet, les personnes à distance d’abord. »', feedback: 'Vous avez fait de la place sur le moment et corrigé le schéma pour le reste de la réunion. Une réunion hybride équitable demande une animation délibérée.' },
         ],
@@ -223,7 +223,7 @@ const week: CurriculumWeek = {
         quote: '« Entre nous, le calendrier qu’ils ont validé là-dedans ne marchera jamais. »',
         choices: [
           { text: '« Content que vous me le disiez, et ça doit être dit en réunion. Vous le soulevez au point de demain ? Je vous ferai de la place. »', feedback: 'Vous avez valorisé sa franchise et l’avez ramenée là où se prennent les décisions. Les plans échouent en silence quand les vraies inquiétudes ne vivent que dans les couloirs.' },
-          { text: '« J’apprécie votre honnêteté, mais l’équipe s’est déjà engagée, et tout rouvrir maintenant ébranlerait la confiance de chacun. Laissons sa chance au calendrier et ajustons si besoin. »', feedback: 'Cela paraît mesuré, mais cela lui apprend à se taire en réunion et à se plaindre ensuite, et le risque qu’il voit reste caché jusqu’au coulage.' },
+          { text: '« J’apprécie votre honnêteté, mais qu’est-ce qui vous rend si sûr ? L’équipe s’est déjà engagée, et tout rouvrir maintenant ébranlerait la confiance de chacun. Laissons-lui sa chance. »', feedback: 'Cela paraît mesuré, mais la question le met en accusation et lui apprend à se taire en réunion pour se plaindre ensuite. Le risque qu’il voit reste caché jusqu’au coulage.' },
           { text: '« C’est important. J’en parle aujourd’hui à la cheffe de projet et on règle ça avant le coulage, comme ça vous n’avez plus à vous en soucier. »', feedback: 'Presque : l’inquiétude remonte vite. Mais vous l’avez portée à sa place, et l’équipe apprend que le désaccord passe par des canaux parallèles. Aidez-le à le dire lui-même.' },
           { text: '« Vous avez sans doute raison. On verra bien. »', feedback: 'Être d’accord en privé pendant que le plan avance prépare l’équipe à l’échec et fait de vous une partie du problème de couloir.' },
         ],
@@ -234,7 +234,7 @@ const week: CurriculumWeek = {
         person: 'Zara, infirmière coordinatrice',
         quote: '« J’ai laissé mon étage en sous-effectif pendant une heure pour écouter des mises à jour que j’aurais pu lire en cinq minutes. »',
         choices: [
-          { text: '« Je vous entends, et je sais combien c’est dur de laisser l’étage en sous-effectif. Mais avec 14 responsables, entendre la même information au même moment nous garde alignés, alors je préfère garder l’heure. »', feedback: 'Le ton est bienveillant, mais partager l’information n’exige pas de l’écouter ensemble. Son temps auprès des patients mérite d’être protégé.' },
+          { text: '« Je vous entends. Qu’est-ce qui rendrait cette heure plus utile pour vous ? Avec 14 responsables, entendre la même information ensemble nous garde alignés, alors je préfère la garder. »', feedback: 'Le ton est bienveillant, mais la question est un piège : vous avez déjà décidé de garder l’heure. Partager l’information n’exige pas de l’écouter ensemble, et son temps auprès des patients mérite d’être protégé.' },
           { text: '« C’est juste. Désormais, ne venez pas quand votre étage manque de monde, et je vous envoie les notes juste après. »', feedback: 'Presque : vous avez protégé son étage. Mais la réunion reste une heure de mises à jour lues à voix haute pour tous les autres. Corrigez la formule, pas seulement sa présence.' },
           { text: '« Vous avez raison. Dès la semaine prochaine, les mises à jour partent par écrit la veille et on se réunit 20 minutes pour les décisions. Dites-moi si ça aide. »', feedback: 'Vous avez fait passer l’information à l’écrit et gardé le temps en direct pour ce qui demande une discussion. Lui demander d’évaluer le changement renforce la confiance dans la nouvelle formule.' },
           { text: '« Supprimons-la complètement et voyons si quelqu’un s’en aperçoit. Je parie qu’on s’en passera très bien, et on peut toujours m’écrire si besoin. »', feedback: 'Supprimer la réunion sans la remplacer laisse les décisions et les blocages sans issue. Repensez avant de supprimer.' },
