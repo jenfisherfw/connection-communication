@@ -35,6 +35,7 @@ No code alternatives (FlutterFlow, Bubble, Adalo) are faster for a static protot
 - ~~Branded app icon, Android adaptive icon, and launch screen~~ (built)
 - ~~Server enforced daily limit on AI requests~~ (built)
 - Year long weekday curriculum (`src/data/library/`): a new scenario, reflection, and tip every Monday to Friday, with a weekend catch up card and streaks that skip weekends. Each written unit gives a five day theme week, and its two toughest lessons feed Level Up mixed practice weeks after every five themes. Complete: 38 units, 52 weeks, 260 unique weekday lessons. After week 52 the schedule starts again at week 1. Answer choices are written so the best answer is not given away by length or tone (checked automatically).
+- Leader Toolkit (`src/data/toolkit/`): 15 starter tools with share or copy templates and a Tailor this with Ari button, plus myTools.ts for adding your own (see docs/TOOLKIT.md).
 - 52 weekly micro lessons (`src/data/lessons/`): 3 to 5 minute swipeable slide decks on communication and leading change, unlocking one per week, with resume, XP, a library with progress, and six completion badges.
 - ~~English, Spanish, and French: every screen, the full content library, reminders, Tone Check, and Coach Ari~~ (built). Have a native speaker review the Spanish and French before launch.
 
