@@ -1,0 +1,156 @@
+import { Roleplay } from '../data/content';
+import { Lang, translate } from '../i18n';
+import { currentAccessToken } from '../state/Account';
+import { supabaseAnonKey, supabaseUrl } from './supabase';
+
+export interface ChatMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+export interface RoleplayFeedback {
+  score: number; // 0..100
+  strengths: string[];
+  improve: string[];
+  tryThis: string;
+}
+
+/** An error whose message is safe and friendly to show in the chat. */
+export class CoachError extends Error {}
+
+/** Message to show in chat for any failed coach request. */
+export const coachErrorMessage = (err: unknown) => (err instanceof CoachError ? err.message : tr(CONNECT_ERROR));
+
+const CONNECT_ERROR = "Sorry, I couldn't connect just now. Please try again in a moment.";
+
+/** What the coach knows about the leader, so advice fits their situation. */
+export interface LeaderContext {
+  name: string;
+  role: string;
+  teamSize: string | null;
+  focusAreas: string[];
+  language: Lang;
+}
+
+/**
+ * The AI coach runs behind a server endpoint (see supabase/functions/coach) so the
+ * Anthropic API key never ships inside the app. It is enabled automatically when the
+ * Supabase project is configured, or by pointing EXPO_PUBLIC_COACH_URL at any host.
+ * Without either, the app runs in demo mode with scripted responses so the UX is testable.
+ */
+const COACH_URL = process.env.EXPO_PUBLIC_COACH_URL || (supabaseUrl ? `${supabaseUrl}/functions/v1/coach` : undefined);
+
+export const coachIsLive = !!COACH_URL;
+
+let leader: LeaderContext | null = null;
+export const setLeaderContext = (ctx: LeaderContext) => {
+  leader = ctx;
+};
+
+/** Demo replies and error messages follow the leader's language. */
+const tr = (text: string) => translate(leader?.language ?? 'en', text);
+
+/** The live coach needs a user session (real or anonymous). Without one, fall back to demo replies. */
+async function liveToken(): Promise<string | null> {
+  if (!COACH_URL) return null;
+  return currentAccessToken();
+}
+
+async function post<T>(token: string, body: object): Promise<T> {
+  const res = await fetch(COACH_URL!, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+      ...(supabaseAnonKey ? { apikey: supabaseAnonKey } : {}),
+    },
+    body: JSON.stringify({ ...body, leader }),
+  });
+  if (!res.ok) {
+    const detail = (await res.json().catch(() => null)) as { error?: string } | null;
+    throw new CoachError(res.status === 429 && detail?.error ? detail.error : tr(CONNECT_ERROR));
+  }
+  return res.json() as Promise<T>;
+}
+
+const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/* ---------- Ask the Coach ---------- */
+
+export async function askCoach(messages: ChatMessage[]): Promise<string> {
+  const token = await liveToken();
+  if (token) return (await post<{ reply: string }>(token, { mode: 'coach', messages })).reply;
+  await wait(700);
+  return tr(demoCoachReply(messages[messages.length - 1]?.content ?? ''));
+}
+
+function demoCoachReply(text: string): string {
+  const t = text.toLowerCase();
+  if (/\b(suicid|want to die|self[- ]?harm|hurt (myself|someone)|going to (hurt|kill)|quiero morir|hacerme daño|veux mourir|me faire du mal)/.test(t)) {
+    return 'If anyone may be in danger, please act now: call 911 (or your local emergency number) or the 988 Suicide & Crisis Lifeline (call or text 988 in the US), and bring in HR or security right away. You do not have to handle this alone.';
+  }
+  if (/\b(fire|firing|terminat|let (him|her|them) go|lay ?off|demot|write (him|her|them) up|discipline|despedi|despido|licenci|renvoy|sanci)/.test(t)) {
+    return "Decisions about firing or discipline belong with HR and your company's policies, so I won't weigh in on whether to take that step. Where I can help is the conversation itself:\n\n1. **Be specific** about what you've observed and the impact.\n2. **Be clear** about the expectation going forward.\n3. **Document** the conversation factually.\n4. **Bring HR in early,** before anything formal.\n\nWant help planning what to say?";
+  }
+  if (/feedback|deadline|performance|retroaliment|plazo|desempeño|rendimiento|échéance/.test(t)) {
+    return "Here's a simple structure that works well:\n\n1. Situation: name when and where.\n2. Behavior: describe what you observed, not what you assume.\n3. Impact: share why it matters to the team.\n4. Curiosity: ask \"What's your take?\" and listen.\n\nWant to practice it? Tell me who you're talking to and I'll play them.";
+  }
+  if (/conflict|argu|tension|conflit|tensi/.test(t)) {
+    return "Start by separating the people from the problem. Meet each person one on one first, reflect back what you hear, and look for the shared goal underneath their positions. Then bring them together around that goal, not around who was right.\n\nWhat's the situation you're facing?";
+  }
+  if (/meeting|reuni|réunion/.test(t)) {
+    return "Great meetings come down to three things:\n\n1. **A one sentence purpose.** If you can't write it, send an email instead.\n2. **Agenda items framed as decisions.** \"Decide which vendor to use\" beats \"Vendors.\"\n3. **Close with who does what by when,** then send the recap within the hour.\n\nWhich meeting on your calendar feels least useful right now?";
+  }
+  if (/email|slack|message|remote|correo|mensaje|remoto|courriel|distance/.test(t)) {
+    return "Text strips out tone, so messages often land harsher than you mean. A few habits help:\n\n1. **Ask and deadline first.**\n2. **Add context** to \"can we talk?\" so people don't spend the night worrying.\n3. **Take sensitive topics live,** then recap in writing.\n\nTry the Tone Check tool in Practice, or paste your message here and I'll tell you how it might land.";
+  }
+  if (/culture|morale|toxic|blame|cultura|tóxic|culpa|toxique|reproche/.test(t)) {
+    return "Culture shifts in small, repeated moments, not announcements. Three moves that work:\n\n1. **Model it first.** Ask for feedback on yourself and visibly act on it.\n2. **Reward what you want more of.** Call out the behavior, not just the result.\n3. **Address what you tolerate.** The behavior you let slide becomes the standard.\n\nWhat is one behavior you most want to see more of on your team?";
+  }
+  if (/layoff|change|reorg|cambio|changement|réorg/.test(t)) {
+    return "In times of change, people need three things from you: clarity on what you know, honesty about what you don't, and a date for when you'll share more. Overcommunicate the why, and make space for people to react before you ask them to act.";
+  }
+  return "Great question. A good first move is to get curious before you get clear. What outcome do you want for the other person, and what outcome do you want for yourself? Share a bit more and I'll help you plan the conversation or rehearse it.";
+}
+
+/* ---------- Role play ---------- */
+
+export async function roleplayReply(rp: Roleplay, messages: ChatMessage[]): Promise<string> {
+  const token = await liveToken();
+  if (token) return (await post<{ reply: string }>(token, { mode: 'roleplay', roleplayId: rp.id, persona: rp.persona, brief: rp.brief, messages })).reply;
+  await wait(800);
+  const userTurns = messages.filter((m) => m.role === 'user').length;
+  return rp.demoReplies[Math.min(userTurns - 1, rp.demoReplies.length - 1)];
+}
+
+export async function roleplayFeedback(rp: Roleplay, messages: ChatMessage[]): Promise<RoleplayFeedback> {
+  const token = await liveToken();
+  if (token) return post<RoleplayFeedback>(token, { mode: 'feedback', roleplayId: rp.id, brief: rp.brief, messages });
+  await wait(900);
+  const fb = demoFeedback(messages);
+  return { ...fb, strengths: fb.strengths.map(tr), improve: fb.improve.map(tr), tryThis: tr(fb.tryThis) };
+}
+
+function demoFeedback(messages: ChatMessage[]): RoleplayFeedback {
+  const mine = messages.filter((m) => m.role === 'user').map((m) => m.content.toLowerCase());
+  const all = mine.join(' ');
+  const asked = mine.filter((m) => m.includes('?')).length;
+  const empathy = /(hear|sounds like|understand|appreciate|thank|makes sense|i can see)/.test(all);
+  const specific = /(\d|deadline|last week|monday|tuesday|this month|project|report)/.test(all);
+  const nextStep = /(next|plan|let's|going forward|together|follow up|check in)/.test(all);
+
+  const strengths: string[] = [];
+  const improve: string[] = [];
+  (asked >= 2 ? strengths : improve).push(asked >= 2 ? 'You asked open questions and let them explain.' : 'Ask at least two open questions before offering solutions.');
+  (empathy ? strengths : improve).push(empathy ? 'You acknowledged their perspective before moving on.' : 'Reflect what you hear, for example "It sounds like..."');
+  (specific ? strengths : improve).push(specific ? 'You were specific about what you observed.' : 'Name a specific, observable example to keep it fair.');
+  (nextStep ? strengths : improve).push(nextStep ? 'You closed with a clear next step.' : 'Agree on a concrete next step and a time to follow up.');
+
+  const score = Math.min(98, 52 + strengths.length * 11 + Math.min(asked, 3) * 2);
+  return {
+    score,
+    strengths: strengths.length ? strengths : ['You showed up for a hard conversation. That is the first win.'],
+    improve: improve.length ? improve : ['Try the same scenario at a tougher difficulty.'],
+    tryThis: "\"It sounds like a lot has landed on you. What would make the next two weeks feel manageable?\"",
+  };
+}
