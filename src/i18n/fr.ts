@@ -411,5 +411,17 @@ const fr: Record<string, string> = {
   "Conversations": "Conversations",
   "Team": "Équipe",
   "All": "Tous",
+  "Privacy policy": "Politique de confidentialité",
+  "What we collect and how we protect it": "Ce que nous collectons et comment nous le protégeons",
+  "Terms of use": "Conditions d’utilisation",
+  "Leader Toolkit": "Boîte à outils",
+  "Templates, checklists, and planners": "Modèles, listes de contrôle et planificateurs",
+  "Send feedback": "Envoyer un commentaire",
+  "Rapport feedback": "Commentaires sur Rapport",
+  "By creating an account, you agree to the": "En créant un compte, vous acceptez les",
+  "and the": "et la",
+  "This document is provided in English.": "Ce document est disponible en anglais.",
+  "Privacy Policy": "Politique de confidentialité",
+  "Terms of Use": "Conditions d’utilisation",
 };
 export default fr;

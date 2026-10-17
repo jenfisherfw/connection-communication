@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { LegalConsent } from '../components/LegalConsent';
 import { BackHeader, Button, Eyebrow } from '../components/ui';
 import { useT } from '../i18n';
 import { useAccount } from '../state/Account';
@@ -62,6 +63,7 @@ export default function SignIn() {
           onPress={submit}
           style={{ marginTop: 22 }}
         />
+        {mode === 'up' ? <LegalConsent /> : null}
         <View style={s.switchRow}>
           <Text style={s.switchText}>{mode === 'in' ? t('New to Rapport?') : t('Already have an account?')}</Text>
           <Pressable onPress={() => { setMode(mode === 'in' ? 'up' : 'in'); setMsg(null); }}>

@@ -411,5 +411,17 @@ const es: Record<string, string> = {
   "Conversations": "Conversaciones",
   "Team": "Equipo",
   "All": "Todas",
+  "Privacy policy": "Política de privacidad",
+  "What we collect and how we protect it": "Qué recopilamos y cómo lo protegemos",
+  "Terms of use": "Términos de uso",
+  "Leader Toolkit": "Caja de herramientas",
+  "Templates, checklists, and planners": "Plantillas, listas y planificadores",
+  "Send feedback": "Enviar comentarios",
+  "Rapport feedback": "Comentarios sobre Rapport",
+  "By creating an account, you agree to the": "Al crear una cuenta, aceptas los",
+  "and the": "y la",
+  "This document is provided in English.": "Este documento está disponible en inglés.",
+  "Privacy Policy": "Política de privacidad",
+  "Terms of Use": "Términos de uso",
 };
 export default es;
