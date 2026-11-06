@@ -1,0 +1,6 @@
+# Supabase project settings used by the Supabase CLI.
+project_id = "rapport"
+
+[functions.coach]
+# Requests must carry the project's anon key or a signed in user's token.
+verify_jwt = true

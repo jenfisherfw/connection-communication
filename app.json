@@ -1,0 +1,57 @@
+{
+  "expo": {
+    "name": "Rapport",
+    "slug": "rapport",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.evolutiontorevolution.rapport"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#052864",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.evolutiontorevolution.rapport"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "output": "single"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 180,
+          "resizeMode": "contain",
+          "backgroundColor": "#052864"
+        }
+      ]
+    ],
+    "scheme": "rapport",
+    "experiments": {
+      "typedRoutes": false
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "5edd9ab5-0005-45ed-ae32-7e453460a80d"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/5edd9ab5-0005-45ed-ae32-7e453460a80d"
+    }
+  }
+}
