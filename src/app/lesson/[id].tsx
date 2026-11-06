@@ -2,7 +2,7 @@ import { Feather } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router, useLocalSearchParams } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
-import { NativeScrollEvent, NativeSyntheticEvent, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { NativeScrollEvent, NativeSyntheticEvent, Pressable, ScrollView, ScrollViewInstance, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Reward } from '../../components/Reward';
 import { BackHeader, Button, Eyebrow } from '../../components/ui';
@@ -26,7 +26,7 @@ export default function LessonScreen() {
   const [index, setIndex] = useState(() => (done ? 0 : Math.min(progress.lessonPos[id ?? ''] ?? 0, (lesson?.slides.length ?? 1) - 1)));
   const [picked, setPicked] = useState<Record<number, number>>({});
   const [result, setResult] = useState<AwardResult | null>(null);
-  const scroller = useRef<ScrollView>(null);
+  const scroller = useRef<ScrollViewInstance>(null);
   const pageWidth = Math.min(width, 640);
 
   useEffect(() => {
