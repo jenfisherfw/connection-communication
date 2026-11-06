@@ -15,9 +15,9 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"I know, and I’m so sorry. The convention threw everything off, two people called out, and I had to move fast before checkout. I didn’t have time to track you down."', score: 1, feedback: 'The apology is real, but the reasons turn it into an excuse. The second time around, explanations sound like the reason it will happen again.' },
-        { text: '"You’re right. I said I’d check with you, and I didn’t. Your people paid for it. From now on, no schedule change happens without a call to you first, even on the busiest day."', score: 3, feedback: 'You named the broken commitment, owned the impact on her team, and made the fix specific and checkable. A repeated mistake needs a sturdier change than a repeated apology.' },
-        { text: '"Sorry about that. It won’t happen again."', score: 2, feedback: 'Short and sincere, but she has already heard "it won’t happen again." She needs to know what will actually be different.' },
-        { text: '"Let’s give your team an extra day off next week to make up for it."', score: 1, feedback: 'A kind gesture, but trying to buy back trust skips the apology she is asking for. Repair the commitment first.' },
+        { text: '"You’re right. I broke the same promise twice, and your people paid for it. From now on, no schedule change happens without a call to you first."', score: 3, feedback: 'You named the broken commitment, owned the impact on her team, and made the fix specific and checkable. A repeated mistake needs a sturdier change than a repeated apology.' },
+        { text: '"You’re right, I broke the same promise twice, and your people paid for it. I’m sorry, and it won’t happen again, convention or not."', score: 2, feedback: 'Close. You named the broken promise and its impact, but "it won’t happen again" is the line she already heard. Without a specific, checkable change, the second apology sounds like the first.' },
+        { text: '"I’m so sorry, and I want to get this right. What would a good process look like for you on busy days? Let’s design it together next week."', score: 1, feedback: 'Collaborative in tone, but she already told you the process: check with her first. Asking her to design it next week delays the one commitment she needs now.' },
       ],
     },
     {
@@ -29,10 +29,10 @@ const week: CurriculumWeek = {
       quote: '"I was told I’d be made superintendent by last spring. Nothing happened. So, are you going to promise me the same thing?"',
       xp: 30,
       choices: [
-        { text: '"I’ll make it happen. You clearly deserve it."', score: 1, feedback: 'It is exactly what he wants to hear, and exactly how the trust got broken. Do not promise what you do not control.' },
-        { text: '"That was before my time, and honestly I don’t know what was said or why. I’d rather we start fresh and focus on what’s ahead instead of what happened under someone else."', score: 1, feedback: 'Technically fair, but brushing past the history tells him it does not matter to you. The broken promise is the first thing he needs you to acknowledge.' },
-        { text: '"That sounds frustrating. Let me check with HR about what was promised."', score: 2, feedback: 'Taking it seriously helps, but he asked you a direct question. He also needs to hear how you will handle promises differently.' },
-        { text: '"No, because I don’t control that yet, and I’m sorry that promise was broken. By the end of the month, I’ll find out what the role requires and show you honestly where you stand."', score: 3, feedback: 'You acknowledged the broken promise, refused to repeat the pattern, and offered a commitment small enough to keep and specific enough to check.' },
+        { text: '"I’ll be straight with you: you’ve clearly earned it, and I’m going to push for it hard. Give me until spring, and I’ll make sure it finally happens this time."', score: 1, feedback: 'It is exactly what he wants to hear, and exactly how the trust got broken. Warmth plus a promise you do not control repeats the pattern.' },
+        { text: '"That was before my time, so help me understand. What exactly were you told, and who else was in the room when it was promised?"', score: 1, feedback: 'Curious, but he asked you a direct question and you answered with an investigation. Verifying the history can come later. First he needs to hear you will not repeat the pattern.' },
+        { text: '"No promises from me until I know more, and I’m sorry that one was broken. Let me check with HR on what was said and get back to you."', score: 2, feedback: 'Close. You refused to repeat the promise and acknowledged the broken one, but "get back to you" has no date or clear outcome, which is how the last promise drifted too.' },
+        { text: '"No, it isn’t mine to promise yet, and I’m sorry that one was broken. By month’s end, I’ll learn what the role needs and tell you where you stand."', score: 3, feedback: 'You acknowledged the broken promise, refused to repeat the pattern, and offered a commitment small enough to keep and specific enough to check.' },
       ],
     },
     {
@@ -44,10 +44,10 @@ const week: CurriculumWeek = {
       quote: '"Hey, about yesterday. No hard feelings, right? I was just giving them the timeline."',
       xp: 30,
       choices: [
-        { text: '"I’d like to talk about it, because I value working with you. The delay was described as ours, and that didn’t match what I saw. Can we look at the timeline together and agree how we raise issues before the exec room next time?"', score: 3, feedback: 'You were direct about the impact, stuck to facts, and focused on how you will work together going forward. Repair between peers needs honesty and a shared agreement, not a quiet grudge.' },
-        { text: '"No hard feelings at all. It’s fine."', score: 1, feedback: 'Saying it is fine when it is not trades one awkward moment for a long, quiet distrust. You will start working around him instead of with him.' },
-        { text: 'Email the executives a corrected timeline that afternoon, with the claims data dates highlighted, and copy Magnus so he sees it.', score: 1, feedback: 'Setting the record straight may matter eventually, but doing it first turns a fixable rift into a public fight. Talk to him directly first.' },
-        { text: '"Honestly, it stung. Your team was the holdup, not mine."', score: 2, feedback: 'Naming the impact is honest, but leading with blame invites a defensive back and forth. Share the facts and ask to look at them together.' },
+        { text: '"Honestly, there are some. The claims data shows the delay wasn’t ours. Can we walk the timeline together and agree how we raise issues before the next review?"', score: 3, feedback: 'You were direct about the impact, stuck to facts, and focused on how you will work together going forward. Repair between peers needs honesty and a shared agreement, not a quiet grudge.' },
+        { text: '"Of course not, those reviews are brutal and everyone’s under pressure. How do you think the execs took it? I’d hate for it to stick to either of us, so let’s grab lunch."', score: 1, feedback: 'Friendly, but it smooths over what happened and makes his worry the topic. You never tell him the timeline was wrong, so the distrust stays and you start working around him.' },
+        { text: 'Email the executives a corrected timeline that afternoon, with the claims data dates highlighted, and copy Magnus so the record is accurate before the next review.', score: 1, feedback: 'Setting the record straight may matter eventually, but doing it first turns a fixable rift into a public fight. Talk to him directly first.' },
+        { text: '"Honestly, it stung. Your team was the holdup, not mine, and I’d like the execs to hear that from you."', score: 2, feedback: 'Naming the impact is honest, but leading with blame invites a defensive back and forth. Share the facts and ask to look at them together.' },
       ],
     },
     {
@@ -59,7 +59,7 @@ const week: CurriculumWeek = {
       quote: '"I told you about that interview in confidence. Now my whole team knows. Why would I tell you anything again?"',
       xp: 30,
       choices: [
-        { text: '"I only mentioned it to one person. I didn’t think they’d spread it around."', score: 1, feedback: 'Shifting the focus to the other manager minimizes what you did. She trusted you, not them.' },
+        { text: '"I’m really sorry. I only mentioned it to one manager, over coffee. How did it get from there to your whole team, do you know?"', score: 1, feedback: 'Shifting the focus to how it spread minimizes what you did. She trusted you, not them, and tracing the leak is not her job.' },
         { text: '"I’m sorry you feel that way. I never meant for it to get out."', score: 1, feedback: '"Sorry you feel that way" apologizes for her feelings, not for your action. Intent matters less than impact here.' },
         { text: '"You’re right, and I’m sorry. That was yours to share, not mine, and I won’t do it again. What would help most right now with your team?"', score: 3, feedback: 'A full apology with no excuse, a clear commitment, and a question about what she needs. Repair starts with ownership, then follows her lead.' },
         { text: '"That was a mistake, and I apologize. I’ll talk to that manager today, find out who else heard it, and make sure it doesn’t go any further than it already has."', score: 2, feedback: 'The ownership is clear, but you jumped to damage control without asking what she wants. She may not want more people talking about it.' },
@@ -74,10 +74,10 @@ const week: CurriculumWeek = {
       quote: '"My team doesn’t come to me anymore. They go to you, because they’ve seen that you’ll overrule me."',
       xp: 30,
       choices: [
-        { text: '"I think you’re reading too much into it. They just know me from before you started."', score: 1, feedback: 'Dismissing the pattern protects your comfort, not her authority. She is telling you exactly what broke and why.' },
-        { text: '"You’re right, and that’s on me. I’d like to fix it where it broke. At the next staff meeting, I’ll say I shouldn’t have overruled you and that those decisions go through you. Would that help?"', score: 3, feedback: 'Public damage needs public repair. You owned it, offered a concrete fix in front of the same audience, and checked that it would actually help her.' },
-        { text: '"From now on, I’ll send anyone who comes to me back to you."', score: 2, feedback: 'Redirecting people helps, but the team saw you overrule her. Without acknowledging that, they may think you are just passing them off.' },
-        { text: '"Let’s bring the checklist back. That should show them you’re in charge."', score: 1, feedback: 'Reinstating the checklist may or may not be right, and it skips the real repair. Her authority comes back when you say it out loud, not through a policy flip.' },
+        { text: '"I hear you, and I don’t want you to feel undermined. What have you tried so far to get them coming back to you first?"', score: 1, feedback: 'Supportive in tone, but it puts the repair on her. She is telling you exactly what broke: your public reversal. The fix starts with you.' },
+        { text: '"You’re right, and that’s on me. It broke in public, so I’ll fix it in public: at the next staff meeting, I’ll say I shouldn’t have overruled you. Would that help?"', score: 3, feedback: 'Public damage needs public repair. You owned it, offered a concrete fix in front of the same audience, and checked that it would actually help her.' },
+        { text: '"From now on, anyone who comes to me gets sent straight back to you, every time, and I’ll let you know so we stay aligned."', score: 2, feedback: 'Redirecting people helps, but the team saw you overrule her. Without acknowledging that, they may think you are just passing them off.' },
+        { text: '"Let’s bring your checklist back next week, and I’ll back it fully this time. Once the crew sees it running again in that kitchen, they’ll know you’re the one calling the shots."', score: 1, feedback: 'Reinstating the checklist may or may not be right, and it skips the real repair. Her authority comes back when you say it out loud, not through a policy flip.' },
       ],
     },
     {
@@ -90,9 +90,9 @@ const week: CurriculumWeek = {
       xp: 30,
       choices: [
         { text: '"I can’t discuss the investigation, and I understand that’s frustrating. What I can say is that the process did its job in the end, even if it took longer than anyone wanted."', score: 1, feedback: 'Confidentiality is real, but "the process did its job" denies what they lived through. Defending the system is the fastest way to lose them.' },
-        { text: '"Things are different now. You can trust that."', score: 1, feedback: 'Asking for trust is not the same as earning it. People who were let down need evidence, not reassurance.' },
+        { text: '"I’m so sorry you went through that. I promise you things are different now, and I personally guarantee nothing like this will ever happen on your crew again."', score: 1, feedback: 'Heartfelt, but a guarantee you cannot control is the same kind of promise that already failed them. People who were let down need evidence, not reassurance.' },
         { text: '"You’re right that it took too long. Please keep reporting anything you see, and come straight to me."', score: 2, feedback: 'Owning the delay helps, but without saying what will change, "come to me" sounds like the same promise they heard before.' },
-        { text: '"I’d feel the same way. A year is too long, and I won’t defend it. I can’t share investigation details, but here’s what changes: every report gets a reply within five business days, and I’ll be back monthly to hear how it’s going."', score: 3, feedback: 'You validated their anger, stayed honest about confidentiality, and gave specific, checkable changes. Trust in a process comes back when people see it respond.' },
+        { text: '"A year is too long, and I won’t defend it. Here’s what changes: every report gets a reply within five business days, and I’ll be back monthly to hear how it’s going."', score: 3, feedback: 'You validated their anger without defending the system and gave specific, checkable changes. Trust in a process comes back when people see it respond.' },
       ],
     },
     {
@@ -104,10 +104,10 @@ const week: CurriculumWeek = {
       quote: '"My people already planned around that money. I told them it was real because you told me. What do I say to them now?"',
       xp: 30,
       choices: [
-        { text: '"Tell them it’s on me, because it is. I announced it before it was in writing. I’ll tell everyone myself today, share what I know and don’t know, and I won’t announce money again until it’s signed."', score: 3, feedback: 'You took the blame so your supervisors don’t carry it, were honest about what you know, and named the change in your own behavior. Ownership at scale starts with you saying it first.' },
-        { text: '"Tell them corporate pulled it. It was out of our hands."', score: 1, feedback: 'It may be technically true, but you made the announcement. Blaming corporate protects you for a day and costs you credibility for a year.' },
+        { text: '"Tell them it’s on me, because it is. I’ll tell everyone myself today, share what I know and don’t, and I won’t announce money again until it’s signed."', score: 3, feedback: 'You took the blame so your supervisors don’t carry it, were honest about what you know, and named the change in your own behavior. Ownership at scale starts with you saying it first.' },
+        { text: '"Tell them the truth: corporate finance canceled it at the last minute, after it was approved. It was completely out of our hands, and none of us saw it coming."', score: 1, feedback: 'It may be technically true, but you made the announcement. Blaming corporate protects you for a day and costs you credibility for a year.' },
         { text: '"Let’s hold off on telling anyone for a few days. I’m going to push corporate hard to reverse it, and there’s no reason to upset two hundred people if I can still get it back."', score: 1, feedback: 'Hoping for a reversal while people keep planning around the money makes the damage worse. Bad news gets heavier with every day it waits.' },
-        { text: '"I’m sorry. I’ll send everyone an email tonight explaining the decision."', score: 2, feedback: 'An apology and quick communication help, but an email on news this personal can feel like hiding. Say it in person, and own your part.' },
+        { text: '"Tell them it’s on me, because it is. I’ll tell everyone myself today and share what I know and what I don’t."', score: 2, feedback: 'Close. You took the blame and chose to say it in person, but you left out the change in your own behavior: no more announcing money until it is signed. Without that, they cannot trust the next announcement.' },
       ],
     },
   ],
@@ -148,9 +148,9 @@ const week: CurriculumWeek = {
         quote: '“Dijiste que primero me consultarías. Tuve que llamar a dos personas en su día libre.”',
         choices: [
           { text: '“Lo sé, y lo siento mucho. La convención lo desordenó todo, dos personas faltaron y tuve que moverme rápido antes de la salida de huéspedes. No tuve tiempo de localizarte.”', feedback: 'La disculpa es sincera, pero las razones la convierten en excusa. La segunda vez, las explicaciones suenan a la razón por la que volverá a pasar.' },
-          { text: '“Tienes razón. Dije que te consultaría y no lo hice. Tu gente pagó las consecuencias. De ahora en adelante, ningún cambio de horario sucede sin llamarte primero, incluso en el día más ocupado.”', feedback: 'Nombraste el compromiso roto, asumiste el impacto en su equipo e hiciste que la solución fuera específica y verificable. Un error repetido necesita un cambio más sólido que una disculpa repetida.' },
-          { text: '“Perdón por eso. No volverá a pasar.”', feedback: 'Breve y sincero, pero ya escuchó “no volverá a pasar”. Necesita saber qué será realmente diferente.' },
-          { text: '“Démosle a tu equipo un día libre extra la próxima semana para compensarlo.”', feedback: 'Un gesto amable, pero intentar comprar la confianza se salta la disculpa que te está pidiendo. Repara primero el compromiso.' },
+          { text: '“Tienes razón. Rompí la misma promesa dos veces, y tu gente pagó las consecuencias. De ahora en adelante, ningún cambio de horario sucede sin llamarte primero.”', feedback: 'Nombraste el compromiso roto, asumiste el impacto en su equipo e hiciste que la solución fuera específica y verificable. Un error repetido necesita un cambio más sólido que una disculpa repetida.' },
+          { text: '“Tienes razón, rompí la misma promesa dos veces, y tu gente pagó las consecuencias. Lo siento, y no volverá a pasar, haya convención o no.”', feedback: 'Casi. Nombraste la promesa rota y su impacto, pero “no volverá a pasar” es la frase que ella ya escuchó. Sin un cambio específico y verificable, la segunda disculpa suena igual que la primera.' },
+          { text: '“Lo siento mucho, y quiero hacerlo bien. ¿Cómo sería para ti un buen proceso en los días de mucho trabajo? Diseñémoslo juntos la próxima semana.”', feedback: 'Suena colaborativo, pero ella ya te dijo el proceso: consultarla primero. Pedirle que lo diseñe la próxima semana retrasa el único compromiso que necesita ahora.' },
         ],
       },
       'w14-inherited-promise': {
@@ -159,10 +159,10 @@ const week: CurriculumWeek = {
         person: 'Kofi, capataz',
         quote: '“Me dijeron que me harían superintendente para la primavera pasada. No pasó nada. Entonces, ¿me vas a prometer lo mismo?”',
         choices: [
-          { text: '“Yo haré que suceda. Es obvio que te lo mereces.”', feedback: 'Es justo lo que quiere oír, y justo como se rompió la confianza. No prometas lo que no controlas.' },
-          { text: '“Eso fue antes de que yo llegara, y sinceramente no sé qué se dijo ni por qué. Prefiero que empecemos de cero y nos enfoquemos en lo que viene, no en lo que pasó con otra persona.”', feedback: 'Técnicamente justo, pero pasar por encima de la historia le dice que no te importa. La promesa rota es lo primero que necesita que reconozcas.' },
-          { text: '“Suena frustrante. Déjame consultar con Recursos Humanos qué se prometió.”', feedback: 'Tomarlo en serio ayuda, pero te hizo una pregunta directa. También necesita oír cómo vas a manejar las promesas de otra manera.' },
-          { text: '“No, porque todavía no controlo eso, y lamento que esa promesa se haya roto. Antes de fin de mes averiguaré qué requiere el puesto y te mostraré con honestidad dónde estás.”', feedback: 'Reconociste la promesa rota, te negaste a repetir el patrón y ofreciste un compromiso lo bastante pequeño para cumplirlo y lo bastante específico para verificarlo.' },
+          { text: '“Te voy a ser directo: es obvio que te lo ganaste, y voy a presionar fuerte por ello. Dame hasta la primavera y me aseguraré de que esta vez sí suceda.”', feedback: 'Es justo lo que quiere oír, y justo como se rompió la confianza. Calidez más una promesa que no controlas repite el patrón.' },
+          { text: '“Eso fue antes de que yo llegara, así que ayúdame a entender. ¿Qué te dijeron exactamente, y quién más estaba presente cuando te lo prometieron?”', feedback: 'Suena curioso, pero él te hizo una pregunta directa y respondiste con una investigación. Verificar la historia puede venir después. Primero necesita oír que no vas a repetir el patrón.' },
+          { text: '“No te prometo nada hasta saber más, y lamento que esa promesa se rompiera. Déjame consultar con Recursos Humanos qué se dijo y te aviso.”', feedback: 'Casi. Te negaste a repetir la promesa y reconociste la que se rompió, pero “te aviso” no tiene fecha ni resultado claro, y así fue como se desvaneció la promesa anterior.' },
+          { text: '“No, todavía no me corresponde prometerlo, y lamento que esa promesa se rompiera. Antes de fin de mes sabré qué requiere el puesto y te diré dónde estás.”', feedback: 'Reconociste la promesa rota, te negaste a repetir el patrón y ofreciste un compromiso lo bastante pequeño para cumplirlo y lo bastante específico para verificarlo.' },
         ],
       },
       'w14-under-the-bus': {
@@ -171,10 +171,10 @@ const week: CurriculumWeek = {
         person: 'Magnus, director de siniestros',
         quote: '“Oye, sobre lo de ayer. Sin rencores, ¿verdad? Solo les estaba dando la cronología.”',
         choices: [
-          { text: '“Me gustaría hablarlo, porque valoro trabajar contigo. El retraso se describió como nuestro, y eso no coincide con lo que vi. ¿Podemos revisar la cronología juntos y acordar cómo plantear los problemas antes de llegar a la sala ejecutiva la próxima vez?”', feedback: 'Fuiste directo sobre el impacto, te apegaste a los hechos y te enfocaste en cómo trabajarán juntos de aquí en adelante. Reparar entre colegas requiere honestidad y un acuerdo compartido, no un rencor silencioso.' },
-          { text: '“Para nada. Todo bien.”', feedback: 'Decir que todo está bien cuando no lo está cambia un momento incómodo por una desconfianza larga y silenciosa. Empezarás a trabajar a su alrededor en lugar de con él.' },
-          { text: 'Enviar esa misma tarde a los ejecutivos una cronología corregida, con las fechas de los datos de siniestros resaltadas, y copiar a Magnus para que la vea.', feedback: 'Aclarar los hechos puede importar en algún momento, pero hacerlo primero convierte una grieta reparable en una pelea pública. Habla con él directamente primero.' },
-          { text: '“Sinceramente, me dolió. Tu equipo fue el que se atrasó, no el mío.”', feedback: 'Nombrar el impacto es honesto, pero empezar culpando invita a un ida y vuelta defensivo. Comparte los hechos y propón revisarlos juntos.' },
+          { text: '“Sinceramente, sí hay algunos. Los datos de siniestros muestran que el retraso no fue nuestro. ¿Revisamos la cronología juntos y acordamos cómo plantear los problemas antes de la próxima revisión?”', feedback: 'Fuiste directo sobre el impacto, te apegaste a los hechos y te enfocaste en cómo trabajarán juntos de aquí en adelante. Reparar entre colegas requiere honestidad y un acuerdo compartido, no un rencor silencioso.' },
+          { text: '“Claro que no, esas revisiones son brutales y todos estamos bajo presión. ¿Cómo crees que lo tomaron los ejecutivos? No quisiera que nos afecte a ninguno de los dos, así que vamos a almorzar.”', feedback: 'Es amistoso, pero suaviza lo que pasó y convierte su preocupación en el tema. Nunca le dices que la cronología estaba mal, así que la desconfianza se queda y empiezas a trabajar a sus espaldas.' },
+          { text: 'Enviar esa misma tarde a los ejecutivos una cronología corregida, con las fechas de los datos de siniestros resaltadas, y copiar a Magnus para que el registro quede correcto antes de la próxima revisión.', feedback: 'Aclarar los hechos puede importar en algún momento, pero hacerlo primero convierte una grieta reparable en una pelea pública. Habla con él directamente primero.' },
+          { text: '“Sinceramente, me dolió. Tu equipo fue el que se atrasó, no el mío, y me gustaría que los ejecutivos te lo escucharan decir.”', feedback: 'Nombrar el impacto es honesto, pero empezar culpando invita a un ida y vuelta defensivo. Comparte los hechos y propón revisarlos juntos.' },
         ],
       },
       'w14-not-yours-to-share': {
@@ -183,7 +183,7 @@ const week: CurriculumWeek = {
         person: 'Noor, líder de equipo',
         quote: '“Te conté lo de esa entrevista en confianza. Ahora todo mi equipo lo sabe. ¿Por qué te volvería a contar algo?”',
         choices: [
-          { text: '“Solo se lo mencioné a una persona. No pensé que lo fuera a contar.”', feedback: 'Desviar la atención hacia el otro gerente minimiza lo que hiciste. Ella confió en ti, no en él.' },
+          { text: '“Lo siento mucho. Solo se lo mencioné a un gerente, tomando un café. ¿Sabes cómo llegó de ahí a todo tu equipo?”', feedback: 'Desviar la atención a cómo se difundió minimiza lo que hiciste. Ella confió en ti, no en esa persona, y rastrear la filtración no le toca a ella.' },
           { text: '“Lamento que te sientas así. Nunca quise que se supiera.”', feedback: '“Lamento que te sientas así” se disculpa por sus sentimientos, no por tu acción. Aquí importa menos la intención que el impacto.' },
           { text: '“Tienes razón, y lo siento. Eso te correspondía contarlo a ti, no a mí, y no lo volveré a hacer. ¿Qué te ayudaría más ahora con tu equipo?”', feedback: 'Una disculpa completa sin excusas, un compromiso claro y una pregunta sobre lo que necesita. La reparación empieza asumiendo la responsabilidad y luego sigue su guía.' },
           { text: '“Fue un error y te pido disculpas. Hoy hablaré con ese gerente, averiguaré quién más lo escuchó y me aseguraré de que no llegue más lejos de lo que ya llegó.”', feedback: 'La responsabilidad es clara, pero saltaste a controlar daños sin preguntar qué quiere ella. Quizá no quiera que más gente hable del tema.' },
@@ -195,10 +195,10 @@ const week: CurriculumWeek = {
         person: 'Orla, gerente general',
         quote: '“Mi equipo ya no viene a mí. Van contigo, porque vieron que me vas a desautorizar.”',
         choices: [
-          { text: '“Creo que le estás dando demasiada importancia. Solo me conocen de antes de que llegaras.”', feedback: 'Descartar el patrón protege tu comodidad, no su autoridad. Te está diciendo exactamente qué se rompió y por qué.' },
-          { text: '“Tienes razón, y es mi responsabilidad. Quiero arreglarlo donde se rompió. En la próxima reunión de personal diré que no debí desautorizarte y que esas decisiones pasan por ti. ¿Te ayudaría eso?”', feedback: 'Un daño público necesita una reparación pública. Lo asumiste, ofreciste una solución concreta frente al mismo público y confirmaste que de verdad le ayudaría.' },
-          { text: '“De ahora en adelante, a quien venga conmigo lo mandaré de regreso contigo.”', feedback: 'Redirigir a la gente ayuda, pero el equipo te vio desautorizarla. Sin reconocerlo, podrían pensar que solo te los estás quitando de encima.' },
-          { text: '“Volvamos a usar la lista. Eso les mostrará que tú mandas.”', feedback: 'Restablecer la lista puede o no ser lo correcto, y se salta la reparación real. Su autoridad vuelve cuando lo dices en voz alta, no con un cambio de política.' },
+          { text: '“Te escucho, y no quiero que te sientas desautorizada. ¿Qué has intentado hasta ahora para que vuelvan a acudir primero a ti?”', feedback: 'Suena solidario, pero le pasa a ella la reparación. Te está diciendo exactamente qué se rompió: tu desautorización en público. El arreglo empieza por ti.' },
+          { text: '“Tienes razón, y es mi responsabilidad. Se rompió en público, así que lo arreglaré en público: en la próxima reunión de personal diré que no debí desautorizarte. ¿Te ayudaría eso?”', feedback: 'Un daño público necesita una reparación pública. Lo asumiste, ofreciste una solución concreta frente al mismo público y confirmaste que de verdad le ayudaría.' },
+          { text: '“De ahora en adelante, a quien venga conmigo lo mandaré de regreso contigo, siempre, y te avisaré para que estemos alineados.”', feedback: 'Redirigir a la gente ayuda, pero el equipo te vio desautorizarla. Sin reconocerlo, podrían pensar que solo te los estás quitando de encima.' },
+          { text: '“Volvamos a usar tu lista la próxima semana, y esta vez la respaldaré por completo. Cuando el equipo la vea funcionando otra vez en esa cocina, sabrá que tú eres quien toma las decisiones.”', feedback: 'Restablecer la lista puede o no ser lo correcto, y se salta la reparación real. Su autoridad vuelve cuando lo dices en voz alta, no con un cambio de política.' },
         ],
       },
       'w14-report-again': {
@@ -208,9 +208,9 @@ const week: CurriculumWeek = {
         quote: '“Lo reportamos durante un año, y no pasó nada hasta que todo explotó. ¿Por qué alguno de nosotros volvería a reportar algo?”',
         choices: [
           { text: '“No puedo hablar de la investigación, y entiendo que eso frustra. Lo que sí puedo decir es que el proceso cumplió su función al final, aunque tardó más de lo que cualquiera quería.”', feedback: 'La confidencialidad es real, pero “el proceso cumplió su función” niega lo que vivieron. Defender el sistema es la forma más rápida de perderlos.' },
-          { text: '“Las cosas son diferentes ahora. Pueden confiar en eso.”', feedback: 'Pedir confianza no es lo mismo que ganársela. Las personas a quienes se les falló necesitan pruebas, no palabras tranquilizadoras.' },
+          { text: '“Lamento mucho que hayan pasado por eso. Les prometo que las cosas son diferentes ahora, y les garantizo personalmente que nada así volverá a pasar en su equipo.”', feedback: 'Sentido, pero una garantía que no controlas es el mismo tipo de promesa que ya les falló. Las personas a quienes se les falló necesitan pruebas, no palabras tranquilizadoras.' },
           { text: '“Tienen razón, tardó demasiado. Por favor sigan reportando lo que vean, y vengan directamente conmigo.”', feedback: 'Reconocer el retraso ayuda, pero sin decir qué va a cambiar, “vengan conmigo” suena a la misma promesa que ya escucharon.' },
-          { text: '“Yo sentiría lo mismo. Un año es demasiado, y no lo voy a defender. No puedo compartir detalles de la investigación, pero esto cambia: cada reporte recibirá respuesta en cinco días hábiles, y volveré cada mes a escuchar cómo va.”', feedback: 'Validaste su enojo, fuiste honesto sobre la confidencialidad y diste cambios específicos y verificables. La confianza en un proceso vuelve cuando la gente ve que responde.' },
+          { text: '“Un año es demasiado, y no lo voy a defender. Esto cambia: cada reporte recibirá respuesta en cinco días hábiles, y volveré cada mes a escuchar cómo va.”', feedback: 'Validaste su enojo sin defender el sistema y diste cambios específicos y verificables. La confianza en un proceso vuelve cuando la gente ve que responde.' },
         ],
       },
       'w14-bonus-reversal': {
@@ -219,10 +219,10 @@ const week: CurriculumWeek = {
         person: 'Renata, supervisora de turno',
         quote: '“Mi gente ya hizo planes con ese dinero. Les dije que era seguro porque tú me lo dijiste. ¿Qué les digo ahora?”',
         choices: [
-          { text: '“Diles que es mi responsabilidad, porque lo es. Lo anuncié antes de tenerlo por escrito. Hoy mismo se lo diré a todos en persona, compartiré lo que sé y lo que no, y no volveré a anunciar dinero hasta que esté firmado.”', feedback: 'Asumiste la culpa para que tus supervisores no la carguen, fuiste honesto sobre lo que sabes y nombraste el cambio en tu propio comportamiento. Asumir la responsabilidad a gran escala empieza por decirlo tú primero.' },
-          { text: '“Diles que corporativo lo canceló. Estaba fuera de nuestras manos.”', feedback: 'Puede ser técnicamente cierto, pero tú hiciste el anuncio. Culpar a corporativo te protege un día y te cuesta credibilidad por un año.' },
+          { text: '“Diles que es mi responsabilidad, porque lo es. Hoy mismo se lo diré a todos en persona, compartiré lo que sé y lo que no, y no volveré a anunciar dinero hasta que esté firmado.”', feedback: 'Asumiste la culpa para que tus supervisores no la carguen, fuiste honesto sobre lo que sabes y nombraste el cambio en tu propio comportamiento. Asumir la responsabilidad a gran escala empieza por decirlo tú primero.' },
+          { text: '“Diles la verdad: finanzas corporativas lo canceló a última hora, después de haberlo aprobado. Estaba completamente fuera de nuestras manos, y ninguno de nosotros lo vio venir.”', feedback: 'Puede ser técnicamente cierto, pero tú hiciste el anuncio. Culpar a corporativo te protege un día y te cuesta credibilidad por un año.' },
           { text: '“Esperemos unos días antes de decir nada. Voy a presionar fuerte a corporativo para que lo revierta, y no tiene sentido alterar a doscientas personas si todavía puedo recuperarlo.”', feedback: 'Esperar una reversión mientras la gente sigue haciendo planes con ese dinero empeora el daño. Las malas noticias pesan más con cada día que esperan.' },
-          { text: '“Lo siento. Esta noche enviaré un correo a todos explicando la decisión.”', feedback: 'Una disculpa y una comunicación rápida ayudan, pero un correo sobre una noticia tan personal puede sentirse como esconderse. Dilo en persona y asume tu parte.' },
+          { text: '“Diles que es mi responsabilidad, porque lo es. Hoy mismo se lo diré a todos en persona y compartiré lo que sé y lo que no.”', feedback: 'Casi. Asumiste la culpa y elegiste decirlo en persona, pero dejaste fuera el cambio en tu propio comportamiento: no anunciar dinero hasta que esté firmado. Sin eso, no podrán confiar en el próximo anuncio.' },
         ],
       },
     },
@@ -255,9 +255,9 @@ const week: CurriculumWeek = {
         quote: '« Vous aviez dit que vous me consulteriez d’abord. J’ai dû rappeler deux personnes sur leur jour de repos. »',
         choices: [
           { text: '« Je sais, et je suis vraiment désolé. Le congrès a tout chamboulé, deux personnes étaient absentes et j’ai dû agir vite avant les départs. Je n’ai pas eu le temps de vous trouver. »', feedback: 'Les excuses sont sincères, mais les raisons en font une justification. La deuxième fois, les explications ressemblent à la raison pour laquelle cela se reproduira.' },
-          { text: '« Vous avez raison. J’avais dit que je vous consulterais, et je ne l’ai pas fait. Votre équipe en a payé le prix. Désormais, aucun changement de planning ne se fera sans vous appeler d’abord, même les jours les plus chargés. »', feedback: 'Vous avez nommé l’engagement non tenu, assumé l’impact sur son équipe et rendu la solution précise et vérifiable. Une erreur répétée demande un changement plus solide que des excuses répétées.' },
-          { text: '« Désolé pour ça. Ça ne se reproduira pas. »', feedback: 'Court et sincère, mais elle a déjà entendu « ça ne se reproduira pas ». Elle a besoin de savoir ce qui sera réellement différent.' },
-          { text: '« Donnons un jour de repos supplémentaire à votre équipe la semaine prochaine pour compenser. »', feedback: 'Un beau geste, mais essayer de racheter la confiance fait l’impasse sur les excuses qu’elle attend. Réparez d’abord l’engagement.' },
+          { text: '« Vous avez raison. J’ai rompu deux fois la même promesse, et votre équipe en a payé le prix. Désormais, aucun changement de planning sans vous appeler d’abord. »', feedback: 'Vous avez nommé l’engagement non tenu, assumé l’impact sur son équipe et rendu la solution précise et vérifiable. Une erreur répétée demande un changement plus solide que des excuses répétées.' },
+          { text: '« Vous avez raison, j’ai rompu deux fois la même promesse, et votre équipe en a payé le prix. Je suis désolé, et ça ne se reproduira pas, congrès ou non. »', feedback: 'Presque. Vous avez nommé la promesse non tenue et son impact, mais « ça ne se reproduira pas » est la phrase qu’elle a déjà entendue. Sans changement précis et vérifiable, ces excuses ressemblent aux premières.' },
+          { text: '« Je suis vraiment désolé, et je veux bien faire les choses. À quoi ressemblerait un bon processus pour vous les jours chargés ? Construisons-le ensemble la semaine prochaine. »', feedback: 'Cela semble collaboratif, mais elle vous a déjà donné le processus : la consulter d’abord. Lui demander de le concevoir la semaine prochaine retarde le seul engagement dont elle a besoin maintenant.' },
         ],
       },
       'w14-inherited-promise': {
@@ -266,10 +266,10 @@ const week: CurriculumWeek = {
         person: 'Kofi, chef d’équipe',
         quote: '« On m’avait dit que je serais nommé conducteur de travaux au printemps dernier. Rien ne s’est passé. Alors, vous allez me promettre la même chose ? »',
         choices: [
-          { text: '« Je vais faire en sorte que ça arrive. Vous le méritez clairement. »', feedback: 'C’est exactement ce qu’il veut entendre, et exactement la façon dont la confiance a été brisée. Ne promettez pas ce que vous ne maîtrisez pas.' },
-          { text: '« C’était avant mon arrivée, et honnêtement je ne sais pas ce qui a été dit ni pourquoi. Je préfère qu’on reparte de zéro et qu’on se concentre sur l’avenir plutôt que sur ce qui s’est passé sous quelqu’un d’autre. »', feedback: 'Techniquement juste, mais passer sur l’histoire lui dit qu’elle ne compte pas pour vous. La promesse non tenue est la première chose qu’il a besoin que vous reconnaissiez.' },
-          { text: '« Ça doit être frustrant. Je vais vérifier avec les RH ce qui a été promis. »', feedback: 'Le prendre au sérieux aide, mais il vous a posé une question directe. Il a aussi besoin d’entendre comment vous allez gérer les promesses autrement.' },
-          { text: '« Non, parce que je ne maîtrise pas encore ça, et je regrette que cette promesse n’ait pas été tenue. D’ici la fin du mois, je saurai ce que le poste exige et je vous dirai honnêtement où vous en êtes. »', feedback: 'Vous avez reconnu la promesse non tenue, refusé de répéter le schéma et proposé un engagement assez petit pour être tenu et assez précis pour être vérifié.' },
+          { text: '« Je vais être franc : vous l’avez clairement mérité, et je vais me battre pour ça. Donnez-moi jusqu’au printemps, et je ferai en sorte que ça arrive enfin cette fois. »', feedback: 'C’est exactement ce qu’il veut entendre, et exactement la façon dont la confiance a été brisée. De la chaleur plus une promesse que vous ne maîtrisez pas répète le schéma.' },
+          { text: '« C’était avant mon arrivée, alors aidez-moi à comprendre. Que vous a-t-on dit exactement, et qui d’autre était présent quand on vous l’a promis ? »', feedback: 'C’est curieux, mais il vous a posé une question directe et vous avez répondu par une enquête. Vérifier l’historique peut attendre. Il doit d’abord entendre que vous ne répéterez pas le schéma.' },
+          { text: '« Aucune promesse de ma part avant d’en savoir plus, et je regrette que celle-ci n’ait pas été tenue. Je vérifie avec les RH ce qui a été dit et je reviens vers vous. »', feedback: 'Presque. Vous avez refusé de répéter la promesse et reconnu celle qui n’a pas été tenue, mais « je reviens vers vous » n’a ni date ni résultat clair, et c’est ainsi que la promesse précédente s’est perdue.' },
+          { text: '« Non, ce n’est pas encore à moi de le promettre, et je regrette cette promesse non tenue. D’ici la fin du mois, je saurai ce que le poste exige et où vous en êtes. »', feedback: 'Vous avez reconnu la promesse non tenue, refusé de répéter le schéma et proposé un engagement assez petit pour être tenu et assez précis pour être vérifié.' },
         ],
       },
       'w14-under-the-bus': {
@@ -278,10 +278,10 @@ const week: CurriculumWeek = {
         person: 'Magnus, directeur des sinistres',
         quote: '« Au fait, pour hier. Sans rancune, hein ? Je leur donnais juste la chronologie. »',
         choices: [
-          { text: '« J’aimerais qu’on en parle, parce que je tiens à bien travailler avec vous. Le retard a été présenté comme le nôtre, et ça ne correspond pas à ce que j’ai vu. On peut reprendre la chronologie ensemble et convenir de la façon de soulever les problèmes avant la réunion de direction la prochaine fois ? »', feedback: 'Vous avez été direct sur l’impact, vous vous en êtes tenu aux faits et vous vous êtes concentré sur la façon de travailler ensemble à l’avenir. Réparer entre pairs demande de l’honnêteté et un accord commun, pas une rancune silencieuse.' },
-          { text: '« Aucune rancune. C’est bon. »', feedback: 'Dire que tout va bien quand ce n’est pas le cas échange un moment gênant contre une longue méfiance silencieuse. Vous allez commencer à le contourner au lieu de travailler avec lui.' },
-          { text: 'Envoyer l’après-midi même aux dirigeants une chronologie corrigée, avec les dates des données de sinistres surlignées, en mettant Magnus en copie pour qu’il la voie.', feedback: 'Rétablir les faits peut compter un jour, mais le faire d’abord transforme une fissure réparable en conflit public. Parlez-lui d’abord directement.' },
-          { text: '« Honnêtement, ça m’a piqué. C’est votre équipe qui a bloqué, pas la mienne. »', feedback: 'Nommer l’impact est honnête, mais commencer par un reproche invite un échange défensif. Partagez les faits et proposez de les examiner ensemble.' },
+          { text: '« Honnêtement, un peu. Les données de sinistres montrent que le retard ne venait pas de nous. On reprend la chronologie ensemble et on convient de la façon de soulever les problèmes avant la prochaine revue ? »', feedback: 'Vous avez été direct sur l’impact, vous vous en êtes tenu aux faits et vous vous êtes concentré sur la façon de travailler ensemble à l’avenir. Réparer entre pairs demande de l’honnêteté et un accord commun, pas une rancune silencieuse.' },
+          { text: '« Bien sûr que non, ces revues sont éprouvantes et tout le monde est sous pression. Comment pensez-vous que les dirigeants l’ont pris ? Je ne voudrais pas que ça nous colle à la peau, alors déjeunons ensemble. »', feedback: 'C’est amical, mais cela lisse ce qui s’est passé et fait de son inquiétude le sujet. Vous ne lui dites jamais que la chronologie était fausse, donc la méfiance reste et vous commencez à le contourner.' },
+          { text: 'Envoyer l’après-midi même aux dirigeants une chronologie corrigée, avec les dates des données de sinistres surlignées, en mettant Magnus en copie pour que les faits soient exacts avant la prochaine revue.', feedback: 'Rétablir les faits peut compter un jour, mais le faire d’abord transforme une fissure réparable en conflit public. Parlez-lui d’abord directement.' },
+          { text: '« Honnêtement, ça m’a piqué. C’est votre équipe qui a bloqué, pas la mienne, et j’aimerais que les dirigeants l’entendent de votre bouche. »', feedback: 'Nommer l’impact est honnête, mais commencer par un reproche invite un échange défensif. Partagez les faits et proposez de les examiner ensemble.' },
         ],
       },
       'w14-not-yours-to-share': {
@@ -290,7 +290,7 @@ const week: CurriculumWeek = {
         person: 'Noor, cheffe d’équipe',
         quote: '« Je vous avais parlé de cet entretien en confiance. Maintenant toute mon équipe est au courant. Pourquoi je vous dirais encore quoi que ce soit ? »',
         choices: [
-          { text: '« Je l’ai seulement mentionné à une personne. Je ne pensais pas qu’elle le répéterait. »', feedback: 'Déplacer l’attention sur l’autre manager minimise ce que vous avez fait. C’est à vous qu’elle a fait confiance, pas à lui.' },
+          { text: '« Je suis vraiment désolé. Je l’ai seulement mentionné à un manager, autour d’un café. Comment est-ce arrivé jusqu’à toute votre équipe, vous savez ? »', feedback: 'Déplacer l’attention sur la façon dont c’est sorti minimise ce que vous avez fait. Elle vous a fait confiance à vous, pas à eux, et retrouver la fuite n’est pas son travail.' },
           { text: '« Je suis désolé que vous le preniez comme ça. Je n’ai jamais voulu que ça se sache. »', feedback: '« Désolé que vous le preniez comme ça » s’excuse de ses sentiments, pas de votre action. Ici, l’intention compte moins que l’impact.' },
           { text: '« Vous avez raison, et je suis désolé. C’était à vous de le dire, pas à moi, et je ne le referai pas. Qu’est-ce qui vous aiderait le plus maintenant avec votre équipe ? »', feedback: 'Des excuses complètes sans justification, un engagement clair et une question sur ce dont elle a besoin. La réparation commence par assumer, puis suit son rythme.' },
           { text: '« C’était une erreur, et je vous présente mes excuses. Je parle à ce manager aujourd’hui, je découvre qui d’autre l’a entendu, et je m’assure que ça n’aille pas plus loin. »', feedback: 'La responsabilité est claire, mais vous êtes passé à la gestion des dégâts sans lui demander ce qu’elle veut. Elle ne souhaite peut-être pas que davantage de gens en parlent.' },
@@ -302,10 +302,10 @@ const week: CurriculumWeek = {
         person: 'Orla, directrice de restaurant',
         quote: '« Mon équipe ne vient plus me voir. Ils viennent vous voir, parce qu’ils ont vu que vous alliez me contredire. »',
         choices: [
-          { text: '« Je pense que vous y voyez trop de choses. Ils me connaissent juste d’avant votre arrivée. »', feedback: 'Balayer le schéma protège votre confort, pas son autorité. Elle vous dit exactement ce qui s’est brisé et pourquoi.' },
-          { text: '« Vous avez raison, et c’est ma responsabilité. J’aimerais réparer là où ça s’est cassé. À la prochaine réunion d’équipe, je dirai que je n’aurais pas dû vous contredire et que ces décisions passent par vous. Est-ce que ça vous aiderait ? »', feedback: 'Un dommage public demande une réparation publique. Vous avez assumé, proposé une solution concrète devant le même public et vérifié que cela l’aiderait vraiment.' },
-          { text: '« Désormais, je renverrai vers vous toute personne qui vient me voir. »', feedback: 'Rediriger les gens aide, mais l’équipe vous a vu la contredire. Sans le reconnaître, ils risquent de penser que vous vous débarrassez d’eux.' },
-          { text: '« Remettons la liste en place. Ça leur montrera que c’est vous qui décidez. »', feedback: 'Rétablir la liste est peut-être juste, peut-être pas, et cela évite la vraie réparation. Son autorité revient quand vous le dites à voix haute, pas par un revirement de règle.' },
+          { text: '« Je vous entends, et je ne veux pas que vous vous sentiez désavouée. Qu’avez-vous essayé jusqu’ici pour qu’ils reviennent d’abord vers vous ? »', feedback: 'Le ton est bienveillant, mais cela lui confie la réparation. Elle vous dit exactement ce qui s’est cassé : votre désaveu en public. La solution commence par vous.' },
+          { text: '« Vous avez raison, et c’est ma responsabilité. Ça s’est cassé en public, donc je répare en public : à la prochaine réunion d’équipe, je dirai que je n’aurais pas dû vous contredire. Est-ce que ça vous aiderait ? »', feedback: 'Un dommage public demande une réparation publique. Vous avez assumé, proposé une solution concrète devant le même public et vérifié que cela l’aiderait vraiment.' },
+          { text: '« Désormais, toute personne qui vient me voir sera renvoyée vers vous, à chaque fois, et je vous préviendrai pour qu’on reste alignés. »', feedback: 'Rediriger les gens aide, mais l’équipe vous a vu la contredire. Sans le reconnaître, ils risquent de penser que vous vous débarrassez d’eux.' },
+          { text: '« Remettons votre liste en place la semaine prochaine, et cette fois je la soutiendrai pleinement. Quand l’équipe la verra de nouveau appliquée dans cette cuisine, elle saura que c’est vous qui décidez. »', feedback: 'Rétablir la liste est peut-être juste, peut-être pas, et cela évite la vraie réparation. Son autorité revient quand vous le dites à voix haute, pas par un revirement de règle.' },
         ],
       },
       'w14-report-again': {
@@ -315,9 +315,9 @@ const week: CurriculumWeek = {
         quote: '« On l’a signalé pendant un an, et rien ne s’est passé jusqu’à ce que tout explose. Pourquoi l’un de nous signalerait encore quoi que ce soit ? »',
         choices: [
           { text: '« Je ne peux pas parler de l’enquête, et je comprends que ce soit frustrant. Ce que je peux dire, c’est que la procédure a fini par fonctionner, même si elle a pris plus de temps que prévu. »', feedback: 'La confidentialité est réelle, mais « la procédure a fonctionné » nie ce qu’ils ont vécu. Défendre le système est le moyen le plus rapide de les perdre.' },
-          { text: '« Les choses ont changé maintenant. Vous pouvez en être sûrs. »', feedback: 'Demander la confiance n’est pas la mériter. Les personnes qu’on a laissées tomber ont besoin de preuves, pas de paroles rassurantes.' },
+          { text: '« Je suis vraiment désolé que vous ayez vécu ça. Je vous promets que les choses ont changé, et je vous garantis personnellement que rien de tel ne se reproduira jamais dans votre équipe. »', feedback: 'Sincère, mais une garantie que vous ne maîtrisez pas est le même genre de promesse qui les a déjà déçus. Les personnes qu’on a laissées tomber ont besoin de preuves, pas de paroles rassurantes.' },
           { text: '« Vous avez raison, ça a pris trop de temps. Continuez à signaler tout ce que vous voyez, et venez directement me voir. »', feedback: 'Reconnaître le retard aide, mais sans dire ce qui va changer, « venez me voir » ressemble à la même promesse qu’ils ont déjà entendue.' },
-          { text: '« Je ressentirais la même chose. Un an, c’est trop long, et je ne vais pas le défendre. Je ne peux pas partager les détails de l’enquête, mais voici ce qui change : chaque signalement recevra une réponse sous cinq jours ouvrés, et je reviendrai chaque mois pour savoir comment ça se passe. »', feedback: 'Vous avez reconnu leur colère, êtes resté honnête sur la confidentialité et avez annoncé des changements précis et vérifiables. La confiance dans une procédure revient quand les gens la voient répondre.' },
+          { text: '« Un an, c’est trop long, et je ne vais pas le défendre. Voici ce qui change : chaque signalement recevra une réponse sous cinq jours ouvrés, et je reviendrai chaque mois voir comment ça se passe. »', feedback: 'Vous avez validé leur colère sans défendre le système et donné des changements précis et vérifiables. La confiance dans une procédure revient quand les gens la voient réagir.' },
         ],
       },
       'w14-bonus-reversal': {
@@ -326,10 +326,10 @@ const week: CurriculumWeek = {
         person: 'Renata, superviseuse d’équipe',
         quote: '« Mes gens ont déjà fait des projets avec cet argent. Je leur ai dit que c’était sûr parce que vous me l’aviez dit. Qu’est-ce que je leur dis maintenant ? »',
         choices: [
-          { text: '« Dites-leur que c’est ma responsabilité, parce que c’est le cas. Je l’ai annoncé avant de l’avoir par écrit. Je vais le dire moi-même à tout le monde aujourd’hui, partager ce que je sais et ce que je ne sais pas, et je n’annoncerai plus d’argent avant que ce soit signé. »', feedback: 'Vous avez pris la responsabilité pour que vos superviseurs ne la portent pas, été honnête sur ce que vous savez et nommé le changement dans votre propre comportement. Assumer à grande échelle commence par le dire vous-même, en premier.' },
-          { text: '« Dites-leur que le groupe l’a retiré. Ça ne dépendait pas de nous. »', feedback: 'C’est peut-être vrai sur le papier, mais c’est vous qui avez fait l’annonce. Accuser le groupe vous protège un jour et vous coûte votre crédibilité pour un an.' },
+          { text: '« Dites-leur que c’est ma responsabilité, parce que c’est le cas. Je le dirai moi-même à tout le monde aujourd’hui, avec ce que je sais et ce que je ne sais pas, et je n’annoncerai plus d’argent avant signature. »', feedback: 'Vous avez pris la responsabilité pour que vos superviseurs ne la portent pas, été honnête sur ce que vous savez et nommé le changement dans votre propre comportement. Assumer à grande échelle commence par le dire vous-même, en premier.' },
+          { text: '« Dites-leur la vérité : la finance du groupe l’a annulée à la dernière minute, après l’avoir approuvée. Ça ne dépendait absolument pas de nous, et personne ne l’a vu venir. »', feedback: 'C’est peut-être vrai sur le papier, mais c’est vous qui avez fait l’annonce. Accuser le groupe vous protège un jour et vous coûte votre crédibilité pour un an.' },
           { text: '« Attendons quelques jours avant de dire quoi que ce soit. Je vais pousser fort auprès du groupe pour qu’il revienne en arrière, et inutile d’inquiéter deux cents personnes si je peux encore récupérer la prime. »', feedback: 'Espérer un revirement pendant que les gens continuent de faire des projets avec cet argent aggrave les dégâts. Une mauvaise nouvelle s’alourdit chaque jour où elle attend.' },
-          { text: '« Je suis désolé. J’enverrai un e-mail à tout le monde ce soir pour expliquer la décision. »', feedback: 'Des excuses et une communication rapide aident, mais un e-mail pour une nouvelle aussi personnelle peut donner l’impression de se cacher. Dites-le en personne, et assumez votre part.' },
+          { text: '« Dites-leur que c’est ma responsabilité, parce que c’est le cas. Je le dirai moi-même à tout le monde aujourd’hui, avec ce que je sais et ce que je ne sais pas. »', feedback: 'Presque. Vous avez pris la responsabilité et choisi de le dire en personne, mais vous avez omis le changement dans votre propre comportement : ne plus annoncer d’argent avant signature. Sans cela, ils ne pourront pas croire la prochaine annonce.' },
         ],
       },
     },

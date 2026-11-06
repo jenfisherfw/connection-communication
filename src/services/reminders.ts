@@ -1,4 +1,5 @@
 import * as Notifications from 'expo-notifications';
+import { AndroidImportance } from 'expo-notifications';
 import { Platform } from 'react-native';
 import { Lang, translate } from '../i18n';
 
@@ -47,7 +48,7 @@ export async function applyReminders(settings: ReminderSettings, lang: Lang = 'e
   if (!(await Notifications.getPermissionsAsync()).granted) return;
 
   if (Platform.OS === 'android') {
-    await Notifications.setNotificationChannelAsync('reminders', { name: translate(lang, 'Daily reminders'), importance: Notifications.AndroidImportance.DEFAULT });
+    await Notifications.setNotificationChannelAsync('reminders', { name: translate(lang, 'Daily reminders'), importance: AndroidImportance.DEFAULT });
   }
   // Weekdays: Monday (2) through Friday (6)
   for (let weekday = 2; weekday <= 6; weekday++) {

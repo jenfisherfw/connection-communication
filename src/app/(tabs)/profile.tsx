@@ -1,9 +1,11 @@
 import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
-import React, { useState } from 'react';
-import { Alert, Platform, Pressable, StyleSheet, Switch, Text, View } from 'react-native';
+import Constants from 'expo-constants';
+import React from 'react';
+import { Alert, Linking, Platform, Pressable, StyleSheet, Switch, Text, View } from 'react-native';
 import { LanguagePicker } from '../../components/LanguagePicker';
 import { Card, Eyebrow, Row, Screen, Title } from '../../components/ui';
+import { SUPPORT_EMAIL } from '../../config';
 import { useContent } from '../../data/localized';
 import { useT } from '../../i18n';
 import { coachIsLive } from '../../services/coach';
@@ -18,7 +20,6 @@ export default function Profile() {
   const { t, lang } = useT();
   const { AREAS, levelTitle } = useContent();
   const level = levelFor(progress.xp);
-  const [leaderboard, setLeaderboard] = useState(true);
   const { reminder } = progress;
   const focus = progress.focusAreas.map((id) => AREAS.find((a) => a.id === id)?.title).filter(Boolean).join(', ');
 
@@ -90,31 +91,10 @@ export default function Profile() {
               {t('Level {n}', { n: level.level })} · {levelTitle(level.level)}
             </Text>
           </View>
-          <Pressable style={s.edit}>
+          <Pressable style={s.edit} onPress={() => router.push({ pathname: '/onboarding', params: { edit: '1' } })}>
             <Text style={s.editText}>{t('Edit')}</Text>
           </Pressable>
         </View>
-        <View style={s.plan}>
-          <Feather name="briefcase" size={20} color={colors.primary} />
-          <View style={{ flex: 1 }}>
-            <Text style={s.planTitle}>{t('Free Plan')}</Text>
-            <Text style={s.planSub}>{t('Unlock unlimited AI practice and team insights')}</Text>
-          </View>
-          <Pressable style={s.upgrade}>
-            <Text style={s.upgradeText}>{t('Upgrade')}</Text>
-          </Pressable>
-        </View>
-      </Card>
-
-      <Card style={s.team} onPress={() => {}}>
-        <View style={s.teamIcon}>
-          <Feather name="users" size={24} color={colors.teal} />
-        </View>
-        <View style={{ flex: 1 }}>
-          <Text style={s.teamTitle}>{t('Invite your team')}</Text>
-          <Text style={s.planSub}>{t('Shared challenges, team pulse, and leaderboards')}</Text>
-        </View>
-        <Feather name="chevron-right" size={20} color={colors.faint} />
       </Card>
 
       <Eyebrow style={s.section}>{t('Language')}</Eyebrow>
@@ -127,7 +107,6 @@ export default function Profile() {
       <Card style={s.group}>
         <Row icon="bell" title={t('Daily reminder')} subtitle={reminder.enabled ? t('Weekdays') : t('Off')} right={<Switch value={reminder.enabled} onValueChange={toggleReminder} trackColor={{ true: colors.primary, false: colors.line }} />} />
         {reminder.enabled ? <Row icon="clock" title={t('Reminder time')} subtitle={t('Tap to change')} onPress={cycleTime} right={<Text style={s.value}>{formatTime(reminder.hour, reminder.minute, lang)}</Text>} /> : null}
-        <Row icon="bar-chart-2" title={t('Show me on leaderboards')} right={<Switch value={leaderboard} onValueChange={setLeaderboard} trackColor={{ true: colors.primary, false: colors.line }} />} />
         <Row icon="target" title={t('Focus areas and role')} subtitle={focus || t('Not set')} onPress={() => router.push({ pathname: '/onboarding', params: { edit: '1' } })} last />
       </Card>
 
@@ -155,7 +134,8 @@ export default function Profile() {
           subtitle={coachIsLive && account.session ? t('Connected') : coachIsLive ? t('Connecting...') : t('Demo mode (scripted replies)')}
           right={<View style={[s.status, { backgroundColor: coachIsLive && account.session ? colors.success : colors.amber }]} />}
         />
-        <Row icon="shield" title={t('Privacy & Data')} subtitle={t('Your reflections are private to you')} last />
+        <Row icon="shield" title={t('Privacy policy')} subtitle={t('What we collect and how we protect it')} onPress={() => router.push('/privacy')} />
+        <Row icon="file-text" title={t('Terms of use')} onPress={() => router.push('/terms')} last />
       </Card>
 
       <Eyebrow style={s.section}>{t('Help and support')}</Eyebrow>
@@ -173,8 +153,16 @@ export default function Profile() {
             )
           }
         />
-        <Row icon="book-open" title={t('Recommended Reading')} subtitle={t('Radical Candor, Crucial Conversations, and more')} />
-        <Row icon="message-square" title={t('Send Feedback')} last />
+        <Row icon="tool" title={t('Leader Toolkit')} subtitle={t('Templates, checklists, and planners')} onPress={() => router.push('/toolkit')} last={!SUPPORT_EMAIL} />
+        {SUPPORT_EMAIL ? (
+          <Row
+            icon="message-square"
+            title={t('Send feedback')}
+            subtitle={SUPPORT_EMAIL}
+            onPress={() => Linking.openURL(`mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(t('Rapport feedback'))}`).catch(() => {})}
+            last
+          />
+        ) : null}
       </Card>
 
       <Pressable onPress={confirmDelete} style={s.reset}>
@@ -185,7 +173,7 @@ export default function Profile() {
         <Feather name="rotate-ccw" size={16} color={colors.muted} />
         <Text style={s.resetText}>{t('Reset progress')}</Text>
       </Pressable>
-      <Text style={s.version}>Rapport v0.1.0 (MVP)</Text>
+      <Text style={s.version}>Rapport {Constants.expoConfig?.version ?? ''}</Text>
     </Screen>
   );
 }
@@ -199,14 +187,6 @@ const s = StyleSheet.create({
   level: { fontFamily: fonts.semibold, fontSize: 12, color: colors.primary, marginTop: 4 },
   edit: { backgroundColor: colors.primarySoft, paddingHorizontal: 16, paddingVertical: 9, borderRadius: radius.pill },
   editText: { fontFamily: fonts.semibold, fontSize: 14, color: colors.primary },
-  plan: { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 18, borderTopWidth: 1, borderTopColor: colors.line },
-  planTitle: { fontFamily: fonts.semibold, fontSize: 16, color: colors.ink },
-  planSub: { fontFamily: fonts.body, fontSize: 13, color: colors.muted, marginTop: 2 },
-  upgrade: { backgroundColor: colors.primary, paddingHorizontal: 18, paddingVertical: 10, borderRadius: radius.pill },
-  upgradeText: { fontFamily: fonts.semibold, fontSize: 14, color: '#fff' },
-  team: { flexDirection: 'row', alignItems: 'center', gap: 14, marginTop: 14 },
-  teamIcon: { width: 52, height: 52, borderRadius: 16, backgroundColor: colors.tealSoft, alignItems: 'center', justifyContent: 'center' },
-  teamTitle: { fontFamily: fonts.display, fontSize: 20, color: colors.ink },
   section: { marginTop: 28, marginBottom: 10, marginLeft: 4 },
   group: { padding: 0, overflow: 'hidden' },
   status: { width: 10, height: 10, borderRadius: 5 },

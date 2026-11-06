@@ -31,8 +31,14 @@ import week29 from './week29';
 import week30 from './week30';
 import week31 from './week31';
 import week32 from './week32';
+import week33 from './week33';
+import week34 from './week34';
+import week35 from './week35';
+import week36 from './week36';
+import week37 from './week37';
+import week38 from './week38';
 
 export type { CurriculumWeek, WeekTranslation } from './types';
 
 /** The year long daily curriculum, in order. Add new weeks to the end; never reorder. */
-export const WEEKS: CurriculumWeek[] = [week01, week02, week03, week04, week05, week06, week07, week08, week09, week10, week11, week12, week13, week14, week15, week16, week17, week18, week19, week20, week21, week22, week23, week24, week25, week26, week27, week28, week29, week30, week31, week32];
+export const WEEKS: CurriculumWeek[] = [week01, week02, week03, week04, week05, week06, week07, week08, week09, week10, week11, week12, week13, week14, week15, week16, week17, week18, week19, week20, week21, week22, week23, week24, week25, week26, week27, week28, week29, week30, week31, week32, week33, week34, week35, week36, week37, week38];

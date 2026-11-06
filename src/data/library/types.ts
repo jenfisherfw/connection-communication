@@ -9,7 +9,7 @@ export interface WeekTranslation {
 }
 
 /**
- * One week of the daily curriculum. Each day pairs a scenario, a reflection prompt, and a tip.
+ * One unit of the daily curriculum (usually seven days; the closing units have five). Each day pairs a scenario, a reflection prompt, and a tip.
  * Days may reuse the original library by id: scenario ids from content.ts, and reflections
  * or tips as `core-<index>` into REFLECTIONS or TIPS.
  */

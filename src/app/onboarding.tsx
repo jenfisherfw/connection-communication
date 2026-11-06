@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LanguagePicker } from '../components/LanguagePicker';
+import { LegalConsent } from '../components/LegalConsent';
 import { Button, Eyebrow, IconBubble } from '../components/ui';
 import { AreaId } from '../data/content';
 import { useContent } from '../data/localized';
@@ -284,6 +285,7 @@ function AccountStep({ onDone }: { onDone: () => void }) {
       <TextInput value={password} onChangeText={setPassword} placeholder={t('Password (8+ characters)')} placeholderTextColor={colors.faint} style={[s.input, { marginTop: 12 }]} secureTextEntry autoComplete="new-password" />
       {msg ? <Text style={s.error}>{msg}</Text> : null}
       <Button label={busy ? t('Creating account...') : t('Create account')} icon="check" disabled={busy || !email.includes('@') || password.length < 8} onPress={create} style={{ marginTop: 20 }} />
+      <LegalConsent />
       <Pressable onPress={onDone} style={{ paddingVertical: 16 }}>
         <Text style={s.skip}>{confirm ? t('Continue') : t('Continue as guest')}</Text>
       </Pressable>

@@ -18,7 +18,7 @@ const DAYS: Record<string, string[]> = {
 export default function ProgressScreen() {
   const { progress } = useAppState();
   const { t, lang, locale } = useT();
-  const { AREAS, BADGES, LEADERBOARD, levelTitle } = useContent();
+  const { AREAS, BADGES, levelTitle } = useContent();
   const level = levelFor(progress.xp);
   const maxArea = Math.max(100, ...AREAS.map((a) => progress.areaXp[a.id] ?? 0));
 
@@ -35,7 +35,6 @@ export default function ProgressScreen() {
     }
   }
 
-  const board = LEADERBOARD.map((r) => (r.xp === -1 ? { ...r, xp: progress.xp, me: true } : { ...r, me: false })).sort((a, b) => b.xp - a.xp);
 
   return (
     <Screen>
@@ -127,23 +126,6 @@ export default function ProgressScreen() {
         })}
       </View>
 
-      <SectionHeader title={t('Team leaderboard · this month')} />
-      <Card style={{ paddingVertical: 6 }}>
-        {board.map((r, i) => (
-          <View key={r.name} style={[s.lb, r.me && s.lbMe, i < board.length - 1 && !r.me && s.lbLine]}>
-            <Text style={[s.lbRank, i === 0 && { color: colors.amber }]}>{i + 1}</Text>
-            <View style={[s.lbAvatar, { backgroundColor: r.me ? colors.primary : colors.primarySoft }]}>
-              <Text style={[s.lbInitial, { color: r.me ? '#fff' : colors.primary }]}>{r.me ? progress.name[0] : r.name[0]}</Text>
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={s.lbName}>{r.me ? t('{name} (you)', { name: progress.name }) : r.name}</Text>
-              <Text style={s.lbTeam}>{r.team}</Text>
-            </View>
-            <Text style={s.lbXp}>{r.xp.toLocaleString(locale)} XP</Text>
-          </View>
-        ))}
-      </Card>
-      <Text style={s.footnote}>{t('Leaderboards are opt in and only show XP, never what you wrote or practiced.')}</Text>
     </Screen>
   );
 }
@@ -178,14 +160,4 @@ const s = StyleSheet.create({
   badgeCell: { width: '25%', alignItems: 'center' },
   badge: { width: 60, height: 60, borderRadius: 30, alignItems: 'center', justifyContent: 'center' },
   badgeTitle: { fontFamily: fonts.medium, fontSize: 11, color: colors.body, marginTop: 6, paddingHorizontal: 2 },
-  lb: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 12, paddingHorizontal: 6 },
-  lbLine: { borderBottomWidth: 1, borderBottomColor: colors.line },
-  lbMe: { backgroundColor: colors.primarySoft, borderRadius: radius.md, marginVertical: 2 },
-  lbRank: { width: 18, fontFamily: fonts.bold, fontSize: 15, color: colors.muted, textAlign: 'center' },
-  lbAvatar: { width: 38, height: 38, borderRadius: 19, alignItems: 'center', justifyContent: 'center' },
-  lbInitial: { fontFamily: fonts.bold, fontSize: 15 },
-  lbName: { fontFamily: fonts.semibold, fontSize: 15, color: colors.ink },
-  lbTeam: { fontFamily: fonts.body, fontSize: 12, color: colors.muted },
-  lbXp: { fontFamily: fonts.bold, fontSize: 14, color: colors.primary },
-  footnote: { fontFamily: fonts.body, fontSize: 12, color: colors.muted, textAlign: 'center', marginTop: 12, lineHeight: 17 },
 });

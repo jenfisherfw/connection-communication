@@ -6,6 +6,9 @@ import { AreaId, Scenario } from './content';
 import esContent from './i18n/es';
 import frContent from './i18n/fr';
 import { WEEKS } from './library';
+import { LESSONS, MicroLesson, Slide } from './lessons';
+import { LESSON_BADGES, LESSON_BADGE_TEXT } from './lessons/badges';
+import { TOOLS } from './toolkit';
 
 /**
  * Translated text for the content library, keyed by the same ids as content.ts. Only text
@@ -104,7 +107,25 @@ function localize(lang: Lang) {
     }
     if ((idx + 1) % 5 === 0) while (levelUp.length >= 5) addWeek(levelUp.splice(0, 5), LEVEL_UP[lang], true);
   });
-  return { ...core, SCENARIOS, reflections, tips, schedule };
+  // Micro lessons: translated slides, with check answers always taken from the English source.
+  const lessons: MicroLesson[] = LESSONS.map((l) => {
+    const tr = lang === 'en' ? null : l[lang];
+    if (!tr || tr.slides.length !== l.slides.length) return l;
+    const slides = l.slides.map((sl, i): Slide => {
+      const t = tr.slides[i];
+      if (t.kind !== sl.kind) return sl;
+      return sl.kind === 'check' && t.kind === 'check' ? { ...t, answer: sl.answer } : t;
+    });
+    return { ...l, title: tr.title || l.title, subtitle: tr.subtitle || l.subtitle, slides };
+  });
+  const badgeText = lang === 'en' ? {} : LESSON_BADGE_TEXT[lang];
+  const BADGES = [...core.BADGES, ...LESSON_BADGES.map((b) => ({ ...b, ...badgeText[b.id] }))];
+  // Toolkit: a translation is used only when it matches the English section for section.
+  const tools = TOOLS.map((tool) => {
+    const tr = lang === 'en' ? undefined : tool[lang];
+    return tr && tr.title && tr.sections.length === tool.sections.length ? { ...tool, title: tr.title, summary: tr.summary || tool.summary, sections: tr.sections } : tool;
+  });
+  return { ...core, BADGES, SCENARIOS, reflections, tips, schedule, LESSONS: lessons, TOOLS: tools };
 }
 
 const LEVEL_UP: Record<Lang, string> = { en: 'Level up: mixed practice', es: 'Sube de nivel: práctica mixta', fr: 'Niveau supérieur : pratique mixte' };

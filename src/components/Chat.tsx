@@ -1,6 +1,6 @@
 import { Feather } from '@expo/vector-icons';
 import React, { useEffect, useRef, useState } from 'react';
-import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, Pressable, ScrollView, ScrollViewInstance, StyleSheet, Text, TextInput, View } from 'react-native';
 import { ChatMessage } from '../services/coach';
 import { colors, fonts, radius } from '../theme';
 
@@ -34,7 +34,7 @@ function renderBold(text: string) {
 
 export function Chat({ messages, typing, onSend, placeholder, partnerInitial, partnerColor, partnerSoft, header, footer, suggestions, initialText = '', disabled }: Props) {
   const [text, setText] = useState(initialText);
-  const scroll = useRef<ScrollView>(null);
+  const scroll = useRef<ScrollViewInstance>(null);
 
   useEffect(() => {
     setTimeout(() => scroll.current?.scrollToEnd({ animated: true }), 50);
